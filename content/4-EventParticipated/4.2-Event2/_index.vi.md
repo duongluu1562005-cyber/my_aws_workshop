@@ -125,11 +125,11 @@ Bên cạnh đó, phần hỏi đáp cũng mang lại nhiều thông tin hữu �
 
 ### Hình Ảnh Khi Tham Gia Sự Kiện
 
-![Ảnh cá nhân tham dự sự kiện](/images/4-EventParticipated/event-2/anhcanhan.jpg)
+![Ảnh cá nhân tham dự sự kiện](/my_aws_workshop/images/4-EventParticipated/event-2/anhcanhan.jpg)
 
 *Hình 1. Hình ảnh cá nhân tại First Cloud AI Journey – Weekly Meet Up ngày 24/10/2026.*
 
-![Ảnh tập thể tại sự kiện](/images/4-EventParticipated/event-2/anhtapthe.jpg)
+![Ảnh tập thể tại sự kiện](/my_aws_workshop/images/4-EventParticipated/event-2/anhtapthe.jpg)
 
 *Hình 2. Ảnh lưu niệm cùng các diễn giả và người tham dự sự kiện.*
 
