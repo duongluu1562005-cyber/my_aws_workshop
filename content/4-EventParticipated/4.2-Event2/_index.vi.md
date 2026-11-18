@@ -6,120 +6,135 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Bài Thu Hoạch 2
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# First Cloud AI Journey – Weekly Meet Up
+
+- **Thời gian:** 09:00 – 12:00, Thứ Bảy, ngày 24/10/2026
+- **Địa điểm:** Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh
+- **Đơn vị tổ chức:** First Cloud AI Journey (FCAJ)
+- **Vai trò:** Người tham dự trực tiếp
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+First Cloud AI Journey – Weekly Meet Up là buổi gặp gỡ và chia sẻ kiến thức dành cho những người quan tâm đến AWS, Cloud Computing và trí tuệ nhân tạo (AI).
+
+Chương trình tập trung vào cách ứng dụng AI trong thực tế, từ xây dựng hệ thống Voice AI, quản lý tài nguyên AWS đến kiểm thử bảo mật và sử dụng AI Agent để hỗ trợ công việc lập trình.
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Kiệt Trần** – Revve AI
+- **Long Huỳnh** – Styl Solution
+- **Thịnh Nguyễn** – Styl Solution
+- **Xuân An** – AWS Student Builder Group HCMUTE
+- **Khoa Kiều** – Tech Lead, ACB
+- **Nghi Danh** – AWS Community Builder
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### 1. Xây Dựng Tổng Đài Voice AI Tiếng Việt
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+Diễn giả giới thiệu cách xây dựng hệ thống AI có thể nghe, hiểu và phản hồi bằng giọng nói thông qua ba bước **Hear – Think – Speak**.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+Hai mô hình được đề cập gồm:
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+- **Speech-to-Speech:** Xử lý trực tiếp giọng nói đầu vào và đầu ra.
+- **ASR–LLM–TTS:** Kết hợp nhận dạng giọng nói, mô hình ngôn ngữ lớn và chuyển văn bản thành giọng nói.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+Phần em ấn tượng nhất là demo AI thực hiện cuộc gọi phỏng vấn sơ tuyển vị trí Cloud Engineer bằng tiếng Việt. Qua đó, em thấy được cách AI có thể hỗ trợ công việc tuyển dụng và hiểu thêm về tầm quan trọng của tốc độ phản hồi trong một cuộc hội thoại.
 
-#### Domain-Driven Design (DDD)
+#### 2. Quản Lý Tài Nguyên Với AWS Resource Access Manager
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+Phiên chia sẻ giới thiệu cách quản lý và chia sẻ tài nguyên giữa nhiều tài khoản AWS thông qua **AWS Organizations** và **AWS Resource Access Manager (RAM)**.
 
-#### Event-Driven Architecture
+Một số nội dung chính:
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+- **AWS RAM:** Chia sẻ tài nguyên giữa các tài khoản AWS.
+- **VPC và Subnet Sharing:** Cho phép nhiều tài khoản sử dụng chung tài nguyên mạng.
+- **IAM Policies:** Quản lý quyền truy cập của người dùng và các vai trò.
+- **Service Control Policies (SCP):** Giới hạn quyền trong môi trường nhiều tài khoản.
 
-#### Compute Evolution
+Qua phần này, em hiểu thêm cách doanh nghiệp tổ chức hệ thống Cloud để các nhóm có thể sử dụng chung tài nguyên mà vẫn đảm bảo việc phân quyền và quản lý.
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+#### 3. Ứng Dụng AI Trong Kiểm Thử Bảo Mật
 
-#### Amazon Q Developer
+Diễn giả giới thiệu **AWS Security Agent**, công cụ ứng dụng AI để hỗ trợ phát hiện và đánh giá các vấn đề bảo mật trong quá trình phát triển phần mềm.
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+Các nội dung đáng chú ý:
+
+- Kiểm tra cấu hình hạ tầng được viết bằng Terraform.
+- Phân tích mã nguồn để phát hiện những vấn đề bảo mật.
+- Hỗ trợ review Pull Request trên GitHub và Merge Request trên GitLab.
+- Đánh giá bảo mật tại môi trường SIT/UAT trước khi triển khai chính thức.
+
+Phiên chia sẻ giúp em hiểu rõ hơn về việc tích hợp kiểm tra bảo mật ngay trong quá trình phát triển thay vì chỉ thực hiện khi sản phẩm đã hoàn thành.
+
+#### 4. Amazon Bedrock AgentCore
+
+Phiên này giới thiệu hai thành phần quan trọng trong việc xây dựng và vận hành AI Agent:
+
+- **AgentCore Runtime:** Cung cấp môi trường thực thi cho AI Agent, sử dụng MicroVM để cô lập các phiên làm việc.
+- **AgentCore Memory:** Quản lý thông tin và ngữ cảnh mà AI Agent cần ghi nhớ.
+
+Trong đó, Memory được chia thành hai loại:
+
+- **Short-term Memory:** Lưu trữ thông tin trong phiên tương tác hiện tại.
+- **Long-term Memory:** Lưu giữ thông tin hữu ích để sử dụng trong những phiên tương tác sau.
+
+Qua nội dung này, em hiểu thêm cách AI Agent duy trì ngữ cảnh, ghi nhớ thông tin và xử lý các tác vụ trong môi trường thực tế.
+
+#### 5. Kiro Crew – AI Hỗ Trợ Công Việc Lập Trình
+
+Đây là một trong những phiên em quan tâm nhất tại sự kiện. Diễn giả giới thiệu **Kiro Crew** và cách sử dụng AI để hỗ trợ một số công việc kỹ thuật.
+
+Các nội dung chính:
+
+- **Code Review:** Hỗ trợ kiểm tra và nhận xét những thay đổi trong mã nguồn.
+- **Infrastructure Monitoring:** Hỗ trợ theo dõi tình trạng hệ thống.
+- **Artifacts:** Tổng hợp dữ liệu và trình bày kết quả dưới dạng biểu đồ.
+- **Context Window:** Quản lý lượng thông tin AI sử dụng trong một phiên làm việc.
+- **Auto Compact:** Rút gọn lịch sử hội thoại để tiết kiệm ngữ cảnh.
+- **Memory và Guardrails:** Quản lý thông tin được lưu trữ và giới hạn quyền của AI Agent.
+
+Em ấn tượng với phần demo tổng hợp dữ liệu tuyển dụng thành biểu đồ và phần hỏi đáp về cách quản lý ngữ cảnh khi sử dụng AI trong thời gian dài.
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+Sau buổi meetup, em có thêm kiến thức về những công nghệ đang được sử dụng trong các hệ thống Cloud và AI.
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
-
-#### Kiến Trúc Kỹ Thuật
-
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- **Voice AI:** Hiểu cách hệ thống tiếp nhận, xử lý và phản hồi thông tin bằng giọng nói.
+- **AWS RAM:** Biết thêm cách chia sẻ tài nguyên giữa nhiều tài khoản AWS và kiểm soát quyền truy cập.
+- **AWS Security Agent:** Hiểu cách AI hỗ trợ phát hiện những vấn đề bảo mật trong mã nguồn và hạ tầng.
+- **Amazon Bedrock AgentCore:** Phân biệt vai trò của Runtime và Memory khi vận hành AI Agent.
+- **Kiro Crew:** Tìm hiểu cách sử dụng AI để hỗ trợ review code, quản lý ngữ cảnh và tự động hóa công việc.
 
 ### Ứng Dụng Vào Công Việc
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+Từ những kiến thức tiếp thu được, em có thêm một số hướng để tìm hiểu và áp dụng vào quá trình học tập cũng như thực hiện dự án:
 
-### Trải nghiệm trong event
+- Tìm hiểu sâu hơn về AWS IAM, Organizations và RAM để quản lý tài nguyên Cloud.
+- Chú ý đến vấn đề bảo mật ngay từ giai đoạn phát triển phần mềm.
+- Sử dụng các công cụ AI để hỗ trợ đọc code, tìm lỗi và kiểm tra những thay đổi trong dự án.
+- Tìm hiểu cách quản lý Context Window và Memory để làm việc với AI Agent hiệu quả hơn.
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+### Trải Nghiệm Tại Sự Kiện
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+Buổi meetup là cơ hội để em được nghe các kỹ sư và Tech Lead chia sẻ kinh nghiệm thực tế khi làm việc với AWS và AI.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+Hai phần khiến em ấn tượng nhất là demo cuộc gọi phỏng vấn bằng Voice AI và phần giới thiệu Kiro Crew. Những ví dụ này giúp em hình dung rõ hơn cách AI được sử dụng trong công việc thay vì chỉ tìm hiểu qua tài liệu.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+Bên cạnh đó, phần hỏi đáp cũng mang lại nhiều thông tin hữu ích, đặc biệt là những vấn đề liên quan đến giới hạn của AI, quản lý ngữ cảnh và kiểm soát quyền truy cập khi triển khai AI Agent.
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+### Hình Ảnh Khi Tham Gia Sự Kiện
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+![Ảnh cá nhân tham dự sự kiện]({{ "/images/4-EventParticipated/event-2/anhcanhan.jpg" | relURL }})
+
+*Hình 1. Hình ảnh cá nhân tại First Cloud AI Journey – Weekly Meet Up ngày 24/10/2026.*
+
+![Ảnh tập thể tại sự kiện]({{ "/images/4-EventParticipated/event-2/anhtapthe.jpg" | relURL }})
+
+*Hình 2. Ảnh lưu niệm cùng các diễn giả và người tham dự sự kiện.*
+
+
+
