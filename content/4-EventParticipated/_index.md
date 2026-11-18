@@ -5,40 +5,34 @@ weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
+### [Event 1](4.1-Event1/)
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** for your report, including this warning.
-{{% /notice %}}
+&emsp;**Event Name:** AWS Cloud and AI Day Hanoi 2026
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
+&emsp;**Date & Time:** September 29, 2026 | 07:00 – 17:00
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+&emsp;**Location:** 26th Floor, Bitexco Financial Tower, No. 02 Hai Trieu Street, Sai Gon Ward, Ho Chi Minh City, Vietnam
 
-### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+&emsp;**Role:** Attendee
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+### [Event 2](4.2-Event2/)
 
-&emsp;**Role:** Attendee  
+&emsp;**Event Name:** First Cloud AI Journey – Weekly Meet Up
 
----
+&emsp;**Date & Time:** October 24, 2026 | 09:00 – 12:00
 
-### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+&emsp;**Location:** 26th Floor, Bitexco Financial Tower, No. 02 Hai Trieu Street, Sai Gon Ward, Ho Chi Minh City, Vietnam
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Role:** Attendee
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
-&emsp;**Role:** Attendee  
+### [Event 3](4.3-Event3/)
+
+&emsp;**Event Name:** First Cloud AI Journey – Weekly Meet Up
+
+&emsp;**Date & Time:** November 14, 2026 | 09:00 – 12:00
+
+&emsp;**Location:** 26th Floor, Bitexco Financial Tower, No. 02 Hai Trieu Street, Sai Gon Ward, Ho Chi Minh City, Vietnam
+
+&emsp;**Role:** Attendee
