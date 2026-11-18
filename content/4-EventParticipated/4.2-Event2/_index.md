@@ -1,126 +1,159 @@
+
 ---
-title: "Event 2"
-date: 2024-01-01
-weight: 1
+title: "Event 2 "
+date: 2026-10-24
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# First Cloud AI Journey – Weekly Meet Up
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+- **Date & Time:** 09:00 – 12:00, Saturday, October 24, 2026
+- **Location:** 26th Floor, Bitexco Financial Tower, Ho Chi Minh City, Vietnam
+- **Organizer:** First Cloud AI Journey (FCAJ)
+- **Role:** In-Person Attendee
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+First Cloud AI Journey – Weekly Meet Up was a technical sharing and networking event for individuals interested in Amazon Web Services (AWS), Cloud Computing, and Artificial Intelligence (AI).
 
-### Speakers
+The event focused on practical applications of AI, including building Voice AI systems, managing AWS resources, performing security testing, and using AI Agents to support software development.
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+### List of Speakers
 
-### Key Highlights
+- **Kiệt Trần** – Revve AI
+- **Long Huỳnh** – Styl Solution
+- **Thịnh Nguyễn** – Styl Solution
+- **Xuân An** – AWS Student Builder Group HCMUTE
+- **Khoa Kiều** – Tech Lead, ACB
+- **Nghi Danh** – AWS Community Builder
 
-#### Identifying the drawbacks of legacy application architecture
+### Key Topics and Highlights
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+#### 1. Building a Vietnamese Voice AI Call Center
 
-#### Transitioning to modern application architecture – Microservices
+The speaker introduced how to build an AI system capable of listening, understanding, and responding through speech using three main stages: **Hear – Think – Speak**.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+Two approaches were discussed:
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+- **Speech-to-Speech:** Processing spoken input and generating spoken responses directly.
+- **ASR–LLM–TTS:** Combining Automatic Speech Recognition (ASR), a Large Language Model (LLM), and Text-to-Speech (TTS) to process conversations.
 
-#### Domain-Driven Design (DDD)
+The most impressive part for me was the demonstration of an AI system conducting a preliminary interview for a Cloud Engineer position in Vietnamese.
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+This demonstration showed how Voice AI could support recruitment activities and helped me understand the importance of response speed in maintaining a natural conversation.
 
-#### Event-Driven Architecture
+#### 2. Managing AWS Resources with AWS Resource Access Manager
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+This session introduced how organizations can manage and share resources across multiple AWS accounts using **AWS Organizations** and **AWS Resource Access Manager (RAM)**.
 
-#### Compute Evolution
+**Main topics included:**
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+- **AWS RAM:** Sharing supported AWS resources across multiple accounts.
+- **VPC and Subnet Sharing:** Allowing multiple AWS accounts to use shared networking resources.
+- **IAM Policies:** Managing permissions for users and roles.
+- **Service Control Policies (SCPs):** Establishing permission boundaries in multi-account environments.
 
-#### Amazon Q Developer
+Through this session, I gained a better understanding of how businesses organize their cloud infrastructure so that different teams can share resources while maintaining appropriate access control and management.
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+#### 3. Applying AI to Security Testing
 
-### Key Takeaways
+The speaker introduced **AWS Security Agent**, an AI-powered tool designed to support the identification and evaluation of security issues during software development.
 
-#### Design Mindset
+**Key discussion points:**
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+- Reviewing infrastructure configurations written in Terraform.
+- Analyzing source code to identify potential security vulnerabilities.
+- Supporting Pull Request reviews on GitHub and Merge Request reviews on GitLab.
+- Evaluating application security in SIT/UAT environments before production deployment.
 
-#### Technical Architecture
+This session helped me understand the importance of integrating security testing directly into the software development process instead of waiting until the application has been completed.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+I also learned how AI can assist developers in identifying potential risks earlier and improving the overall security of their systems.
 
-#### Modernization Strategy
+#### 4. Amazon Bedrock AgentCore
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+This session introduced two important components for building and operating AI Agents using Amazon Bedrock AgentCore.
 
-### Applying to Work
+- **AgentCore Runtime:** Provides an execution environment for AI Agents and uses MicroVM technology to isolate sessions.
+- **AgentCore Memory:** Manages information and context that AI Agents need to remember.
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+AgentCore Memory was explained through two main types:
 
-### Event Experience
+- **Short-term Memory:** Stores information within the current interaction session.
+- **Long-term Memory:** Retains useful information that can be accessed in future interactions.
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Through this session, I gained a better understanding of how AI Agents maintain context, remember relevant information, and process tasks in real-world environments.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+It also helped me recognize the importance of managing memory and execution environments when developing more advanced AI applications.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### 5. Kiro Crew – Using AI to Support Software Development
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+This was one of the sessions that interested me the most during the event.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+The speaker introduced **Kiro Crew** and demonstrated how AI could assist with various technical tasks in software development and system management.
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+**Main topics included:**
 
-#### Some event photos
-*Add your event photos here*  
+- **Code Review:** Supporting developers in reviewing and evaluating source code changes.
+- **Infrastructure Monitoring:** Assisting with monitoring system status and infrastructure performance.
+- **Artifacts:** Organizing data and presenting results through visual charts.
+- **Context Window:** Managing the amount of information an AI model can process during an interaction.
+- **Auto Compact:** Summarizing conversation history to reduce context usage.
+- **Memory and Guardrails:** Managing stored information and setting boundaries for AI Agent permissions.
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+I was particularly impressed by the demonstration of transforming recruitment data into visual charts.
+
+The Q&A session about managing context during long AI interactions was also valuable.
+
+It helped me understand that effective use of AI requires not only good prompts but also proper context management, memory handling, and permission control.
+
+### Knowledge and Skills Gained
+
+After attending the meetup, I gained additional knowledge about technologies currently being used in Cloud Computing and AI systems.
+
+**The main lessons I learned included:**
+
+- **Voice AI:** Understanding how AI systems receive, process, and respond to spoken information.
+- **AWS RAM:** Learning how AWS resources can be shared across multiple accounts while maintaining access control.
+- **AWS Security Agent:** Understanding how AI can assist in detecting security issues in source code and infrastructure configurations.
+- **Amazon Bedrock AgentCore:** Recognizing the different roles of Runtime and Memory when operating AI Agents.
+- **Kiro Crew:** Exploring how AI can support code reviews, context management, and technical workflow automation.
+
+Overall, these sessions helped me connect theoretical knowledge with real-world technology applications.
+
+### Practical Applications
+
+Based on the knowledge gained from the event, I identified several areas that I would like to explore further and apply to my studies and future projects.
+
+- Learn more about AWS IAM, AWS Organizations, and AWS RAM to improve my understanding of cloud resource management.
+- Pay greater attention to security throughout the software development process.
+- Use AI tools to assist with reading code, identifying errors, and reviewing changes in development projects.
+- Explore how Context Windows and Memory can be managed to improve the effectiveness of AI Agents.
+
+I hope to apply these concepts through hands-on practice and small technical projects to strengthen my understanding of Cloud Computing, AI, and software development.
+
+### My Experience at the Event
+
+The meetup provided an opportunity for me to learn directly from engineers, technical professionals, and Tech Leads who shared their practical experiences working with AWS and AI.
+
+The two sessions that impressed me the most were the **Vietnamese Voice AI interview demonstration** and the **Kiro Crew presentation**.
+
+These examples helped me better understand how AI technologies are applied in professional environments rather than only learning about them through documentation.
+
+In addition, the Q&A sessions provided valuable insights, especially regarding AI limitations, context management, and access control when deploying AI Agents.
+
+Overall, attending the First Cloud AI Journey Weekly Meet Up was a valuable learning experience that expanded my technical knowledge and motivated me to continue exploring AWS and AI technologies.
+
+### Event Participation Photos
+
+The following photos were taken during **First Cloud AI Journey – Weekly Meet Up** on October 24, 2026, in Ho Chi Minh City.
+
+![Personal photo at the event](/my_aws_workshop/images/4-EventParticipated/event-2/anhcanhan.jpg)
+
+*Figure 1. My personal photo at First Cloud AI Journey – Weekly Meet Up on October 24, 2026.*
+
+![Group photo at the event](/my_aws_workshop/images/4-EventParticipated/event-2/anhtapthe.jpg)
+
+*Figure 2. Group photo with the speakers and other attendees at the event.*
