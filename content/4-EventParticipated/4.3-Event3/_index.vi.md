@@ -92,12 +92,13 @@ Buổi chia sẻ mang lại nhiều kiến thức và kinh nghiệm thực tế,
 - Hiểu thêm cách kết hợp các dịch vụ AWS để xây dựng hệ thống AI có khả năng mở rộng và hoạt động ổn định.
 - Có cơ hội giao lưu, học hỏi kinh nghiệm từ các anh chị trong cộng đồng FCAJ và những người tham dự, đồng thời tiếp cận thêm các giải pháp AWS và AI có thể ứng dụng vào kiến trúc dự án thực tập.
 
+
 ### Một Số Hình Ảnh Tham Gia Sự Kiện
 
-![Nội dung Use AI Wisely tại AWS First Cloud AI Journey](images/event3-use-ai-wisely.png)
+![Slide Use AI Wisely tại AWS First Cloud AI Journey](/my_aws_workshop/images/4-EventParticipated/event-3/anhslide.jpg)
 
 *Hình 1. Slide "Use AI Wisely" giới thiệu cách sử dụng mô hình AI lớn để điều phối các mô hình nhỏ theo từng nhiệm vụ, kết hợp lưu trữ kết quả câu hỏi lặp lại nhằm tối ưu chi phí và hiệu quả xử lý.*
 
-![Nội dung Use AI Wisely tại AWS First Cloud AI Journey](images/event3-use-ai-wisely.png)
+![Ảnh cá nhân tại AWS First Cloud AI Journey](/my_aws_workshop/images/4-EventParticipated/event-3/anhcanhan.jpg)
 
-*Hình 2. Hình ảnh cá nhân tại sự kiện vào ngày 14/11/2026.*
+*Hình 2. Hình ảnh cá nhân tại sự kiện First Cloud AI Journey – Weekly Meet Up ngày 14/11/2026.*
