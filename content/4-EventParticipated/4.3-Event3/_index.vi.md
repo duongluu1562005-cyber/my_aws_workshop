@@ -1,15 +1,10 @@
 ---
-title: "Event 3"
+title: "Bài Thu Hoạch 3"
 date: 2026-11-14
 weight: 1
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
-
-
-
-# Bài Thu Hoạch 3
-
 # First Cloud AI Journey – Weekly Meet Up
 
 - **Thời gian:** Thứ Bảy, ngày 14/11/2026
