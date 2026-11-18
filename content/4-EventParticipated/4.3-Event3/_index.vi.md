@@ -3,7 +3,7 @@ title: "Bài Thu Hoạch 3"
 date: 2026-11-14
 weight: 1
 chapter: false
-pre: " <b> 4.2. </b> "
+pre: " <b> 4.3. </b> "
 ---
 # First Cloud AI Journey – Weekly Meet Up
 
