@@ -7,17 +7,17 @@ chapter: false
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Nguyễn Văn A
+&emsp; **Họ và tên:** Lưu Phan Hướng Dương
 
-&emsp; **Số điện thoại:** 0989888999
+&emsp; **Số điện thoại:** 0913846042
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** duongluu1562005@gmail.com
 
-&emsp; **Trường:** Đại học Sư phạm Kỹ thuật TP.HCM
+&emsp; **Trường:** Đại học FPT cơ sở HCM
 
-&emsp; **Ngành:** Công nghệ thông tin
+&emsp; **Ngành:** An toàn thông tin
 
-&emsp; **Lớp:** AWS082025
+&emsp; **Lớp:** IA1901
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Viet Nam
 
