@@ -9,28 +9,29 @@ pre: " <b> 4.1. </b> "
 
 - **Thời gian:** Thứ Ba, ngày 29/09/2026
 - **Địa điểm sự kiện chính:** JW Marriott Hotel Hanoi, Hà Nội
+- **Đơn vị tổ chức:** Amazon Web Services (AWS)
 - **Hình thức tham gia:** HCMC Watch Party do First Cloud AI Journey (FCAJ) tổ chức tại TP. Hồ Chí Minh
 - **Vai trò:** Người tham dự Watch Party
 
 ## 1. Giới Thiệu Và Mục Đích Sự Kiện
 
-AWS Cloud and AI Day Hanoi 2026 là sự kiện công nghệ do Amazon Web Services (AWS) tổ chức, tập trung vào điện toán đám mây (Cloud Computing), trí tuệ nhân tạo (AI), phân tích dữ liệu và phát triển ứng dụng hiện đại.
+AWS Cloud and AI Day Hanoi 2026 là sự kiện công nghệ tập trung vào điện toán đám mây (Cloud Computing), trí tuệ nhân tạo (AI), phân tích dữ liệu và phát triển ứng dụng hiện đại.
 
-Sự kiện quy tụ nhiều chuyên gia AWS, kỹ sư, kiến trúc sư giải pháp và đại diện doanh nghiệp nhằm chia sẻ kinh nghiệm triển khai hệ thống, giới thiệu các công nghệ mới và những giải pháp đang được áp dụng trong thực tế.
+Chương trình có sự tham gia của các chuyên gia AWS, kỹ sư, kiến trúc sư giải pháp và đại diện doanh nghiệp nhằm chia sẻ kiến thức, kinh nghiệm cũng như những giải pháp công nghệ đang được áp dụng trong thực tế.
 
-**Mục tiêu chính của chương trình:**
+**Mục tiêu chính của sự kiện:**
 
-- Cập nhật các xu hướng mới về AWS Cloud và AI.
-- Tìm hiểu cách ứng dụng AI vào phát triển phần mềm và tự động hóa.
+- Cập nhật những xu hướng mới về Cloud Computing và AI.
+- Tìm hiểu cách ứng dụng AI vào phát triển phần mềm và tự động hóa công việc.
 - Giới thiệu các giải pháp quản lý dữ liệu, bảo mật và tối ưu tài nguyên AWS.
-- Chia sẻ kinh nghiệm xây dựng, triển khai và vận hành hệ thống thực tế.
+- Chia sẻ kinh nghiệm xây dựng, triển khai và vận hành hệ thống.
 - Tạo cơ hội học hỏi và kết nối với cộng đồng công nghệ.
 
-Em tham gia chương trình thông qua **HCMC Watch Party** do cộng đồng First Cloud AI Journey tổ chức tại TP. Hồ Chí Minh, theo dõi nội dung được phát trực tiếp từ sự kiện chính tại Hà Nội.
+Em tham gia sự kiện thông qua **HCMC Watch Party** do cộng đồng First Cloud AI Journey tổ chức tại TP. Hồ Chí Minh, theo dõi chương trình được phát trực tiếp từ Hà Nội.
 
 ## 2. Danh Sách Diễn Giả Keynote
 
-Phần Keynote có sự tham gia của các diễn giả và đại diện đến từ cơ quan quản lý, AWS và các doanh nghiệp.
+Phần Keynote có sự tham gia của các diễn giả đến từ cơ quan quản lý, AWS và các doanh nghiệp.
 
 | Diễn giả | Chức danh |
 |---|---|
@@ -41,11 +42,11 @@ Phần Keynote có sự tham gia của các diễn giả và đại diện đế
 | Mai Le | Giám đốc Quản lý Sản phẩm, Katalon |
 | Dr. Jens Lottner | Tổng Giám đốc, Techcombank |
 
-Các diễn giả mang đến những góc nhìn về sự phát triển của điện toán đám mây, vai trò của AI trong doanh nghiệp và cách ứng dụng công nghệ để giải quyết những bài toán thực tế.
+Các diễn giả mang đến những góc nhìn về sự phát triển của điện toán đám mây, vai trò của AI và cách doanh nghiệp ứng dụng công nghệ để giải quyết các vấn đề thực tế.
 
 ## 3. Lịch Trình Và Hoạt Động Chính
 
-Sự kiện chính tại Hà Nội diễn ra trong một ngày, bao gồm phần Keynote, các phiên chia sẻ chuyên đề, hoạt động thực hành và giao lưu công nghệ.
+Sự kiện chính tại Hà Nội diễn ra trong một ngày với phần Keynote, các phiên chia sẻ chuyên đề, hoạt động thực hành và giao lưu công nghệ.
 
 | Thời gian | Hoạt động |
 |---|---|
@@ -59,186 +60,168 @@ Sự kiện chính tại Hà Nội diễn ra trong một ngày, bao gồm phần
 | 15:20 | Các phiên chuyên đề cuối buổi chiều |
 | 17:00 | Kết thúc chương trình |
 
-*Lưu ý: Đây là lịch trình chung của sự kiện chính tại Hà Nội, không phải toàn bộ lịch hoạt động riêng của HCMC Watch Party.*
+*Đây là lịch trình chung tại Hà Nội, không phải toàn bộ lịch hoạt động riêng của HCMC Watch Party.*
 
 ## 4. Những Nội Dung Nổi Bật Trong Chương Trình
 
 ### 4.1. Keynote – What Does It Take to Solve Problems Everyone Says Are Impossible?
 
-- **Mã phiên:** KEY001
-- **Thời gian:** 09:00
-- **Địa điểm:** Grand Ballroom, Hà Nội
+Phần Keynote mở đầu chương trình với câu hỏi về cách công nghệ có thể giúp con người và doanh nghiệp giải quyết những vấn đề tưởng chừng rất khó thực hiện.
 
-Phần Keynote mở đầu chương trình, tập trung vào cách công nghệ hỗ trợ con người và doanh nghiệp giải quyết những bài toán phức tạp.
+**Các nội dung nổi bật:**
 
-**Các chủ đề đáng chú ý:**
-
-- Sử dụng AI Agent để hỗ trợ quá trình phát triển phần mềm.
-- Hiện đại hóa hệ thống và ứng dụng trên nền tảng Cloud.
-- Xây dựng giải pháp công nghệ có khả năng mở rộng.
+- Ứng dụng AI Agent để hỗ trợ công việc và phát triển phần mềm.
+- Hiện đại hóa hệ thống trên nền tảng điện toán đám mây.
+- Xây dựng những ứng dụng có khả năng mở rộng.
 - Đảm bảo bảo mật và độ tin cậy khi triển khai hệ thống.
 
-Qua nội dung này, em nhận thấy AI và Cloud Computing không chỉ hỗ trợ tự động hóa mà còn góp phần thay đổi cách xây dựng và vận hành ứng dụng.
+Qua phần giới thiệu, em nhận thấy Cloud Computing và AI không chỉ là những công nghệ riêng lẻ mà có thể kết hợp với nhau để cải thiện hiệu quả làm việc và vận hành hệ thống.
 
 ### 4.2. Building Software Like Never Before with Agentic AI
 
-- **Mã phiên:** DVT203 / DVT205
 - **Thời gian:** 11:00
 - **Đơn vị trình bày:** AWS
-- **Phiên DVT205:** HCMC Watch Party
+- **Hình thức:** Có phiên dành cho HCMC Watch Party
 
-Đây là một trong những chủ đề em quan tâm vì liên quan trực tiếp đến lĩnh vực phát triển phần mềm và ứng dụng AI.
+Đây là một trong những chủ đề em quan tâm nhất vì liên quan trực tiếp đến lĩnh vực phát triển phần mềm.
 
-Phiên chia sẻ tập trung vào **Agentic AI**, hướng tiếp cận cho phép AI Agent thực hiện những tác vụ có mục tiêu thay vì chỉ phản hồi các câu hỏi đơn giản.
+Phiên chia sẻ giới thiệu **Agentic AI**, tức các hệ thống AI có khả năng thực hiện những nhiệm vụ theo mục tiêu được giao, thay vì chỉ trả lời câu hỏi như chatbot thông thường.
 
 **Nội dung chính:**
 
-- Cách AI Agent hỗ trợ lập trình viên.
-- Ứng dụng AI để tự động hóa các tác vụ trong quy trình phát triển phần mềm.
-- Khả năng phối hợp giữa AI Agent và con người.
-- Những vấn đề cần quan tâm khi đưa AI Agent vào môi trường thực tế.
+- Cách AI Agent hỗ trợ lập trình viên trong quá trình phát triển phần mềm.
+- Tự động hóa các công việc lặp lại như hỗ trợ viết mã, kiểm tra hoặc xử lý thông tin.
+- Kết hợp AI Agent với quy trình làm việc của con người.
+- Những vấn đề cần lưu ý khi đưa AI vào các dự án thực tế.
 
-Em đặc biệt quan tâm đến khả năng sử dụng AI như một công cụ hỗ trợ lập trình, giúp giảm những thao tác lặp lại và dành nhiều thời gian hơn cho việc thiết kế, kiểm tra và cải thiện chất lượng phần mềm.
+Qua chủ đề này, em hiểu thêm rằng AI có thể trở thành công cụ hỗ trợ hữu ích cho lập trình viên. Tuy nhiên, con người vẫn cần kiểm tra kết quả và đưa ra những quyết định quan trọng.
 
 ### 4.3. From Demo to Deployment: Solving Agentic AI's Toughest Challenges
 
-- **Mã phiên:** AIM201
-- **Thời gian:** 11:00
-- **Đơn vị trình bày:** Katalon, AWS
+- **Đơn vị trình bày:** Katalon và AWS
 
-Phiên này đề cập đến những khó khăn khi chuyển một ứng dụng AI Agent từ bản thử nghiệm sang hệ thống hoạt động thực tế.
+Chủ đề này đề cập đến những khó khăn khi chuyển một ứng dụng AI từ bản thử nghiệm (Demo) sang hệ thống có thể sử dụng trong thực tế.
 
-**Các vấn đề nổi bật:**
+**Các vấn đề được đề cập:**
 
-- Đảm bảo AI Agent hoạt động ổn định.
-- Đánh giá độ chính xác và độ tin cậy của kết quả.
-- Quản lý quyền truy cập và bảo mật dữ liệu.
+- Đảm bảo AI hoạt động ổn định và đáng tin cậy.
+- Kiểm tra độ chính xác của kết quả.
+- Bảo vệ dữ liệu và quản lý quyền truy cập.
 - Theo dõi và kiểm soát hoạt động của AI Agent.
 
-Từ chủ đề này, em hiểu rằng xây dựng một bản demo AI chỉ là bước đầu. Khi triển khai thực tế, cần quan tâm đến khả năng vận hành, bảo mật và kiểm soát kết quả.
+Điểm em rút ra là việc xây dựng một ứng dụng AI hoạt động được chưa đủ. Để sử dụng lâu dài, hệ thống cần được kiểm thử, bảo mật và có cơ chế xử lý khi xảy ra lỗi.
 
 ### 4.4. Data Analytics Và Nền Tảng Dữ Liệu Cho AI
 
-**Một số phiên tiêu biểu:**
+Một nhóm chủ đề khác của chương trình tập trung vào dữ liệu và cách doanh nghiệp sử dụng dữ liệu để phát triển ứng dụng AI.
 
-| Mã phiên | Chủ đề |
-|---|---|
-| ANT202 | Build an AI-ready Data Foundation |
-| ANT201 | Data-Driven AI Agents for FSI |
-| ANT205 | Bridge Data Silos with Amazon Quick Suite |
-| ANT214 | VPBank's Cloud Journey with Amazon Redshift |
+**Các chủ đề tiêu biểu:**
 
-Nhóm nội dung này tập trung vào việc xây dựng và quản lý dữ liệu nhằm phục vụ phân tích và phát triển ứng dụng AI.
+- **Build an AI-ready Data Foundation:** Xây dựng nền tảng dữ liệu sẵn sàng cho AI.
+- **Data-Driven AI Agents for FSI:** Ứng dụng AI Agent dựa trên dữ liệu trong lĩnh vực tài chính.
+- **Amazon Quick Suite:** Hỗ trợ khai thác và phân tích thông tin từ nhiều nguồn dữ liệu.
+- **VPBank's Cloud Journey with Amazon Redshift:** Chia sẻ cách VPBank phát triển nền tảng dữ liệu trên AWS.
 
-**Những điểm đáng chú ý:**
+**Những nội dung đáng chú ý:**
 
-- Chuẩn bị và tổ chức dữ liệu trước khi sử dụng AI.
-- Kết nối dữ liệu từ nhiều nguồn khác nhau.
-- Ứng dụng Amazon Redshift trong xây dựng nền tảng phân tích dữ liệu.
-- Sử dụng Amazon Quick Suite để hỗ trợ khai thác thông tin.
+- Cách tổ chức và quản lý dữ liệu trước khi đưa vào AI.
+- Kết nối thông tin từ nhiều hệ thống khác nhau.
+- Sử dụng dịch vụ AWS để lưu trữ và phân tích dữ liệu.
+- Vai trò của dữ liệu trong việc hỗ trợ doanh nghiệp đưa ra quyết định.
 
-Qua các chủ đề được giới thiệu, em hiểu thêm rằng chất lượng dữ liệu ảnh hưởng trực tiếp đến hiệu quả của hệ thống AI. Việc thu thập, quản lý và kiểm tra dữ liệu là bước quan trọng trước khi triển khai các giải pháp thông minh.
+Qua những nội dung này, em hiểu rằng dữ liệu là nền tảng quan trọng của các ứng dụng AI. Nếu dữ liệu không chính xác hoặc không được quản lý tốt, kết quả phân tích cũng có thể bị ảnh hưởng.
 
-### 4.5. Hiện Đại Hóa Ứng Dụng Và Cloud Infrastructure
+### 4.5. Hiện Đại Hóa Ứng Dụng Trên AWS
 
-**Một số phiên nổi bật:**
+Chương trình giới thiệu nhiều giải pháp hỗ trợ doanh nghiệp chuyển đổi và cải thiện hệ thống phần mềm đang sử dụng.
 
-| Mã phiên | Chủ đề |
-|---|---|
-| DEV205 | Internal Developer Platform on Amazon EKS |
-| DEV208 | Migrating a NestJS App from EC2 to EKS with GitOps |
-| MAM203 | From Monolith to Microservices |
-| AIM303 | Modernize SQL Server & .NET with AWS Transform |
+**Các chủ đề tiêu biểu:**
 
-Các phiên chia sẻ giới thiệu những phương pháp xây dựng, chuyển đổi và quản lý ứng dụng trên AWS.
+- **Amazon EKS:** Quản lý và triển khai ứng dụng sử dụng container.
+- **Migrating a NestJS App from EC2 to EKS with GitOps:** Chia sẻ quá trình chuyển một ứng dụng NestJS từ EC2 sang EKS.
+- **From Monolith to Microservices:** Chuyển đổi từ ứng dụng nguyên khối sang kiến trúc gồm nhiều dịch vụ nhỏ.
+- **AWS Transform:** Hỗ trợ hiện đại hóa các ứng dụng .NET và SQL Server bằng AI.
 
-**Nội dung chính:**
+Các nội dung này giúp em hiểu thêm về cách doanh nghiệp cải thiện hệ thống để thuận tiện hơn trong việc triển khai, bảo trì và mở rộng.
 
-- Sử dụng Amazon EKS để quản lý các ứng dụng container.
-- Chuyển đổi ứng dụng từ kiến trúc Monolith sang Microservices.
-- Ứng dụng GitOps để quản lý quy trình triển khai.
-- Sử dụng các công cụ AWS để hỗ trợ hiện đại hóa hệ thống.
-
-Những chủ đề này giúp em hình dung rõ hơn cách doanh nghiệp triển khai ứng dụng trên Cloud, cũng như lý do cần lựa chọn kiến trúc phù hợp với quy mô và nhu cầu thực tế.
+Em cũng nhận thấy rằng không phải dự án nào cũng cần sử dụng kiến trúc phức tạp. Việc lựa chọn giải pháp nên dựa vào nhu cầu và quy mô thực tế của ứng dụng.
 
 ### 4.6. Cloud Security Và Tối Ưu Chi Phí AWS
 
-**Một số phiên tiêu biểu:**
+Bên cạnh AI và phát triển ứng dụng, chương trình còn đề cập đến bảo mật và quản lý chi phí khi sử dụng AWS.
 
-| Mã phiên | Chủ đề |
-|---|---|
-| DEV401 | Engineering Workload Identity on AWS |
-| DVT305 | AWS Security Agent |
-| AIM203 | Defence in Depth for Agentic Workloads |
-| DEV204 | Stop Overpaying for Storage: S3 Storage Classes |
-| DEV210 | Bedrock Cost Control |
+**Các chủ đề tiêu biểu:**
 
-Nhóm nội dung này đề cập đến hai vấn đề quan trọng khi sử dụng AWS: **bảo mật hệ thống và kiểm soát chi phí vận hành**.
+- **AWS Security Agent:** Hỗ trợ phát hiện và xử lý những vấn đề bảo mật trong quá trình phát triển ứng dụng.
+- **Workload Identity:** Quản lý danh tính và quyền truy cập của các ứng dụng trên AWS.
+- **Amazon S3 Storage Classes:** Lựa chọn hình thức lưu trữ phù hợp để tối ưu chi phí.
+- **Amazon Bedrock Cost Control:** Theo dõi và kiểm soát chi phí sử dụng AI.
+- **Multi-Agent Infrastructure Management:** Ứng dụng AI Agent để hỗ trợ quản lý cấu hình hạ tầng.
 
-**Các kiến thức nổi bật:**
+**Những kiến thức nổi bật:**
 
-- Quản lý danh tính và quyền truy cập của ứng dụng.
-- Tăng cường bảo mật khi triển khai các hệ thống sử dụng AI.
-- Lựa chọn Amazon S3 Storage Classes theo nhu cầu lưu trữ và truy cập dữ liệu.
-- Theo dõi mức sử dụng Amazon Bedrock để hạn chế chi phí không cần thiết.
+- Phân quyền truy cập đúng với nhu cầu sử dụng.
+- Bảo vệ dữ liệu và ứng dụng khi triển khai trên Cloud.
+- Lựa chọn dịch vụ lưu trữ theo tần suất truy cập dữ liệu.
+- Theo dõi tài nguyên AWS để hạn chế chi phí phát sinh không cần thiết.
 
-Em nhận thấy việc triển khai một ứng dụng trên Cloud không chỉ phụ thuộc vào chức năng mà còn cần đảm bảo an toàn dữ liệu, vận hành ổn định và chi phí hợp lý.
+Em nhận thấy rằng khi xây dựng một hệ thống trên AWS, ngoài việc đảm bảo ứng dụng hoạt động đúng chức năng, cũng cần chú ý đến bảo mật, hiệu suất và chi phí vận hành.
 
 ## 5. Trải Nghiệm Tại HCMC Watch Party
 
-Em tham gia sự kiện tại điểm xem HCMC Watch Party do cộng đồng First Cloud AI Journey tổ chức tại TP. Hồ Chí Minh.
+Em tham gia chương trình tại điểm xem HCMC Watch Party do cộng đồng First Cloud AI Journey tổ chức tại TP. Hồ Chí Minh.
 
-Thông qua chương trình phát trực tiếp từ Hà Nội, em có cơ hội theo dõi các nội dung về Cloud Computing, AI và những giải pháp AWS được ứng dụng trong thực tế.
+Thông qua chương trình phát trực tiếp từ Hà Nội, em có cơ hội theo dõi các nội dung về Cloud Computing, AI và những giải pháp công nghệ được giới thiệu tại sự kiện.
 
-Trong số các chủ đề của sự kiện, em đặc biệt quan tâm đến Agentic AI, phát triển phần mềm với AI Agent và các giải pháp quản lý tài nguyên AWS.
+Trong số đó, em đặc biệt quan tâm đến chủ đề phát triển phần mềm với AI Agent, quản lý dữ liệu và tối ưu tài nguyên AWS.
 
-Việc tham gia Watch Party giúp em tiếp cận thêm những kiến thức bên ngoài chương trình học và tìm hiểu các công nghệ đang được doanh nghiệp sử dụng.
+Việc tham gia Watch Party giúp em tiếp cận thêm kiến thức bên ngoài chương trình học và có cái nhìn thực tế hơn về những công nghệ đang được doanh nghiệp quan tâm.
 
 ## 6. Những Kiến Thức Và Kinh Nghiệm Học Được
 
 Sau khi tham gia chương trình và tìm hiểu các nội dung được giới thiệu, em rút ra một số kiến thức quan trọng.
 
-**1. Hiểu thêm về điện toán đám mây**
+**1. Hiểu thêm về Cloud Computing**
 
-Em hiểu rõ hơn cách AWS cung cấp các dịch vụ hỗ trợ triển khai, lưu trữ và quản lý ứng dụng. Việc lựa chọn dịch vụ Cloud phù hợp có thể giúp hệ thống dễ mở rộng và quản lý hơn.
+Em hiểu rõ hơn vai trò của AWS trong việc triển khai, lưu trữ và quản lý ứng dụng. Việc sử dụng Cloud giúp doanh nghiệp có nhiều lựa chọn để xây dựng và mở rộng hệ thống theo nhu cầu.
 
-**2. Nhận biết tiềm năng của Agentic AI**
+**2. Biết thêm về AI Agent**
 
-AI Agent có thể hỗ trợ nhiều công đoạn trong quá trình phát triển phần mềm. Tuy nhiên, khi ứng dụng vào thực tế, cần đảm bảo kết quả được kiểm tra và các thao tác quan trọng vẫn nằm trong phạm vi kiểm soát.
+AI Agent có thể hỗ trợ nhiều công việc trong quá trình phát triển phần mềm. Tuy nhiên, việc sử dụng AI cần đi kèm với kiểm tra kết quả và quản lý quyền thao tác để hạn chế sai sót.
 
-**3. Hiểu tầm quan trọng của dữ liệu**
+**3. Nhận thức được vai trò của dữ liệu**
 
-Một hệ thống AI muốn hoạt động hiệu quả cần có dữ liệu phù hợp và đáng tin cậy. Việc tổ chức dữ liệu tốt cũng giúp quá trình phân tích và khai thác thông tin thuận lợi hơn.
+Trước khi xây dựng ứng dụng AI, cần quan tâm đến chất lượng, nguồn gốc và cách tổ chức dữ liệu. Đây là yếu tố ảnh hưởng trực tiếp đến độ chính xác của hệ thống.
 
-**4. Quan tâm hơn đến bảo mật Cloud**
+**4. Quan tâm hơn đến bảo mật**
 
-Bảo mật cần được xem xét ngay từ giai đoạn thiết kế hệ thống, đặc biệt là quản lý quyền truy cập, bảo vệ dữ liệu và giám sát hoạt động của ứng dụng.
+Bảo mật không chỉ được thực hiện sau khi hoàn thành ứng dụng mà cần được xem xét ngay từ quá trình thiết kế và triển khai.
 
-**5. Biết thêm về cách tối ưu chi phí AWS**
+**5. Hiểu tầm quan trọng của việc quản lý chi phí**
 
-Việc sử dụng Cloud cần đi kèm với quản lý tài nguyên và theo dõi chi phí. Các dịch vụ như Amazon S3 và Amazon Bedrock nên được cấu hình dựa trên nhu cầu thực tế để tránh lãng phí.
+Việc sử dụng các dịch vụ AWS cần đi kèm với theo dõi tài nguyên, lựa chọn cấu hình phù hợp và kiểm soát chi phí để tránh lãng phí.
 
 ## 7. Định Hướng Áp Dụng Thực Tế
 
-Từ những kiến thức tiếp thu được, em có thêm định hướng để tiếp tục học tập và thực hành AWS.
+Những kiến thức từ sự kiện giúp em có thêm định hướng để tiếp tục học tập và thực hành AWS.
 
-**Một số nội dung em muốn tập trung tìm hiểu:**
+Trong thời gian tới, em muốn tập trung vào một số nội dung:
 
-- **Amazon S3:** Lưu trữ, quản lý dữ liệu và thiết lập chính sách lưu trữ phù hợp.
-- **Amazon Bedrock:** Tìm hiểu cách tích hợp AI vào ứng dụng để hỗ trợ xử lý thông tin và tự động hóa.
-- **Amazon ECS và AWS Fargate:** Thực hành triển khai và quản lý ứng dụng trên Cloud.
-- **AWS Security:** Tìm hiểu cách phân quyền, bảo vệ dữ liệu và giám sát tài nguyên.
-- **AWS Cost Management:** Theo dõi mức sử dụng dịch vụ và tối ưu chi phí.
+- **Amazon S3:** Thực hành lưu trữ và quản lý dữ liệu.
+- **Amazon Bedrock:** Tìm hiểu cách tích hợp AI vào ứng dụng.
+- **Amazon ECS và AWS Fargate:** Học cách triển khai ứng dụng trên Cloud.
+- **AWS Security:** Tìm hiểu quản lý quyền truy cập và bảo vệ dữ liệu.
+- **AWS Cost Management:** Theo dõi tài nguyên và kiểm soát chi phí.
 
-Em cũng muốn vận dụng những kiến thức này vào các dự án thực hành, đặc biệt là những ứng dụng kết hợp Cloud Computing, AI và xử lý dữ liệu.
+Em cũng muốn áp dụng những kiến thức này vào các dự án thực hành, đặc biệt là các ứng dụng kết hợp Cloud Computing, AI và xử lý dữ liệu.
 
 ## 8. Cảm Nhận Sau Sự Kiện
 
-AWS Cloud and AI Day Hanoi 2026 mang đến cho em nhiều kiến thức hữu ích về các công nghệ đang được ứng dụng trong thực tế.
+AWS Cloud and AI Day Hanoi 2026 là một trải nghiệm học tập hữu ích đối với em.
 
-Mặc dù tham gia thông qua HCMC Watch Party, em vẫn có cơ hội tiếp cận những nội dung chuyên môn từ các chuyên gia AWS và đại diện doanh nghiệp.
+Mặc dù tham gia thông qua HCMC Watch Party tại TP. Hồ Chí Minh, em vẫn có cơ hội tiếp cận nhiều chủ đề công nghệ và những giải pháp đang được ứng dụng trong thực tế.
 
-Điều em ấn tượng nhất là cách AI đang dần trở thành một phần của quy trình phát triển phần mềm, đồng thời Cloud Computing tiếp tục giữ vai trò quan trọng trong việc xây dựng và vận hành hệ thống.
+Điều em ấn tượng nhất là tiềm năng của AI Agent trong phát triển phần mềm và vai trò của AWS trong việc xây dựng, triển khai và vận hành hệ thống.
 
 Sự kiện giúp em mở rộng kiến thức, hiểu rõ hơn những kỹ năng cần phát triển và có thêm động lực để tiếp tục học tập, thực hành AWS trong thời gian tới.
 
