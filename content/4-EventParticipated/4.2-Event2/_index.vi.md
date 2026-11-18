@@ -1,13 +1,10 @@
 ---
-title: "Event 2"
-date: 2024-01-01
+title: "Bài Thu Hoạch 2"
+date: 2026-10-24
 weight: 1
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
-
-# Bài Thu Hoạch 2
-
 # First Cloud AI Journey – Weekly Meet Up
 
 - **Thời gian:** 09:00 – 12:00, Thứ Bảy, ngày 24/10/2026
@@ -128,13 +125,12 @@ Bên cạnh đó, phần hỏi đáp cũng mang lại nhiều thông tin hữu �
 
 ### Hình Ảnh Khi Tham Gia Sự Kiện
 
-![Ảnh cá nhân tham dự sự kiện]({{ "/images/4-EventParticipated/event-2/anhcanhan.jpg" | relURL }})
+![Ảnh cá nhân tham dự sự kiện](/images/4-EventParticipated/event-2/anhcanhan.jpg)
 
 *Hình 1. Hình ảnh cá nhân tại First Cloud AI Journey – Weekly Meet Up ngày 24/10/2026.*
 
-![Ảnh tập thể tại sự kiện]({{ "/images/4-EventParticipated/event-2/anhtapthe.jpg" | relURL }})
+![Ảnh tập thể tại sự kiện](/images/4-EventParticipated/event-2/anhtapthe.jpg)
 
 *Hình 2. Ảnh lưu niệm cùng các diễn giả và người tham dự sự kiện.*
-
 
 
