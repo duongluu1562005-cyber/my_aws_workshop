@@ -1,57 +1,164 @@
----
-title : "Prepare the environment"
-date : 2024-01-01
-weight : 1
-chapter : false
-pre : " <b> 5.4.1 </b> "
----
 
-To prepare for this part of the workshop you will need to:
-+ Deploying a CloudFormation stack 
-+ Modifying a VPC route table. 
+## 5.4.1 — Create a Fresh Database
 
-These components work together to simulate on-premises DNS forwarding and name resolution.
+### Overview
 
-#### Deploy the CloudFormation stack
+After completing the Network deployment, the next step is to create the PostgreSQL database for Tindy.
 
-The CloudFormation template will create additional services to support an on-premises simulation:
-+ One Route 53 Private Hosted Zone that hosts Alias records for the PrivateLink S3 endpoint
-+ One Route 53 Inbound Resolver endpoint that enables "VPC Cloud" to resolve inbound DNS resolution requests to the Private Hosted Zone
-+ One Route 53 Outbound Resolver endpoint that enables "VPC On-prem" to forward DNS requests for S3 to "VPC Cloud"
+The `database.yaml` template provisions an Amazon RDS instance and configures the network and security settings required by the application.
 
-![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
+The main components include:
 
-1. Click the following link to open the [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). The required template will be pre-loaded into the menu. Accept all default and click Create stack.
+- **Amazon RDS:** Runs PostgreSQL in a Single-AZ configuration.
+- **DB Subnet Group:** Places the database in two private DB subnets from the Network stack.
+- **PostgreSQL Parameter Group:** Enables `rds.force_ssl` to require encrypted connections.
+- **RDS-managed Master Secret:** Stores the database administrator password securely in AWS Secrets Manager.
+- **Deletion Protection:** Helps prevent accidental deletion of the database.
 
-![Create stack](/images/5-Workshop/5.4-S3-onprem/create-stack.png)
+This deployment uses **Fresh provisioning**, creating a new database named `tindy` with the master user `tindy_admin`.
 
-![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
+Before deployment, the AWS CLI confirmed that PostgreSQL version `17.11` was available in `us-east-1`.
 
-It may take a few minutes for stack deployment to complete. You can continue with the next step without waiting for the deployemnt to finish.
+Database migrations and demo data preparation will be completed during Runtime setup.
 
-#### Update on-premise private route table
+### Step 1: Upload the Database Template
 
-This workshop uses a strongSwan VPN running on an EC2 instance to simulate connectivty between an on-premises datacenter and the AWS cloud. Most of the required components are provisioned before your start. To finalize the VPN configuration, you will modify the "VPC On-prem" routing table to direct traffic destined for the cloud to the strongSwan VPN instance.
+Open the AWS Management Console and select **US East (N. Virginia) — us-east-1**.
 
-1. Open the Amazon EC2 console 
+Navigate to:
 
-2. Select the instance named infra-vpngw-test. From the Details tab, copy the Instance ID and paste this into your text editor
+**CloudFormation → Stacks → Create stack → With new resources (standard)**
 
-![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
+Under **Specify template**:
 
-3. Navigate to the VPC menu by using the Search box at the top of the browser window.
+1. Select **Choose an existing template**.
+2. Choose **Upload a template file**.
+3. Upload `database.yaml` from the infrastructure repository.
+4. Click **Next**.
 
-4. Click on Route Tables, select the RT Private On-prem route table, select the Routes tab, and click Edit Routes.
+![Upload Database template](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-19-database-template.png)
 
-![rt](/images/5-Workshop/5.4-S3-onprem/rt.png)
+### Step 2: Configure Fresh Database Parameters
 
-5. Click Add route.
-+ Destination: your Cloud VPC cidr range
-+ Target: ID of your infra-vpngw-test instance (you saved in your editor at step 1)
+On the **Specify stack details** page, enter the stack name:
 
-![add route](/images/5-Workshop/5.4-S3-onprem/add-route.png)
+`tindy-database`
 
-6. Click Save changes
+Configure the database parameters as follows:
 
+| Parameter | Value |
+|---|---|
+| `DBProvisionMode` | `Fresh` |
+| `DBSnapshotIdentifier` | Empty |
+| `EnableDeletionProtection` | `true` |
+| `DatabaseSecurityGroupId` | From Network Outputs |
+| `PrivateDbSubnetIds` | Both private DB subnets from Network Outputs |
 
+Using `Fresh` mode creates a new PostgreSQL database instead of restoring an existing snapshot.
 
+The database security group and subnets must match the resources created by `tindy-network`.
+
+Deletion protection is enabled to help prevent accidental removal of the RDS instance.
+
+![Fresh Database parameters](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-20-database-fresh-parameters.png)
+
+### Step 3: Configure Stack Options
+
+Continue to the stack configuration page and add the following tags:
+
+| Key | Value |
+|---|---|
+| Project | Tindy |
+| Environment | tindy |
+| Owner | TindyTeam |
+
+These tags help organize and identify the database resources associated with Tindy.
+
+![Database stack tags](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-20a-database-tags.png)
+
+Keep the following options:
+
+- **Express mode:** Disabled.
+- **Rollback:** Enabled.
+- **Deletion policy option:** Use deletion policy.
+
+![Database stack options](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-20b-database-options.png)
+
+Review the stack name, template, parameters, and deployment settings before creating the stack.
+
+![Review Database stack](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-20c-database-review.png)
+
+### Step 4: Create and Verify the Database
+
+Submit the CloudFormation stack creation.
+
+CloudFormation begins provisioning the RDS instance, database subnet group, and PostgreSQL parameter group.
+
+Open the **Events** tab to monitor the deployment until the stack reaches:
+
+`CREATE_COMPLETE`
+
+If the deployment fails, check the affected resource's **Logical ID** and **Status reason**.
+
+The deployment completed successfully, and CloudFormation displayed **5 Outputs**.
+
+![Database deployment completed and Outputs](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-22-database-outputs.png)
+
+### Step 5: Review Database Outputs
+
+After the stack reaches `CREATE_COMPLETE`, open its **Outputs** tab.
+
+The verified database configuration includes:
+
+| Setting | Result |
+|---|---|
+| Stack name | `tindy-database` |
+| Provision mode | `Fresh` |
+| PostgreSQL version | `17.11` |
+| Database name | `tindy` |
+| Master username | `tindy_admin` |
+| Database identifier | `tindy-database-postgres` |
+| Database port | `5432` |
+| Stack status | `CREATE_COMPLETE` |
+| Outputs | 5 |
+
+The Outputs provide the database endpoint, port, identifier, master secret ARN, and provision mode.
+
+Two important references for the next deployment stage are:
+
+- `DBEndpointAddress`: The PostgreSQL endpoint used for database connectivity.
+- `DBMasterSecretArn`: The Secrets Manager ARN containing the RDS-managed master credentials.
+
+These references will be used during database bootstrap and Runtime configuration.
+
+### Next Steps
+
+The database infrastructure is now available, but the application schema and demo data have not yet been initialized.
+
+During Runtime setup, the following tasks will be completed:
+
+1. Run the database bootstrap process.
+2. Apply database migrations.
+3. Seed the required demo data.
+4. Verify and update the retained application database connection secret for the new RDS instance.
+5. Prepare the backend API to connect using its separate database credentials.
+
+The RDS-managed master secret is used for database administration and bootstrap, while the API uses its own application credential.
+
+### Deployment Result
+
+The Fresh Database deployment completed successfully.
+
+| Verification | Result |
+|---|---|
+| Database stack | `tindy-database` |
+| Provisioning | Fresh database |
+| Database networking | Private DB subnets |
+| Deletion protection | Enabled |
+| Stack status | `CREATE_COMPLETE` |
+| Outputs | 5 |
+| Schema and demo data | Pending Runtime setup |
+
+The PostgreSQL database has been provisioned successfully and is ready for application initialization.
+
+**The next stage is Integrations deployment, followed by Runtime setup and database preparation.**
