@@ -1,82 +1,114 @@
----
-title : "Kiểm tra Gateway Endpoint"
-date : 2024-01-01 
-weight : 2
-chapter : false
-pre : " <b> 5.3.2 </b> "
----
 
-#### Tạo S3 bucket
+## 5.3.2 — Triển khai Network
 
-1. Đi đến S3 management console
-2. Trong Bucket console, chọn **Create bucket**
+### Tổng quan
 
-![Create bucket](/images/5-Workshop/5.3-S3-vpc/create-bucket.png)
+Sau khi hoàn tất triển khai Foundation, bước tiếp theo là thiết lập hạ tầng mạng cho ứng dụng Tindy.
 
-3. Trong Create bucket console
-+ Đặt tên bucket: chọn 1 tên mà không bị trùng trong phạm vi toàn cầu (gợi ý: lab\<số-lab\>\<tên-bạn\>)
+Template `network.yaml` tạo các tài nguyên mạng cần thiết để kết nối và bảo vệ các thành phần thuộc Database và Runtime.
 
-![Bucket name](/images/5-Workshop/5.3-S3-vpc/bucket-name.png)
+Cấu hình mạng bao gồm:
 
+- **VPC:** Sử dụng dải địa chỉ IP `10.20.0.0/16`.
+- **Internet Gateway:** Cung cấp kết nối Internet cho các tài nguyên sử dụng tuyến đường công khai.
+- **6 Subnets:** Phân chia mạng cho ECS tasks, Application Load Balancer (ALB) nội bộ và cơ sở dữ liệu.
+- **Route Tables:** Quản lý đường đi của lưu lượng mạng giữa các subnet và các tuyến đã cấu hình.
+- **Security Groups:** Kiểm soát truy cập mạng cho ALB, ECS, migration tasks và cơ sở dữ liệu.
 
-+ Giữ nguyên giá trị của các fields khác (default)
-+ Kéo chuột xuống và chọn **Create bucket**
+Template định nghĩa tổng cộng **26 tài nguyên AWS** và **9 Outputs** tại khu vực `us-east-1`.
 
-![Create](/images/5-Workshop/5.3-S3-vpc/create-button.png)    
+### Bước 1: Tải lên Network Template
 
-+ Tạo thành công S3 bucket
+Truy cập **AWS Management Console** và chọn khu vực **US East (N. Virginia) — us-east-1**.
 
-![Success](/images/5-Workshop/5.3-S3-vpc/bucket-success.png)
+Đi đến:
 
-#### Kết nối với EC2 bằng session manager
+**CloudFormation → Stacks → Create stack → With new resources (standard)**
 
-+ Trong workshop này, bạn sẽ dùng AWS Session Manager để kết nối đến các EC2 instances. Session Manager là 1 tính năng trong dịch vụ Systems Manager được quản lý hoàn toàn bởi AWS. System manager cho phép bạn quản lý Amazon EC2 instances và các máy ảo on-premises (VMs)thông qua 1 browser-based shell. Session Manager cung cấp khả năng quản lý phiên bản an toàn và có thể kiểm tra mà không cần mở cổng vào, duy trì máy chủ bastion host hoặc quản lý khóa SSH.
+Tại mục **Specify template**, thực hiện:
 
-+ First Cloud AI Journey [Lab](https://000058.awsstudygroup.com/1-introduce/) để hiểu sâu hơn về Session manager.
+1. Chọn **Choose an existing template**.
+2. Chọn **Upload a template file**.
+3. Tải lên `network.yaml` từ thư mục `tindy-infrastructure/cloudformation`.
+4. Nhấn **Next** để tiếp tục.
 
-1. Trong AWS Management Console, gõ Systems Manager trong ô tìm kiếm và nhấn Enter:
+![Tải lên Network template](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-15-network-template.png)
 
-![system manager](/images/5-Workshop/5.3-S3-vpc/sm.png)
+### Bước 2: Cấu hình Network Stack
 
-2. Từ **Systems Manager** menu, tìm **Node Management** ở thanh bên trái và chọn **Session Manager**:
+Tại trang **Specify stack details**, nhập tên stack:
 
-![system manager](/images/5-Workshop/5.3-S3-vpc/sm1.png)
+`tindy-network`
 
-3. Click Start Session, và chọn EC2 instance tên **Test-Gateway-Endpoint**. 
-{{% notice info %}}
-Phiên bản EC2 này đã chạy trong "VPC cloud" và sẽ được dùng để kiểm tra khả năng kết nối với Amazon S3 thông qua điểm cuối Cổng mà bạn vừa tạo (s3-gwe). {{% /notice %}}
+Template `network.yaml` không có phần Parameters nên không cần nhập thêm tham số cấu hình.
 
-![Start session](/images/5-Workshop/5.3-S3-vpc/start-session.png)
+![Đặt tên Network stack](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16-network-stack-name.png)
 
-Session Manager sẽ mở browser tab mới với shell prompt: sh-4.2 $
+Tiếp tục đến phần cấu hình stack và thêm các tags:
 
-![Success](/images/5-Workshop/5.3-S3-vpc/start-session-success.png)
+| Key | Value |
+|---|---|
+| Project | Tindy |
+| Environment | tindy |
+| Owner | TindyTeam |
 
-Bạn đã bắt đầu phiên kết nối đến EC2 trong VPC Cloud thành công. Trong bước tiếp theo, chúng ta sẽ tạo một  S3 bucket và một tệp trong đó.
-#### Create a file and upload to s3 bucket
+Các tags giúp nhận diện và quản lý những tài nguyên AWS thuộc dự án Tindy.
 
-1. Đổi về ssm-user's thư mục bằng lệnh "cd ~" 
+![Cấu hình tags cho Network stack](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16a-network-tags.png)
 
-![Change user's dir](/images/5-Workshop/5.3-S3-vpc/cli1.png)
+Giữ **Express mode ở trạng thái tắt** và **rollback được bật**.
 
-2. Tạo 1 file để kiểm tra bằng lệnh "fallocate -l 1G testfile.xyz", 1 file tên "testfile.xyz" có kích thước 1GB sẽ được tạo.
+Kiểm tra lại thông tin cấu hình và xác nhận tạo stack trên CloudFormation.
 
-![Create file](/images/5-Workshop/5.3-S3-vpc/cli-file.png)
+### Bước 3: Tạo và kiểm tra Network Stack
 
-3. Tải file mình vừa tạo lên S3 với lệnh "aws s3 cp testfile.xyz s3://your-bucket-name". Thay your-bucket-name bằng tên S3 bạn đã tạo.
+Sau khi xác nhận, CloudFormation bắt đầu triển khai các tài nguyên mạng được định nghĩa trong `network.yaml`.
 
-![Uploaded](/images/5-Workshop/5.3-S3-vpc/uploaded.png)
+Mở tab **Events** để theo dõi tiến trình triển khai.
 
-Bạn đã tải thành công tệp lên bộ chứa S3 của mình. Bây giờ bạn có thể kết thúc session.
+Trạng thái cần đạt được là:
 
-#### Kiểm tra object trong S3 bucket
+`CREATE_COMPLETE`
 
-1. Đi đến S3 console.  
-2. Click tên s3 bucket của bạn
-3. Trong Bucket console, bạn sẽ thấy tệp bạn đã tải lên S3 bucket của mình
+Nếu quá trình triển khai gặp lỗi, kiểm tra **Logical ID** và **Status reason** của tài nguyên bị lỗi trước khi tiếp tục.
 
-![Check S3](/images/5-Workshop/5.3-S3-vpc/check-s3-bucket.png)
+Kết quả thực tế cho thấy stack `tindy-network` đã được tạo thành công với trạng thái **CREATE_COMPLETE** và có **9 Outputs**.
 
-#### Tóm tắt
+![Network triển khai thành công và hiển thị Outputs](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-18-network-outputs.png)
 
-Chúc mừng bạn đã hoàn thành truy cập S3 từ VPC. Trong phần này, bạn đã tạo gateway endpoint cho Amazon S3 và sử dụng AWS CLI để tải file lên. Quá trình tải lên hoạt động vì gateway endpoint cho phép giao tiếp với S3 mà không cần Internet gateway gắn vào "VPC Cloud". Điều này thể hiện chức năng của gateway endpoint như một đường dẫn an toàn đến S3 mà không cần đi qua pub    lic Internet.
+### Bước 4: Kiểm tra Network Outputs
+
+Sau khi triển khai, Network stack cung cấp các thông tin tham chiếu để sử dụng trong những stack tiếp theo.
+
+| Output | Chức năng |
+|---|---|
+| `VpcId` | Xác định VPC được sử dụng cho hạ tầng Tindy. |
+| `PublicTaskSubnetIds` | Xác định các subnet dành cho ECS tasks. |
+| `PrivateAppSubnetIds` | Xác định các subnet dành cho ALB nội bộ. |
+| `PrivateDbSubnetIds` | Xác định các subnet riêng dành cho Amazon RDS. |
+| `AlbSubnetCidrs` | Cung cấp dải CIDR của các subnet ALB để cấu hình trusted proxy. |
+| `AlbSecurityGroupId` | Xác định Security Group của ALB. |
+| `EcsSecurityGroupId` | Xác định Security Group của ECS. |
+| `MigrationSecurityGroupId` | Xác định Security Group dành cho migration tasks. |
+| `DatabaseSecurityGroupId` | Xác định Security Group của cơ sở dữ liệu. |
+
+Nhờ các Outputs này, những CloudFormation stack tiếp theo có thể sử dụng đúng tài nguyên mạng mà không cần nhập thủ công các thông tin định danh.
+
+### Kết quả triển khai
+
+Network stack đã được tạo thành công.
+
+| Nội dung kiểm tra | Kết quả |
+|---|---|
+| Tên stack | `tindy-network` |
+| Khu vực AWS | `us-east-1` |
+| VPC CIDR | `10.20.0.0/16` |
+| Số tài nguyên định nghĩa | 26 |
+| Tham số stack | Không có |
+| Trạng thái stack | `CREATE_COMPLETE` |
+| Số lượng Outputs | 9 |
+| Resource tags | Đã cấu hình |
+
+Sau khi triển khai, Tindy đã có hạ tầng mạng gồm VPC, các subnet, route tables và security groups cần thiết cho những thành phần tiếp theo.
+
+**Network đã sẵn sàng cho bước tiếp theo: triển khai Database.**
