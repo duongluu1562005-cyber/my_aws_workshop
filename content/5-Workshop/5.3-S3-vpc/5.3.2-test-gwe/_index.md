@@ -1,95 +1,114 @@
----
-title : "Test the Gateway Endpoint"
-date : 2024-01-01 
-weight : 2
-chapter : false
-pre : " <b> 5.3.2 </b> "
----
 
-#### Create S3 bucket
+## 5.3.2 — Deploy Network
 
-1. Navigate to **S3 management console**
-2. In the Bucket console, choose **Create bucket**
+### Overview
 
-![Create bucket](/images/5-Workshop/5.3-S3-vpc/create-bucket.png)
+After completing the Foundation deployment, the next step is to set up the network infrastructure for Tindy.
 
-3. In **the Create bucket console**
-+ **Name the bucket**: choose a name that hasn't been given to any bucket globally (hint: lab number and your name)
+The `network.yaml` template creates the VPC, subnets, routing components, and security groups required by the Database and Runtime stacks.
 
-![Bucket name](/images/5-Workshop/5.3-S3-vpc/bucket-name.png)
+The network configuration includes:
 
-+ Leave other fields as they are (default)
-+ Scroll down and choose **Create bucket**
+- **VPC:** Uses the CIDR block `10.20.0.0/16`.
+- **Internet Gateway:** Provides internet connectivity for resources using public routes.
+- **Six subnets:** Separate networking for ECS tasks, the internal Application Load Balancer (ALB), and the database.
+- **Route tables:** Manage traffic between subnets and their configured routes.
+- **Security groups:** Control network access for ALB, ECS, migration tasks, and the database.
 
-![Create](/images/5-Workshop/5.3-S3-vpc/create-button.png) 
+The template defines **26 AWS resources** and **9 Outputs** in the `us-east-1` region.
 
-+ Successfully create S3 bucket.
+### Step 1: Upload the Network Template
 
-![Success](/images/5-Workshop/5.3-S3-vpc/bucket-success.png)
+Open the AWS Management Console and select **US East (N. Virginia) — us-east-1**.
 
-#### Connect to EC2 with session manager
+Navigate to:
 
-+ For this workshop, you will use **AWS Session Manager** to access several **EC2 instances**. **Session Manager** is a fully managed **AWS Systems Manager** capability that allows you to manage your **Amazon EC2 instances**  and on-premises virtual machines (VMs) through an interactive one-click browser-based shell. Session Manager provides secure and auditable instance management without the need to open inbound ports, maintain bastion hosts, or manage SSH keys.
+**CloudFormation → Stacks → Create stack → With new resources (standard)**
 
-+ First Cloud AI Journey [Lab](https://000058.awsstudygroup.com/1-introduce/) for indepth understanding of Session manager.
+Under **Specify template**:
 
-1. In the **AWS Management Console**, start typing ```Systems Manager``` in the quick search box and press **Enter**:
+1. Select **Choose an existing template**.
+2. Choose **Upload a template file**.
+3. Upload `network.yaml` from `tindy-infrastructure/cloudformation`.
+4. Click **Next**.
 
-![system manager](/images/5-Workshop/5.3-S3-vpc/sm.png)
+![Upload Network template](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-15-network-template.png)
 
-2. From the **Systems Manager** menu, find **Node Management** in the left menu and click **Session Manager**:
+### Step 2: Configure the Network Stack
 
-![system manager](/images/5-Workshop/5.3-S3-vpc/sm1.png)
+On the **Specify stack details** page, enter the stack name:
 
-3. Click **Start Session**, and select **the EC2 instance** named **Test-Gateway-Endpoint**. 
-{{% notice info %}}
-This EC2 instance is already running in "VPC Cloud" and will be used to test connectivity to Amazon S3 through the Gateway endpoint you just created (s3-gwe). {{% /notice %}}
+`tindy-network`
 
-![Start session](/images/5-Workshop/5.3-S3-vpc/start-session.png)
+The `network.yaml` template does not define any parameters, so no additional parameter values are required.
 
-**Session Manager** will open a new browser tab with a shell prompt: sh-4.2 $
+![Network stack name](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16-network-stack-name.png)
 
-![Success](/images/5-Workshop/5.3-S3-vpc/start-session-success.png)
+Continue to the stack configuration page and add the following tags:
 
-You have successfully start a session - connect to the EC2 instance in VPC cloud. In the next step, we will create a S3 bucket and a file in it. 
+| Key | Value |
+|---|---|
+| Project | Tindy |
+| Environment | tindy |
+| Owner | TindyTeam |
 
-#### Create a file and upload to s3 bucket
+These tags help identify and organize the AWS resources associated with the Tindy project.
 
-1. Change to the ssm-user's home directory by typing ```cd ~``` in the CLI
+![Network stack tags](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16a-network-tags.png)
 
-![Change user's dir](/images/5-Workshop/5.3-S3-vpc/cli1.png)
+Keep **Express mode disabled** and **rollback enabled**.
 
-2. Create a new file to use for testing with the command ```fallocate -l 1G testfile.xyz```, which will create a file of 1GB size named "testfile.xyz".
+Review the stack configuration and submit the CloudFormation stack creation.
 
-![Create file](/images/5-Workshop/5.3-S3-vpc/cli-file.png)
+### Step 3: Create and Verify the Network Stack
 
-3. Upload file to S3 bucket with command ```aws s3 cp testfile.xyz s3://your-bucket-name```. Replace your-bucket-name with the name of S3 bucket that you created earlier.
+After submitting the stack, CloudFormation begins provisioning the network resources defined in `network.yaml`.
 
-![Uploaded](/images/5-Workshop/5.3-S3-vpc/uploaded.png)
+Open the **Events** tab to monitor the deployment.
 
-You have successfully uploaded the file to your S3 bucket. You can now terminate the session.
+The expected final status is:
 
-#### Check object in S3 bucket
+`CREATE_COMPLETE`
 
-1. Navigate to S3 console.  
-2. Click the name of your s3 bucket
-3. In the Bucket console, you will see the file you have uploaded to your S3 bucket
+If the deployment fails, check the affected resource's **Logical ID** and **Status reason** before proceeding.
 
-![Check S3](/images/5-Workshop/5.3-S3-vpc/check-s3-bucket.png)
+The deployment was completed successfully. CloudFormation confirmed that `tindy-network` reached **CREATE_COMPLETE** and generated **9 Outputs**.
 
-#### Section summary
+![Network deployment completed and Outputs](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-18-network-outputs.png)
 
-Congratulation on completing access to S3 from VPC. In this section, you created a Gateway endpoint for Amazon S3, and used the AWS CLI to upload an object. The upload worked because the Gateway endpoint allowed communication to S3, without needing an Internet Gateway attached to "VPC Cloud". This demonstrates the functionality of the Gateway endpoint as a secure path to S3 without traversing the Public Internet.
+### Step 4: Review Network Outputs
 
+The Network stack provides the references needed to deploy the database and application infrastructure.
 
+| Output | Purpose |
+|---|---|
+| `VpcId` | Identifies the VPC used by Tindy resources. |
+| `PublicTaskSubnetIds` | Identifies subnets used by ECS tasks. |
+| `PrivateAppSubnetIds` | Identifies subnets for the internal ALB. |
+| `PrivateDbSubnetIds` | Identifies private subnets used by Amazon RDS. |
+| `AlbSubnetCidrs` | Provides ALB subnet CIDR ranges for trusted proxy configuration. |
+| `AlbSecurityGroupId` | Identifies the ALB security group. |
+| `EcsSecurityGroupId` | Identifies the ECS security group. |
+| `MigrationSecurityGroupId` | Identifies the security group used by migration tasks. |
+| `DatabaseSecurityGroupId` | Identifies the database security group. |
 
+These Outputs allow subsequent CloudFormation stacks to use the correct network resources without manually entering their identifiers.
 
+### Deployment Result
 
+The Network stack was created successfully.
 
+| Verification | Result |
+|---|---|
+| Stack name | `tindy-network` |
+| AWS Region | `us-east-1` |
+| VPC CIDR | `10.20.0.0/16` |
+| Resources defined | 26 |
+| Stack parameters | None |
+| Stack status | `CREATE_COMPLETE` |
+| Outputs | 9 |
+| Resource tags | Configured |
 
+The Network infrastructure is now available for the remaining Tindy deployment stages.
 
-
-
-
-
-
+**Network is ready for the next stage: Database deployment.**
