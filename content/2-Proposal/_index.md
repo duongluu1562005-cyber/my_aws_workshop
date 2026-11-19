@@ -5,8 +5,6 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-# Proposal
-
 # Tindy — An AWS Platform for Finding Projects and Teammates
 
 ## 1. Executive Summary
@@ -45,7 +43,7 @@ The demonstration will evaluate these benefits through observable tasks. Recruit
 
 ## 3. Solution Architecture
 
-![Tindy architecture diagram](/my_aws_workshop/images/proposal/3.jpg)
+![Tindy architecture diagram](/my_aws_workshop/images/2-Proposal/3.png)
 *Tindy architecture diagram for the proposal. The following numbered explanation corresponds to the repository settings and implemented application behavior.*
 
 | **Step** | **Component**                                       | **Request or data flow**                                                                                                                                                                                                                                                                                     |
