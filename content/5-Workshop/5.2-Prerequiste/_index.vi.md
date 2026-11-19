@@ -1,242 +1,102 @@
----
-title : "Các bước chuẩn bị"
-date : 2024-01-01 
-weight : 2
-chapter : false
-pre : " <b> 5.2. </b> "
----
 
-#### IAM permissions
-Gắn IAM permission policy sau vào tài khoản aws user của bạn để triển khai và dọn dẹp tài nguyên trong workshop này.
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "cloudformation:*",
-                "cloudwatch:*",
-                "ec2:AcceptTransitGatewayPeeringAttachment",
-                "ec2:AcceptTransitGatewayVpcAttachment",
-                "ec2:AllocateAddress",
-                "ec2:AssociateAddress",
-                "ec2:AssociateIamInstanceProfile",
-                "ec2:AssociateRouteTable",
-                "ec2:AssociateSubnetCidrBlock",
-                "ec2:AssociateTransitGatewayRouteTable",
-                "ec2:AssociateVpcCidrBlock",
-                "ec2:AttachInternetGateway",
-                "ec2:AttachNetworkInterface",
-                "ec2:AttachVolume",
-                "ec2:AttachVpnGateway",
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateClientVpnEndpoint",
-                "ec2:CreateClientVpnRoute",
-                "ec2:CreateCustomerGateway",
-                "ec2:CreateDhcpOptions",
-                "ec2:CreateFlowLogs",
-                "ec2:CreateInternetGateway",
-                "ec2:CreateLaunchTemplate",
-                "ec2:CreateNetworkAcl",
-                "ec2:CreateNetworkInterface",
-                "ec2:CreateNetworkInterfacePermission",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSubnet",
-                "ec2:CreateSubnetCidrReservation",
-                "ec2:CreateTags",
-                "ec2:CreateTransitGateway",
-                "ec2:CreateTransitGatewayPeeringAttachment",
-                "ec2:CreateTransitGatewayPrefixListReference",
-                "ec2:CreateTransitGatewayRoute",
-                "ec2:CreateTransitGatewayRouteTable",
-                "ec2:CreateTransitGatewayVpcAttachment",
-                "ec2:CreateVpc",
-                "ec2:CreateVpcEndpoint",
-                "ec2:CreateVpcEndpointConnectionNotification",
-                "ec2:CreateVpcEndpointServiceConfiguration",
-                "ec2:CreateVpnConnection",
-                "ec2:CreateVpnConnectionRoute",
-                "ec2:CreateVpnGateway",
-                "ec2:DeleteCustomerGateway",
-                "ec2:DeleteFlowLogs",
-                "ec2:DeleteInternetGateway",
-                "ec2:DeleteNetworkInterface",
-                "ec2:DeleteNetworkInterfacePermission",
-                "ec2:DeleteRoute",
-                "ec2:DeleteRouteTable",
-                "ec2:DeleteSecurityGroup",
-                "ec2:DeleteSubnet",
-                "ec2:DeleteSubnetCidrReservation",
-                "ec2:DeleteTags",
-                "ec2:DeleteTransitGateway",
-                "ec2:DeleteTransitGatewayPeeringAttachment",
-                "ec2:DeleteTransitGatewayPrefixListReference",
-                "ec2:DeleteTransitGatewayRoute",
-                "ec2:DeleteTransitGatewayRouteTable",
-                "ec2:DeleteTransitGatewayVpcAttachment",
-                "ec2:DeleteVpc",
-                "ec2:DeleteVpcEndpoints",
-                "ec2:DeleteVpcEndpointServiceConfigurations",
-                "ec2:DeleteVpnConnection",
-                "ec2:DeleteVpnConnectionRoute",
-                "ec2:Describe*",
-                "ec2:DetachInternetGateway",
-                "ec2:DisassociateAddress",
-                "ec2:DisassociateRouteTable",
-                "ec2:GetLaunchTemplateData",
-                "ec2:GetTransitGatewayAttachmentPropagations",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:ModifySecurityGroupRules",
-                "ec2:ModifyTransitGatewayVpcAttachment",
-                "ec2:ModifyVpcAttribute",
-                "ec2:ModifyVpcEndpoint",
-                "ec2:ReleaseAddress",
-                "ec2:ReplaceRoute",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:RunInstances",
-                "ec2:StartInstances",
-                "ec2:StopInstances",
-                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
-                "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
-                "iam:AddRoleToInstanceProfile",
-                "iam:AttachRolePolicy",
-                "iam:CreateInstanceProfile",
-                "iam:CreatePolicy",
-                "iam:CreateRole",
-                "iam:DeleteInstanceProfile",
-                "iam:DeletePolicy",
-                "iam:DeleteRole",
-                "iam:DeleteRolePolicy",
-                "iam:DetachRolePolicy",
-                "iam:GetInstanceProfile",
-                "iam:GetPolicy",
-                "iam:GetRole",
-                "iam:GetRolePolicy",
-                "iam:ListPolicyVersions",
-                "iam:ListRoles",
-                "iam:PassRole",
-                "iam:PutRolePolicy",
-                "iam:RemoveRoleFromInstanceProfile",
-                "lambda:CreateFunction",
-                "lambda:DeleteFunction",
-                "lambda:DeleteLayerVersion",
-                "lambda:GetFunction",
-                "lambda:GetLayerVersion",
-                "lambda:InvokeFunction",
-                "lambda:PublishLayerVersion",
-                "logs:CreateLogGroup",
-                "logs:DeleteLogGroup",
-                "logs:DescribeLogGroups",
-                "logs:PutRetentionPolicy",
-                "route53:ChangeTagsForResource",
-                "route53:CreateHealthCheck",
-                "route53:CreateHostedZone",
-                "route53:CreateTrafficPolicy",
-                "route53:DeleteHostedZone",
-                "route53:DisassociateVPCFromHostedZone",
-                "route53:GetHostedZone",
-                "route53:ListHostedZones",
-                "route53domains:ListDomains",
-                "route53domains:ListOperations",
-                "route53domains:ListTagsForDomain",
-                "route53resolver:AssociateResolverEndpointIpAddress",
-                "route53resolver:AssociateResolverRule",
-                "route53resolver:CreateResolverEndpoint",
-                "route53resolver:CreateResolverRule",
-                "route53resolver:DeleteResolverEndpoint",
-                "route53resolver:DeleteResolverRule",
-                "route53resolver:DisassociateResolverEndpointIpAddress",
-                "route53resolver:DisassociateResolverRule",
-                "route53resolver:GetResolverEndpoint",
-                "route53resolver:GetResolverRule",
-                "route53resolver:ListResolverEndpointIpAddresses",
-                "route53resolver:ListResolverEndpoints",
-                "route53resolver:ListResolverRuleAssociations",
-                "route53resolver:ListResolverRules",
-                "route53resolver:ListTagsForResource",
-                "route53resolver:UpdateResolverEndpoint",
-                "route53resolver:UpdateResolverRule",
-                "s3:AbortMultipartUpload",
-                "s3:CreateBucket",
-                "s3:DeleteBucket",
-                "s3:DeleteObject",
-                "s3:GetAccountPublicAccessBlock",
-                "s3:GetBucketAcl",
-                "s3:GetBucketOwnershipControls",
-                "s3:GetBucketPolicy",
-                "s3:GetBucketPolicyStatus",
-                "s3:GetBucketPublicAccessBlock",
-                "s3:GetObject",
-                "s3:GetObjectVersion",
-                "s3:GetBucketVersioning",
-                "s3:ListAccessPoints",
-                "s3:ListAccessPointsForObjectLambda",
-                "s3:ListAllMyBuckets",
-                "s3:ListBucket",
-                "s3:ListBucketMultipartUploads",
-                "s3:ListBucketVersions",
-                "s3:ListJobs",
-                "s3:ListMultipartUploadParts",
-                "s3:ListMultiRegionAccessPoints",
-                "s3:ListStorageLensConfigurations",
-                "s3:PutAccountPublicAccessBlock",
-                "s3:PutBucketAcl",
-                "s3:PutBucketPolicy",
-                "s3:PutBucketPublicAccessBlock",
-                "s3:PutObject",
-                "secretsmanager:CreateSecret",
-                "secretsmanager:DeleteSecret",
-                "secretsmanager:DescribeSecret",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:ListSecrets",
-                "secretsmanager:ListSecretVersionIds",
-                "secretsmanager:PutResourcePolicy",
-                "secretsmanager:TagResource",
-                "secretsmanager:UpdateSecret",
-                "sns:ListTopics",
-                "ssm:DescribeInstanceProperties",
-                "ssm:DescribeSessions",
-                "ssm:GetConnectionStatus",
-                "ssm:GetParameters",
-                "ssm:ListAssociations",
-                "ssm:ResumeSession",
-                "ssm:StartSession",
-                "ssm:TerminateSession"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
+# Chuẩn bị trước khi triển khai
 
+Trước khi triển khai Tindy, cần chuẩn bị quyền truy cập AWS, mã nguồn hạ tầng, container image của backend và các thông tin tham chiếu đến tài nguyên. Toàn bộ hệ thống được triển khai tại khu vực **N. Virginia (`us-east-1`)**, phù hợp với các yêu cầu trong CloudFormation template.
+
+## 1. Công cụ và quyền truy cập
+
+Các công cụ và quyền cần thiết cho quá trình triển khai gồm:
+
+- **AWS Console:** Sử dụng để tải CloudFormation template, xem xét change set, theo dõi Events/Outputs và chụp ảnh minh chứng.
+- **AWS CLI:** Cần có profile đã xác thực. Trong workshop này sử dụng profile `tindy-admin`.
+- **PowerShell và `curl.exe`:** Dùng để thực hiện các lệnh CLI và kiểm tra HTTP.
+- **Quyền truy cập AWS:** Bao gồm các dịch vụ được khai báo trong template như CloudFormation, IAM, EC2 Networking, S3, ECR, Secrets Manager, RDS, ECS, ELB, CloudFront, GuardDuty, EventBridge, SQS, SNS và CloudWatch. Khi được yêu cầu, cần xác nhận IAM capabilities.
+- **Email và OAuth:** Cần truy cập hộp thư nhận thông báo để xác nhận SNS. Việc kiểm tra OAuth yêu cầu quyền truy cập cấu hình callback của ứng dụng Google/GitHub để cập nhật hostname mới.
+
+Kiểm tra phiên đăng nhập AWS CLI trên máy triển khai:
+
+```powershell
+aws sts get-caller-identity --profile tindy-admin --region us-east-1 --no-cli-pager
 ```
 
-#### Khởi tạo tài nguyên bằng CloudFormation
+**📸 Lưu ý:** Kiểm tra và che các thông tin định danh tài khoản AWS trong ảnh chụp màn hình trước khi công bố.
 
-Trong lab này, chúng ta sẽ dùng N.Virginia region (us-east-1).
+## 2. Mã nguồn và container image
 
-Để chuẩn bị cho môi trường làm workshop, chúng ta deploy CloudFormation template sau (click link): [PrivateLinkWorkshop ](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.us-east-1.amazonaws.com/reinvent-endpoints-builders-session/Nested.yaml&stackName=PLCloudSetup). Để nguyên các lựa chọn mặc định.
+Sử dụng sáu CloudFormation template định dạng YAML trong thư mục `tindy-infrastructure/cloudformation`, đã được giới thiệu tại mục 5.1.
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack1.png)
+Chuẩn bị container image của backend trong ECR repository `tindy-api` và cố định image digest để đảm bảo API và các tác vụ cơ sở dữ liệu sử dụng cùng một phiên bản image.
 
-+ Lựa chọn 2 mục acknowledgement 
-+ Chọn Create stack
+Tham số `ApiImage` của Runtime có định dạng:
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack2.png)
+```text
+<account-id>.dkr.ecr.us-east-1.amazonaws.com/tindy-api@sha256:<digest>
+```
 
-Quá trình triển khai CloudFormation cần khoảng 15 phút để hoàn thành.
+Trong workshop này, image digest được đối chiếu với ECR và tham số Runtime trước khi dọn dẹp hạ tầng.
 
-![complete](/images/5-Workshop/5.2-Prerequisite/complete.png)
+Đối với frontend, quá trình triển khai sử dụng release workflow từ frontend repository.
 
-+ 2 VPCs đã được tạo
+## 3. Thông tin phục vụ triển khai lại
 
-![vpcs](/images/5-Workshop/5.2-Prerequisite/vpcs.png)
+Workshop bắt đầu từ một môi trường AWS đã được triển khai trước đó. Vì vậy, cần sao lưu các thông tin quan trọng trước khi xóa Foundation stack.
 
-+ 3 EC2s đã được tạo
+Các thông tin được xuất ra gồm:
 
-![EC2](/images/5-Workshop/5.2-Prerequisite/ec2.png)
+- Ánh xạ giữa Logical ID và Physical ID của tài nguyên.
+- Các tham số cấu hình (Parameters).
+- Các giá trị Outputs của stack.
+- CloudFormation template đang được triển khai.
+
+Toàn bộ dữ liệu này được lưu trong thư mục `backup/tindy-foundation-before-cleanup` của Worklog.
+
+Có **9 tài nguyên được giữ lại**, bao gồm:
+
+- Hai S3 bucket.
+- Media bucket policy.
+- ECR repository.
+- Bốn application secrets.
+- GitHub OIDC.
+
+Sử dụng file `foundation-import.yaml` đã chuẩn bị để đưa các tài nguyên này trở lại quyền quản lý của CloudFormation stack. Sau đó cập nhật bằng `foundation.yaml`.
+
+Quy trình được trình bày chi tiết tại mục **5.3.1**.
+
+## 4. Cấu hình cho phiên triển khai
+
+Các lựa chọn cấu hình được sử dụng trong workshop:
+
+| **Thiết lập** | **Cấu hình** |
+| :--- | :--- |
+| Database | Tạo cơ sở dữ liệu mới (Fresh), để trống snapshot identifier và thực hiện bootstrap, migrations, seed dữ liệu. |
+| Region | `us-east-1`. |
+| CloudFront | Tạo distribution mới và cập nhật các tham chiếu hostname. |
+| Initial Runtime | Đặt `DesiredCount = 0` cho đến khi cơ sở dữ liệu và secrets sẵn sàng. |
+| Traffic | Giữ Edge ở chế độ maintenance cho đến khi API và target group hoạt động ổn định (healthy). |
+| Tags | `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. |
+
+Các tham số triển khai được điền dựa trên Outputs của những stack mới tạo.
+
+Đồng thời, cần cập nhật application connection secret được giữ lại để kết nối với cơ sở dữ liệu Fresh.
+
+Các thông tin nhạy cảm như mật khẩu, JWT key và OAuth client secret được quản lý trực tiếp trên AWS.
+
+## 5. Hình ảnh minh chứng và video
+
+Ảnh chụp màn hình trong quá trình thực hiện được lưu tại hai thư mục:
+
+- `static/images/5-Workshop/cleanup`: Hình ảnh quá trình dọn dẹp hạ tầng.
+- `static/images/5-Workshop/deploy`: Hình ảnh quá trình triển khai hệ thống.
+
+Các bước hướng dẫn tiếp theo sẽ chỉ rõ thời điểm cần chụp ảnh, bao gồm cấu hình Parameters, xem xét change set, trạng thái hoàn tất và Outputs của stack.
+
+**Video demo** được thực hiện sau khi hoàn tất seed dữ liệu và kiểm tra ứng dụng.
+
+Nội dung demo dự kiến gồm:
+
+1. Đăng nhập vào ứng dụng.
+2. Tìm kiếm và khám phá dự án.
+3. Gửi đơn ứng tuyển vào dự án.
+4. Project Leader xem xét đơn ứng tuyển.
+
+Trong từng mục triển khai, kết quả đã kiểm tra thành công và các bước chưa hoàn thành sẽ được ghi nhận riêng để theo dõi tiến độ thực tế.
