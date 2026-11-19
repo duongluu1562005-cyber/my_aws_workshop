@@ -5,27 +5,26 @@ weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+# TINDY DEPLOYMENT ON AWS USING CLOUDFORMATION
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+## Overview
 
-#### Overview
+This workshop covers the redeployment of **Tindy on AWS using CloudFormation**, including setting up a fresh PostgreSQL database, running migrations, seeding demo data, and verifying the application through CloudFront before recording a web demonstration.
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+The infrastructure uses six CloudFormation templates: `foundation.yaml`, `network.yaml`, `database.yaml`, `integrations.yaml`, `runtime.yaml`, and `edge.yaml`.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+Each section includes the deployed resources, required configurations, stack outputs, verification results, and screenshots.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+Since Tindy was previously deployed, the workshop begins by cleaning up the existing infrastructure before redeploying all six stacks in the same AWS environment. The new deployment uses a fresh database, demo data, and a new CloudFront hostname.
 
-#### Content
+The cleanup process, documented in Section 5.7, includes maintenance and deletion of all six stacks, each verified with the **DELETE_COMPLETE** status.
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+## Content
+
+1. [Architecture overview](5.1-overview/)
+2. [Deployment prerequisites](5.2-prerequisites/)
+3. [Foundation and Network](5.3-foundation-network/)
+4. [Database and Integrations](5.4-database-integrations/)
+5. [Runtime, seeding and Edge](5.5-runtime-edge/)
+6. Application verification and web demonstration
+7. [Clean up resources](5.7-cleanup/)
