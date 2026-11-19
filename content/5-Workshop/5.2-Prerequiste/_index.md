@@ -1,242 +1,102 @@
----
-title : "Prerequiste"
-date : 2024-01-01 
-weight : 2 
-chapter : false
-pre : " <b> 5.2. </b> "
----
 
-#### IAM permissions
-Add the following IAM permission policy to your user account to deploy and cleanup this workshop.
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "cloudformation:*",
-                "cloudwatch:*",
-                "ec2:AcceptTransitGatewayPeeringAttachment",
-                "ec2:AcceptTransitGatewayVpcAttachment",
-                "ec2:AllocateAddress",
-                "ec2:AssociateAddress",
-                "ec2:AssociateIamInstanceProfile",
-                "ec2:AssociateRouteTable",
-                "ec2:AssociateSubnetCidrBlock",
-                "ec2:AssociateTransitGatewayRouteTable",
-                "ec2:AssociateVpcCidrBlock",
-                "ec2:AttachInternetGateway",
-                "ec2:AttachNetworkInterface",
-                "ec2:AttachVolume",
-                "ec2:AttachVpnGateway",
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateClientVpnEndpoint",
-                "ec2:CreateClientVpnRoute",
-                "ec2:CreateCustomerGateway",
-                "ec2:CreateDhcpOptions",
-                "ec2:CreateFlowLogs",
-                "ec2:CreateInternetGateway",
-                "ec2:CreateLaunchTemplate",
-                "ec2:CreateNetworkAcl",
-                "ec2:CreateNetworkInterface",
-                "ec2:CreateNetworkInterfacePermission",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSubnet",
-                "ec2:CreateSubnetCidrReservation",
-                "ec2:CreateTags",
-                "ec2:CreateTransitGateway",
-                "ec2:CreateTransitGatewayPeeringAttachment",
-                "ec2:CreateTransitGatewayPrefixListReference",
-                "ec2:CreateTransitGatewayRoute",
-                "ec2:CreateTransitGatewayRouteTable",
-                "ec2:CreateTransitGatewayVpcAttachment",
-                "ec2:CreateVpc",
-                "ec2:CreateVpcEndpoint",
-                "ec2:CreateVpcEndpointConnectionNotification",
-                "ec2:CreateVpcEndpointServiceConfiguration",
-                "ec2:CreateVpnConnection",
-                "ec2:CreateVpnConnectionRoute",
-                "ec2:CreateVpnGateway",
-                "ec2:DeleteCustomerGateway",
-                "ec2:DeleteFlowLogs",
-                "ec2:DeleteInternetGateway",
-                "ec2:DeleteNetworkInterface",
-                "ec2:DeleteNetworkInterfacePermission",
-                "ec2:DeleteRoute",
-                "ec2:DeleteRouteTable",
-                "ec2:DeleteSecurityGroup",
-                "ec2:DeleteSubnet",
-                "ec2:DeleteSubnetCidrReservation",
-                "ec2:DeleteTags",
-                "ec2:DeleteTransitGateway",
-                "ec2:DeleteTransitGatewayPeeringAttachment",
-                "ec2:DeleteTransitGatewayPrefixListReference",
-                "ec2:DeleteTransitGatewayRoute",
-                "ec2:DeleteTransitGatewayRouteTable",
-                "ec2:DeleteTransitGatewayVpcAttachment",
-                "ec2:DeleteVpc",
-                "ec2:DeleteVpcEndpoints",
-                "ec2:DeleteVpcEndpointServiceConfigurations",
-                "ec2:DeleteVpnConnection",
-                "ec2:DeleteVpnConnectionRoute",
-                "ec2:Describe*",
-                "ec2:DetachInternetGateway",
-                "ec2:DisassociateAddress",
-                "ec2:DisassociateRouteTable",
-                "ec2:GetLaunchTemplateData",
-                "ec2:GetTransitGatewayAttachmentPropagations",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:ModifySecurityGroupRules",
-                "ec2:ModifyTransitGatewayVpcAttachment",
-                "ec2:ModifyVpcAttribute",
-                "ec2:ModifyVpcEndpoint",
-                "ec2:ReleaseAddress",
-                "ec2:ReplaceRoute",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:RunInstances",
-                "ec2:StartInstances",
-                "ec2:StopInstances",
-                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
-                "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
-                "iam:AddRoleToInstanceProfile",
-                "iam:AttachRolePolicy",
-                "iam:CreateInstanceProfile",
-                "iam:CreatePolicy",
-                "iam:CreateRole",
-                "iam:DeleteInstanceProfile",
-                "iam:DeletePolicy",
-                "iam:DeleteRole",
-                "iam:DeleteRolePolicy",
-                "iam:DetachRolePolicy",
-                "iam:GetInstanceProfile",
-                "iam:GetPolicy",
-                "iam:GetRole",
-                "iam:GetRolePolicy",
-                "iam:ListPolicyVersions",
-                "iam:ListRoles",
-                "iam:PassRole",
-                "iam:PutRolePolicy",
-                "iam:RemoveRoleFromInstanceProfile",
-                "lambda:CreateFunction",
-                "lambda:DeleteFunction",
-                "lambda:DeleteLayerVersion",
-                "lambda:GetFunction",
-                "lambda:GetLayerVersion",
-                "lambda:InvokeFunction",
-                "lambda:PublishLayerVersion",
-                "logs:CreateLogGroup",
-                "logs:DeleteLogGroup",
-                "logs:DescribeLogGroups",
-                "logs:PutRetentionPolicy",
-                "route53:ChangeTagsForResource",
-                "route53:CreateHealthCheck",
-                "route53:CreateHostedZone",
-                "route53:CreateTrafficPolicy",
-                "route53:DeleteHostedZone",
-                "route53:DisassociateVPCFromHostedZone",
-                "route53:GetHostedZone",
-                "route53:ListHostedZones",
-                "route53domains:ListDomains",
-                "route53domains:ListOperations",
-                "route53domains:ListTagsForDomain",
-                "route53resolver:AssociateResolverEndpointIpAddress",
-                "route53resolver:AssociateResolverRule",
-                "route53resolver:CreateResolverEndpoint",
-                "route53resolver:CreateResolverRule",
-                "route53resolver:DeleteResolverEndpoint",
-                "route53resolver:DeleteResolverRule",
-                "route53resolver:DisassociateResolverEndpointIpAddress",
-                "route53resolver:DisassociateResolverRule",
-                "route53resolver:GetResolverEndpoint",
-                "route53resolver:GetResolverRule",
-                "route53resolver:ListResolverEndpointIpAddresses",
-                "route53resolver:ListResolverEndpoints",
-                "route53resolver:ListResolverRuleAssociations",
-                "route53resolver:ListResolverRules",
-                "route53resolver:ListTagsForResource",
-                "route53resolver:UpdateResolverEndpoint",
-                "route53resolver:UpdateResolverRule",
-                "s3:AbortMultipartUpload",
-                "s3:CreateBucket",
-                "s3:DeleteBucket",
-                "s3:DeleteObject",
-                "s3:GetAccountPublicAccessBlock",
-                "s3:GetBucketAcl",
-                "s3:GetBucketOwnershipControls",
-                "s3:GetBucketPolicy",
-                "s3:GetBucketPolicyStatus",
-                "s3:GetBucketPublicAccessBlock",
-                "s3:GetObject",
-                "s3:GetObjectVersion",
-                "s3:GetBucketVersioning",
-                "s3:ListAccessPoints",
-                "s3:ListAccessPointsForObjectLambda",
-                "s3:ListAllMyBuckets",
-                "s3:ListBucket",
-                "s3:ListBucketMultipartUploads",
-                "s3:ListBucketVersions",
-                "s3:ListJobs",
-                "s3:ListMultipartUploadParts",
-                "s3:ListMultiRegionAccessPoints",
-                "s3:ListStorageLensConfigurations",
-                "s3:PutAccountPublicAccessBlock",
-                "s3:PutBucketAcl",
-                "s3:PutBucketPolicy",
-                "s3:PutBucketPublicAccessBlock",
-                "s3:PutObject",
-                "secretsmanager:CreateSecret",
-                "secretsmanager:DeleteSecret",
-                "secretsmanager:DescribeSecret",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:ListSecrets",
-                "secretsmanager:ListSecretVersionIds",
-                "secretsmanager:PutResourcePolicy",
-                "secretsmanager:TagResource",
-                "secretsmanager:UpdateSecret",
-                "sns:ListTopics",
-                "ssm:DescribeInstanceProperties",
-                "ssm:DescribeSessions",
-                "ssm:GetConnectionStatus",
-                "ssm:GetParameters",
-                "ssm:ListAssociations",
-                "ssm:ResumeSession",
-                "ssm:StartSession",
-                "ssm:TerminateSession"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
+# Deployment Prerequisites
 
+Before deploying Tindy, the required AWS access, infrastructure templates, backend container image, and resource references must be prepared. The deployment takes place in **N. Virginia (`us-east-1`)**, following the requirements defined in the CloudFormation templates.
+
+## 1. Tools and Access
+
+The following tools and permissions are required:
+
+- **AWS Console:** Used to upload CloudFormation templates, review change sets, monitor Events/Outputs, and capture screenshots.
+- **AWS CLI:** Requires an authenticated profile. This workshop uses `tindy-admin`.
+- **PowerShell and `curl.exe`:** Used to run CLI commands and perform HTTP checks.
+- **AWS permissions:** Access to the services defined in the templates, including CloudFormation, IAM, EC2 Networking, S3, ECR, Secrets Manager, RDS, ECS, ELB, CloudFront, GuardDuty, EventBridge, SQS, SNS, and CloudWatch. IAM capabilities must be acknowledged when requested.
+- **Email and OAuth access:** Access to the notification mailbox is needed to confirm SNS subscriptions. OAuth verification also requires access to Google/GitHub application callback settings to configure the new hostname.
+
+Verify the AWS CLI session on the deployment machine:
+
+```powershell
+aws sts get-caller-identity --profile tindy-admin --region us-east-1 --no-cli-pager
 ```
 
-#### Provision resources using CloudFormation
+**📸 Note:** Review and hide AWS account identifiers in identity screenshots before publishing them.
 
-In this lab, we will use **N.Virginia region (us-east-1)**.
+## 2. Source Code and Container Image
 
-To prepare the workshop environment, deploy this **CloudFormation Template** (click link): [PrivateLinkWorkshop ](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.us-east-1.amazonaws.com/reinvent-endpoints-builders-session/Nested.yaml&stackName=PLCloudSetup). Accept all of the defaults when deploying the template. 
+The infrastructure uses six YAML CloudFormation templates located in `tindy-infrastructure/cloudformation`, as introduced in Section 5.1.
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack1.png)
+Prepare the backend container image in the ECR repository `tindy-api` and pin its image digest to ensure the API and database preparation tasks run with the same image version.
 
-+ Tick 2 acknowledgement boxes
-+ Choose **Create stack**
+The Runtime `ApiImage` parameter follows this format:
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack2.png)
+```text
+<account-id>.dkr.ecr.us-east-1.amazonaws.com/tindy-api@sha256:<digest>
+```
 
-The **ClouddFormation** deployment requires about 15 minutes to complete.
+During this workshop, the image digest was checked against ECR and the Runtime parameter recorded before infrastructure cleanup.
 
-![complete](/images/5-Workshop/5.2-Prerequisite/complete.png)
+The frontend is deployed using the release workflow from the frontend repository.
 
-+ **2 VPCs** have been created
+## 3. Redeployment Information
 
-![vpcs](/images/5-Workshop/5.2-Prerequisite/vpcs.png)
+This workshop starts with an AWS environment that has already been deployed. Therefore, important infrastructure information must be backed up before deleting the Foundation stack.
 
-+ **3 EC2s** have been created
+The exported information includes:
 
-![EC2](/images/5-Workshop/5.2-Prerequisite/ec2.png)
+- Logical-to-physical resource mappings.
+- Stack configuration parameters.
+- Stack Outputs.
+- The currently deployed CloudFormation template.
+
+These files are stored in the Worklog directory `backup/tindy-foundation-before-cleanup`.
+
+A total of **nine resources are retained**, including:
+
+- Two S3 buckets.
+- The media bucket policy.
+- The ECR repository.
+- Four application secrets.
+- GitHub OIDC.
+
+The prepared `foundation-import.yaml` template is used to restore CloudFormation stack ownership of these resources. The stack is then updated using `foundation.yaml`.
+
+The detailed procedure is covered in **Section 5.3.1**.
+
+## 4. Deployment Configuration
+
+The workshop uses the following deployment settings:
+
+| **Setting** | **Configuration** |
+| :--- | :--- |
+| Database | Create a fresh database with an empty snapshot identifier, then run bootstrap, migrations, and seed tasks. |
+| Region | `us-east-1`. |
+| CloudFront | Create a new distribution and update hostname references. |
+| Initial Runtime | Set `DesiredCount = 0` until the database and secrets are ready. |
+| Traffic | Keep Edge in maintenance mode until the API and target group are healthy. |
+| Tags | `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. |
+
+Deployment parameters are filled using Outputs from the newly created stacks.
+
+The retained application connection secret must also be updated to connect to the fresh database.
+
+Sensitive information, including passwords, JWT keys, and OAuth client secrets, is managed within AWS.
+
+## 5. Screenshots and Video
+
+Screenshots captured during the workshop are organized into two directories:
+
+- `static/images/5-Workshop/cleanup`: Screenshots of infrastructure cleanup.
+- `static/images/5-Workshop/deploy`: Screenshots of infrastructure deployment.
+
+The following sections identify when screenshots should be captured, including parameter configuration, change set review, stack completion, and Outputs.
+
+The **demo video** is recorded after completing database seeding and application verification.
+
+The planned demonstration includes:
+
+1. Logging into the application.
+2. Discovering and browsing projects.
+3. Submitting a project application.
+4. Reviewing applications as a Project Leader.
+
+Each deployment section separately records verified results and pending steps to clearly document the actual deployment progress.
