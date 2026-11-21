@@ -1,5 +1,10 @@
-
-# DỌN DẸP TÀI NGUYÊN
+---
+title: "DỌN DẸP TÀI NGUYÊN"
+date: 2026-11-22
+weight: 7
+chapter: false
+pre: "<b> 5.7. </b>"
+---
 
 Phần này ghi lại quá trình dọn dẹp môi trường Tindy hiện có thông qua CloudFormation tại **N. Virginia (`us-east-1`)**. Việc dọn dẹp diễn ra trước khi triển khai lại sáu stack, một cơ sở dữ liệu **Fresh**, bootstrap, migrations và seed dữ liệu demo. Phần trình diễn web sẽ sử dụng một CloudFront hostname mới.
 
