@@ -1,6 +1,6 @@
 ---
 title: "ACTIVATE API AND VERIFY RUNTIME"
-date: 2026-11-22
+date: 2026-11-19
 weight: 5
 chapter: false
 pre: "<b> 5.5.5 </b>"
