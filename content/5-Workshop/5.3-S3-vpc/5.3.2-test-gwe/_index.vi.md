@@ -1,114 +1,53 @@
 
-## 5.3.2 — Triển khai Network
+# Triển khai Network
 
-### Tổng quan
+`network.yaml` định nghĩa VPC `10.20.0.0/16`, một Internet Gateway, sáu subnet, các route table và security group cho ALB, ECS, migration và cơ sở dữ liệu. 26 tài nguyên và chín Outputs của template này hỗ trợ Database và Runtime tại `us-east-1`.
 
-Sau khi hoàn tất triển khai Foundation, bước tiếp theo là thiết lập hạ tầng mạng cho ứng dụng Tindy.
+## 1. Tạo stack
 
-Template `network.yaml` tạo các tài nguyên mạng cần thiết để kết nối và bảo vệ các thành phần thuộc Database và Runtime.
+1. Chọn **CloudFormation → Create stack → With new resources (standard)** tại **N. Virginia (`us-east-1`)**.
+2. Chọn **Choose an existing template → Upload a template file**, tải lên `network.yaml` từ `tindy-infrastructure/cloudformation`.
 
-Cấu hình mạng bao gồm:
+**📸 Chụp ảnh tệp network.yaml đã chọn.**
 
-- **VPC:** Sử dụng dải địa chỉ IP `10.20.0.0/16`.
-- **Internet Gateway:** Cung cấp kết nối Internet cho các tài nguyên sử dụng tuyến đường công khai.
-- **6 Subnets:** Phân chia mạng cho ECS tasks, Application Load Balancer (ALB) nội bộ và cơ sở dữ liệu.
-- **Route Tables:** Quản lý đường đi của lưu lượng mạng giữa các subnet và các tuyến đã cấu hình.
-- **Security Groups:** Kiểm soát truy cập mạng cho ALB, ECS, migration tasks và cơ sở dữ liệu.
 
-Template định nghĩa tổng cộng **26 tài nguyên AWS** và **9 Outputs** tại khu vực `us-east-1`.
 
-### Bước 1: Tải lên Network Template
+[Tải lên network.yaml](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-15-network-template.png)
 
-Truy cập **AWS Management Console** và chọn khu vực **US East (N. Virginia) — us-east-1**.
+3. Nhấn Next và đặt tên stack là `tindy-network`. Template này không có phần Parameters.
 
-Đi đến:
+**📸 Chụp ảnh tên stack.**
 
-**CloudFormation → Stacks → Create stack → With new resources (standard)**
+4. Thêm các tag `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. Giữ Express mode ở trạng thái tắt và rollback ở trạng thái bật.
+5. Xem xét stack và template, sau đó gửi yêu cầu tạo bằng nút trên Console.
+6. Theo dõi Events cho đến khi `tindy-network — CREATE_COMPLETE`. Nếu xảy ra lỗi, kiểm tra Logical ID và Status reason trước khi tiếp tục.
 
-Tại mục **Specify template**, thực hiện:
+**📸 Chụp ảnh CREATE_COMPLETE và tất cả Outputs.**
 
-1. Chọn **Choose an existing template**.
-2. Chọn **Upload a template file**.
-3. Tải lên `network.yaml` từ thư mục `tindy-infrastructure/cloudformation`.
-4. Nhấn **Next** để tiếp tục.
+## 2. Outputs cho các stack tiếp theo
 
-![Tải lên Network template](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-15-network-template.png)
+Outputs bao gồm `VpcId`, `PublicTaskSubnetIds` cho các tác vụ ECS, `PrivateAppSubnetIds` cho ALB nội bộ, `PrivateDbSubnetIds` cho RDS, `AlbSubnetCidrs` cho cấu hình trusted proxy, và `AlbSecurityGroupId`, `EcsSecurityGroupId`, `MigrationSecurityGroupId`, `DatabaseSecurityGroupId` cho các thành phần tương ứng.
 
-### Bước 2: Cấu hình Network Stack
+## 3. Kết quả triển khai đã xác minh
 
-Tại trang **Specify stack details**, nhập tên stack:
+Stack được đặt tên là `tindy-network` và Console xác nhận template không có tham số.
 
-`tindy-network`
 
-Template `network.yaml` không có phần Parameters nên không cần nhập thêm tham số cấu hình.
 
-![Đặt tên Network stack](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16-network-stack-name.png)
+[Tên stack Network](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16-network-stack-name.png)
 
-Tiếp tục đến phần cấu hình stack và thêm các tags:
 
-| Key | Value |
-|---|---|
-| Project | Tindy |
-| Environment | tindy |
-| Owner | TindyTeam |
 
-Các tags giúp nhận diện và quản lý những tài nguyên AWS thuộc dự án Tindy.
+Các tag Project, Environment và Owner đã được cấu hình.
 
-![Cấu hình tags cho Network stack](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16a-network-tags.png)
 
-Giữ **Express mode ở trạng thái tắt** và **rollback được bật**.
 
-Kiểm tra lại thông tin cấu hình và xác nhận tạo stack trên CloudFormation.
+[Tags của Network](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16a-network-tags.png)
 
-### Bước 3: Tạo và kiểm tra Network Stack
 
-Sau khi xác nhận, CloudFormation bắt đầu triển khai các tài nguyên mạng được định nghĩa trong `network.yaml`.
 
-Mở tab **Events** để theo dõi tiến trình triển khai.
+Stack đạt trạng thái **CREATE_COMPLETE** với **Outputs (9)**. Ảnh chụp màn hình ghi lại trạng thái stack đã hoàn tất và các tham chiếu mạng mới cho Database và Runtime. Sử dụng các ID của stack mới cho những lần triển khai tiếp theo.
 
-Trạng thái cần đạt được là:
 
-`CREATE_COMPLETE`
 
-Nếu quá trình triển khai gặp lỗi, kiểm tra **Logical ID** và **Status reason** của tài nguyên bị lỗi trước khi tiếp tục.
-
-Kết quả thực tế cho thấy stack `tindy-network` đã được tạo thành công với trạng thái **CREATE_COMPLETE** và có **9 Outputs**.
-
-![Network triển khai thành công và hiển thị Outputs](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-18-network-outputs.png)
-
-### Bước 4: Kiểm tra Network Outputs
-
-Sau khi triển khai, Network stack cung cấp các thông tin tham chiếu để sử dụng trong những stack tiếp theo.
-
-| Output | Chức năng |
-|---|---|
-| `VpcId` | Xác định VPC được sử dụng cho hạ tầng Tindy. |
-| `PublicTaskSubnetIds` | Xác định các subnet dành cho ECS tasks. |
-| `PrivateAppSubnetIds` | Xác định các subnet dành cho ALB nội bộ. |
-| `PrivateDbSubnetIds` | Xác định các subnet riêng dành cho Amazon RDS. |
-| `AlbSubnetCidrs` | Cung cấp dải CIDR của các subnet ALB để cấu hình trusted proxy. |
-| `AlbSecurityGroupId` | Xác định Security Group của ALB. |
-| `EcsSecurityGroupId` | Xác định Security Group của ECS. |
-| `MigrationSecurityGroupId` | Xác định Security Group dành cho migration tasks. |
-| `DatabaseSecurityGroupId` | Xác định Security Group của cơ sở dữ liệu. |
-
-Nhờ các Outputs này, những CloudFormation stack tiếp theo có thể sử dụng đúng tài nguyên mạng mà không cần nhập thủ công các thông tin định danh.
-
-### Kết quả triển khai
-
-Network stack đã được tạo thành công.
-
-| Nội dung kiểm tra | Kết quả |
-|---|---|
-| Tên stack | `tindy-network` |
-| Khu vực AWS | `us-east-1` |
-| VPC CIDR | `10.20.0.0/16` |
-| Số tài nguyên định nghĩa | 26 |
-| Tham số stack | Không có |
-| Trạng thái stack | `CREATE_COMPLETE` |
-| Số lượng Outputs | 9 |
-| Resource tags | Đã cấu hình |
-
-Sau khi triển khai, Tindy đã có hạ tầng mạng gồm VPC, các subnet, route tables và security groups cần thiết cho những thành phần tiếp theo.
-
-**Network đã sẵn sàng cho bước tiếp theo: triển khai Database.**
+[Network hoàn tất và Outputs](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-18-network-outputs.png)
