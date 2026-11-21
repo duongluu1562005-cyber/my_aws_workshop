@@ -1,164 +1,64 @@
 
-## 5.4.1 — Create a Fresh Database
+# CREATE A FRESH DATABASE
 
-### Overview
+`database.yaml` creates an RDS PostgreSQL instance, a subnet group using two private DB subnets and a parameter group requiring TLS. Fresh provisioning creates database `tindy` with master user `tindy_admin`, with RDS managing its master password in Secrets Manager. AWS CLI confirmed PostgreSQL `17.11` is available in `us-east-1` before this step.
 
-After completing the Network deployment, the next step is to create the PostgreSQL database for Tindy.
+## Create the stack
 
-The `database.yaml` template provisions an Amazon RDS instance and configures the network and security settings required by the application.
+1. Select **CloudFormation → Create stack → With new resources (standard)** in N. Virginia and upload `database.yaml` from the infrastructure repository.
 
-The main components include:
+**📸 Capture the selected filename.**
 
-- **Amazon RDS:** Runs PostgreSQL in a Single-AZ configuration.
-- **DB Subnet Group:** Places the database in two private DB subnets from the Network stack.
-- **PostgreSQL Parameter Group:** Enables `rds.force_ssl` to require encrypted connections.
-- **RDS-managed Master Secret:** Stores the database administrator password securely in AWS Secrets Manager.
-- **Deletion Protection:** Helps prevent accidental deletion of the database.
 
-This deployment uses **Fresh provisioning**, creating a new database named `tindy` with the master user `tindy_admin`.
 
-Before deployment, the AWS CLI confirmed that PostgreSQL version `17.11` was available in `us-east-1`.
+[Upload database.yaml](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-19-database-template.png)
 
-Database migrations and demo data preparation will be completed during Runtime setup.
+2. Name the stack `tindy-database`. Set `DBProvisionMode = Fresh`, leave `DBSnapshotIdentifier` empty and keep `EnableDeletionProtection = true`.
+3. Select `DatabaseSecurityGroupId` and both `PrivateDbSubnetIds` using Outputs from the newly created Network stack.
 
-### Step 1: Upload the Database Template
+**📸 Capture the stack name and all parameters.**
 
-Open the AWS Management Console and select **US East (N. Virginia) — us-east-1**.
 
-Navigate to:
 
-**CloudFormation → Stacks → Create stack → With new resources (standard)**
+[Fresh Database parameters](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20-database-fresh-parameters.png)
 
-Under **Specify template**:
+4. Add tags `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. Keep Express mode disabled and rollback enabled, review and create the stack.
+5. Wait for `CREATE_COMPLETE`, then record Outputs including the endpoint, port, provision mode and master secret ARN where exported for Fresh.
 
-1. Select **Choose an existing template**.
-2. Choose **Upload a template file**.
-3. Upload `database.yaml` from the infrastructure repository.
-4. Click **Next**.
+**📸 Capture completed stack status and Outputs.**
 
-![Upload Database template](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-19-database-template.png)
 
-### Step 2: Configure Fresh Database Parameters
 
-On the **Specify stack details** page, enter the stack name:
+Bootstrap, migrations and demo seeding take place during Runtime setup before enabling the API. Verify and update the retained API connection secret for the new DB. Verified parameters show stack `tindy-database`, Fresh provisioning, empty snapshot identifier and enabled deletion protection. Security group and both selected DB subnets match the new Network Outputs. Database creation is complete, with CREATE_COMPLETE and Outputs evidence below.
 
-`tindy-database`
+## Verified deployment results
 
-Configure the database parameters as follows:
+Tags, disabled Express mode, rollback and **Use deletion policy** were configured before reviewing the stack name and template.
 
-| Parameter | Value |
-|---|---|
-| `DBProvisionMode` | `Fresh` |
-| `DBSnapshotIdentifier` | Empty |
-| `EnableDeletionProtection` | `true` |
-| `DatabaseSecurityGroupId` | From Network Outputs |
-| `PrivateDbSubnetIds` | Both private DB subnets from Network Outputs |
 
-Using `Fresh` mode creates a new PostgreSQL database instead of restoring an existing snapshot.
 
-The database security group and subnets must match the resources created by `tindy-network`.
+[Database tags](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20a-database-tags.png)
 
-Deletion protection is enabled to help prevent accidental removal of the RDS instance.
 
-![Fresh Database parameters](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-20-database-fresh-parameters.png)
 
-### Step 3: Configure Stack Options
+[Database options](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20b-database-options.png)
 
-Continue to the stack configuration page and add the following tags:
 
-| Key | Value |
-|---|---|
-| Project | Tindy |
-| Environment | tindy |
-| Owner | TindyTeam |
 
-These tags help organize and identify the database resources associated with Tindy.
+[Database review](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20c-database-review.png)
 
-![Database stack tags](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-20a-database-tags.png)
 
-Keep the following options:
 
-- **Express mode:** Disabled.
-- **Rollback:** Enabled.
-- **Deletion policy option:** Use deletion policy.
+Stack `tindy-database` reached **CREATE_COMPLETE** with **Outputs (5)**, provisioning mode `Fresh`, port `5432` and identifier `tindy-database-postgres`. `DBEndpointAddress` and `DBMasterSecretArn` are available for subsequent bootstrap.
 
-![Database stack options](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-20b-database-options.png)
 
-Review the stack name, template, parameters, and deployment settings before creating the stack.
 
-![Review Database stack](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-20c-database-review.png)
+**📸 The Outputs image also records completed stack status.**
 
-### Step 4: Create and Verify the Database
 
-Submit the CloudFormation stack creation.
 
-CloudFormation begins provisioning the RDS instance, database subnet group, and PostgreSQL parameter group.
+[Fresh Database completed and Outputs](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-22-database-outputs.png)
 
-Open the **Events** tab to monitor the deployment until the stack reaches:
 
-`CREATE_COMPLETE`
 
-If the deployment fails, check the affected resource's **Logical ID** and **Status reason**.
-
-The deployment completed successfully, and CloudFormation displayed **5 Outputs**.
-
-![Database deployment completed and Outputs](/my_aws_workshop/images/5-Workshop/5.4-database-integrations/5.4.1/deploy-22-database-outputs.png)
-
-### Step 5: Review Database Outputs
-
-After the stack reaches `CREATE_COMPLETE`, open its **Outputs** tab.
-
-The verified database configuration includes:
-
-| Setting | Result |
-|---|---|
-| Stack name | `tindy-database` |
-| Provision mode | `Fresh` |
-| PostgreSQL version | `17.11` |
-| Database name | `tindy` |
-| Master username | `tindy_admin` |
-| Database identifier | `tindy-database-postgres` |
-| Database port | `5432` |
-| Stack status | `CREATE_COMPLETE` |
-| Outputs | 5 |
-
-The Outputs provide the database endpoint, port, identifier, master secret ARN, and provision mode.
-
-Two important references for the next deployment stage are:
-
-- `DBEndpointAddress`: The PostgreSQL endpoint used for database connectivity.
-- `DBMasterSecretArn`: The Secrets Manager ARN containing the RDS-managed master credentials.
-
-These references will be used during database bootstrap and Runtime configuration.
-
-### Next Steps
-
-The database infrastructure is now available, but the application schema and demo data have not yet been initialized.
-
-During Runtime setup, the following tasks will be completed:
-
-1. Run the database bootstrap process.
-2. Apply database migrations.
-3. Seed the required demo data.
-4. Verify and update the retained application database connection secret for the new RDS instance.
-5. Prepare the backend API to connect using its separate database credentials.
-
-The RDS-managed master secret is used for database administration and bootstrap, while the API uses its own application credential.
-
-### Deployment Result
-
-The Fresh Database deployment completed successfully.
-
-| Verification | Result |
-|---|---|
-| Database stack | `tindy-database` |
-| Provisioning | Fresh database |
-| Database networking | Private DB subnets |
-| Deletion protection | Enabled |
-| Stack status | `CREATE_COMPLETE` |
-| Outputs | 5 |
-| Schema and demo data | Pending Runtime setup |
-
-The PostgreSQL database has been provisioned successfully and is ready for application initialization.
-
-**The next stage is Integrations deployment, followed by Runtime setup and database preparation.**
+The RDS-managed master secret supports bootstrap. The API uses a separate credential through its application connection secret, prepared during Runtime setup. Integrations deployment is next.
