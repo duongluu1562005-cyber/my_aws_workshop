@@ -3,7 +3,7 @@ title: "PREPARE FRESH DATABASE SECRETS"
 date: 2026-11-22
 weight: 3
 chapter: false
-pre: "<b> 5.3.3 </b>"
+pre: "<b> 5.5.3 </b>"
 ---
 
 AWS CLI confirmed ECS service ACTIVE with Desired/Running/Pending all zero and no failures. The VPC Origin ID read directly from Outputs reports Deployed.
