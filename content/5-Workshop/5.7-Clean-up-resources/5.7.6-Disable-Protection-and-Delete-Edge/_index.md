@@ -1,4 +1,10 @@
-# DISABLE PROTECTION AND DELETE EDGE
+---
+title: "DISABLE PROTECTION AND DELETE EDGE"
+date: 2026-11-22
+weight: 6
+chapter: false
+pre: "<b> 5.7.6 </b>"
+---
 
 ## Prepare Edge deletion and handle termination protection
 
