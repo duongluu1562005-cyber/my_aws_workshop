@@ -1,6 +1,6 @@
 ---
 title: "YÊU CẦU TRƯỚC KHI TRIỂN KHAI"
-date: 2026-22-11
+date: 2026-11-22
 weight: 2
 chapter: false
 pre: " <b> 5.2 </b> "
