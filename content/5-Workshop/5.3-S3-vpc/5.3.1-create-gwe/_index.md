@@ -1,11 +1,10 @@
 ---
-title: "Deploy Foundation"
+title: "DEPLOY FOUNDATION"
 date: 2026-11-22
 weight: 1
 chapter: false
 pre: "<b> 5.3.1 </b>"
 ---
-# Deploy Foundation
 
 Foundation supplies frontend/media S3 buckets, the backend ECR repository, application secrets and GitHub OIDC. The main `foundation.yaml` also defines deployment and operations IAM roles.
 
