@@ -1,6 +1,10 @@
-
-# TINDY ARCHITECTURE OVERVIEW
-
+---
+title: "TINDY ARCHITECTURE OVERVIEW"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: " <b> 5.1 </b> "
+---
 Tindy helps users find projects and teammates, manage profiles, apply to projects and communicate with other members. This workshop deploys its AWS frontend, backend, database and PDF scanning infrastructure through six CloudFormation templates.
 
 ## Objectives
