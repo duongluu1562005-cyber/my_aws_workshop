@@ -1,7 +1,7 @@
 ---
 title: "DEPLOY INTEGRATIONS"
 date: 2026-11-22
-weight: 1
+weight: 2
 chapter: false
 pre: "<b> 5.4.2 </b>"
 ---
