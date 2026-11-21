@@ -1,5 +1,5 @@
 ---
-title: "Triển Khai Foundation"
+title: "TRIỂN KHAI Foundation"
 date: 2026-11-22
 weight: 1
 chapter: false
