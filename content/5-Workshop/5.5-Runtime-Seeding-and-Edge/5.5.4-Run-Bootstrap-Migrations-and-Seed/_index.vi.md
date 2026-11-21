@@ -3,7 +3,7 @@ title: "CHẠY BOOTSTRAP, MIGRATIONS VÀ SEED"
 date: 2026-11-22
 weight: 4
 chapter: false
-pre: "<b> 5.3.4 </b>"
+pre: "<b> 5.5.4 </b>"
 ---
 
 Runtime đã đạt trạng thái UPDATE_COMPLETE với đầy đủ cả ba database task definition. Các bước sau đây là hướng dẫn đang chờ bằng chứng thực thi. Giữ API `DesiredCount = 0` và Edge ở chế độ maintenance trong khi chuẩn bị cơ sở dữ liệu.
