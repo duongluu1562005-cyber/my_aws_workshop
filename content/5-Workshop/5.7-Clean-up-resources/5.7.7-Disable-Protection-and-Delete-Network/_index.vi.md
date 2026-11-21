@@ -1,6 +1,10 @@
-
-
-# TẮT CHẾ ĐỘ BẢO VỆ VÀ XÓA NETWORK
+---
+title: "TẮT CHẾ ĐỘ BẢO VỆ VÀ XÓA NETWORK"
+date: 2026-11-22
+weight: 7
+chapter: false
+pre: "<b> 5.7.7 </b>"
+---
 
 ## Chuẩn bị xóa Network
 
