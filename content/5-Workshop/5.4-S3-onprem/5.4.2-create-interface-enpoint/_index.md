@@ -1,5 +1,10 @@
-
-# DEPLOY INTEGRATIONS
+---
+title: "DEPLOY INTEGRATIONS"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: "<b> 5.4.2 </b>"
+---
 
 `integrations.yaml` configures GuardDuty Malware Protection for S3 PDF scanning, EventBridge result delivery, SQS and a DLQ. It also defines IAM and queue policies, CloudWatch alarms and optional SNS email notification resources.
 
