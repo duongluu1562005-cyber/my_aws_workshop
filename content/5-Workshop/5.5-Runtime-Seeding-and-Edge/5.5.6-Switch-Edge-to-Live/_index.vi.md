@@ -3,7 +3,7 @@ title: "CHUYỂN EDGE SANG CHẾ ĐỘ LIVE"
 date: 2026-11-22
 weight: 6
 chapter: false
-pre: "<b> 5.3.6 </b>"
+pre: "<b> 5.5.6 </b>"
 ---
 
 Runtime ở trạng thái UPDATE_COMPLETE với API Desired 1 / Running 1 / Pending 0 và ALB 1 Healthy / 0 Unhealthy. Edge vẫn ở chế độ maintenance. Giai đoạn này sử dụng Runtime Outputs để cấu hình CloudFront API origin.
