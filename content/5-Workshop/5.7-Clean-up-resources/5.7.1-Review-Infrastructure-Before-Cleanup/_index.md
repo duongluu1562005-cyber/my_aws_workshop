@@ -1,5 +1,10 @@
-
-# REVIEW INFRASTRUCTURE BEFORE CLEANUP
+---
+title: "REVIEW INFRASTRUCTURE BEFORE CLEANUP"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: "<b> 5.7.1 </b>"
+---
 
 ## Record the existing stacks
 
