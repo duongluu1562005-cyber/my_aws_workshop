@@ -1,6 +1,9 @@
-
-# SELF-ASSESSMENT
-
+---
+title: "SELF-ASSESSMENT"
+weight: 6
+chapter: false
+pre: "<b>6. </b>"
+---
 During the **First Cloud AI Journey (FCAJ)** program, I gained practical knowledge of AWS through self-study, the Tindy project, and community activities. This experience helped me recognize my strengths and areas for improvement.
 
 ## Assessment by Criterion
