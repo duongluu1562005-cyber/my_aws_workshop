@@ -1,6 +1,10 @@
-
-
-# CHUẨN BỊ VÀ XÓA RUNTIME
+---
+title: "CHUẨN BỊ VÀ XÓA RUNTIME"
+date: 2026-11-22
+weight: 3
+chapter: false
+pre: "<b> 5.7.3 </b>"
+---
 
 ## Chuẩn bị Runtime để xóa
 
