@@ -1,5 +1,10 @@
-
-# RUNTIME, SEEDING AND EDGE
+---
+title: "RUNTIME, SEEDING AND EDGE"
+date: 2026-11-22
+weight: 5
+chapter: false
+pre: "<b> 5.5 </b>"
+---
 
 Connect the deployed stacks into a running Tindy environment. Edge provides the HTTPS hostname. Runtime runs the API behind CloudFront VPC Origin and an internal ALB. Database tasks prepare DB roles, schema and demo data before enabling the API.
 
