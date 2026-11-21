@@ -1,5 +1,5 @@
 ---
-title: "CHIA SẺ VÀ ĐÁNH GIÁ"
+title: "Chia sẻ và Đánh giá"
 date: 2026-11-21
 weight: 7
 chapter: false
