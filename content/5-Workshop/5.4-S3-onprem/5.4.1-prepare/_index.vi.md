@@ -1,6 +1,6 @@
 ---
 title: "TẠO CƠ SỞ DỮ LIỆU FRESH"
-date: 2026-11-22
+date: 2026-11-19
 weight: 1
 chapter: false
 pre: "<b> 5.4.1 </b>"
