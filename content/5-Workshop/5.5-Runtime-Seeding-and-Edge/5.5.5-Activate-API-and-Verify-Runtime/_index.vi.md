@@ -3,7 +3,7 @@ title: "KÍCH HOẠT API VÀ XÁC MINH RUNTIME"
 date: 2026-11-22
 weight: 5
 chapter: false
-pre: "<b> 5.3.5 </b>"
+pre: "<b> 5.5.5 </b>"
 ---
 
 Bootstrap, migrations và seed đã hoàn tất với exit code 0 và các log hoàn tất. Giai đoạn này cấu hình nguồn lưu lượng ALB bằng CloudFront service security group và khởi chạy một API task. Edge vẫn ở chế độ maintenance cho đến khi trạng thái sức khỏe của Runtime được xác minh.
