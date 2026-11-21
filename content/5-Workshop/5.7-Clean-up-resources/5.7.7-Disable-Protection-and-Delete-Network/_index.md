@@ -1,5 +1,10 @@
-
-# DISABLE PROTECTION AND DELETE NETWORK
+---
+title: "DISABLE PROTECTION AND DELETE NETWORK"
+date: 2026-11-22
+weight: 7
+chapter: false
+pre: "<b> 5.7.7 </b>"
+---
 
 ## Prepare Network deletion
 
