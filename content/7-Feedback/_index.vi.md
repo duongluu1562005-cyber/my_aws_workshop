@@ -1,6 +1,10 @@
-
-# Chia sẻ và Đánh giá
-
+---
+title: "CHIA SẺ VÀ ĐÁNH GIÁ"
+date: 2026-11-21
+weight: 7
+chapter: false
+pre: "<b>7. </b>"
+---
 ## Đánh giá chung
 
 ### Môi trường học tập và làm việc
