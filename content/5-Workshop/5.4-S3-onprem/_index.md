@@ -3,7 +3,7 @@ title: "DATABASE AND INTEGRATIONS"
 date: 2026-11-22
 weight: 4
 chapter: false
-pre: "<b> 5.4 </b>"
+pre: "<b> 5.4. </b>"
 ---
 
 Prepare application storage and PDF scanning before running the backend. Database consumes the networking from section 5.3. Integrations uses the Foundation media bucket and delivers scan results to the API worker.
