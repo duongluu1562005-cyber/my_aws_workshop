@@ -1,5 +1,10 @@
-
-# CREATE EDGE IN MAINTENANCE MODE
+---
+title: "CREATE EDGE IN MAINTENANCE MODE"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: "<b> 5.5.1 </b>"
+---
 
 `edge.yaml` creates the CloudFront distribution, Origin Access Control, frontend bucket policy and maintenance routing function. Create Edge before Runtime to obtain the new hostname for API public host and OAuth configuration.
 
