@@ -157,7 +157,7 @@ Kịch bản chạy liên tục sử dụng **730 giờ mỗi tháng** tại `us
 | RDS for PostgreSQL | Một `db.t4g.micro` Single-AZ trong 730 giờ (11,68 USD) và 20 GiB gp3 (2,30 USD). | 13,98 USD/tháng |
 | Edge, media, bảo mật và AI | CloudFront, S3, ECR, Secrets Manager, GuardDuty, EventBridge, SQS, CloudWatch và Bedrock. Phí thay đổi theo dung lượng, yêu cầu, log, lượt quét và token. | Theo mức sử dụng |
 
-Chi phí nền tảng khi chạy liên tục là **55,32 USD mỗi tháng**. Con số này chưa bao gồm ALB LCU, phí CPU credit RDS nếu có, dung lượng sao lưu hoặc snapshot bổ sung và các dịch vụ tính theo mức sử dụng được liệt kê ở trên. Khi ước tính kịch bản demo theo lịch, cần tính cả snapshot và các tài nguyên được giữ lại. [AWS Pricing Calculator](https://calculator.aws/#/estimate)
+Chi phí nền tảng khi chạy liên tục là **55,32 USD mỗi tháng**. Con số này chưa bao gồm ALB LCU, phí CPU credit RDS nếu có, dung lượng sao lưu hoặc snapshot bổ sung và các dịch vụ tính theo mức sử dụng được liệt kê ở trên. Khi ước tính kịch bản demo theo lịch, cần tính cả snapshot và các tài nguyên được giữ lại. [AWS Pricing Calculator]([https://calculator.aws/#/estimate](https://calculator.aws/#/estimate?id=9f501b7b4cfa90d4c3e108ec22f54c361374f883))
 
 Bản ước tính công khai hiển thị **55,34 USD mỗi tháng**. So với bản xuất từ AWS Console, chi phí Fargate và ALB hiển thị đều cao hơn 0,01 USD. Phép tính ALB công khai sử dụng mức lưu lượng giả định 0,001 GB/giờ vì biểu mẫu yêu cầu một giá trị LCU dương.
 
