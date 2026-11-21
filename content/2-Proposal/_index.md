@@ -156,7 +156,7 @@ The always-on scenario runs for 730 hours per month in us-east-1. The figures co
 | RDS for PostgreSQL | One Single-AZ db.t4g.micro for 730 hours (USD 11.68) and 20 GiB gp3 (USD 2.30). | USD 13.98/month |
 | Edge, media, security, and AI | CloudFront, S3, ECR, Secrets Manager, GuardDuty, EventBridge, SQS, CloudWatch, and Bedrock. Charges vary with storage, requests, logs, scans, and tokens. | Usage-based |
 
-The always-on baseline is USD 55.32 per month. The baseline excludes ALB LCUs, any RDS CPU credit charges and additional backup or snapshot storage, and the usage-based services listed above. Include retained snapshots and other retained resources when estimating the scheduled demo scenario. [AWS Pricing Calculator](https://calculator.aws/#/estimate)
+The always-on baseline is USD 55.32 per month. The baseline excludes ALB LCUs, any RDS CPU credit charges and additional backup or snapshot storage, and the usage-based services listed above. Include retained snapshots and other retained resources when estimating the scheduled demo scenario. [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=9f501b7b4cfa90d4c3e108ec22f54c361374f883)
 
 The public estimate displays USD 55.34 per month. Compared with the AWS Console export, the displayed Fargate and ALB costs are each USD 0.01 higher. The public ALB calculation uses 0.001 GB/hour of assumed traffic because the form requires a positive LCU input.
 
