@@ -5,82 +5,67 @@ weight: 3
 chapter: false
 pre: "<b> 5.3. </b> "
 ---
+
 # Foundation and Network
 
-This section covers the deployment of Tindy's storage, application configuration, and network infrastructure. Foundation manages the S3 buckets, ECR repository, and application secrets, while Network provides the VPC, subnets, and security groups required by Database and Runtime.
+Build Tindy storage, application configuration and networking. Foundation supplies buckets, the image registry and secret references. Network provides the VPC, subnets and security groups used by Database and Runtime.
 
-Since the existing infrastructure was cleaned up before redeployment, nine retained Foundation resources must first be imported into the new stack before restoring the main template.
+This session follows cleanup. Nine Foundation resources were retained, so import them into the new stack before restoring the main template.
 
 ## 5.3.1 — Deploy Foundation
 
-The `foundation.yaml` template manages persistent AWS resources and conditional IAM roles for GitHub Actions.
+`foundation.yaml` manages persistent resources and conditional GitHub Actions roles.
 
-| **Resource Group** | **Purpose in Tindy** |
-| :--- | :--- |
-| Frontend bucket | Stores frontend build files, delivered through CloudFront using Origin Access Control. |
-| Media bucket and policy | Store uploaded files and enforce access conditions required for PDF scanning. |
-| ECR repository | Stores backend API images, referenced by image digest in Runtime. |
-| Application secrets | Provide database, JWT, and OAuth configuration references for ECS tasks. |
-| GitHub OIDC provider | Enables GitHub Actions to authenticate with AWS through deployment roles. |
-| Deployment/operations IAM roles | Provide workflow permissions when the corresponding parameters are enabled. |
+| **Resource group**              | **Purpose in Tindy**                                                            |
+| :------------------------------ | :------------------------------------------------------------------------------ |
+| Frontend bucket                 | Stores frontend build assets, served by CloudFront using Origin Access Control. |
+| Media bucket and policy         | Store uploads and enforce access conditions used by PDF scanning.               |
+| ECR repository                  | Stores API images, pinned by digest for Runtime.                                |
+| Application secrets             | Provide DB, JWT and OAuth configuration references to ECS tasks.                |
+| GitHub OIDC provider            | Supports GitHub Actions authentication through deployment roles.                |
+| Deployment/operations IAM roles | Grant permissions to workflows when their parameters enable them.               |
 
-### Deployment Process
+First, import nine retained resources with `foundation-import.yaml`. After `IMPORT_COMPLETE`, update with `foundation.yaml` to restore Outputs and recreate `InfraPlannerRole`. Configure roles that depend on new CloudFront and Runtime inputs when those inputs are available.
 
-The Foundation deployment follows these steps:
 
-1. Import the nine retained resources using `foundation-import.yaml`.
-2. Confirm that the stack reaches `IMPORT_COMPLETE`.
-3. Update the stack with `foundation.yaml` to restore its Outputs and recreate `InfraPlannerRole`.
-4. Configure roles that require CloudFront and Runtime inputs once those values become available.
 
-**Expected result:** The Foundation stack reaches `UPDATE_COMPLETE` and provides Outputs for S3 bucket names, ECR URI, secret ARNs, the OIDC provider, and enabled roles.
+**Expected result** is stack `UPDATE_COMPLETE`, with Outputs for bucket names, ECR URI, secret ARNs, the OIDC provider and enabled role.
 
 ## 5.3.2 — Deploy Network
 
-The `network.yaml` template creates a VPC with CIDR block `10.20.0.0/16`. The network is divided into subnet groups across two Availability Zones, with each group serving a specific purpose.
+`network.yaml` creates VPC `10.20.0.0/16`. Each subnet group spans two Availability Zones and serves a specific component.
 
-| **Component** | **Purpose** |
+| **Component**                     | **Use**                                                                    |
+| :-------------------------------- | :------------------------------------------------------------------------- |
+| Public task subnets               | Fargate API and one-off tasks with public IP assignment configured in ECS. |
+| Private app subnets               | Internal ALB, connected to CloudFront through a VPC Origin.                |
+| Private DB subnets                | RDS PostgreSQL subnet group.                                               |
+| Internet Gateway and route tables | Routing for the subnet groups.                                             |
+| Security groups and ingress rules | Control traffic between ALB, API, migration tasks and the database.        |
+
+The template defines 26 resources and nine Outputs. Use the new networking IDs in sections 5.4 and 5.5. Subnets span two Availability Zones, while API task count and database Multi-AZ behavior follow Runtime and Database settings.
+
+## Dependencies for subsequent stacks
+
+| **Output from this section**                    | **Consumer**                                    |
+| :---------------------------------------------- | :---------------------------------------------- |
+| `MediaBucketName`                               | Integrations protection plan and Runtime media. |
+| `FrontendBucketName`                            | Edge S3 origin and bucket policy.               |
+| `ApiRepositoryUri`, secret ARNs                 | Runtime image and application configuration.    |
+| `PrivateDbSubnetIds`, `DatabaseSecurityGroupId` | RDS in section 5.4.1.                           |
+| VPC, API/ALB subnets and security groups        | Runtime in section 5.5.2.                       |
+
+## Verified results
+
+| **Component** | **State**                                                                                           |
+| :------------ | :-------------------------------------------------------------------------------------------------- |
+| Foundation    | Import completed and main template update reached `UPDATE_COMPLETE`, with 14 Outputs at this stage. |
+| Network       | `CREATE_COMPLETE`, with nine Outputs.                                                               |
+
+## Practical guides
+
+| **Page** | **Procedure and evidence** |
 | :--- | :--- |
-| Public task subnets | Run Fargate API and one-off tasks, with public IP assignment configured through ECS. |
-| Private app subnets | Host the internal ALB, which connects to CloudFront through a VPC Origin. |
-| Private DB subnets | Provide the subnet group for RDS PostgreSQL. |
-| Internet Gateway and route tables | Configure network routing for the subnet groups. |
-| Security groups and ingress rules | Manage traffic between the ALB, API, migration tasks, and database. |
-
-The Network template defines **26 resources and nine Outputs**.
-
-The networking IDs generated by this stack are used in Sections 5.4 and 5.5.
-
-Although the subnets span two Availability Zones, the number of running API tasks and the database Multi-AZ configuration depend on the settings defined in Runtime and Database.
-
-## Dependencies for Subsequent Stacks
-
-The Outputs from Foundation and Network are required to deploy the remaining infrastructure.
-
-| **Output** | **Used By** |
-| :--- | :--- |
-| `MediaBucketName` | Integrations protection plan and Runtime media storage. |
-| `FrontendBucketName` | Edge S3 origin and frontend bucket policy. |
-| `ApiRepositoryUri`, secret ARNs | Runtime container image and application configuration. |
-| `PrivateDbSubnetIds`, `DatabaseSecurityGroupId` | RDS deployment in Section 5.4.1. |
-| VPC, API/ALB subnets, and security groups | Runtime deployment in Section 5.5.2. |
-
-## Verified Results
-
-After completing the deployment, both stacks reached their expected states.
-
-| **Component** | **Verified Result** |
-| :--- | :--- |
-| Foundation | Resource import completed successfully. The main template update reached `UPDATE_COMPLETE`, with 14 Outputs at this stage. |
-| Network | Stack reached `CREATE_COMPLETE`, generating nine Outputs. |
-
-
-## Practical Guides
-
-The following pages provide detailed deployment steps and supporting evidence.
-
-| **Guide** | **Content** |
-| :--- | :--- |
-| [5.3.1 Deploy Foundation](5.3.1-create-gwe/) | Import retained resources, restore the main template, review IAM roles, and verify Outputs. |
-| [5.3.2 Deploy Network](5.3.2-test-gwe/) | Create network resources, configure tags, and verify the generated Outputs. |
+| [5.3.1 Deploy Foundation](/aws_my_workshop/5-workshop/5.3-foundation-network/5.3.1-foundation/) | Import retained resources, restore the main template, review the role and Outputs. |
+| [5.3.2 Deploy Network](/aws_my_workshop/5-workshop/5.3-foundation-network/5.3.2-network/) | Create networking, add tags and verify new Outputs. |
 
