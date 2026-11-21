@@ -1,5 +1,10 @@
-
-# YÊU CẦU TRƯỚC KHI TRIỂN KHAI
+---
+title: "YÊU CẦU TRƯỚC KHI TRIỂN KHAI"
+date: 2026-22-11
+weight: 2
+chapter: false
+pre: " <b> 5.2 </b> "
+---
 
 Chuẩn bị quyền truy cập AWS, mã nguồn hạ tầng, image backend và các tham chiếu tài nguyên để triển khai Tindy tại N. Virginia (`us-east-1`), phù hợp với các ràng buộc của template.
 
