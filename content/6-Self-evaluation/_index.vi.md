@@ -1,6 +1,9 @@
-
-# TỰ ĐÁNH GIÁ
-
+---
+title: "TỰ ĐÁNH GIÁ"
+weight: 6
+chapter: false
+pre: "<b>6. </b>"
+---
 Trong quá trình tham gia chương trình **First Cloud AI Journey (FCAJ)**, em đã tích lũy kiến thức thực tế về AWS thông qua việc tự học, thực hiện dự án Tindy và tham gia các hoạt động cộng đồng. Những trải nghiệm này giúp em nhận ra điểm mạnh cũng như những kỹ năng cần tiếp tục cải thiện.
 
 ## Đánh giá theo tiêu chí
