@@ -1,5 +1,10 @@
-
-# RUNTIME, SEED DỮ LIỆU VÀ EDGE
+---
+title: "RUNTIME, SEED DỮ LIỆU VÀ EDGE"
+date: 2026-11-22
+weight: 5
+chapter: false
+pre: "<b> 5.5 </b>"
+---
 
 Kết nối các stack đã triển khai thành một môi trường Tindy đang hoạt động. Edge cung cấp HTTPS hostname. Runtime chạy API phía sau CloudFront VPC Origin và một ALB nội bộ. Các tác vụ Database chuẩn bị DB roles, schema và dữ liệu demo trước khi bật API.
 
