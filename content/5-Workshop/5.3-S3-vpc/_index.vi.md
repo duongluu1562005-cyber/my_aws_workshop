@@ -1,11 +1,10 @@
 ---
-title : "Foundation và Network"
+title : "FOUNDATION VÀ NETWORK"
 date : 2026-11-19 
 weight : 3
 chapter : false
 pre : " <b> 5.3. </b> "
 ---
-# Foundation và Network
 
 Xây dựng hệ thống lưu trữ, cấu hình ứng dụng và mạng cho Tindy. Foundation cung cấp các bucket, kho lưu trữ image và các tham chiếu secret. Network cung cấp VPC, subnet và security group được Database và Runtime sử dụng.
 
