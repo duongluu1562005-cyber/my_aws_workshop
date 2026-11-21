@@ -1,5 +1,5 @@
 ---
-title: "SHARING AND FEEDBACK"
+title: "Sharing and Feedback"
 date: 2026-11-21
 weight: 7
 chapter: false
