@@ -1,5 +1,10 @@
-
-# KẾT NỐI LẠI QUYỀN CI/CD SAU KHI TRIỂN KHAI LẠI
+---
+title: "KẾT NỐI LẠI QUYỀN CI/CD SAU KHI TRIỂN KHAI LẠI"
+date: 2026-11-22
+weight: 7
+chapter: false
+pre: "<b> 5.5.7 </b>"
+---
 
 Kiểm tra AWS chỉ đọc xác nhận InfraPlannerEnabled là true, nhưng BackendDeployEnabled và LifecycleWorkflowsEnabled vẫn là false và các đầu vào frontend deploy đang để trống. Runtime được xây dựng lại có các tên API IAM role mới. Khôi phục các deployment role thông qua CloudFormation trước khi cập nhật các biến repository của GitHub Actions. Các bước này đang chờ thực thi.
 
