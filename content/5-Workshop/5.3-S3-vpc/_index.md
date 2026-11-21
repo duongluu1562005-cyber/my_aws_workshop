@@ -1,12 +1,10 @@
 ---
-title: "Foundation and Network"
+title: "FOUNDATION AND NETWORK"
 date: 2026-11-19
 weight: 3
 chapter: false
 pre: "<b> 5.3. </b> "
 ---
-
-# Foundation and Network
 
 Build Tindy storage, application configuration and networking. Foundation supplies buckets, the image registry and secret references. Network provides the VPC, subnets and security groups used by Database and Runtime.
 
