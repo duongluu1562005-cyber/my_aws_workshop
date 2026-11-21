@@ -1,5 +1,10 @@
-
-# Triển khai Foundation
+---
+title: "Triển Khai Foundation"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: "<b> 5.3.1 </b>"
+---
 
 Foundation cung cấp các S3 bucket frontend/media, ECR repository cho backend, application secrets và GitHub OIDC. Template chính `foundation.yaml` cũng định nghĩa các IAM role cho triển khai và vận hành.
 
