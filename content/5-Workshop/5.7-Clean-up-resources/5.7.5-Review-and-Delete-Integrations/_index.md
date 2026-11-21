@@ -1,4 +1,10 @@
-# REVIEW AND DELETE INTEGRATIONS
+---
+title: "REVIEW AND DELETE INTEGRATIONS"
+date: 2026-11-22
+weight: 5
+chapter: false
+pre: "<b> 5.7.5 </b>"
+---
 
 ## Review and delete Integrations
 
