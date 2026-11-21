@@ -1,5 +1,10 @@
-
-# DEPLOYMENT PREREQUISITES
+---
+title: "DEPLOYMENT PREREQUISITES"
+date: 2026-11-22
+weight: 2
+chapter: false
+pre: " <b> 5.2 </b> "
+---
 
 Prepare AWS access, infrastructure source, the backend image and resource references for Tindy deployment in N. Virginia (`us-east-1`), matching template constraints.
 
