@@ -1,200 +1,203 @@
+
 ---
-title: "Bản đề xuất"
-date: 2026-11-19
+title: "Đề xuất dự án"
+date: 2026-19-11
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-# Tindy — Nền tảng tìm kiếm dự án và đồng đội trên AWS
 
-## 1. Tóm tắt dự án
+# Tindy — Nền tảng AWS để tìm kiếm dự án và đồng đội
 
-Tindy là nền tảng web được thiết kế để kết nối sinh viên và những người mới bắt đầu sự nghiệp với các dự án phù hợp với kỹ năng và thời gian họ có thể tham gia. Trưởng nhóm dự án có thể đăng tuyển cho những vị trí cụ thể, theo dõi đơn ứng tuyển và mời các ứng viên tiềm năng tham gia. Khi ứng viên được chấp nhận, Tindy ghi nhận tư cách thành viên mới trong dự án và cập nhật số lượng chỗ đã tuyển của vị trí tương ứng, bảo đảm thông tin nhất quán cho cả hai bên.
+## 1. Tóm tắt tổng quan
 
-Môi trường trình diễn (demo) dự kiến được triển khai tại **US East (N. Virginia), `us-east-1`**. Giao diện React được Amazon CloudFront phân phối từ nội dung lưu trên Amazon S3, còn các yêu cầu cần xử lý phía máy chủ được chuyển đến API ASP.NET Core triển khai bằng Amazon ECS trên AWS Fargate. Amazon RDS for PostgreSQL lưu trữ dữ liệu nghiệp vụ của ứng dụng. Một bucket S3 riêng tư lưu trữ tài liệu; GuardDuty được dùng để quét các tệp PDF và Amazon Bedrock hỗ trợ tạo nội dung hồ sơ gợi ý.
+Tindy là một ứng dụng web giúp sinh viên và những người mới bắt đầu sự nghiệp tìm kiếm các dự án phù hợp với kỹ năng và thời gian có thể tham gia của họ. Người phụ trách dự án đăng tuyển các vị trí cụ thể, theo dõi đơn ứng tuyển và gửi lời mời. Khi một ứng viên được chấp nhận, Tindy cập nhật danh sách thành viên dự án và số lượng chỗ đã được tuyển của vị trí để cả hai bên đều nhìn thấy cùng một trạng thái.
+
+Bản demo được đề xuất chạy tại **US East (N. Virginia), `us-east-1`**. CloudFront phân phối frontend React từ S3 và chuyển các yêu cầu động đến API ASP.NET Core trên ECS Fargate. API lưu trữ dữ liệu nghiệp vụ trong RDS for PostgreSQL. S3 bucket media riêng tư lưu trữ tài liệu, trong khi GuardDuty quét các tệp PDF và Amazon Bedrock tạo bản nháp các đề xuất cho hồ sơ.
 
 ## 2. Vấn đề và phạm vi
 
-### Vấn đề đặt ra
+### Vấn đề
 
-Thông tin về các dự án đang tuyển thành viên thường nằm rải rác trong nhóm chat, bài đăng mạng xã hội và biểu mẫu trực tuyến. Điều này khiến ứng viên khó xác định vị trí nào còn tuyển, từng vị trí yêu cầu kỹ năng gì và cần dành bao nhiêu thời gian mỗi tuần. Đồng thời, trưởng nhóm thường phải hỏi lặp lại cùng một thông tin và quản lý đơn ứng tuyển, lời mời cùng số chỗ trống trên nhiều kênh. Tindy tập trung các thông tin này theo từng dự án và vị trí.
+Thông tin tuyển thành viên thường phân tán trong các nhóm trò chuyện, bài đăng và biểu mẫu. Người ứng tuyển gặp khó khăn trong việc xác định những vị trí nào đang mở, yêu cầu những kỹ năng gì và cần bao nhiêu giờ mỗi tuần. Người phụ trách phải liên tục hỏi lại cùng một thông tin và theo dõi đơn ứng tuyển, lời mời và số chỗ còn trống trên nhiều kênh khác nhau. Tindy tập hợp những thông tin này cho từng dự án và vị trí.
 
 ### Phạm vi demo
 
-| **Quy trình** | **Hành động của người dùng** | **Kết quả trên Tindy** |
-| :-- | :-- | :-- |
-| Tạo hồ sơ | Trong quá trình thiết lập tài khoản ban đầu, thành viên nhập kỹ năng, vai trò mong muốn, kinh nghiệm và số giờ có thể tham gia. Khi phù hợp, văn bản hoặc CV định dạng PDF được cung cấp có thể dùng để tạo các gợi ý. | Hồ sơ chỉ được cập nhật sau khi thành viên xem lại bản nháp và lưu thông tin. |
-| Ứng tuyển vào vị trí | Trưởng nhóm đăng một vị trí đang tuyển. Thành viên xem dự án, chọn vị trí, xác nhận gửi đơn và chờ trưởng nhóm xét duyệt. | Đơn ban đầu có trạng thái **Pending (Đang chờ)**. Khi được chấp nhận, ứng viên trở thành thành viên dự án và số chỗ đã tuyển của vị trí tăng lên. |
-| Mời đồng đội | Trưởng nhóm tìm ứng viên đã đồng ý cho phép người khác tìm thấy hồ sơ của mình, rồi gửi lời mời gắn với dự án và vai trò. Người nhận mở thông báo và phản hồi. | Lời mời giữ trạng thái **Pending (Đang chờ)** cho đến khi có quyết định. Nếu người nhận chấp nhận và API xác nhận đủ điều kiện, hệ thống tạo tư cách thành viên và cập nhật số chỗ đã tuyển. |
-| Trao đổi | Người dùng gửi tin nhắn riêng hoặc tham gia các cuộc trò chuyện của dự án mà họ có quyền truy cập. | Tin nhắn mới chỉ hiển thị trong đúng cuộc trò chuyện và cho những người tham gia được cấp quyền. |
-| Vận hành demo | Người vận hành phát hành phiên bản mới của frontend và API, kiểm tra dịch vụ, tạo bản sao lưu và khôi phục môi trường khi cần. | Thông tin phát hành, bằng chứng kiểm thử và mã nhận dạng bản sao lưu làm cơ sở kiểm chứng và khôi phục hệ thống. |
+| Quy trình | Hành động của người dùng | Kết quả trong Tindy |
+| :--- | :--- | :--- |
+| Xây dựng hồ sơ | Thành viên hoàn thành quy trình onboarding và nhập kỹ năng, vai trò mong muốn, kinh nghiệm và thời gian có thể tham gia. Văn bản hoặc CV PDF đủ điều kiện có thể được sử dụng để tạo bản nháp. | Hồ sơ được cập nhật sau khi chủ sở hữu xem xét và lưu. |
+| Ứng tuyển vào một vị trí | Người phụ trách đăng một vị trí đang tuyển. Thành viên tìm thấy dự án, chọn vị trí và xác nhận ứng tuyển. Người phụ trách xem xét đơn đã gửi. | Đơn ứng tuyển đã gửi có trạng thái Pending. Sau khi được chấp nhận, thành viên xuất hiện trong dự án và số chỗ đã tuyển của vị trí tăng lên. |
+| Mời một đồng đội | Người phụ trách chọn dự án và vị trí, tìm một ứng viên đã đồng ý nhận lời mời và gửi lời mời. Ứng viên mở thông báo và phản hồi. | Lời mời có trạng thái Pending cho đến khi được xử lý. Khi ứng viên chấp nhận và API xác minh điều kiện hợp lệ, ứng dụng tạo tư cách thành viên và cập nhật số chỗ đã tuyển. |
+| Giao tiếp | Các thành viên trao đổi tin nhắn trực tiếp hoặc tham gia cuộc trò chuyện của dự án khi có quyền truy cập. | Người dùng được cấp quyền nhìn thấy tin nhắn mới trong đúng cuộc trò chuyện. |
+| Vận hành demo | Người vận hành phát hành frontend và API, kiểm tra tình trạng dịch vụ, sao lưu dữ liệu và xây dựng lại môi trường nếu cần. | Thông tin phát hành, kết quả xác minh và các tham chiếu sao lưu hỗ trợ quá trình khôi phục. |
 
-### Cách hiểu điểm phù hợp (Match Score)
+### Diễn giải điểm phù hợp
 
-Với mỗi vị trí đang tuyển, API tính điểm phù hợp dựa trên bốn tiêu chí: **kỹ năng bắt buộc (40%), vai trò mong muốn (30%), thời gian có thể tham gia (20%) và kỹ năng bổ sung (10%)**. Khi vị trí không quy định một nhóm kỹ năng cụ thể hoặc không thể đánh giá thời gian tham gia, trọng số của các tiêu chí còn áp dụng sẽ được phân bổ lại theo tỷ lệ. Nếu ứng viên chưa nhập vai trò mong muốn, tiêu chí này nhận 0 điểm.
+API tính điểm cho mỗi vị trí bằng bốn trọng số cơ bản: **kỹ năng bắt buộc 40%, vai trò mong muốn 30%, thời gian có thể tham gia 20% và kỹ năng tùy chọn 10%**. Nếu một vị trí không có kỹ năng trong một danh mục hoặc không thể tính toán thời gian có thể tham gia, API sẽ chuẩn hóa các trọng số còn lại có thể áp dụng. Nếu thiếu vai trò mong muốn, tiêu chí đó được tính 0 điểm.
 
-Ví dụ, một ứng viên đáp ứng toàn bộ kỹ năng bắt buộc và bổ sung, phù hợp với vai trò mong muốn nhưng chỉ có thể tham gia 5 trong số 10 giờ yêu cầu mỗi tuần sẽ đạt **90/100**. Điểm số có vai trò giải thích mức độ phù hợp, không tự động quyết định tuyển dụng. Người dùng vẫn là bên đưa ra quyết định; khi việc chấp nhận được gửi lên, API kiểm tra lại quyền truy cập, trạng thái dự án và số chỗ còn lại.
+Ví dụ, một ứng viên đáp ứng tất cả kỹ năng bắt buộc và tùy chọn cũng như vai trò mong muốn, đồng thời có thể đóng góp 5 trong số 10 giờ mỗi tuần mà dự án yêu cầu, sẽ đạt **90/100** điểm. Điểm số thể hiện mức độ phù hợp. Người dùng đưa ra quyết định tuyển thành viên và API kiểm tra lại quyền truy cập, trạng thái dự án và sức chứa khi xử lý việc chấp nhận.
 
 ### Lợi ích và cách đánh giá
 
-Đối với **thành viên**, Tindy hiển thị rõ các vị trí đang tuyển, thời gian cần cam kết mỗi tuần và những kỹ năng còn thiếu trong quá trình tìm dự án. Một hồ sơ hoàn chỉnh cũng có thể dùng để ứng tuyển nhiều vị trí. Đối với **trưởng nhóm dự án**, hoạt động tuyển thành viên được tổ chức theo dự án và vị trí, giúp theo dõi đơn ứng tuyển lẫn lời mời dễ dàng hơn. Sau khi ứng viên tham gia, trạng thái đơn, bản ghi thành viên và số chỗ đã tuyển đều có thể đối chiếu với cùng dữ liệu nền tảng.
+Đối với **thành viên**, chức năng khám phá dự án cho biết vị trí đang tuyển, số giờ dự kiến mỗi tuần và các kỹ năng còn thiếu. Một hồ sơ có thể được sử dụng lại để ứng tuyển vào nhiều vị trí. Đối với **người phụ trách dự án**, đơn ứng tuyển và lời mời được tổ chức theo dự án và vị trí. Khi tuyển thành viên thành công, trạng thái đơn ứng tuyển, tư cách thành viên dự án và số chỗ đã tuyển có thể được kiểm tra dựa trên cùng các bản ghi dữ liệu nghiệp vụ.
 
-Buổi demo sẽ đánh giá những lợi ích này thông qua các thao tác có thể quan sát và đo lường. Các bài kiểm thử tuyển dụng ghi lại số bước và thời gian từ lúc chọn vị trí đến khi cả hai bên xác nhận kết quả cuối cùng. Bài kiểm thử hoàn thiện hồ sơ sử dụng cùng bộ dữ liệu mẫu để so sánh việc nhập thủ công với quy trình có AI hỗ trợ, bao gồm tạo bản nháp, xem xét và chỉnh sửa gợi ý. Việc đánh giá cũng tính đến chi phí AWS, thời gian chuẩn bị môi trường demo và công sức người dùng bỏ ra để kiểm tra thông tin hồ sơ được đề xuất. Các phép đo này làm cơ sở đánh giá mức độ hữu ích của nền tảng sau thử nghiệm.
+Quá trình thử nghiệm sẽ đo lường giá trị của các quy trình này. Đối với tuyển thành viên, ghi lại các bước và thời gian đã trôi qua từ khi chọn một vị trí cho đến khi cả hai bên xác nhận kết quả. Đối với việc nhập hồ sơ, sử dụng cùng thông tin mẫu để so sánh việc nhập thủ công với quá trình tạo bản nháp, xem xét và chỉnh sửa các đề xuất của AI. Chi phí hạ tầng, thời gian thiết lập demo và công sức cần thiết để xem xét các đề xuất cũng được sử dụng trong đánh giá. Những phép đo này hỗ trợ việc đánh giá giá trị sau quá trình thử nghiệm.
 
 ## 3. Kiến trúc giải pháp
 
-![Sơ đồ kiến trúc Tindy](/my_aws_workshop/images/2-Proposal/3.png)
-*Sơ đồ kiến trúc Tindy dùng trong proposal. Phần giải thích theo số thứ tự dưới đây tương ứng với cấu hình kho mã nguồn và cách ứng dụng hiện được triển khai.*
+![Sơ đồ kiến trúc Tindy](./my_aws_workshop/images/2-Proposal/3.png)
 
-| **Bước** | **Thành phần** | **Luồng yêu cầu hoặc dữ liệu** |
-| :-- | :-- | :-- |
-| 1 | Amazon CloudFront và bucket S3 của frontend | Người dùng truy cập ứng dụng qua HTTPS. Bucket S3 riêng tư cung cấp giao diện React/Vite thông qua CloudFront. Origin Access Control (OAC) chỉ cho phép CloudFront distribution, thay vì công chúng, đọc các đối tượng frontend. |
-| 2 | CloudFront VPC Origin và Application Load Balancer | Các yêu cầu đến đường dẫn động, bao gồm `/api/*`, `/hubs/*` và các đường dẫn gọi lại sau đăng nhập, được chuyển đến ALB nội bộ. Frontend và API cùng dùng một hostname; những yêu cầu động này không được lưu cache. [CloudFront VPC origins](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-vpc-origins.html) |
-| 3 | Amazon ECS, AWS Fargate và Amazon ECR | Image API ASP.NET Core .NET 10 lưu tại ECR được triển khai dưới dạng container ECS. Backend xử lý đăng nhập, hồ sơ, tìm kiếm dự án, quy trình tuyển dụng và nhắn tin qua SignalR. Tình trạng sẵn sàng của tác vụ được giám sát bằng health check của ALB. |
-| 4 | Bucket S3 lưu media, GuardDuty, EventBridge và SQS | Tệp media tải lên được lưu trong bucket S3 không công khai. Chứng chỉ PDF và tài liệu đầu vào cho AI đi qua quy trình quét mã độc. GuardDuty tạo kết quả quét, EventBridge chuyển kết quả tới SQS để worker xử lý và cập nhật trạng thái tệp. Các thông điệp không xử lý được được giữ trong hàng đợi thư lỗi (dead-letter queue, DLQ) để điều tra. |
-| 5 | Amazon Bedrock | Trước khi trích xuất thông tin từ PDF làm đầu vào AI, máy chủ kiểm tra rằng đối tượng S3 tương ứng đã có kết quả quét sạch. Hệ thống cũng hỗ trợ nhập văn bản trực tiếp. Sau khi xác thực phản hồi, backend đưa ra các giá trị hồ sơ, kỹ năng, kinh nghiệm, chứng chỉ và cảnh báo được đề xuất để người dùng xem xét. |
-| 6 | Amazon RDS for PostgreSQL | PostgreSQL 17 lưu dữ liệu ứng dụng có cấu trúc như tài khoản, hồ sơ, dự án, vị trí, đơn ứng tuyển, lời mời và tin nhắn. RDS được đặt trong các private subnet, bắt buộc sử dụng TLS và giới hạn kết nối bằng security group. |
+*Sơ đồ kiến trúc Tindy cho bản đề xuất. Phần mô tả theo số thứ tự bên dưới phản ánh cấu hình repository và mã nguồn ứng dụng.*
 
-### Ba luồng xử lý qua sơ đồ
+| Bước | Thành phần | Luồng yêu cầu hoặc dữ liệu |
+| :--- | :--- | :--- |
+| 1 | Amazon CloudFront và S3 bucket frontend | Người dùng mở trang web qua HTTPS. CloudFront phân phối bản build React/Vite từ một S3 bucket riêng tư. Origin Access Control (OAC) giới hạn quyền đọc frontend cho distribution. |
+| 2 | CloudFront VPC Origin và Application Load Balancer | Các đường dẫn động như `/api/*`, `/hubs/*` và các callback đăng nhập được chuyển đến ALB nội bộ. Ứng dụng web và API dùng chung một hostname, đồng thời caching bị vô hiệu hóa đối với các đường dẫn động này. CloudFront VPC origins |
+| 3 | Amazon ECS, AWS Fargate và Amazon ECR | ECS chạy container API ASP.NET Core .NET 10 từ ECR. API xử lý xác thực, hồ sơ, khám phá dự án, tuyển thành viên và SignalR chat. Các health check của ALB theo dõi tình trạng task. |
+| 4 | S3 bucket media, GuardDuty, EventBridge và SQS | Một bucket riêng tư lưu trữ media. Các tệp PDF chứng chỉ và PDF đầu vào AI đi qua quy trình quét. EventBridge chuyển kết quả quét của GuardDuty đến SQS để worker có thể cập nhật trạng thái tài liệu. Một dead-letter queue (DLQ) lưu giữ các thông điệp xử lý thất bại để điều tra. |
+| 5 | Amazon Bedrock | Đối với các tệp PDF đầu vào AI, backend xác minh kết quả quét an toàn của S3 object tương ứng trước khi cho phép trích xuất. Người dùng cũng có thể gửi văn bản. Backend xác thực đầu ra và trả về các trường hồ sơ dạng bản nháp, kỹ năng, kinh nghiệm, chứng chỉ và cảnh báo để xem xét. |
+| 6 | Amazon RDS for PostgreSQL | PostgreSQL 17 lưu trữ dữ liệu có cấu trúc như tài khoản, hồ sơ, dự án, vị trí, đơn ứng tuyển, lời mời và tin nhắn. RDS sử dụng private subnets, yêu cầu TLS và giới hạn quyền truy cập thông qua security groups. |
 
-**Truy cập ứng dụng và cập nhật dữ liệu (1 → 2 → 3 → 6).** Trình duyệt tải các tài nguyên tĩnh từ S3 thông qua CloudFront. Khi mở dự án, gửi đơn ứng tuyển hoặc bắt đầu chat, trình duyệt gửi yêu cầu động qua VPC origin của CloudFront đến ALB nội bộ. Load balancer chuyển yêu cầu tới một Fargate task đang hoạt động tốt. Trước khi đọc hoặc ghi PostgreSQL, API kiểm tra JWT và quyền của người gọi đối với dự án hoặc cuộc trò chuyện tương ứng. Trang frontend, điểm cuối API và lưu lượng chat dùng chung một hostname.
+### Ba luồng hoạt động trong sơ đồ
 
-**Tải chứng chỉ và kiểm tra PDF (3 → 4).** PDF được tải qua API và lưu vào bucket media riêng tư. GuardDuty quét tệp; EventBridge chuyển kết quả đến SQS; worker liên kết kết quả với đúng đối tượng hoặc phiên bản S3 rồi cập nhật trạng thái tài liệu. Các thao tác cần kết quả quét sạch, bao gồm một số thao tác đọc và trích xuất, vẫn bị chặn khi tệp đang chờ quét hoặc không đủ điều kiện. Nếu mọi lần thử lại theo cấu hình đều thất bại, thông điệp được đưa vào DLQ.
+**Truy cập ứng dụng và cập nhật dữ liệu (1 → 2 → 3 → 6).** Trình duyệt tải frontend từ S3 thông qua CloudFront. Khi người dùng mở dự án, ứng tuyển hoặc kết nối chat, CloudFront định tuyến yêu cầu động qua VPC Origin đến ALB nội bộ. ALB chọn một Fargate task có trạng thái hoạt động tốt. API xác minh JWT và quyền truy cập đối với dự án hoặc cuộc trò chuyện trước khi đọc hoặc ghi dữ liệu vào PostgreSQL. Web, API và chat dùng chung một hostname.
 
-**Trích xuất thông tin hồ sơ (4 → 5 → 3 → 6).** Việc trích xuất từ tệp PDF đầu vào AI chỉ được cho phép sau khi có kết quả quét sạch. Người dùng cũng có thể nhập văn bản trực tiếp mà không cần tải PDF. Máy chủ yêu cầu Bedrock xử lý, kiểm tra cấu trúc phản hồi và tạo các thông tin hồ sơ được gợi ý như kỹ năng, kinh nghiệm và chứng chỉ. API chỉ lưu vào PostgreSQL những giá trị người dùng đã xem xét, có thể chỉnh sửa và xác nhận.
+**Tải lên chứng chỉ và kiểm tra PDF (3 → 4).** API nhận media và ghi tệp PDF vào vùng lưu trữ S3 riêng tư. GuardDuty quét tệp, EventBridge chuyển kết quả quét đến SQS và một worker đối chiếu kết quả với S3 object hoặc phiên bản tương ứng rồi cập nhật trạng thái tài liệu. API chặn các thao tác đọc hoặc trích xuất yêu cầu kết quả quét an toàn khi tài liệu đang chờ xử lý hoặc không đủ điều kiện. DLQ lưu giữ các thông điệp xử lý thất bại sau số lần thử lại đã cấu hình.
 
-**Mạng và tính sẵn sàng.** Các tài nguyên mạng được phân bố trên hai Availability Zone. Load balancer không trực tiếp mở ra Internet. Trong cấu hình hiện tại, các Fargate task nằm trong public subnet và được cấp địa chỉ IPv4 công khai. Quy tắc security group chỉ cho phép lưu lượng truy cập API đi qua ALB. Hướng dẫn demo quy định **một Fargate task** và template cơ sở dữ liệu triển khai **RDS Single-AZ**. Hai vùng trong sơ đồ thể hiện vị trí các subnet, không có nghĩa là cơ sở dữ liệu chạy Multi-AZ. Trước khi tăng số task, cần kiểm chứng việc truyền sự kiện SignalR giữa các task và xử lý sự kiện nền.
+**Trích xuất hồ sơ (4 → 5 → 3 → 6).** Một tệp PDF đầu vào AI có thể tiếp tục được trích xuất sau khi có kết quả quét an toàn. Người dùng cũng có thể gửi văn bản trực tiếp. Backend gọi Bedrock, xác thực phản hồi và trả về các trường hồ sơ dạng bản nháp, kỹ năng, kinh nghiệm và chứng chỉ. API ghi các trường được chọn vào PostgreSQL sau khi người dùng xem xét, chỉnh sửa và xác nhận lưu.
 
-**Bảo mật và vận hành.** Nội dung web tĩnh và media của người dùng được lưu trong hai bucket S3 riêng. Backend thực hiện xác thực JWT và kiểm tra quyền đối với từng tài nguyên. Thông tin kết nối cơ sở dữ liệu và cấu hình nhạy cảm được giữ trong Secrets Manager. Quy trình triển khai dùng GitHub Actions với cơ chế nhận quyền OIDC. CloudWatch cung cấp log ứng dụng và các tín hiệu về sức khỏe target, lỗi HTTP 5xx và hoạt động DLQ. Khi bật cảnh báo, SNS gửi thông báo vận hành.
+**Mạng và tính sẵn sàng.** VPC trải rộng trên hai Availability Zones. ALB là ALB nội bộ. Trong cấu hình hiện tại, các Fargate task sử dụng public subnets và nhận địa chỉ public IPv4. Security groups giới hạn lưu lượng truy cập vào API chỉ từ ALB. Runbook demo sử dụng một Fargate task và template database cấu hình RDS Single-AZ. Hai vùng trong sơ đồ thể hiện vị trí đặt các subnet. Việc mở rộng quy mô yêu cầu xác minh SignalR giữa các task và quá trình xử lý sự kiện nền.
 
-### Các thành phần và lý do lựa chọn thiết kế
+**Bảo mật và vận hành.** Tài nguyên frontend và media sử dụng các S3 bucket riêng biệt. Backend xác thực người dùng bằng JWT và thực thi quyền truy cập ở cấp tài nguyên. Secrets Manager lưu trữ thông tin kết nối và cấu hình nhạy cảm. GitHub Actions đảm nhận các vai trò triển khai thông qua OIDC. CloudWatch thu thập log và giám sát tình trạng target, các phản hồi HTTP 5xx và DLQ. SNS gửi cảnh báo khi các thông báo được cấu hình.
 
-| **Lớp hệ thống** | **Trách nhiệm trong demo** | **Lý do thiết kế phù hợp** |
-| :-- | :-- | :-- |
-| Web | React và Vite tạo các tài nguyên tĩnh. CloudFront đọc từ S3 qua Origin Access Control và phân phối các đường dẫn ứng dụng. | Frontend có thể phát hành độc lập mà không cần xây dựng lại backend. Nội dung tĩnh và các yêu cầu phiên động áp dụng quy tắc cache khác nhau. |
-| API | ASP.NET Core chạy trên ECS Fargate. ECR lưu image của các bản phát hành. ALB kiểm tra trạng thái sẵn sàng và định tuyến đến task khỏe mạnh. | Image digest giúp xác định chính xác bản đang chạy; quy trình rollout cũng cho phép kiểm tra phiên bản thay thế. |
-| Dữ liệu nghiệp vụ | RDS for PostgreSQL lưu hồ sơ, quan hệ dự án, trạng thái tuyển dụng và lịch sử chat. | Các thao tác ghi có thể thực thi ràng buộc quan hệ giữa dự án, vị trí tuyển và thành viên. Database migration đồng bộ thay đổi schema với các bản triển khai phần mềm. |
-| Tệp và sự kiện | Bucket media riêng tư lưu tệp. GuardDuty quét PDF, EventBridge phân phối sự kiện quét và consumer SQS cập nhật trạng thái tài liệu. | Việc tải tệp và hoàn tất quét diễn ra bất đồng bộ. SQS giúp nhìn thấy công việc đang chờ, còn DLQ giữ thông điệp lỗi để xem xét. |
-| AI | Khi được bật, backend gọi Bedrock và trả về bản nháp có cấu trúc. | Nội dung gợi ý có thể đối chiếu với văn bản hoặc tài liệu gốc. Máy chủ kiểm tra các trường đề xuất và ánh xạ sang kỹ năng, vai trò hợp lệ trước khi người dùng duyệt. |
+### Các thành phần và cơ sở lựa chọn thiết kế
 
-### Ranh giới dữ liệu, quyền truy cập và khả năng quan sát
+| Tầng | Trách nhiệm trong demo | Lý do thiết kế này phù hợp |
+| :--- | :--- | :--- |
+| Web | React và Vite tạo các tài nguyên tĩnh. CloudFront đọc dữ liệu từ S3 thông qua Origin Access Control và phục vụ các tuyến của ứng dụng. | Frontend có thể được phát hành độc lập. Tài nguyên tĩnh và dữ liệu phiên động sử dụng các cơ chế cache riêng biệt. |
+| API | ASP.NET Core chạy trong ECS Fargate. ECR lưu trữ các image phát hành. ALB kiểm tra trạng thái sẵn sàng và định tuyến lưu lượng đến các task hoạt động tốt. | Bản phát hành đang hoạt động có thể được truy vết đến image digest và một revision mới có thể được kiểm tra trong quá trình rollout. |
+| Dữ liệu nghiệp vụ | RDS for PostgreSQL lưu trữ hồ sơ, các mối quan hệ trong dự án, trạng thái tuyển thành viên và lịch sử chat. | Các mối quan hệ giữa dự án, vị trí và thành viên có thể được kiểm tra khi ứng dụng ghi dữ liệu. Migrations quản lý các thay đổi schema cùng với các bản phát hành ứng dụng. |
+| Tệp và sự kiện | S3 bucket media riêng tư lưu trữ tệp. GuardDuty quét PDF, EventBridge chuyển các sự kiện quét và SQS consumer cập nhật trạng thái tài liệu. | Việc tải lên và hoàn tất quét diễn ra tại những thời điểm khác nhau. Hàng đợi thể hiện công việc đang chờ xử lý và DLQ cung cấp nơi kiểm tra các lỗi. |
+| AI | Khi được bật, backend gọi Bedrock và trả về một bản nháp có cấu trúc. | Người dùng có thể so sánh các đề xuất với tài liệu nguồn. Backend xác thực các trường hồ sơ và ánh xạ kỹ năng, vai trò trước khi xem xét. |
 
-**Vị trí lưu trữ dữ liệu.** Dữ liệu định danh, hồ sơ người dùng, quan hệ dự án và trạng thái quy trình được ghi vào PostgreSQL. Tệp HTML và tài nguyên frontend đã biên dịch nằm trong bucket website. Nội dung tài liệu tải lên nằm trong bucket media. Để kiểm tra việc khôi phục, manifest phải xác định cả snapshot RDS lẫn các đối tượng S3 liên quan, nhờ đó nhóm có thể xác nhận bản ghi cơ sở dữ liệu được phục hồi vẫn tham chiếu đến tài liệu còn tồn tại.
+### Ranh giới dữ liệu, quyền truy cập và khả năng giám sát
 
-**Quyền truy cập theo từng lớp.** Kết nối giữa ALB, các container backend và cơ sở dữ liệu được kiểm soát bằng security group. Với mỗi yêu cầu, backend xác minh danh tính và quyền đối với dự án, hồ sơ hoặc cuộc chat được truy cập. ECS execution role được dùng khi khởi động task để tải container image, khởi tạo log và lấy các secret đã cấu hình. Các yêu cầu AWS từ ứng dụng đang chạy—như thao tác media, xử lý sự kiện quét và suy luận AI tùy chọn—được cấp qua ECS task role. Quyền triển khai của GitHub Actions thông qua OIDC tách biệt với quyền khi chạy ứng dụng.
+**Vị trí lưu trữ dữ liệu.** PostgreSQL lưu trữ thông tin định danh, hồ sơ, các mối quan hệ dự án và trạng thái quy trình nghiệp vụ. S3 bucket frontend chứa HTML và các gói tài nguyên tĩnh. S3 bucket media chứa nội dung tệp. Một recovery manifest cần có cả tham chiếu RDS snapshot và các tham chiếu S3 object liên quan để nhóm có thể xác minh rằng các bản ghi được khôi phục vẫn liên kết đúng với các tệp tương ứng.
 
-**Tín hiệu vận hành.** Trạng thái target của ALB và tỷ lệ lỗi HTTP 5xx có thể giúp xác định sự cố nằm ở khâu định tuyến hay xử lý ứng dụng. ECS events và CloudWatch Logs cung cấp bằng chứng về quá trình khởi động, dừng task và lỗi ứng dụng. Khi điều tra PDF, cần đối chiếu trạng thái tài liệu trên Tindy với kết quả GuardDuty và các thông điệp đang chờ trong SQS hoặc DLQ. Thông báo tuyển dụng trong ứng dụng được lấy bằng cách thăm dò API định kỳ (polling). SignalR hỗ trợ nhắn tin thời gian thực. SNS dùng để gửi cảnh báo vận hành khi được cấu hình.
+**Quyền truy cập theo tầng.** Security groups kiểm soát quyền truy cập mạng giữa ALB, API tasks và database. Backend xác thực người dùng và cấp quyền truy cập đến dự án, hồ sơ hoặc cuộc trò chuyện tương ứng. ECS execution role hỗ trợ các thao tác khởi động như tải image, khởi tạo logging và truy xuất các secrets đã cấu hình. ECS task role bao gồm các hành động AWS mà mã ứng dụng cần thực hiện, chẳng hạn như truy cập media, xử lý kết quả quét và gọi AI khi được bật. Các quyền OIDC được GitHub Actions sử dụng để phát hành được quản lý độc lập với quyền runtime.
 
-### Các đánh đổi trong demo và điều kiện cần để mở rộng
+**Tín hiệu vận hành.** Tình trạng target và các phản hồi 5xx giúp thu hẹp phạm vi xác định sự cố nằm ở định tuyến hay ứng dụng. ECS events và CloudWatch Logs cho biết một task có thể khởi động, đã dừng hoặc trả về lỗi hay không. Đối với PDF, cần đối chiếu trạng thái tài liệu trong Tindy với kết quả GuardDuty và các thông điệp đang chờ trong SQS hoặc DLQ. Thông báo tuyển thành viên xuất hiện trong ứng dụng thông qua API polling. Chat sử dụng SignalR. SNS phục vụ cảnh báo vận hành khi được cấu hình.
 
-| **Quyết định** | **Ưu tiên của demo** | **Bằng chứng cần có trước khi thay đổi** |
-| :-- | :-- | :-- |
-| Một Fargate task phía sau ALB | Giới hạn tài nguyên phải chạy liên tục và giảm độ phức tạp của chat trong demo. | Thu thập số liệu lưu lượng yêu cầu và thời gian phản hồi. Kiểm chứng việc truyền sự kiện SignalR giữa các task và tính nhất quán của xử lý sự kiện nền trước khi tăng số lượng task. |
-| RDS Single-AZ | Giữ cấu hình ban đầu đơn giản, đồng thời có quy trình khôi phục snapshot được ghi chép. | Xác định giới hạn thời gian ngừng hoạt động và mức mất dữ liệu có thể chấp nhận. Ước tính chi phí Multi-AZ và diễn tập khôi phục trước khi chọn mức sẵn sàng cao hơn. |
-| API task trong public subnet, nhận lưu lượng qua ALB nội bộ | Giữ đường kết nối ra ngoài hiện có cho các tích hợp. Security group hạn chế quyền truy cập API. | Trước khi chuyển vào private subnet, kiểm kê các đích AWS và bên ngoài, so sánh endpoint và đường truy cập ra ngoài về kết nối, chi phí, công sức vận hành. |
-| Trích xuất AI theo yêu cầu | Chỉ thực hiện trích xuất khi có yêu cầu và ghi nhận độ trễ cùng chi phí trên mỗi lần xử lý. | Đo tỷ lệ đầu ra không hợp lệ, độ trễ và lượng token trước khi cân nhắc hàng đợi xử lý nền. |
+### Các đánh đổi trong thiết kế demo và điều kiện để mở rộng
+
+| Quyết định | Ưu tiên của demo | Bằng chứng cần có để thay đổi |
+| :--- | :--- | :--- |
+| Một Fargate task phía sau ALB | Giữ quy mô tài nguyên hoạt động liên tục ở mức nhỏ và đơn giản hóa chat thời gian thực cho demo. | Đo lưu lượng và độ trễ. Xác minh việc phân phối sự kiện SignalR giữa các task và kiểm tra tính nhất quán của xử lý sự kiện nền trước khi tăng số lượng task. |
+| RDS Single-AZ | Giữ cấu hình ban đầu đơn giản và duy trì một quy trình khôi phục bằng snapshot đã được ghi lại. | Xác định thời gian ngừng hoạt động và mức mất dữ liệu có thể chấp nhận. Ước tính chi phí Multi-AZ và thực hành khôi phục trước khi quyết định sử dụng tính sẵn sàng cao hơn. |
+| API tasks trong public subnets với lưu lượng đầu vào qua ALB nội bộ | Sử dụng đường kết nối ra ngoài hiện có cho các dịch vụ tích hợp. Security groups giới hạn quyền truy cập vào API. | Trước khi chuyển sang private subnets, lập danh sách các điểm đích AWS và bên ngoài, đồng thời so sánh các endpoint và đường kết nối ra ngoài về khả năng kết nối, chi phí và công sức vận hành. |
+| Trích xuất AI theo yêu cầu | Xử lý dữ liệu đầu vào khi người dùng yêu cầu bản nháp và cho phép đo thời gian chạy cũng như chi phí cho mỗi lần thực hiện. | Đo các kết quả không hợp lệ, độ trễ và mức sử dụng token trước khi cân nhắc một hàng đợi xử lý nền. |
 
 ## 4. Triển khai và kiểm thử
 
 ### Chuẩn bị hạ tầng và dữ liệu
 
-Hạ tầng được tổ chức bằng AWS CloudFormation thành sáu stack: **foundation, network, database, integrations, runtime và edge**. Các stack foundation và network cung cấp bucket S3, ECR, tài nguyên IAM và thành phần mạng. Stack database thiết lập PostgreSQL. Stack integrations quản lý kết quả quét PDF. API, load balancer và VPC origin thuộc stack runtime. Sau khi xác nhận runtime sẵn sàng, stack edge chuyển lưu lượng động qua VPC origin.
+AWS CloudFormation định nghĩa sáu stack: **foundation, network, database, integrations, runtime và edge**. Foundation và network cung cấp các bucket, ECR, IAM và hạ tầng mạng. Database cung cấp PostgreSQL. Integrations xử lý kết quả quét PDF. Runtime triển khai API, ALB và VPC Origin. Edge sử dụng origin đó để định tuyến các yêu cầu động khi dịch vụ đã sẵn sàng.
 
-Tùy chọn **Fresh** tạo cơ sở dữ liệu mới, áp dụng migration và thêm dữ liệu mẫu; **Restore** khôi phục schema và bản ghi từ snapshot. Khi một bản phát hành thay đổi schema, cần tạo snapshot trước và chạy EF Core migration bằng một ECS task độc lập. Xác nhận API hiện hành tương thích với schema đã cập nhật để vẫn có thể quay lại phiên bản ứng dụng trước nếu rollout thất bại.
+Chọn **Fresh** để tạo một database, áp dụng migrations và thêm dữ liệu demo, hoặc **Restore** để khôi phục schema và dữ liệu từ snapshot. Đối với bản phát hành thay đổi schema, trước tiên cần tạo snapshot và chạy EF Core migration trong một ECS task riêng biệt. Xác minh rằng API đang chạy vẫn tương thích với schema đã được migration để API có thể quay lại revision trước nếu rollout thất bại.
 
 ### Phát hành ứng dụng
 
-1. Sau khi quy trình CI thành công, chọn commit được phê duyệt để phát hành. Xây dựng backend image, đẩy lên ECR và ghi lại image digest được dùng trong ECS task definition.
-2. Kiểm tra dịch vụ ECS ổn định và các target của ALB đều khỏe mạnh. Khi edge ở chế độ `live`, xác nhận `/api/health/ready` trả về HTTP `200` với trạng thái `Healthy` qua CloudFront.
-3. Biên dịch frontend bằng Vite, tải lên S3 và thực hiện vô hiệu hóa cache (invalidation) của CloudFront. Kiểm tra trang chủ, trang đăng nhập và JavaScript bundle qua cùng hostname.
-4. Chạy kiểm thử nghiệm thu bằng tài khoản demo và PDF mẫu. Ghi nhận commit, image digest, phiên bản ECS, kết quả kiểm thử và snapshot ID nếu có. Khi xây dựng lại môi trường, giữ edge ở chế độ bảo trì cho tới khi backend, PostgreSQL và các tích hợp thiết yếu vượt qua kiểm tra sẵn sàng.
+1. Sau khi CI hoàn tất thành công, chọn commit đã được phê duyệt. Build backend image, đẩy lên ECR và ghi lại image digest được sử dụng trong ECS task definition.
+2. Xác minh ECS service ổn định và các ALB target ở trạng thái healthy. Khi edge ở chế độ `live`, kiểm tra rằng `/api/health/ready` trả về HTTP `200` với trạng thái `Healthy` thông qua CloudFront.
+3. Build frontend bằng Vite, xuất bản lên S3 và thực hiện invalidation CloudFront cache. Kiểm tra trang chủ, trang đăng nhập và JavaScript bundle thông qua cùng một hostname.
+4. Chạy các kịch bản nghiệm thu bằng tài khoản và PDF mẫu. Ghi lại commit, image digest, ECS revision, kết quả kiểm thử và snapshot ID khi áp dụng. Khi xây dựng lại môi trường demo, giữ edge ở chế độ maintenance cho đến khi API, database và các dịch vụ tích hợp cần thiết đã sẵn sàng.
 
 ### Yêu cầu kỹ thuật và phi chức năng
 
-- **Môi trường phát hành.** Ứng dụng sử dụng React/Vite, ASP.NET Core .NET 10, EF Core và PostgreSQL. Frontend được biên dịch để dùng đường dẫn API cùng origin. Các thông số môi trường và cấu hình nhạy cảm được cung cấp qua quy trình triển khai và AWS Secrets Manager.
-- **Tính nhất quán.** Việc thêm thành viên phải dựa trên trạng thái dự án và số chỗ còn trống mới nhất. Sau khi chấp nhận và tải lại, cần kiểm tra cả tư cách thành viên lẫn số chỗ đã tuyển của vị trí.
-- **Quyền riêng tư.** Demo nên sử dụng tài khoản giả lập và tệp mẫu không nhạy cảm. Kiểm tra quyền khi mở tài liệu, yêu cầu bản nháp AI hoặc vào cuộc trò chuyện. Lưu các mã tham chiếu và bằng chứng trạng thái trong hồ sơ kiểm thử, không lưu secret hay nội dung CV vào những bản ghi này.
-- **Khả năng kiểm thử.** Cần có các trường hợp dự kiến thành công và các trường hợp phải bị từ chối. Bao gồm vị trí đã hết chỗ, ứng viên chưa đồng ý cho người khác tìm thấy, PDF còn chờ quét và người dùng không có quyền truy cập cuộc trò chuyện.
-- **Khả năng khôi phục.** Ghi nhận snapshot cơ sở dữ liệu và phiên bản phần mềm trước khi thay đổi schema. Xác định một tập bản ghi ứng dụng và tệp media mẫu để đối chiếu sau khi Restore.
+- **Môi trường phát hành.** Ứng dụng sử dụng React/Vite, ASP.NET Core .NET 10, EF Core và PostgreSQL. Build frontend để sử dụng các đường dẫn API cùng origin. Cung cấp các thiết lập môi trường và cấu hình nhạy cảm thông qua quy trình triển khai và AWS Secrets Manager.
+- **Tính nhất quán.** Việc chấp nhận thành viên phải sử dụng trạng thái hiện tại của dự án và vị trí. Kiểm tra cả tư cách thành viên và số chỗ đã tuyển của vị trí sau khi chấp nhận và tải lại.
+- **Quyền riêng tư.** Sử dụng tài khoản thử nghiệm và tài liệu mẫu cho các buổi demo. Xác minh quyền truy cập khi mở tài liệu, yêu cầu bản nháp AI hoặc truy cập cuộc trò chuyện. Giữ các tham chiếu và bằng chứng trạng thái trong hồ sơ kiểm thử. Không đưa giá trị secret và nội dung CV vào các hồ sơ đó.
+- **Khả năng kiểm thử.** Chuẩn bị dữ liệu thử nghiệm cho các hành động thành công và các hành động bị từ chối. Bao gồm một vị trí không còn chỗ trống, một ứng viên chưa đồng ý nhận lời mời, một PDF đang chờ quét và một người dùng không có quyền truy cập cuộc trò chuyện.
+- **Khả năng khôi phục.** Ghi lại snapshot và phiên bản liên quan trước khi thay đổi schema. Xác định một tập hợp các bản ghi ứng dụng và tệp media mẫu để đối chiếu sau khi Restore.
 
-### Vòng đời giữa các buổi demo
+### Vòng đời giữa các lần demo
 
-Sau mỗi buổi demo, xác nhận xem còn thao tác ghi dữ liệu hoặc tác vụ quét PDF nào đang chạy hay không. Khi môi trường đã sẵn sàng sao lưu, ghi lại snapshot ID, thời gian, trạng thái mã hóa, bản phát hành API và migration hiện tại. Xác nhận các đối tượng S3 và ECR image cần cho điểm khôi phục đó vẫn được lưu giữ.
+Sau một buổi demo, kiểm tra xem các thao tác ghi dữ liệu của ứng dụng hoặc công việc quét PDF có còn đang diễn ra hay không. Khi môi trường đã sẵn sàng để sao lưu, ghi lại snapshot ID, thời gian, trạng thái mã hóa, bản phát hành API và migration hiện tại. Xác nhận rằng các S3 object và ECR image cần thiết cho điểm khôi phục đó vẫn được giữ lại.
 
-Khi tắt môi trường demo, bật chế độ bảo trì CloudFront nhưng giữ nguyên hostname của distribution. Runbook của dự án quy định những kiểm tra cần làm trước khi gỡ các thành phần runtime, database và integrations theo thứ tự phụ thuộc. Giữ lại tài nguyên khôi phục đã thống nhất, bao gồm snapshot, dữ liệu S3, ECR image và tham chiếu cấu hình. Ở buổi demo tiếp theo, chọn Restore hoặc Fresh tùy mục tiêu, kiểm tra database endpoint và health check, rồi mở lại edge khi các dịch vụ cần thiết đã sẵn sàng.
+Nếu môi trường được tắt giữa các lần demo, chuyển CloudFront sang chế độ maintenance và xác minh rằng hostname của distribution vẫn được giữ lại. Runbook của dự án định nghĩa các bước kiểm tra trước khi loại bỏ runtime, database và integrations theo thứ tự phụ thuộc. Giữ lại các tài nguyên khôi phục đã thống nhất, bao gồm snapshot, dữ liệu S3, ECR image và các tham chiếu cấu hình. Trong lần demo tiếp theo, chọn Restore hoặc Fresh dựa trên mục tiêu, xác minh database endpoint và health checks, sau đó mở lại edge khi các dịch vụ cần thiết đã sẵn sàng.
 
-## 5. Kế hoạch sprint và các mốc triển khai
+## 5. Kế hoạch Sprint và các mốc triển khai
 
-Việc phát triển Tindy bắt đầu vào **Thứ Hai, ngày 5/10/2026 (Tuần 4)**. Tuần 4–9 được chia thành ba sprint phát triển, mỗi sprint kéo dài hai tuần. **Tuần 10 (16–22/11/2026)** dành cho triển khai AWS, xác minh sau triển khai và hoàn thành demo.
+Quá trình phát triển Tindy bắt đầu vào **thứ Hai, ngày 5 tháng 10 năm 2026 (Tuần 4)**. Kế hoạch chia Tuần 4–9 thành ba sprint phát triển, mỗi sprint kéo dài hai tuần. **Tuần 10 (ngày 16–22 tháng 11 năm 2026)** được dành cho việc triển khai lên AWS, xác minh sau triển khai và hoàn thành demo.
 
-| **Sprint** | **Thời gian** | **Công việc chính** | **Sản phẩm bàn giao cuối sprint** |
-| :-- | :-- | :-- | :-- |
-| **Sprint 1 · Nền tảng ứng dụng** | **Tuần 4–5** · 5–18/10/2026 | Bắt đầu phát triển. Thống nhất các luồng người dùng và mô hình dữ liệu. Thiết lập React/Vite, ASP.NET Core và PostgreSQL. Xây dựng đăng nhập, onboarding, hồ sơ và danh mục kỹ năng, vai trò. | Người dùng mẫu có thể đăng nhập, hoàn tất onboarding và lưu hồ sơ qua API. |
-| **Sprint 2 · Dự án và tuyển thành viên** | **Tuần 6–7** · 19/10–1/11/2026 | Triển khai quản lý dự án và vị trí, tìm kiếm dự án, chấm điểm phù hợp, ứng tuyển, tìm đồng đội và gửi lời mời. Kiểm tra lại điều kiện tuyển dụng và sức chứa khi chấp nhận. | Dữ liệu mẫu thể hiện được luồng ứng tuyển và mời tham gia. Khi chấp nhận thành công, tư cách thành viên và số chỗ đã tuyển được cập nhật chính xác. |
-| **Sprint 3 · Tích hợp và chuẩn bị phát hành** | **Tuần 8–9** · 2–15/11/2026 | Hoàn thiện chat SignalR và thông báo trong ứng dụng. Tích hợp lưu tệp, quét PDF và tạo bản nháp hồ sơ bằng Bedrock. Chuẩn bị CloudFormation template, cấu hình CI/CD và dữ liệu demo. | Bản ứng dụng chuẩn bị phát hành, các kịch bản kiểm thử quy trình chính và cấu hình AWS đã được xem xét. |
-| **Sprint 4 · Triển khai và hoàn thiện** | **Tuần 10** · 16–22/11/2026 | Đưa frontend và API lên AWS. Kiểm tra CloudFront, ALB, ECS và RDS. Thực hiện kiểm thử nghiệm thu qua hostname demo, xử lý lỗi ảnh hưởng luồng chính và ghi nhận thông tin phát hành. | Demo AWS đã triển khai, điểm kiểm tra sẵn sàng API trả về HTTP `200` và `Healthy`, có kết quả nghiệm thu và hướng dẫn triển khai lại. |
+| Sprint | Thời gian | Công việc chính | Sản phẩm bàn giao cuối sprint |
+| :--- | :--- | :--- | :--- |
+| **Sprint 1 · Nền tảng ứng dụng** | **Tuần 4–5** · 5–18 tháng 10 năm 2026 | Bắt đầu phát triển. Thống nhất các luồng người dùng và mô hình dữ liệu. Thiết lập React/Vite, ASP.NET Core và PostgreSQL. Xây dựng chức năng đăng nhập, onboarding, hồ sơ và danh mục kỹ năng, vai trò. | Một người dùng mẫu có thể đăng nhập, hoàn thành onboarding và lưu hồ sơ thông qua API. |
+| **Sprint 2 · Dự án và tuyển thành viên** | **Tuần 6–7** · 19 tháng 10–1 tháng 11 năm 2026 | Xây dựng chức năng quản lý dự án và vị trí, khám phá dự án, tính điểm phù hợp, ứng tuyển, tìm kiếm đồng đội và gửi lời mời. Kiểm tra lại điều kiện tuyển thành viên và số chỗ còn trống khi chấp nhận. | Dữ liệu mẫu thể hiện các luồng ứng tuyển và lời mời. Việc chấp nhận thành công cập nhật chính xác tư cách thành viên dự án và số chỗ đã tuyển. |
+| **Sprint 3 · Tích hợp và chuẩn bị phát hành** | **Tuần 8–9** · 2–15 tháng 11 năm 2026 | Hoàn thiện SignalR chat và thông báo trong ứng dụng. Tích hợp lưu trữ tệp, quét PDF và các bản nháp hồ sơ từ Bedrock. Chuẩn bị CloudFormation templates, cấu hình CI/CD và dữ liệu demo. | Một release candidate, các kịch bản kiểm thử cho những quy trình cốt lõi và cấu hình AWS đã được xem xét. |
+| **Sprint 4 · Triển khai và hoàn thành** | **Tuần 10** · 16–22 tháng 11 năm 2026 | Triển khai frontend và API lên AWS. Kiểm tra CloudFront, ALB, ECS và RDS. Chạy các kịch bản nghiệm thu thông qua hostname demo, giải quyết những vấn đề ảnh hưởng đến các quy trình cốt lõi và ghi lại thông tin phát hành. | Một bản demo đã triển khai trên AWS với API readiness trả về HTTP `200` và trạng thái `Healthy`, các kết quả nghiệm thu và hướng dẫn triển khai lại. |
 
-Mốc hoàn thành dự án nằm ở **Tuần 10**. Từ Tuần 11 cho tới khi kết thúc kỳ thực tập vào **14/12/2026**, công việc báo cáo bao gồm sơ đồ kiến trúc, các kịch bản demo, kết quả nghiệm thu, thông tin phát hành và giả định chi phí.
+Mốc hoàn thành dự án nằm trong **Tuần 10**. Từ Tuần 11 đến khi kết thúc kỳ thực tập vào **ngày 14 tháng 12 năm 2026**, công việc báo cáo bao gồm sơ đồ kiến trúc, các kịch bản demo, kết quả nghiệm thu, thông tin phát hành và các giả định chi phí.
 
 ## 6. Ước tính ngân sách
 
-Mô hình chi phí hoạt động liên tục giả định **730 giờ mỗi tháng** tại `us-east-1`. Đơn giá lấy từ bản ước tính workload `Tindy-Always-on` xuất từ AWS Pricing Calculator vào **18/11/2026**, theo giá chưa chiết khấu, chưa bao gồm thuế hoặc tín dụng AWS.
+Kịch bản hoạt động liên tục chạy **730 giờ mỗi tháng** tại `us-east-1`. Các số liệu được lấy từ bản ước tính workload `Tindy-Always-on` xuất từ AWS Pricing Calculator vào **ngày 18 tháng 11 năm 2026**, sử dụng mức giá trước khi giảm giá và không bao gồm thuế và credits.
 
-| **Hạng mục chi phí** | **Cơ sở tính toán** | **Chi phí tham chiếu** |
-| :-- | :-- | --: |
-| AWS Fargate | Một container task Linux/x86 với 0,5 vCPU và 2 GiB RAM. Phép tính gồm 365 vCPU-giờ và 1.460 GB-giờ bộ nhớ. | 21,26 USD/tháng |
-| Application Load Balancer | Một ALB nội bộ hoạt động 730 giờ. | 16,43 USD/tháng |
-| Public IPv4 | Một địa chỉ IPv4 công khai được cấp cho task và sử dụng trong 730 giờ. | 3,65 USD/tháng |
-| RDS for PostgreSQL | Một instance Single-AZ `db.t4g.micro` chạy 730 giờ (11,68 USD) và 20 GiB gp3 (2,30 USD). | 13,98 USD/tháng |
-| Edge, media, bảo mật và AI | CloudFront, S3, ECR, Secrets Manager, GuardDuty, EventBridge, SQS, CloudWatch và Bedrock. Phí thực tế tùy dung lượng lưu, yêu cầu, log, số lần quét tệp và token sử dụng. | Tính theo mức sử dụng |
+| Hạng mục chi phí | Cơ sở tính toán | Chi phí tham khảo |
+| :--- | :--- | :--- |
+| AWS Fargate | Một Linux/x86 task với 0.5 vCPU và 2 GiB RAM. Bản ước tính bao gồm 365 vCPU-giờ và 1.460 GB-giờ bộ nhớ. | 21.26 USD/tháng |
+| Application Load Balancer | Một ALB nội bộ hoạt động trong 730 giờ. | 16.43 USD/tháng |
+| Public IPv4 | Một địa chỉ public IPv4 đang được sử dụng cho task trong 730 giờ. | 3.65 USD/tháng |
+| RDS for PostgreSQL | Một Single-AZ `db.t4g.micro` trong 730 giờ (11.68 USD) và 20 GiB gp3 (2.30 USD). | 13.98 USD/tháng |
+| Edge, media, bảo mật và AI | CloudFront, S3, ECR, Secrets Manager, GuardDuty, EventBridge, SQS, CloudWatch và Bedrock. Chi phí thay đổi theo dung lượng lưu trữ, số lượng yêu cầu, log, lượt quét và token. | Tính theo mức sử dụng |
 
-**Chi phí nền cho kịch bản chạy liên tục là 55,32 USD/tháng.** Mức này chưa bao gồm ALB LCU, phí RDS CPU credit (nếu phát sinh), dung lượng sao lưu hoặc snapshot bổ sung và các dịch vụ tính theo mức sử dụng được liệt kê ở trên. Khi ước tính kịch bản demo theo lịch, cần tính cả snapshot và tài nguyên khác được giữ lại. [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=75ccee07f5778dcee28c50a2bdf393694e87a6de)
+**Chi phí cơ sở cho kịch bản hoạt động liên tục là 55.32 USD mỗi tháng.** Chi phí cơ sở không bao gồm ALB LCUs, các khoản phí RDS CPU credit, dung lượng sao lưu hoặc snapshot bổ sung và các dịch vụ tính phí theo mức sử dụng được liệt kê ở trên. Cần tính cả các snapshot và tài nguyên khác được giữ lại khi ước tính kịch bản demo theo lịch. AWS Pricing Calculator
 
-Bản ước tính chia sẻ công khai hiển thị **55,34 USD/tháng**. So với phép tính xuất từ AWS Console, chi phí Fargate và ALB hiển thị cao hơn mỗi mục 0,01 USD. Phép tính ALB công khai giả định lưu lượng 0,001 GB/giờ vì biểu mẫu yêu cầu nhập giá trị LCU dương.
+Bản ước tính công khai hiển thị **55.34 USD mỗi tháng**. So với bản xuất từ AWS Console, chi phí Fargate và ALB được hiển thị đều cao hơn 0.01 USD. Phép tính ALB công khai sử dụng lưu lượng giả định 0.001 GB/giờ vì biểu mẫu yêu cầu một giá trị LCU dương.
 
-**Với khối lượng sử dụng thử nghiệm, dự trù khoảng 58 USD/tháng** cho hạ tầng chạy liên tục và các dịch vụ hỗ trợ đã được mô hình hóa. Bản xuất dữ liệu Cost Explorer giai đoạn 1–17/11/2026 cho thấy hoạt động hạ tầng chính tập trung vào ngày 11–17/11. Coi tuần này là đại diện cho một tháng 30 ngày. Cộng thêm 1,60 USD cho bốn secret đang lưu trữ và quy đổi chi phí sử dụng khác từ AWS Pricing Calculator (0,1804 USD × 30/7, bao gồm các lệnh gọi API Secrets Manager). Con số lập kế hoạch này chưa bao gồm ALB LCU, chi phí EventBridge chưa xác minh, RDS CPU credit, dung lượng sao lưu hoặc snapshot bổ sung và thuế.
+**Với lưu lượng thử nghiệm, dự trù khoảng 58 USD mỗi tháng** cho hạ tầng hoạt động liên tục và các dịch vụ hỗ trợ đã được mô hình hóa. Bản xuất Cost Explorer từ ngày 1–17 tháng 11 năm 2026 cho thấy hoạt động hạ tầng cốt lõi tập trung vào ngày 11–17 tháng 11. Xem tuần đó là đại diện cho một tháng 30 ngày. Cộng thêm 1.60 USD cho bốn secrets được lưu trữ và quy đổi các mức sử dụng khác đã nhập vào AWS Pricing Calculator (0.1804 USD × 30/7, bao gồm các API call của Secrets Manager). Con số lập kế hoạch này không bao gồm ALB LCUs, các khoản phí EventBridge chưa được xác minh, RDS CPU credits, dung lượng sao lưu hoặc snapshot bổ sung và thuế.
 
 ### So sánh các kịch bản vận hành
 
-| **Yếu tố chi phí** | **Kịch bản chạy liên tục** | **Kịch bản demo theo lịch** |
-| :-- | :-- | :-- |
-| Fargate và public IPv4 | Tính thời gian chạy theo tháng tham chiếu 730 giờ. | Đếm số giờ task thực sự hoạt động, bao gồm thời gian chuẩn bị và kiểm tra trước mỗi buổi demo. |
-| ALB và RDS | Tính số giờ ALB và cơ sở dữ liệu được cung cấp tài nguyên hoặc đang chạy, cộng các khoản phí tùy cấu hình. | Ghi riêng thời gian tồn tại của ALB, thời gian chạy cơ sở dữ liệu và dung lượng snapshot giữ giữa các buổi demo. |
-| Lưu trữ và cấu hình giữ lại | Đo dung lượng S3 và ECR, bản sao lưu và các thành phần cấu hình được duy trì. | Tính cả tài nguyên giữ để khôi phục trong lúc edge đang ở chế độ bảo trì. |
-| Lưu lượng, quét tệp và AI | Sử dụng mức cơ sở xác định cho yêu cầu, lượt tải xuống, lượt quét và token. | Đo hoạt động mỗi phiên và ghi nhận số lần xử lý lặp. Giữ nguyên giả định mức sử dụng khi so sánh chi phí runtime. |
+| Yếu tố chi phí | Kịch bản hoạt động liên tục | Kịch bản demo theo lịch |
+| :--- | :--- | :--- |
+| Fargate và public IPv4 | Mô hình hóa thời gian chạy dựa trên tháng tham chiếu 730 giờ. | Tính số giờ task thực tế hoạt động, bao gồm thời gian thiết lập và xác minh trước mỗi buổi demo. |
+| ALB và RDS | Tính số giờ ALB và database được cấp phát hoặc hoạt động, đồng thời cộng các khoản phí phụ thuộc vào cấu hình. | Ghi nhận riêng thời gian tồn tại của ALB, thời gian chạy database và dung lượng snapshot được giữ giữa các lần demo. |
+| Lưu trữ và cấu hình được giữ lại | Đo dung lượng lưu trữ S3 và ECR, các bản sao lưu và các thành phần cấu hình được giữ lại. | Bao gồm các tài nguyên được giữ lại để khôi phục khi edge đang ở chế độ maintenance. |
+| Lưu lượng, quét và AI | Sử dụng một mức cơ sở xác định cho các request, lượt tải xuống, lượt quét và token. | Đo hoạt động theo từng phiên và ghi lại việc xử lý lặp lại. Giữ nguyên các giả định mức sử dụng khi so sánh chi phí runtime. |
 
-Sau thử nghiệm, đối chiếu chi phí từng dịch vụ với thời gian tài nguyên được cấp phát. Phân loại chênh lệch thành chi phí runtime, lưu trữ, lưu lượng hoặc xử lý tài liệu. AWS Budgets có thể thông báo khi chạm ngưỡng chi phí đã chọn, còn Cost Explorer giúp xác định dịch vụ gây tăng chi phí ngoài dự kiến.
+Sau khi thử nghiệm, so sánh chi phí của từng dịch vụ với khoảng thời gian các tài nguyên được duy trì. Phân loại các chênh lệch thành chi phí runtime, lưu trữ, lưu lượng hoặc xử lý tài liệu. AWS Budgets có thể cảnh báo tại ngưỡng đã thống nhất, trong khi Cost Explorer cung cấp bảng phân tích để điều tra nguồn gốc của chênh lệch.
 
 ## 7. Đánh giá rủi ro
 
-| **Rủi ro** | **Tác động** | **Biện pháp giảm thiểu** |
-| :-- | :-- | :-- |
-| API hoặc cơ sở dữ liệu bị gián đoạn trong cấu hình demo | Các tính năng ứng dụng không khả dụng cho đến khi khôi phục dịch vụ. | Theo dõi readiness check, log ECS và trạng thái target ALB. Xác định quy trình phục hồi snapshot và thời gian ngừng hoạt động có thể chấp nhận. |
-| PDF bị từ chối, quét thất bại hoặc xử lý chậm | Chứng chỉ hoặc CV đã tải lên chưa thể sử dụng đúng mục đích. | Hiển thị tiến độ quét, chặn thao tác đọc và trích xuất cho đến khi đủ điều kiện, theo dõi DLQ và kiểm tra đối tượng S3 tương ứng. |
-| Gợi ý AI thiếu hoặc không chính xác | Gợi ý chưa được kiểm chứng có thể khiến thông tin sai được lưu vào hồ sơ. | Kiểm tra cấu trúc phản hồi và ánh xạ danh mục kỹ năng; yêu cầu người dùng xem lại và cho phép sửa trước khi lưu. |
-| Migration hoặc phiên bản phát hành không tương thích | Khác biệt phiên bản có thể gây bất tương thích giữa frontend, backend và schema cơ sở dữ liệu. | Tạo snapshot trước thay đổi, phát hành theo thứ tự tương thích và ghi nhận commit, digest cùng revision để phục hồi. |
-| Tài nguyên tiếp tục phát sinh phí sau demo | Compute, ALB, cơ sở dữ liệu, log và snapshot được lưu có thể tiếp tục bị tính phí. | Theo dõi giới hạn chi phí, xác định tài nguyên cần giữ lại và kiểm tra hóa đơn sau khi dọn dẹp. |
+| Rủi ro | Tác động | Biện pháp giảm thiểu |
+| :--- | :--- | :--- |
+| API hoặc database bị gián đoạn trong cấu hình demo | Người dùng tạm thời mất quyền truy cập vào các quy trình của ứng dụng. | Giám sát readiness, ECS logs và tình trạng ALB. Xác định quy trình khôi phục snapshot và thời gian ngừng hoạt động có thể chấp nhận. |
+| PDF bị từ chối, quét thất bại hoặc xử lý chậm | Chứng chỉ hoặc CV chưa thể được sử dụng. | Hiển thị trạng thái quét, chặn việc đọc và trích xuất cho đến khi đáp ứng điều kiện, giám sát DLQ và xác minh S3 object tương ứng. |
+| Các đề xuất AI không đầy đủ hoặc không chính xác | Thông tin không chính xác có thể được đưa vào hồ sơ nếu không được xem xét. | Xác thực cấu trúc đầu ra và ánh xạ danh mục kỹ năng, sau đó yêu cầu người dùng xem xét và cho phép chỉnh sửa trước khi lưu. |
+| Migration hoặc bản phát hành không tương thích | Các phiên bản web, API và database schema có thể trở nên không tương thích. | Tạo snapshot trước khi thay đổi, phát hành theo thứ tự tương thích và ghi lại commit, digest và revision để phục vụ khôi phục. |
+| Tài nguyên tiếp tục phát sinh chi phí sau demo | ALB, compute, database, logs hoặc snapshots có thể tiếp tục bị tính phí. | Theo dõi ngân sách, xác định các tài nguyên được giữ lại và xem xét chi phí sau khi cleanup. |
 
 ### Phân loại sự cố và khôi phục
 
-1. **Xác định luồng bị ảnh hưởng.** Bắt đầu với readiness của API, trạng thái target ALB và ECS events. Nếu web và API vẫn truy cập được nhưng chỉ quy trình PDF bị lỗi, kiểm tra riêng trạng thái tài liệu, kết quả quét và hàng đợi.
-2. **Giữ bằng chứng và các phương án phục hồi.** Ghi lại thời điểm sự cố, revision đang chạy, image digest và thay đổi gần nhất. Khi nghi ngờ lỗi rollout, xác minh tính tương thích schema trước khi quay lại một phiên bản API cũ.
-3. **Xác nhận khôi phục bằng dữ liệu mẫu.** Khi phục hồi RDS, chọn đúng snapshot và kiểm tra kết nối TLS, quyền truy cập, các bản ghi mẫu và đối tượng media liên quan trên S3. So sánh thời điểm snapshot với cập nhật hợp lệ cuối cùng để xác định dữ liệu cần đối chiếu.
-4. **Mở lại khi kiểm tra đạt yêu cầu.** Chỉ chuyển CloudFront về chế độ `live` sau khi health check và các luồng người dùng thiết yếu hoạt động thành công. Ghi lại nguyên nhân, cách phát hiện và những bước runbook cần cập nhật.
+1. **Xác định luồng bị ảnh hưởng.** Trước tiên kiểm tra API readiness, tình trạng ALB target và ECS. Nếu web và API vẫn truy cập được nhưng chỉ có quá trình xử lý PDF thất bại, hãy kiểm tra riêng trạng thái tài liệu, kết quả quét và hàng đợi.
+2. **Lưu giữ bằng chứng và các phương án khôi phục.** Ghi lại thời gian, revision, image digest và thay đổi gần nhất. Đối với trường hợp nghi ngờ rollout thất bại, xác minh tính tương thích của schema trước khi cố gắng quay lại revision API trước đó.
+3. **Xác nhận khôi phục bằng dữ liệu mẫu.** Khi khôi phục RDS, chọn snapshot dự kiến và xác minh kết nối TLS, quyền truy cập database, các bản ghi mẫu và media S3 được liên kết. So sánh thời điểm snapshot với lần cập nhật hợp lệ cuối cùng để xác định các thay đổi cần đối chiếu.
+4. **Mở lại khi các bước kiểm tra đạt yêu cầu.** Sử dụng readiness và các bài kiểm thử quy trình cốt lõi để quyết định khi nào chuyển CloudFront trở lại chế độ `live`. Ghi lại nguyên nhân, cách phát hiện sự cố và bất kỳ bước runbook nào cần cập nhật.
 
 ## 8. Kết quả kỳ vọng và tiêu chí nghiệm thu
 
-| **Kịch bản nghiệm thu** | **Cách kiểm thử** | **Bằng chứng kỳ vọng** |
-| :-- | :-- | :-- |
-| Thành viên gửi đơn ứng tuyển | Dùng một vị trí đang tuyển còn chỗ. Thành viên nộp đơn và trưởng nhóm chấp nhận. | Đơn chuyển từ **Pending** sang **Accepted**. Thành viên xuất hiện trong dự án, số chỗ đã tuyển tăng đúng một lần và dữ liệu vẫn nhất quán sau khi tải lại. |
-| Trưởng nhóm mời đồng đội | Chuẩn bị bộ dữ liệu kiểm thử riêng. Ứng viên đồng ý cho phép được tìm kiếm, trưởng nhóm gửi lời mời, ứng viên mở thông báo và chấp nhận. | Lời mời xác định đúng dự án và vị trí. Số chỗ đã tuyển không thay đổi khi lời mời còn Pending, chỉ cập nhật sau khi chấp nhận thành công. |
-| Chat qua CloudFront | Mở hai phiên đăng nhập có quyền truy cập cùng cuộc trò chuyện, gửi tin nhắn từ một phiên. | Phiên còn lại nhận tin nhắn trong đúng cuộc trò chuyện. DevTools ghi nhận thao tác nâng cấp kết nối WebSocket với trạng thái `101`. |
-| Quét PDF | Tải lên chứng chỉ mẫu hoặc PDF đầu vào AI. Theo dõi trạng thái quét từ lúc chờ đến khi có kết quả. | Các thao tác cần kết quả quét sạch vẫn bị chặn trong lúc chờ. Kết quả sạch của đúng đối tượng hoặc phiên bản S3 khiến tài liệu đủ điều kiện sử dụng cho mục đích tương ứng. |
-| Bản nháp hồ sơ bằng AI | Gửi văn bản hoặc PDF đã được quét và đủ điều kiện; xem các trường được gợi ý, chỉnh sửa và xác nhận lưu. | Gợi ý có cấu trúc, cảnh báo chỉ ra dữ liệu thiếu hoặc mâu thuẫn. Hồ sơ đã lưu phản ánh đúng những trường người dùng xác nhận. |
-| Phát hành và khôi phục | Truy cập trang qua CloudFront, kiểm tra readiness của API và các quy trình chính, sau đó xây dựng lại môi trường kiểm thử từ snapshot đã chọn theo runbook. | Web và API dùng cùng hostname, readiness trả về `200` và `Healthy`, dữ liệu mẫu khớp điểm khôi phục. Thông tin phát hành, snapshot ID và kết quả đối chiếu được ghi nhận. |
+| Kịch bản nghiệm thu | Cách kiểm thử | Bằng chứng kỳ vọng |
+| :--- | :--- | :--- |
+| Thành viên gửi đơn ứng tuyển | Sử dụng một vị trí đang tuyển còn chỗ trống. Gửi đơn ứng tuyển với vai trò thành viên và chấp nhận đơn với vai trò người phụ trách dự án. | Đơn ứng tuyển chuyển từ **Pending** sang **Accepted**. Thành viên xuất hiện trong dự án, số chỗ đã tuyển của vị trí tăng một lần và dữ liệu vẫn nhất quán sau khi tải lại. |
+| Người phụ trách dự án mời một đồng đội | Sử dụng dữ liệu thử nghiệm riêng biệt. Ứng viên đồng ý nhận lời mời, người phụ trách gửi lời mời, sau đó ứng viên mở thông báo và chấp nhận. | Lời mời xác định đúng dự án và vị trí. Số chỗ đã tuyển không thay đổi khi lời mời đang ở trạng thái Pending và được cập nhật sau khi chấp nhận thành công. |
+| Chat thông qua CloudFront | Mở hai phiên đã đăng nhập có quyền truy cập vào cùng một cuộc trò chuyện và gửi tin nhắn từ một phiên. | Phiên còn lại nhận được tin nhắn trong đúng cuộc trò chuyện. DevTools ghi nhận quá trình WebSocket upgrade với trạng thái `101`. |
+| Quét PDF | Tải lên một chứng chỉ mẫu hoặc PDF đầu vào AI. Theo dõi trạng thái quét từ đang chờ đến khi có kết quả. | Các thao tác yêu cầu kết quả quét an toàn tiếp tục bị chặn khi quá trình quét đang chờ. Kết quả quét an toàn cho đúng S3 object hoặc phiên bản tương ứng khiến tài liệu đủ điều kiện để sử dụng theo mục đích dự kiến. |
+| Bản nháp hồ sơ AI | Gửi văn bản hoặc PDF đã được quét và đủ điều kiện, xem xét các trường được đề xuất, chỉnh sửa và xác nhận lưu. | Các đề xuất có cấu trúc và cảnh báo xác định dữ liệu bị thiếu hoặc mâu thuẫn. Hồ sơ đã lưu phản ánh các trường mà người dùng xác nhận. |
+| Phát hành và khôi phục | Mở trang web thông qua CloudFront, kiểm tra API readiness và các quy trình cốt lõi, sau đó xây dựng lại môi trường thử nghiệm từ snapshot đã chọn bằng runbook. | Web và API dùng chung một hostname, readiness trả về `200` và `Healthy`, đồng thời dữ liệu mẫu khớp với điểm khôi phục. Thông tin phát hành, snapshot ID và kết quả đối chiếu được ghi lại. |
 
 ### Bằng chứng bàn giao
 
-Mỗi lần kiểm thử nghiệm thu cần ghi lại môi trường, phiên bản, thao tác đã thực hiện, kết quả dự kiến và hành vi quan sát được. Dùng tài khoản mẫu cho quy trình tuyển dụng và ghi nhận trạng thái trước, sau. Với các lần phát hành, lưu commit, image digest, kết quả readiness và tham chiếu snapshot. Với PDF và AI, dùng tài liệu mẫu, lưu trạng thái quét và một bản nháp đã được người dùng xem xét. Các bản ghi này hỗ trợ kiểm chứng độc lập mà không tiết lộ thông tin đăng nhập thật hay dữ liệu cá nhân.
+Đối với mỗi lần chạy nghiệm thu, ghi lại môi trường và phiên bản, hành động đã thực hiện, kết quả mong đợi và những gì quan sát được. Sử dụng tài khoản mẫu cho việc tuyển thành viên và ghi lại trạng thái trước và sau. Đối với các bản phát hành, lưu lại commit, image digest, kết quả readiness và tham chiếu snapshot. Đối với các bước kiểm tra PDF và AI, sử dụng tài liệu mẫu và lưu lại trạng thái quét cùng một ví dụ về bản nháp đã được xem xét. Điều này cho phép người đọc xác minh kết quả mà không cần truy cập vào tài khoản hoặc dữ liệu cá nhân của bất kỳ ai.
 
-**Cơ sở kỹ thuật.** Tham khảo các template trong `tindy-infrastructure/cloudformation`, các runbook phát hành và triển khai lại Tindy, `DISCOVERY_PROJECT_FLOW.md`, `TEAMMATE_FLOW.md`, `AI_PROFILE_EXTRACTION.md` và tài liệu chat của backend.
+**Cơ sở kỹ thuật.** Xem các template trong `tindy-infrastructure/cloudformation`, các runbook phát hành và triển khai lại Tindy, `DISCOVERY_PROJECT_FLOW.md`, `TEAMMATE_FLOW.md`, `AI_PROFILE_EXTRACTION.md` và tài liệu backend chat.
