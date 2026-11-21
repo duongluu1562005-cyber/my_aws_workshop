@@ -1,4 +1,10 @@
-# TẮT CHẾ ĐỘ BẢO VỆ VÀ XÓA EDGE
+---
+title: "ẮT CHẾ ĐỘ BẢO VỆ VÀ XÓA EDGE"
+date: 2026-11-22
+weight: 6
+chapter: false
+pre: "<b> 5.7.6 </b>"
+---
 
 ## Chuẩn bị xóa Edge và xử lý termination protection
 
