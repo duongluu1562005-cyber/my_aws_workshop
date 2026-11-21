@@ -1,6 +1,6 @@
 ---
 title: "KẾT NỐI LẠI QUYỀN CI/CD SAU KHI TRIỂN KHAI LẠI"
-date: 2026-11-22
+date: 2026-11-19
 weight: 7
 chapter: false
 pre: "<b> 5.5.7 </b>"
