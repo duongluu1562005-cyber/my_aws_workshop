@@ -3,7 +3,7 @@ title: "SWITCH EDGE TO LIVE"
 date: 2026-11-22
 weight: 6
 chapter: false
-pre: "<b> 5.3.6 </b>"
+pre: "<b> 5.5.6 </b>"
 ---
 
 Runtime is UPDATE_COMPLETE with API Desired 1 / Running 1 / Pending 0 and ALB 1 Healthy / 0 Unhealthy. Edge remains in maintenance. This stage uses Runtime Outputs to configure the CloudFront API origin.
