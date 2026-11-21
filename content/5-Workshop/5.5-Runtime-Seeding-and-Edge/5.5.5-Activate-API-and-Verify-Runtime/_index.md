@@ -3,7 +3,7 @@ title: "ACTIVATE API AND VERIFY RUNTIME"
 date: 2026-11-22
 weight: 5
 chapter: false
-pre: "<b> 5.3.5 </b>"
+pre: "<b> 5.5.5 </b>"
 ---
 Bootstrap, migrations and seed completed with exit code 0 and completion logs. This stage configures the ALB traffic source using the CloudFront service security group and starts one API task. Edge remains in maintenance until Runtime health has been verified.
 
