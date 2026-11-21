@@ -1,5 +1,10 @@
-
-# RECONNECT CI/CD PERMISSIONS AFTER REDEPLOY
+---
+title: "RECONNECT CI/CD PERMISSIONS AFTER REDEPLOY"
+date: 2026-11-22
+weight: 7
+chapter: false
+pre: "<b> 5.5.7 </b>"
+---
 
 Read-only AWS inspection confirms InfraPlannerEnabled is true, but BackendDeployEnabled and LifecycleWorkflowsEnabled remain false and frontend deploy inputs are empty. The rebuilt Runtime has new API IAM role names. Restore deployment roles through CloudFormation before updating GitHub Actions repository variables. These steps await execution.
 
