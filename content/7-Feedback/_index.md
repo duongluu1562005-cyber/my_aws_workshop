@@ -1,5 +1,5 @@
 ---
-title: "Chia sẻ và phản hồi"
+title: "SHARING AND FEEDBACK"
 date: 2026-11-21
 weight: 7
 chapter: false
