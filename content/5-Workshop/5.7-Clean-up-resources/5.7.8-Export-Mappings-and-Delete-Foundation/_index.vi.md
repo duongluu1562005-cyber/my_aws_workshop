@@ -1,5 +1,10 @@
-
-# XUẤT BẢNG ÁNH XẠ VÀ XÓA FOUNDATION
+---
+title: "XUẤT BẢNG ÁNH XẠ VÀ XÓA FOUNDATION"
+date: 2026-11-22
+weight: 8
+chapter: false
+pre: "<b> 5.7.8 </b>"
+---
 
 ## Xuất cấu hình Foundation trước khi xóa
 
