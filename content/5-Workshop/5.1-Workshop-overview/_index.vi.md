@@ -1,5 +1,10 @@
-
-# TỔNG QUAN KIẾN TRÚC TINDY
+---
+title: "TỔNG QUAN KIẾN TRÚC TINDY"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: " <b> 5.1 </b> "
+---
 
 Tindy giúp người dùng tìm kiếm dự án và đồng đội, quản lý hồ sơ, ứng tuyển vào các dự án và giao tiếp với các thành viên khác. Workshop này triển khai hạ tầng frontend, backend, cơ sở dữ liệu và quét PDF của ứng dụng trên AWS thông qua sáu mẫu CloudFormation.
 
