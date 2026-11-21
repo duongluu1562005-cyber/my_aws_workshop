@@ -1,5 +1,10 @@
-
-# TẮT CHẾ ĐỘ BẢO VỆ VÀ XÓA DATABASE
+---
+title: "TẮT CHẾ ĐỘ BẢO VỆ VÀ XÓA DATABASE"
+date: 2026-11-22
+weight: 4
+chapter: false
+pre: "<b> 5.7.4 </b>"
+---
 
 ## Chuẩn bị xóa Database
 
