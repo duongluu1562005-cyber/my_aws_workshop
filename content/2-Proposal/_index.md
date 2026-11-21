@@ -43,7 +43,7 @@ The trial will measure the value of these workflows. For recruitment, record the
 
 ## 3. Solution Architecture
 
-![Tindy architecture diagram](./my_aws_workshop/images/2-Proposal/3.png)
+![Tindy architecture diagram](/my_aws_workshop/images/2-Proposal/3.png)
 
 *Tindy architecture diagram for the proposal. The numbered walkthrough below reflects the repository configuration and application code.*
 
