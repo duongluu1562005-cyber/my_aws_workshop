@@ -1,5 +1,10 @@
-
-# TẠO CƠ SỞ DỮ LIỆU FRESH
+---
+title: "TẠO CƠ SỞ DỮ LIỆU FRESH"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: "<b> 5.4.1 </b>"
+---
 
 `database.yaml` tạo một RDS PostgreSQL instance, một subnet group sử dụng hai private DB subnet và một parameter group yêu cầu TLS. Việc khởi tạo Fresh tạo cơ sở dữ liệu `tindy` với master user `tindy_admin`, trong đó RDS quản lý master password trong Secrets Manager. AWS CLI đã xác nhận PostgreSQL `17.11` có sẵn tại `us-east-1` trước bước này.
 
