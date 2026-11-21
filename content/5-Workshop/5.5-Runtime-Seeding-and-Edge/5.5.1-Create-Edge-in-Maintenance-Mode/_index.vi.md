@@ -1,5 +1,10 @@
-
-# TẠO EDGE Ở CHẾ ĐỘ BẢO TRÌ
+---
+title: "TẠO EDGE Ở CHẾ ĐỘ BẢO TRÌ"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: "<b> 5.5.1 </b>"
+---
 
 `edge.yaml` tạo CloudFront distribution, Origin Access Control, frontend bucket policy và maintenance routing function. Tạo Edge trước Runtime để lấy hostname mới cho API public host và cấu hình OAuth.
 
