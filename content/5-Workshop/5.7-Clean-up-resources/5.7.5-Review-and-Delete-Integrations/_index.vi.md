@@ -1,4 +1,10 @@
-# KIỂM TRA VÀ XÓA INTEGRATIONS
+---
+title: "KIỂM TRA VÀ XÓA INTEGRATIONS"
+date: 2026-11-22
+weight: 5
+chapter: false
+pre: "<b> 5.7.5 </b>"
+---
 
 ## Kiểm tra và xóa Integrations
 
