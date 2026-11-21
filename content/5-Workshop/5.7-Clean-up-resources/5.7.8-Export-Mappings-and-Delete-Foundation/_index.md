@@ -1,5 +1,10 @@
-
-# EXPORT MAPPINGS AND DELETE FOUNDATION
+---
+title: "EXPORT MAPPINGS AND DELETE FOUNDATION"
+date: 2026-11-22
+weight: 8
+chapter: false
+pre: "<b> 5.7.8 </b>"
+---
 
 ## Export Foundation configuration before deletion
 
