@@ -1,5 +1,10 @@
-
-# KIỂM TRA HẠ TẦNG TRƯỚC KHI DỌN DẸP
+---
+title: "KIỂM TRA HẠ TẦNG TRƯỚC KHI DỌN DẸP"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: "<b> 5.7.1 </b>"
+---
 
 ## Ghi lại các stack hiện có
 
