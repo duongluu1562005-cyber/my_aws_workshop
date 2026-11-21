@@ -1,5 +1,10 @@
-
-# Deploy Network
+---
+title: "DEPLOY NETWORK"
+date: 2026-11-22
+weight: 2
+chapter: false
+pre: "<b> 5.3.2 </b>"
+---
 
 `network.yaml` defines VPC `10.20.0.0/16`, an Internet Gateway, six subnets, route tables and security groups for ALB, ECS, migration and the database. Its 26 resources and nine Outputs support the database and runtime in `us-east-1`.
 
