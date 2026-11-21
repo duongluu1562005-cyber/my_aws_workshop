@@ -1,305 +1,167 @@
 
-## 5.3.1 — Deploy Foundation
+# Deploy Foundation
 
-### Overview
+Foundation supplies frontend/media S3 buckets, the backend ECR repository, application secrets and GitHub OIDC. The main `foundation.yaml` also defines deployment and operations IAM roles.
 
-The Foundation stack manages the AWS resources shared across the Tindy application, including:
+## 1. Prepare retained resource import
 
-- **Amazon S3:** Stores frontend files and uploaded media.
-- **Amazon ECR:** Stores backend container images.
-- **AWS Secrets Manager:** Stores database credentials, JWT signing keys, and OAuth configuration.
-- **GitHub OIDC:** Enables GitHub Actions to authenticate with AWS.
-- **IAM roles:** Provides permissions for infrastructure planning, application deployment, and operational workflows.
+Cleanup retained nine Foundation resources. Restore CloudFormation ownership with `foundation-import.yaml`, prepared from the deployed template. It contains those nine resources, omits the four deleted IAM roles and the entire Outputs section, and defaults `GitHubOidcProviderMode` to `Create` so the provider is included in the import list. The identifiers were exported before cleanup.
 
-Because Tindy had previously been deployed, nine Foundation resources were retained during cleanup. These resources must be imported back into CloudFormation before restoring the main `foundation.yaml` template.
+After import, use `foundation.yaml` to add IAM roles through change sets as new CloudFront and Runtime inputs become available. Import targets must already exist.
 
-The deployment consists of two stages:
+## 2. Open the import workflow
 
-1. Import the nine existing resources using `foundation-import.yaml`.
-2. Restore the main `foundation.yaml` template, its Outputs, and the IAM role that can be configured at this stage.
+1. Select **N. Virginia (`us-east-1`) → CloudFormation → Stacks**.
+2. Open the **Create stack** dropdown and select **With existing resources (import resources)**.
 
-### Step 1: Prepare the Foundation Import
+**📸 Capture the import menu.**
 
-The `foundation-import.yaml` template was prepared from the original Foundation template to restore CloudFormation management of the retained resources.
+[Import existing resources](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01-foundation-import-start.png)
 
-For the import operation, the template:
+3. Read the introduction and click Next.
 
-- Includes the nine existing resources.
-- Excludes the four deleted IAM roles.
-- Removes the entire `Outputs` section.
-- Sets `GitHubOidcProviderMode` to `Create` so the existing OIDC provider is included in the import.
+[Import introduction](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01a-foundation-import-introduction.png)
 
-Resource identifiers were saved before cleanup in `console-import-identifiers.csv`.
+4. Select **Upload a template file**, choose the prepared `foundation-import.yaml` from the backup directory.
 
-**Important:** Resource import does not create new resources. All nine resources must already exist in AWS.
+**📸 Capture the selected filename.**
 
-### Step 2: Start the Import Process
+[Upload import template](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-02-foundation-import-template.png)
 
-Open the AWS Management Console and select **US East (N. Virginia) — us-east-1**.
+5. Click Next and verify **Resources to import (9)** under Identify resources.
 
-Navigate to:
+[Identifiers upper section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03-foundation-identifiers-empty-top.png)
 
-**CloudFormation → Stacks → Create stack → With existing resources (import resources)**
+[Identifiers lower section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03a-foundation-identifiers-empty-bottom.png)
 
-![Foundation import menu](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01-foundation-import-start.png)
+## 3. Fill identifiers from the saved mapping
 
-The import introduction page explains how existing AWS resources can be brought under CloudFormation management.
+| **Logical ID**             | **Identifier property** | **Mapping value**                                       |
+| :------------------------- | :---------------------- | :------------------------------------------------------ |
+| `ApiRepository`            | `RepositoryName`        | `tindy-api` repository name.                            |
+| `MediaBucketPolicy`        | `Bucket`                | Media bucket name.                                      |
+| `GitHubOAuthSecret`        | `Id`                    | Complete GitHub OAuth secret ARN.                       |
+| `DatabaseConnectionSecret` | `Id`                    | Complete DB connection secret ARN.                      |
+| `GoogleOAuthSecret`        | `Id`                    | Complete Google OAuth secret ARN.                       |
+| `JwtSigningKeySecret`      | `Id`                    | Complete JWT secret ARN.                                |
+| `MediaBucket`              | `BucketName`            | Same media bucket name as MediaBucketPolicy.            |
+| `FrontendBucket`           | `BucketName`            | Frontend bucket name.                                   |
+| `GitHubOidcProvider`       | `Arn`                   | Provider ARN for `token.actions.githubusercontent.com`. |
 
-Click **Next** to continue.
+Copy values from the exported `console-import-identifiers.csv`. Secrets Manager Id fields use resource ARNs. Secret values stay in Secrets Manager.
 
-![Foundation import introduction](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01a-foundation-import-introduction.png)
+**📸 Capture all nine filled identifiers before clicking Next, using two screenshots if needed.**
 
-On the **Specify template** page:
+All nine identifiers have been filled and checked against the pre-cleanup mapping.
 
-1. Select **Upload a template file**.
-2. Choose `foundation-import.yaml`.
-3. Click **Next**.
+[Filled identifiers upper section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04-foundation-identifiers-filled-top.png)
 
-![Upload Foundation import template](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-02-foundation-import-template.png)
+[Filled identifiers lower section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04a-foundation-identifiers-filled-bottom.png)
 
-### Step 3: Identify the Existing Resources
+## 4. Import-stage parameters
 
-CloudFormation displays **Resources to import (9)**.
+Click **Next** to Specify stack details and enter `tindy-foundation`. Use `GitHubOidcProviderMode = Create` to include the existing provider in the import. Set `BackendDeployEnabled`, `InfraPlannerEnabled` and `LifecycleWorkflowsEnabled` to `false`. Leave `BackendApiExecutionRoleName`, `BackendApiTaskRoleName`, `FrontendDeployDistributionId` and `FrontendDeployOidcSubject` empty for this stage.
 
-Each resource requires an identifier that matches the resource already deployed in AWS.
+**📸 Capture the stack name and all parameters before Review.**
 
-The following table summarizes the required mapping.
+Verified values show stack name `tindy-foundation`, `GitHubOidcProviderMode = Create`, all three role-enable options set to `false`, and the four Runtime/Frontend reference fields empty.
 
-| Logical ID | Identifier | Value |
-|---|---|---|
-| ApiRepository | RepositoryName | Existing `tindy-api` repository name |
-| MediaBucketPolicy | Bucket | Existing media bucket name |
-| GitHubOAuthSecret | Id | GitHub OAuth secret ARN |
-| DatabaseConnectionSecret | Id | Database connection secret ARN |
-| GoogleOAuthSecret | Id | Google OAuth secret ARN |
-| JwtSigningKeySecret | Id | JWT signing secret ARN |
-| MediaBucket | BucketName | Existing media bucket name |
-| FrontendBucket | BucketName | Existing frontend bucket name |
-| GitHubOidcProvider | Arn | Existing GitHub OIDC provider ARN |
+[Foundation stack details](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05-foundation-import-stack-details.png)
 
-The initial form shows the identifier fields before they are filled.
+[Foundation import parameters](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05a-foundation-import-parameters.png)
 
-![Empty resource identifiers - upper section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03-foundation-identifiers-empty-top.png)
+## 5. Review before importing
 
-![Empty resource identifiers - lower section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03a-foundation-identifiers-empty-bottom.png)
+Click **Next** to Review. Check the stack name, parameters and all nine resources against the saved mapping. Capture the resource list before executing. If Resource changes are displayed, expect nine items with Action `Import`.
 
-Enter the values from the saved `console-import-identifiers.csv` file.
+The Review page shows the nine resources and the selected stack parameters.
 
-For Secrets Manager resources, use the complete secret ARNs rather than secret names or secret values.
+[Review Foundation resources](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06-foundation-import-review-resources.png)
 
-The media bucket policy and media bucket must reference the same existing bucket.
+[Review Foundation parameters](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06a-foundation-import-review-parameters.png)
 
-After entering all nine identifiers, verify them against the saved mapping.
+### Resolve Outputs validation during import
 
-![Completed resource identifiers - upper section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04-foundation-identifiers-filled-top.png)
+The initial import template still contained Outputs. CloudFormation reported `As part of the import operation, you cannot modify or add [Outputs]`. The change set was not created successfully and import completion remains unverified.
 
-![Completed resource identifiers - lower section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04a-foundation-identifiers-filled-bottom.png)
+[Outputs validation error](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06b-foundation-import-outputs-error.png)
 
-### Step 4: Configure Import Parameters
+The corrected `foundation-import.yaml` omits the entire Outputs section. Return to **Specify template**, upload the corrected file, verify all nine identifiers and retain the documented parameters. After import, restore Outputs through an update using the main `foundation.yaml` template.
 
-Click **Next** to open **Specify stack details**.
+### Review after template correction
 
-Set the stack name to:
+Re-upload the template without Outputs, retaining identifiers and parameters. Change set creation succeeded with **Changes (9)** and all nine actions set to `Import`.
 
-` tindy-foundation `
+[Corrected resource review](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07-foundation-import-review-resources.png)
 
-Use the following parameters for the import stage.
+[Corrected parameter review](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07a-foundation-import-review-parameters.png)
 
-| Parameter | Value |
-|---|---|
-| GitHubOidcProviderMode | Create |
-| BackendDeployEnabled | false |
-| InfraPlannerEnabled | false |
-| LifecycleWorkflowsEnabled | false |
-| BackendApiExecutionRoleName | Empty |
-| BackendApiTaskRoleName | Empty |
-| FrontendDeployDistributionId | Empty |
-| FrontendDeployOidcSubject | Empty |
+**📸 Capture all nine Import actions before execution.**
 
-At this stage, the IAM deployment roles are disabled because the required Runtime and Frontend references are not yet available.
+[Nine Import actions](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07b-foundation-nine-import-actions.png)
 
-The existing GitHub OIDC provider is included in the import operation.
+## 6. Execute import
 
-![Foundation stack details](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05-foundation-import-stack-details.png)
+Click **Import resources** and monitor **Events** for `tindy-foundation` until the stack reaches `IMPORT_COMPLETE`. For import rollback or other errors, inspect Logical ID and Status reason before continuing.
 
-![Foundation import parameters](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05a-foundation-import-parameters.png)
+**📸 Capture the stack IMPORT_COMPLETE event and Resources showing nine imported resources.**
 
-### Step 5: Review and Correct the Import Template
+Import completed successfully. The Resources screenshot shows stack `tindy-foundation` at `IMPORT_COMPLETE`, **Resources (9)** and `UPDATE_COMPLETE` for displayed resources.
 
-Before starting the import, review the stack parameters and the list of nine resources.
+[Foundation imported resources](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09-foundation-imported-resources.png)
 
-![Review Foundation resources](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06-foundation-import-review-resources.png)
+Next, update using the main `foundation.yaml` template to restore Outputs and configure IAM roles as deployment prerequisites become available.
 
-![Review Foundation parameters](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06a-foundation-import-review-parameters.png)
+## 7. Restore the main template and Outputs
 
-#### Issue: Outputs Validation Error
+Create change set `tindy-foundation-restore-template` using **Replace existing template → Upload a template file**, choosing `foundation.yaml` from the infrastructure repository. Keep `GitHubOidcProviderMode = Create`. Restore `InfraPlannerEnabled = true` from the pre-cleanup configuration to create the GitHub Actions change set planning role. Its OIDC input is available at this stage.
 
-During the first import attempt, CloudFormation returned the following error:
+Keep `BackendDeployEnabled = false` and `LifecycleWorkflowsEnabled = false`. Leave both Runtime role names and both frontend parameters empty until new Runtime and Edge outputs are available.
 
-```text
-As part of the import operation, you cannot modify or add [Outputs].
-```
+Acknowledge IAM capabilities and create the change set. Expected Resource changes add only `InfraPlannerRole`; the main template restores Outputs. Review actual changes before execution.
 
-![Foundation Outputs validation error](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06b-foundation-import-outputs-error.png)
+**📸 Capture the main template filename, parameters and Resource changes.** This describes the next step. Update results will be added after verification.
 
-The error occurred because the import template still contained an `Outputs` section.
+Opened **Stack actions → Create a change set**, selected **Standard change set → Replace existing template → Upload a template file**, and uploaded `foundation.yaml`.
 
-CloudFormation did not create the import change set successfully.
+[Foundation after import](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09a-foundation-imported-resources.png)
 
-**Resolution:**
+[Foundation change set menu](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10a-foundation-create-changeset-menu.png)
 
-1. Remove the entire `Outputs` section from `foundation-import.yaml`.
-2. Return to the template selection page.
-3. Upload the corrected template.
-4. Verify the nine resource identifiers again.
-5. Keep the previously configured stack parameters.
+[Main foundation.yaml template selected](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10-foundation-main-template.png)
 
-The corrected template was accepted by CloudFormation.
+The change set is named `tindy-foundation-restore-template`. Verified parameters are `GitHubOidcProviderMode = Create`, `InfraPlannerEnabled = true`, `BackendDeployEnabled = false` and `LifecycleWorkflowsEnabled = false`. Both Runtime role names and both Frontend fields remain empty for this stage.
 
-![Corrected Foundation resource review](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07-foundation-import-review-resources.png)
+**📸 Capture the change set name and all parameters.**
 
-![Corrected Foundation parameter review](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07a-foundation-import-review-parameters.png)
+[Main Foundation parameters](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11-foundation-main-parameters.png)
 
-After correction, CloudFormation successfully generated a change set containing **nine Import actions**.
+[Foundation parameters lower section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11a-foundation-main-parameters-bottom.png)
 
-![Nine Foundation import actions](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07b-foundation-nine-import-actions.png)
+Click Next, keep Express mode disabled and rollback enabled, acknowledge IAM capabilities and create the change set.
 
-### Step 6: Execute the Resource Import
+Change set `tindy-foundation-restore-template` reached `CREATE_COMPLETE` and `AVAILABLE`, with one change adding `InfraPlannerRole` of type `AWS::IAM::Role`.
 
-Click **Import resources** to execute the change set.
+**📸 Capture Resource changes before execution.**
 
-Monitor the `tindy-foundation` stack until its status becomes:
+[Main Foundation change set](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12-foundation-main-changeset.png)
 
-`IMPORT_COMPLETE`
+Execute the change set, keeping **Use deletion policy** if displayed. Monitor Events until `tindy-foundation — UPDATE_COMPLETE`. Check Outputs for bucket, ECR, secret, OIDC and `InfraPlannerRoleArn` references needed in subsequent steps.
 
-The import completed successfully, and the Resources tab showed all nine resources managed by CloudFormation.
+**📸 Capture the completed stack status and all Outputs.**
 
-![Foundation imported resources](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09-foundation-imported-resources.png)
+The change set was executed with **Use deletion policy**.
 
-![Foundation imported resources verification](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09a-foundation-imported-resources.png)
+[Execute Foundation change set](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12a-foundation-main-execute.png)
 
-At this point, the retained resources have been imported successfully. However, the Foundation stack still needs to be updated with the main template to restore its Outputs and required IAM configuration.
+The stack reached **UPDATE_COMPLETE**. The Outputs screenshot shows completed stack status and **Outputs (14)**.
 
-### Step 7: Restore the Main Foundation Template
+[Foundation update completed](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-13-foundation-main-update-complete.png)
 
-After the import, open the `tindy-foundation` stack.
+[Foundation Outputs upper section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14-foundation-main-outputs-top.png)
 
-Select:
+[Foundation Outputs lower section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14a-foundation-main-outputs-bottom.png)
 
-**Stack actions → Create a change set**
+Frontend/media bucket, ECR, application secret, OIDC, Data Protection path and `InfraPlannerRoleArn` references are available again. Backend/frontend deployment and lifecycle roles will be configured when new Runtime and Edge inputs become available. Compare GitHub repository role variables with new Outputs before running their workflows.
 
-![Foundation change set menu](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10a-foundation-create-changeset-menu.png)
-
-Create a **Standard change set** and select:
-
-**Replace existing template → Upload a template file**
-
-Upload the original `foundation.yaml` from the infrastructure repository.
-
-![Select main Foundation template](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10-foundation-main-template.png)
-
-Name the change set:
-
-`tindy-foundation-restore-template`
-
-Configure the parameters as follows:
-
-| Parameter | Value |
-|---|---|
-| GitHubOidcProviderMode | Create |
-| InfraPlannerEnabled | true |
-| BackendDeployEnabled | false |
-| LifecycleWorkflowsEnabled | false |
-| BackendApiExecutionRoleName | Empty |
-| BackendApiTaskRoleName | Empty |
-| FrontendDeployDistributionId | Empty |
-| FrontendDeployOidcSubject | Empty |
-
-The main difference from the import stage is that `InfraPlannerEnabled` is now set to `true`.
-
-This enables the IAM role used by GitHub Actions for CloudFormation change set planning.
-
-The backend deployment and lifecycle roles remain disabled because their required inputs will become available after the Runtime and Edge stacks are deployed.
-
-![Main Foundation parameters](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11-foundation-main-parameters.png)
-
-![Main Foundation parameters - lower section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11a-foundation-main-parameters-bottom.png)
-
-Continue through the remaining configuration:
-
-1. Keep Express mode disabled.
-2. Keep rollback enabled.
-3. Acknowledge the required IAM capabilities.
-4. Create the change set.
-
-### Step 8: Review and Execute the Change Set
-
-CloudFormation created the change set successfully.
-
-Its status reached:
-
-`CREATE_COMPLETE — AVAILABLE`
-
-The resource changes showed one addition:
-
-| Resource | Type | Action |
-|---|---|---|
-| InfraPlannerRole | AWS::IAM::Role | Add |
-
-The update also restores the `Outputs` section from the main Foundation template.
-
-![Main Foundation change set](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12-foundation-main-changeset.png)
-
-After reviewing the changes, execute the change set.
-
-The **Use deletion policy** option was retained during execution.
-
-![Execute Foundation change set](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12a-foundation-main-execute.png)
-
-Monitor the stack Events until the update finishes.
-
-The stack successfully reached:
-
-`UPDATE_COMPLETE`
-
-![Foundation update completed](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-13-foundation-main-update-complete.png)
-
-### Step 9: Verify Foundation Outputs
-
-After the update, open the **Outputs** tab of `tindy-foundation`.
-
-CloudFormation displayed **14 Outputs**, including references needed by the remaining infrastructure stacks and deployment workflows.
-
-These include:
-
-- Frontend and media S3 bucket references.
-- Backend ECR repository references.
-- Application secrets stored in Secrets Manager.
-- GitHub OIDC provider reference.
-- Data Protection resource path.
-- `InfraPlannerRoleArn` for GitHub Actions infrastructure planning.
-
-![Foundation Outputs - upper section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14-foundation-main-outputs-top.png)
-
-![Foundation Outputs - lower section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14a-foundation-main-outputs-bottom.png)
-
-The remaining backend deployment, frontend deployment, and lifecycle IAM roles will be configured after the necessary Runtime and Edge references are available.
-
-GitHub repository role variables should also be checked against the updated Foundation Outputs before running the associated workflows.
-
-### Result
-
-The Foundation deployment completed successfully.
-
-| Verification | Result |
-|---|---|
-| Resource import | 9 resources imported |
-| Import stack status | `IMPORT_COMPLETE` |
-| Main template restoration | Completed |
-| InfraPlannerRole | Added successfully |
-| Final stack status | `UPDATE_COMPLETE` |
-| Stack Outputs | 14 Outputs available |
-
-The retained resources are now managed by CloudFormation, the main Foundation template has been restored, and the required shared resource references are available.
-
-**Foundation is ready for the next stage: Network deployment.**
+Foundation is ready for Network deployment.
