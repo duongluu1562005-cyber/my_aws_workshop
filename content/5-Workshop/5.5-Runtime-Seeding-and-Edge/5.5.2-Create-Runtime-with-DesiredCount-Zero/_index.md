@@ -3,7 +3,7 @@ title: "CREATE RUNTIME WITH DESIREDCOUNT ZERO"
 date: 2026-11-22
 weight: 2
 chapter: false
-pre: "<b> 5.3.2 </b>"
+pre: "<b> 5.5.2 </b>"
 ---
 
 `runtime.yaml` defines the ECS cluster, API task definition and service, IAM roles, log group, internal ALB, listener, target group, ingress and CloudFront VPC Origin. Optional bootstrap, migration and seed task definitions are enabled through parameters.
