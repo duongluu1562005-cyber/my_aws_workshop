@@ -1,3 +1,35 @@
+
+# SELF-ASSESSMENT
+
+During the **First Cloud AI Journey (FCAJ)** program, I gained practical knowledge of AWS through self-study, the Tindy project, and community activities. This experience helped me recognize my strengths and areas for improvement.
+
+## Assessment by Criterion
+
+| No. | Criterion | Self-Assessment | Good | Fair | Average |
+|:---:|:---|:---|:---:|:---:|:---:|
+| 1 | **Professional knowledge and skills** | I gained basic AWS knowledge but need more hands-on experience. | ☐ | ✅ | ☐ |
+| 2 | **Ability to learn** | I learned through documentation and practice, although some concepts took longer to understand. | ☐ | ✅ | ☐ |
+| 3 | **Proactiveness** | I sometimes relied on guidance and need to take more initiative in solving problems. | ☐ | ☐ | ✅ |
+| 4 | **Responsibility** | I took my learning and project responsibilities seriously. | ✅ | ☐ | ☐ |
+| 5 | **Discipline** | I followed program requirements and maintained a responsible learning attitude. | ✅ | ☐ | ☐ |
+| 6 | **Willingness to improve** | I accepted feedback and continuously worked on improving my skills. | ✅ | ☐ | ☐ |
+| 7 | **Communication** | Community Day helped me practice presenting, but I still need more confidence. | ☐ | ✅ | ☐ |
+| 8 | **Teamwork** | I understood the importance of collaboration but need more teamwork experience. | ☐ | ✅ | ☐ |
+| 9 | **Professional behavior** | I maintained a respectful and professional attitude throughout the program. | ✅ | ☐ | ☐ |
+| 10 | **Problem-solving skills** | I practiced troubleshooting AWS issues but still need to improve my efficiency. | ☐ | ✅ | ☐ |
+| 11 | **Project contribution** | I contributed to Tindy's development and documentation, with room for further improvement. | ☐ | ✅ | ☐ |
+| 12 | **Overall evaluation** | I made good progress in learning AWS and developing professional skills, although I still have areas to improve. | ✅ | ☐ | ☐ |
+
+## Areas for Improvement
+
+- Improve my AWS technical knowledge through more practical projects.
+- Become more proactive and independent when solving problems.
+- Develop stronger communication and teamwork skills.
+- Improve troubleshooting and time management skills.
+
+## Personal Reflection
+
+FCAJ helped me connect theoretical knowledge with practical experience through Tindy. I also gained valuable experience presenting at Community Day. Although I still face challenges, this program motivated me to continue learning and improving my technical and professional skills.
 ---
 title: "Self-Assessment"
 date: 2024-01-01
