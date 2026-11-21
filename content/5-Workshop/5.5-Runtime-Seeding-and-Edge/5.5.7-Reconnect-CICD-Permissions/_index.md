@@ -1,6 +1,6 @@
 ---
 title: "RECONNECT CI/CD PERMISSIONS AFTER REDEPLOY"
-date: 2026-11-22
+date: 2026-11-19
 weight: 7
 chapter: false
 pre: "<b> 5.5.7 </b>"
