@@ -1,5 +1,10 @@
-
-# TRIỂN KHAI INTEGRATIONS
+---
+title: "TRIỂN KHAI INTEGRATIONS"
+date: 2026-11-22
+weight: 2
+chapter: false
+pre: "<b> 5.4.2 </b>"
+---
 
 `integrations.yaml` cấu hình GuardDuty Malware Protection để quét PDF trên S3, gửi kết quả qua EventBridge, SQS và một DLQ. Template này cũng định nghĩa các IAM policy và queue policy, cảnh báo CloudWatch và các tài nguyên thông báo qua email SNS tùy chọn.
 
