@@ -1,6 +1,10 @@
-
-# Triển khai Network
-
+---
+title: "TRIỂN KHAI NETWORK"
+date: 2026-11-22
+weight: 2
+chapter: false
+pre: "<b> 5.3.2 </b>"
+---
 `network.yaml` định nghĩa VPC `10.20.0.0/16`, một Internet Gateway, sáu subnet, các route table và security group cho ALB, ECS, migration và cơ sở dữ liệu. 26 tài nguyên và chín Outputs của template này hỗ trợ Database và Runtime tại `us-east-1`.
 
 ## 1. Tạo stack
