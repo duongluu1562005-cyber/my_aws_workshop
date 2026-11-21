@@ -1,5 +1,10 @@
-
-# DATABASE VÀ INTEGRATIONS
+---
+title: "DATABASE VÀ INTEGRATIONS"
+date: 2026-11-22
+weight: 4
+chapter: false
+pre: "<b> 5.4 </b>"
+---
 
 Chuẩn bị hệ thống lưu trữ ứng dụng và quét PDF trước khi chạy backend. Database sử dụng hạ tầng mạng từ phần 5.3. Integrations sử dụng media bucket của Foundation và gửi kết quả quét đến API worker.
 
