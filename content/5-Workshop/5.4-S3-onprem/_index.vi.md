@@ -1,166 +1,68 @@
 
-# Database and Integrations
+# DATABASE VÀ INTEGRATIONS
 
-## Tổng quan
+Chuẩn bị hệ thống lưu trữ ứng dụng và quét PDF trước khi chạy backend. Database sử dụng hạ tầng mạng từ phần 5.3. Integrations sử dụng media bucket của Foundation và gửi kết quả quét đến API worker.
 
-Sau khi hoàn tất Foundation và Network, bước tiếp theo là triển khai cơ sở dữ liệu và các dịch vụ tích hợp cho ứng dụng Tindy.
+Phiên triển khai này khởi tạo một cơ sở dữ liệu Fresh. Bootstrap, migrations và seed dữ liệu demo được thực hiện trong quá trình thiết lập Runtime sau khi hoàn tất việc tạo RDS.
 
-Phần này gồm hai thành phần chính:
+## 5.4.1 — Tạo cơ sở dữ liệu Fresh
 
-- **Database:** Triển khai Amazon RDS for PostgreSQL để lưu trữ dữ liệu của ứng dụng, sử dụng hệ thống mạng đã tạo ở phần 5.3.
-- **Integrations:** Cấu hình tính năng quét mã độc cho tệp PDF được tải lên S3, chuyển kết quả quét đến API worker và thiết lập cảnh báo vận hành.
+`database.yaml` định nghĩa ba tài nguyên chính và các thiết lập truy cập cơ sở dữ liệu.
 
-Trong lần triển khai này, hệ thống sử dụng **cơ sở dữ liệu mới (Fresh Database)**. Việc khởi tạo schema, chạy migrations và thêm dữ liệu demo sẽ được thực hiện ở phần 5.5, sau khi RDS hoàn tất.
+| **Tài nguyên hoặc thiết lập** | **Mục đích** |
+| :--- | :--- |
+| DB subnet group | Đặt RDS trong các private DB subnet từ Network. |
+| PostgreSQL parameter group | Kích hoạt `rds.force_ssl` để yêu cầu TLS. |
+| RDS instance | Lưu trữ dữ liệu Tindy bằng PostgreSQL 17, `db.t4g.micro` và cấu hình Single-AZ. |
+| RDS-managed master secret | Cung cấp thông tin xác thực quản trị cho tác vụ bootstrap. |
+| Deletion protection và snapshot policy | Bảo vệ cơ sở dữ liệu khỏi bị xóa và yêu cầu tạo snapshot theo chính sách của template. |
 
-## 5.4.1 — Tạo cơ sở dữ liệu mới
+Sử dụng `DBProvisionMode = Fresh`, để trống snapshot identifier và bật deletion protection. RDS tạo cơ sở dữ liệu `tindy` và master user `tindy_admin`. API sử dụng thông tin xác thực DB riêng được chuẩn bị sau đó.
 
-Template `database.yaml` định nghĩa các tài nguyên cần thiết để triển khai PostgreSQL trên Amazon RDS.
 
-### Các tài nguyên và cấu hình chính
 
-| Tài nguyên hoặc cấu hình | Chức năng |
-|---|---|
-| DB Subnet Group | Đặt RDS trong các private database subnet được tạo từ Network. |
-| PostgreSQL Parameter Group | Bật `rds.force_ssl` để yêu cầu kết nối TLS. |
-| RDS Instance | Lưu trữ dữ liệu Tindy bằng PostgreSQL 17, sử dụng `db.t4g.micro` và cấu hình Single-AZ. |
-| RDS-managed Master Secret | Lưu thông tin đăng nhập quản trị để bootstrap task sử dụng. |
-| Deletion Protection và Snapshot Policy | Bảo vệ cơ sở dữ liệu khỏi việc xóa và yêu cầu tạo snapshot theo chính sách của template. |
-
-### Cấu hình triển khai
-
-Trong quá trình tạo Database stack, sử dụng các thiết lập:
-
-| Tham số | Giá trị |
-|---|---|
-| `DBProvisionMode` | `Fresh` |
-| Snapshot Identifier | Để trống |
-| Deletion Protection | Bật |
-| Database Name | `tindy` |
-| Master Username | `tindy_admin` |
-
-Với chế độ `Fresh`, RDS tạo một cơ sở dữ liệu mới thay vì khôi phục từ snapshot.
-
-Tài khoản `tindy_admin` được dùng cho công việc quản trị và khởi tạo cơ sở dữ liệu. Backend API sẽ sử dụng một tài khoản riêng được chuẩn bị trong các bước tiếp theo.
-
-### Kết quả triển khai
-
-Database stack đã được tạo thành công với trạng thái:
-
-`CREATE_COMPLETE`
-
-CloudFormation cung cấp **5 Outputs**, bao gồm:
-
-- `DBEndpointAddress`: Địa chỉ endpoint của RDS.
-- Database Port: Cổng kết nối PostgreSQL.
-- Database Identifier: Mã định danh của RDS instance.
-- `DBMasterSecretArn`: ARN của secret chứa thông tin đăng nhập quản trị.
-- `DBProvisionMode`: Chế độ triển khai cơ sở dữ liệu.
-
-Các Outputs này sẽ được sử dụng khi cấu hình Runtime và thực hiện bootstrap database.
-
-Việc tạo schema, chạy migrations và thêm dữ liệu demo sẽ được thực hiện ở **phần 5.5 — Runtime**.
+**Kết quả mong đợi** là `CREATE_COMPLETE` và năm Outputs bao gồm endpoint, port, identifier, master secret ARN và provision mode. Việc chuẩn bị schema và dữ liệu demo được thực hiện tiếp trong phần 5.5.
 
 ## 5.4.2 — Triển khai Integrations
 
-Sau khi tạo Database, tiếp tục triển khai các dịch vụ tích hợp bằng template `integrations.yaml`.
+`integrations.yaml` cấu hình việc gửi kết quả quét PDF và các thông báo vận hành.
 
-Stack này tập trung vào việc quét mã độc cho tệp PDF, chuyển kết quả đến backend và gửi cảnh báo khi xảy ra sự cố.
+| **Thành phần** | **Mục đích** |
+| :--- | :--- |
+| GuardDuty Malware Protection plan | Quét các object mới trong `certificates/pdf/` và `ai-input/pdf/` thuộc media bucket. |
+| Gắn tag cho các object đã quét | Ghi lại kết quả quét trên các object để hỗ trợ kiểm soát truy cập. |
+| EventBridge rule | Gửi các sự kiện kết quả quét đến queue. |
+| SQS queue và policy | Nhận các message cho API worker. |
+| Dead-letter queue và alarm | Giữ lại các message xử lý thất bại theo redrive policy và phát hiện tình trạng tồn đọng. |
+| SNS topic và email subscription | Gửi cảnh báo đến người nhận đã xác nhận. |
+| Conditional ALB/API alarms | Sử dụng các metric dimension ALB/target group mới sau khi triển khai Runtime. |
 
-### Các thành phần chính
+Ban đầu để trống cả hai ALB metric dimension. Sau khi tạo, xác nhận SNS email subscription và xác minh protection plan ở trạng thái Active, việc gắn tag và cả hai tiền tố PDF.
 
-| Thành phần | Chức năng |
-|---|---|
-| GuardDuty Malware Protection | Quét các đối tượng mới trong hai thư mục `certificates/pdf/` và `ai-input/pdf/` thuộc media bucket. |
-| Object Tagging | Gắn thẻ kết quả quét lên đối tượng S3 để hỗ trợ kiểm soát truy cập. |
-| Amazon EventBridge | Chuyển sự kiện kết quả quét đến hàng đợi. |
-| Amazon SQS và Queue Policy | Tiếp nhận thông báo để API worker xử lý. |
-| Dead-letter Queue và CloudWatch Alarm | Lưu những thông báo xử lý thất bại theo redrive policy và phát hiện tình trạng tồn đọng. |
-| Amazon SNS | Gửi thông báo cảnh báo đến email đã xác nhận. |
-| ALB/API Alarms | Theo dõi các chỉ số ALB và API sau khi Runtime được triển khai. |
+## Đầu vào và đầu ra
 
-### Cấu hình triển khai
+| **Phụ thuộc** | **Tham chiếu** |
+| :--- | :--- |
+| Network → Database | `PrivateDbSubnetIds`, `DatabaseSecurityGroupId`. |
+| Foundation → Integrations | `MediaBucketName`. |
+| Database → Chuẩn bị Runtime | `DBEndpointAddress`, `DBMasterSecretArn`, `DBProvisionMode`. |
+| Integrations → Runtime | `GuardDutyProtectionPlanArn`, `GuardDutyQueueUrl`. |
+| Runtime → Cập nhật Integrations | Các metric dimension ALB/target group mới cho cảnh báo. |
 
-Integrations sử dụng media bucket đã được tạo trong Foundation.
+## Kết quả đã xác minh
 
-GuardDuty Malware Protection được cấu hình để theo dõi hai tiền tố S3:
+| **Thành phần** | **Trạng thái** |
+| :--- | :--- |
+| Database | `CREATE_COMPLETE`, chế độ Fresh và năm Outputs. |
+| Integrations | `CREATE_COMPLETE`, bảy Outputs. |
+| SNS | Subscription đã được xác nhận. |
+| GuardDuty | Protection plan ở trạng thái Active, đã bật gắn tag và xác minh cả hai tiền tố. |
 
-- `certificates/pdf/`
-- `ai-input/pdf/`
+Việc kiểm thử tải lên PDF của ứng dụng được thực hiện sau khi API và schema sẵn sàng.
 
-Khi có tệp mới thuộc phạm vi được bảo vệ, GuardDuty thực hiện quét và ghi nhận kết quả.
+## Hướng dẫn thực hành
 
-Thông tin kết quả được chuyển qua EventBridge đến SQS để API worker xử lý.
-
-Ở lần tạo stack đầu tiên, hai tham số metric dimension của ALB được để trống vì Runtime chưa được triển khai.
-
-Sau khi Runtime có ALB và target group mới, Integrations sẽ được cập nhật để cấu hình các cảnh báo tương ứng.
-
-### Kiểm tra sau triển khai
-
-Sau khi tạo Integrations stack, thực hiện kiểm tra:
-
-1. Xác nhận CloudFormation đạt trạng thái `CREATE_COMPLETE`.
-2. Kiểm tra GuardDuty Malware Protection plan ở trạng thái **Active**.
-3. Xác minh tính năng gắn thẻ kết quả quét đã được bật.
-4. Kiểm tra hai tiền tố PDF đã được cấu hình chính xác.
-5. Xác nhận email subscription của Amazon SNS.
-
-### Kết quả triển khai
-
-Integrations stack đã được tạo thành công với trạng thái:
-
-`CREATE_COMPLETE`
-
-CloudFormation cung cấp **7 Outputs**.
-
-Các kết quả đã được xác minh gồm:
-
-- SNS email subscription đã được xác nhận.
-- GuardDuty Malware Protection plan hoạt động ở trạng thái Active.
-- Tính năng gắn thẻ kết quả quét đã được bật.
-- Hai tiền tố PDF đã được cấu hình đúng.
-
-Việc kiểm thử tải tệp PDF thông qua ứng dụng sẽ được thực hiện sau khi API và database schema sẵn sàng.
-
-## Thông tin kết nối giữa các Stack
-
-Các stack sử dụng Outputs của nhau để triển khai đúng tài nguyên và cấu hình.
-
-| Thành phần kết nối | Thông tin sử dụng |
-|---|---|
-| Network → Database | `PrivateDbSubnetIds`, `DatabaseSecurityGroupId` |
-| Foundation → Integrations | `MediaBucketName` |
-| Database → Runtime | `DBEndpointAddress`, `DBMasterSecretArn`, `DBProvisionMode` |
-| Integrations → Runtime | `GuardDutyProtectionPlanArn`, `GuardDutyQueueUrl` |
-| Runtime → Integrations | Thông tin ALB và target group mới để cấu hình cảnh báo |
-
-Việc sử dụng các Outputs giúp các stack liên kết với nhau mà không cần nhập thủ công các thông tin định danh tài nguyên.
-
-## Tổng kết triển khai
-
-Cả Database và Integrations đều đã được triển khai thành công.
-
-| Thành phần | Kết quả |
-|---|---|
-| Database | `CREATE_COMPLETE` |
-| Chế độ Database | `Fresh` |
-| Database Outputs | 5 |
-| Integrations | `CREATE_COMPLETE` |
-| Integrations Outputs | 7 |
-| SNS Subscription | Đã xác nhận |
-| GuardDuty Protection Plan | Active |
-| Object Tagging | Đã bật |
-| PDF Prefixes | Đã xác minh cả hai |
-
-Database đã sẵn sàng cho quá trình khởi tạo schema và dữ liệu ứng dụng. Đồng thời, Integrations đã cung cấp hạ tầng cần thiết để xử lý kết quả quét PDF và gửi cảnh báo.
-
-**Bước tiếp theo là triển khai Runtime, chạy migrations và chuẩn bị dữ liệu demo cho Tindy.**
-
-## Hướng dẫn triển khai chi tiết
-
-Các bước thực hiện và hình ảnh minh chứng được trình bày trong hai phần:
-
-| Hướng dẫn | Nội dung |
-|---|---|
-| [5.4.1 — Tạo cơ sở dữ liệu mới](/my_aws_workshop/5-workshop/5.4-database-integrations/5.4.1-database/) | Cấu hình Fresh Database, Network, Options và kiểm tra RDS Outputs. |
-| [5.4.2 — Triển khai Integrations](/my_aws_workshop/5-workshop/5.4-database-integrations/5.4.2-integrations/) | Cấu hình quét PDF, xác nhận SNS và kiểm tra GuardDuty Protection Plan. |
+| **Trang** | **Quy trình và bằng chứng** |
+| :--- | :--- |
+| [5.4.1 Tạo cơ sở dữ liệu Fresh](/aws_my_workshop/5-workshop/5.4-database-integrations/5.4.1-database/) | Các tham số Fresh, cấu hình mạng, Options và RDS Outputs. |
+| [5.4.2 Triển khai Integrations](/aws_my_workshop/5-workshop/5.4-database-integrations/5.4.2-integrations/) | Stack quét PDF, xác nhận SNS và xác minh protection plan. |
