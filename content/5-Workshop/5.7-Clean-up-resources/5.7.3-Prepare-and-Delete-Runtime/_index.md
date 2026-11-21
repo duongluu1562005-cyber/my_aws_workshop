@@ -1,5 +1,10 @@
-
-# PREPARE AND DELETE RUNTIME
+---
+title: "PREPARE AND DELETE RUNTIME"
+date: 2026-11-22
+weight: 3
+chapter: false
+pre: "<b> 5.7.3 </b>"
+---
 
 ## Prepare Runtime for deletion
 
