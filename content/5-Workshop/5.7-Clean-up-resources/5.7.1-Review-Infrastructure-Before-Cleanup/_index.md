@@ -1,6 +1,6 @@
 ---
 title: "REVIEW INFRASTRUCTURE BEFORE CLEANUP"
-date: 2026-11-22
+date: 2026-11-19
 weight: 1
 chapter: false
 pre: "<b> 5.7.1 </b>"
