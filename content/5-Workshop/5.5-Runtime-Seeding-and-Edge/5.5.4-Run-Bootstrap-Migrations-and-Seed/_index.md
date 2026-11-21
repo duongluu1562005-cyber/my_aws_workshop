@@ -1,5 +1,10 @@
-
-# RUN BOOTSTRAP, MIGRATIONS AND SEED
+---
+title: "RUN BOOTSTRAP, MIGRATIONS AND SEED"
+date: 2026-11-22
+weight: 4
+chapter: false
+pre: "<b> 5.3.4 </b>"
+---
 
 Runtime reached UPDATE_COMPLETE with all three database task definitions. The following steps are instructions awaiting execution evidence. Keep API `DesiredCount = 0` and Edge in maintenance while preparing the database.
 
