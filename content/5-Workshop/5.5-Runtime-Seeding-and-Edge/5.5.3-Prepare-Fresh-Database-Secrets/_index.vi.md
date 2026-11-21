@@ -1,5 +1,10 @@
-
-# CHUẨN BỊ SECRETS CHO CƠ SỞ DỮ LIỆU FRESH
+---
+title: "CHUẨN BỊ SECRETS CHO CƠ SỞ DỮ LIỆU FRESH"
+date: 2026-11-22
+weight: 3
+chapter: false
+pre: "<b> 5.3.3 </b>"
+---
 
 AWS CLI đã xác nhận ECS service ở trạng thái ACTIVE với Desired/Running/Pending đều bằng 0 và không có lỗi. VPC Origin ID được đọc trực tiếp từ Outputs báo cáo trạng thái Deployed.
 
