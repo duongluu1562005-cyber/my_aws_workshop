@@ -1,6 +1,6 @@
 ---
 title: "DATABASE AND INTEGRATIONS"
-date: 2026-11-22
+date: 2026-11-19
 weight: 4
 chapter: false
 pre: "<b> 5.4. </b>"
