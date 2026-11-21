@@ -50,7 +50,7 @@ The trial will measure the value of these workflows. For recruitment, record the
 | Step | Component | Request or data flow |
 | :--- | :--- | :--- |
 | 1 | Amazon CloudFront and frontend S3 bucket | Users open the site over HTTPS. CloudFront serves the React/Vite build from a private S3 bucket. Origin Access Control (OAC) restricts frontend reads to the distribution. |
-| 2 | CloudFront VPC Origin and Application Load Balancer | Dynamic paths such as `/api/*`, `/hubs/*`, and sign-in callbacks reach an internal ALB. The web app and API share a hostname, and caching is disabled for these dynamic paths. CloudFront VPC origins |
+| 2 | CloudFront VPC Origin and Application Load Balancer | Dynamic paths such as `/api/*`, `/hubs/*`, and sign-in callbacks reach an internal ALB. The web app and API share a hostname, and caching is disabled for these dynamic paths. [CloudFront VPC origins](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-vpc-origins.html) |
 | 3 | Amazon ECS, AWS Fargate, and Amazon ECR | ECS runs the ASP.NET Core .NET 10 API container from ECR. The API handles authentication, profiles, discovery, recruitment, and SignalR chat. ALB health checks track task health. |
 | 4 | Media S3 bucket, GuardDuty, EventBridge, and SQS | A private bucket stores media. Certificate and AI input PDFs go through the scanning workflow. EventBridge routes GuardDuty verdicts to SQS so a worker can update document status. A dead-letter queue (DLQ) holds failed messages for investigation. |
 | 5 | Amazon Bedrock | For AI input PDFs, the backend verifies a clean scan verdict for the corresponding S3 object before allowing extraction. Users can also submit text. The backend validates the output and returns draft profile fields, skills, experience, certificates, and warnings for review. |
@@ -156,7 +156,7 @@ The always-on scenario runs for 730 hours per month in us-east-1. The figures co
 | RDS for PostgreSQL | One Single-AZ db.t4g.micro for 730 hours (USD 11.68) and 20 GiB gp3 (USD 2.30). | USD 13.98/month |
 | Edge, media, security, and AI | CloudFront, S3, ECR, Secrets Manager, GuardDuty, EventBridge, SQS, CloudWatch, and Bedrock. Charges vary with storage, requests, logs, scans, and tokens. | Usage-based |
 
-The always-on baseline is USD 55.32 per month. The baseline excludes ALB LCUs, any RDS CPU credit charges and additional backup or snapshot storage, and the usage-based services listed above. Include retained snapshots and other retained resources when estimating the scheduled demo scenario. AWS Pricing Calculator
+The always-on baseline is USD 55.32 per month. The baseline excludes ALB LCUs, any RDS CPU credit charges and additional backup or snapshot storage, and the usage-based services listed above. Include retained snapshots and other retained resources when estimating the scheduled demo scenario. [AWS Pricing Calculator](https://calculator.aws/#/estimate)
 
 The public estimate displays USD 55.34 per month. Compared with the AWS Console export, the displayed Fargate and ALB costs are each USD 0.01 higher. The public ALB calculation uses 0.001 GB/hour of assumed traffic because the form requires a positive LCU input.
 
