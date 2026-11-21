@@ -1,5 +1,10 @@
-
-# CREATE A FRESH DATABASE
+---
+title: "CREATE A FRESH DATABASE"
+date: 2026-11-22
+weight: 1
+chapter: false
+pre: "<b> 5.4.1 </b>"
+---
 
 `database.yaml` creates an RDS PostgreSQL instance, a subnet group using two private DB subnets and a parameter group requiring TLS. Fresh provisioning creates database `tindy` with master user `tindy_admin`, with RDS managing its master password in Secrets Manager. AWS CLI confirmed PostgreSQL `17.11` is available in `us-east-1` before this step.
 
