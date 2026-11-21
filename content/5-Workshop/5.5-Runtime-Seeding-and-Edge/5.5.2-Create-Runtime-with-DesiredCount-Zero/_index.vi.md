@@ -3,7 +3,7 @@ title: "TẠO RUNTIME VỚI DESIREDCOUNT BẰNG 0"
 date: 2026-11-22
 weight: 2
 chapter: false
-pre: "<b> 5.3.2 </b>"
+pre: "<b> 5.5.2 </b>"
 ---
 
 `runtime.yaml` định nghĩa ECS cluster, API task definition và service, IAM roles, log group, ALB nội bộ, listener, target group, ingress và CloudFront VPC Origin. Các task definition tùy chọn cho bootstrap, migration và seed được kích hoạt thông qua các tham số.
