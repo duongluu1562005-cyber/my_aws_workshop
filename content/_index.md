@@ -19,7 +19,7 @@ chapter: false
 
 &emsp; **Major:** Information Assurance
 
-&emsp; **Class:** CABYPARA
+&emsp; **Class:** CAPYBARA
 
 &emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited
 
