@@ -7,10 +7,6 @@ pre: " <b> 3.2. </b> "
 ---
 # AWS IAM ACCESS ANALYZER – IDENTIFYING UNUSED ACCESS TO STRENGTHEN CLOUD SECURITY
 
-**This article was prepared to be shared with the AWS Study Group community.**
-
-**Published Post:** Not yet published.
-
 ## Article Content
 
 Access management is an important part of securing an AWS environment. Over time, IAM users and roles may accumulate permissions that are no longer necessary, increasing potential security risks.
