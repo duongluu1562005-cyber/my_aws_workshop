@@ -64,6 +64,6 @@ The template defines 26 resources and nine Outputs. Use the new networking IDs i
 
 | **Page** | **Procedure and evidence** |
 | :--- | :--- |
-| [5.3.1 Deploy Foundation](/aws_my_workshop/5-workshop/5.3-foundation-network/5.3.1-foundation/) | Import retained resources, restore the main template, review the role and Outputs. |
-| [5.3.2 Deploy Network](/aws_my_workshop/5-workshop/5.3-foundation-network/5.3.2-network/) | Create networking, add tags and verify new Outputs. |
+| [5.3.1 Deploy Foundation](/my_aws_workshop/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/) | Import retained resources, restore the main template, review the role and Outputs. |
+| [5.3.2 Deploy Network](/my_aws_workshop/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/) | Create networking, add tags and verify new Outputs. |
 

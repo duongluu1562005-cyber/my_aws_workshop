@@ -1,58 +1,34 @@
 ---
-title: "Worklog Tuần 12"
-date: 2024-01-01
-weight: 2
+title: "Tuần 12"
+date: 2026-11-22
+weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: "<b>1.12. </b>"
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-### Mục tiêu tuần 12:
+# Tuần 12: Tổng hợp kiến thức và hoàn thiện báo cáo thực tập
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Mục tiêu trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+- Ôn lại những kiến thức AWS đã học trong kỳ thực tập.
+- Tổng hợp nội dung Worklog và các tài liệu học tập.
+- Làm quen với cách xây dựng website báo cáo bằng Hugo và GitHub Pages.
+- Kiểm tra và hoàn thiện các phần của báo cáo thực tập.
 
+---
 
-### Kết quả đạt được tuần 12:
+### Kế hoạch công việc trong tuần
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|---|---|---|---|---|
+| 2 | - Ôn lại các kiến thức AWS đã học:<br>&emsp; + IAM và EC2.<br>&emsp; + VPC, S3 và RDS.<br>&emsp; + CloudWatch và AWS Budgets. | 30/11/2026 | 30/11/2026 | [AWS Cloud Journey](https://cloudjourney.awsfcaj.com/)<br>[Explore AWS Services](https://cloudjourney.awsfcaj.com/1-explore/) |
+| 3 | - Ôn lại các kiến thức về AWS Backup, AWS WAF, Lambda, ECS và CloudFormation. | 01/12/2026 | 01/12/2026 | [Optimizing the System on AWS](https://cloudjourney.awsfcaj.com/3-optimize/)<br>[Container Services on AWS](https://cloudjourney.awsfcaj.com/5-container/) |
+| 5 | - Tìm hiểu cách sử dụng Hugo để tạo website từ các file Markdown.<br>- Xem lại cách sắp xếp thư mục và liên kết giữa các trang.<br>- Tìm hiểu cách đưa website báo cáo lên GitHub Pages. | 03/12/2026 | 03/12/2026 | [Hugo Documentation](https://gohugo.io/documentation/)<br>[GitHub Pages Documentation](https://docs.github.com/en/pages) |
+| 6 | - Kiểm tra nội dung và cách trình bày của website báo cáo.<br>- Tổng hợp kết quả học tập và chuẩn bị báo cáo thực tập. | 04/12/2026 | 04/12/2026 | [Hugo Documentation](https://gohugo.io/documentation/)<br>[GitHub Pages Documentation](https://docs.github.com/en/pages) |
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+---
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+### Kết quả đạt được
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Tổng hợp lại những nội dung và kiến thức đã học trong suốt kỳ thực tập.
+- Sắp xếp lại tài liệu, cập nhật Worklog và chuẩn bị hoàn thiện báo cáo thực tập.

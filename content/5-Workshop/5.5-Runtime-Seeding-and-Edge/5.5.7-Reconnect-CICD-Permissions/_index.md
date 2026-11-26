@@ -43,13 +43,13 @@ Remaining demo flows are deferred to video recording at the operator’s request
 
 Standard change set and Use existing template were selected on `tindy-foundation`, with name `tindy-foundation-restore-cicd`.
 
-[CI/CD uses existing template](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79a-cicd-existing-template.png)
+![CI/CD uses existing template](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79a-cicd-existing-template.png)
 
-[CI/CD change set name](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79c-cicd-changeset-name.png)
+![CI/CD change set name](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79c-cicd-changeset-name.png)
 
 The Parameters screenshot matches the guide: BackendDeployEnabled true, both new API roles, distribution `E39MIF3N8DR3D6`, the frontend OIDC subject checked against backup, and LifecycleWorkflowsEnabled true. GitHubOidcProviderMode remains Create and InfraPlannerEnabled true.
 
-[CI/CD Foundation parameters](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79b-cicd-parameters.png)
+![CI/CD Foundation parameters](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79b-cicd-parameters.png)
 
 These values restore GitHub Actions permissions for rebuilt resources. This is CI/CD OIDC configuration. User-login OAuth configuration steps are outside the workshop scope.
 
@@ -65,7 +65,7 @@ Resource changes confirms exactly three **Add** actions with type `AWS::IAM::Rol
 | `FrontendDeployRole` | Publish frontend to the bucket and invalidate the configured distribution.           |
 | `LifecycleRole`      | Support state verification and snapshot workflows under template permissions.        |
 
-[Three CI/CD role additions](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-80-cicd-three-role-adds.png)
+![Three CI/CD role additions](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-80-cicd-three-role-adds.png)
 
 The list matches the CI/CD restoration scope. This screenshot shows Resource changes without the Overview status. In Console, confirm **CREATE_COMPLETE / AVAILABLE**, execute the change set, and retain rollback and Use deletion policy if prompted. Wait for Foundation **UPDATE_COMPLETE**.
 
@@ -82,13 +82,13 @@ Outputs screenshots show all four roles. Read-only AWS CLI inspection confirms F
 | LifecycleRoleArn      | `arn:aws:iam::572454213668:role/tindy-foundation-LifecycleRole-VTyUOZ4hpsjt`      |
 | InfraPlannerRoleArn   | `arn:aws:iam::572454213668:role/tindy-foundation-InfraPlannerRole-xhQ3LjfCL4Xt`   |
 
-[Frontend deploy role](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81a-frontend-deploy-role-output.png)
+![Frontend deploy role](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81a-frontend-deploy-role-output.png)
 
-[Backend deploy role](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81b-backend-deploy-role-output.png)
+![Backend deploy role](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81b-backend-deploy-role-output.png)
 
-[Lifecycle role](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81c-lifecycle-role-output.png)
+![Lifecycle role](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81c-lifecycle-role-output.png)
 
-[Infra planner role](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81d-infra-planner-role-output.png)
+![Infra planner role](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81d-infra-planner-role-output.png)
 
 ## 6. Update GitHub repository variables
 
@@ -100,11 +100,11 @@ In each repository, open **Settings → Secrets and variables → Actions → Va
 
 Frontend has all four variables. Visible bucket, distribution ID and hostname values match the guide. Backend has its deploy role variable. Infrastructure has planner and lifecycle variables. Rows show recent updates, but ARN values are truncated in the screenshots, so the images alone do not establish the complete ARN strings.
 
-[Frontend repository variables](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82a-frontend-repository-variables.png)
+![Frontend repository variables](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82a-frontend-repository-variables.png)
 
-[Backend repository variable](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82b-backend-repository-variable.png)
+![Backend repository variable](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82b-backend-repository-variable.png)
 
-[Infrastructure repository variables](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82c-infra-repository-variables.png)
+![Infrastructure repository variables](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82c-infra-repository-variables.png)
 
 ## 8. Verify federation using existing workflows
 
@@ -118,10 +118,10 @@ In the frontend repository, open **Actions → Deploy frontend → Run workflow*
 
 **Verify backend OIDC #2** on main, abbreviated commit `844ff5a`, reached **Success** in 26 seconds with a successful verify-oidc job. The inspected workflow checks configuration, assumes the role through OIDC and verifies STS identity. This Summary screenshot records the run result, without a separate identity log capture.
 
-[Backend OIDC verification success](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-83-backend-oidc-success.png)
+![Backend OIDC verification success](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-83-backend-oidc-success.png)
 
 **Deploy frontend #4** on main, abbreviated commit `233bbff`, reached **Success** in 21 seconds. Build was skipped and publish succeeded, consistent with the instructed verify-oidc mode. This establishes federation verification and does not record a new frontend release.
 
-[Frontend OIDC verification success](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-84-frontend-oidc-success.png)
+![Frontend OIDC verification success](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-84-frontend-oidc-success.png)
 
 Both runs show an ubuntu-latest runner migration notice while retaining Success status. Frontend/backend federation checks passed according to workflow results. Actual backend release, frontend deployment and post-redeploy planner/lifecycle runs have not been performed. Remaining demo flows are deferred to video recording at the operator’s request.

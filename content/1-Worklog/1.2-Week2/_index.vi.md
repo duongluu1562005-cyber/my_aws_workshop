@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 2"
-date: 2024-01-01
-weight: 1
+title: "Tuần 2"
+date: 2026-09-21
+weight: 2
 chapter: false
-pre: " <b> 1.2. </b> "
+pre: "<b>1.2. </b>"
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+# Tìm hiểu quản lý người dùng và phân quyền với AWS IAM
 
-### Mục tiêu tuần 2:
+### Mục tiêu trong tuần
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Tìm hiểu AWS IAM và cách quản lý quyền truy cập trên AWS.
+- Học cách sử dụng IAM Users, Groups, Policies và Roles.
+- Làm quen với các bước thực hành quản lý người dùng và phân quyền.
+- Tìm hiểu cách bảo vệ tài khoản và sử dụng AWS an toàn hơn.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Công việc thực hiện trong tuần
 
-### Kết quả đạt được tuần 2:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|---|---|---|---|---|
+| 2 | - Tìm hiểu AWS IAM là gì và dùng để làm gì.<br>- Học về IAM Users và IAM Groups.<br>- Tìm hiểu sự khác nhau giữa Root User và IAM User. | 21/09/2026 | 21/09/2026 | [AWS IAM Workshop](https://000002.awsfcaj.com/)<br>[IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) |
+| 3 | - Tìm hiểu IAM Policies và cách cấp quyền truy cập.<br>- Làm quen với các loại quyền như ReadOnlyAccess và AdministratorAccess.<br>- Học cách kiểm tra quyền của người dùng. | 22/09/2026 | 22/09/2026 | [IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)<br>[AWS IAM Workshop](https://000002.awsfcaj.com/) |
+| 4 | - Xem hướng dẫn thực hành trên AWS IAM:<br>&emsp; + Tạo IAM User.<br>&emsp; + Tạo IAM Group.<br>&emsp; + Thêm User vào Group.<br>&emsp; + Gán quyền cho Group.<br>- Tìm hiểu cách đăng nhập bằng tài khoản IAM. | 23/09/2026 | 23/09/2026 | [AWS IAM Workshop](https://000002.awsfcaj.com/)<br>[IAM Documentation](https://docs.aws.amazon.com/iam/) |
+| 5 | - Tìm hiểu IAM Roles và cách sử dụng Role trên AWS.<br>- Xem hướng dẫn tạo IAM Role và chuyển đổi Role (Switch Role).<br>- Tìm hiểu vì sao EC2 hoặc các dịch vụ AWS cần IAM Role để truy cập tài nguyên khác. | 24/09/2026 | 24/09/2026 | [AWS IAM Workshop](https://000002.awsfcaj.com/)<br>[IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) |
+| 6 | - Ôn lại cách quản lý User, Group, Policy và Role.<br>- Tìm hiểu nguyên tắc cấp quyền tối thiểu (Least Privilege).<br>- Xem lại cách sử dụng MFA để bảo vệ tài khoản.<br>- Ghi chép những kiến thức đã học trong tuần. | 25/09/2026 | 25/09/2026 | [IAM Security Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)<br>[AWS IAM Workshop](https://000002.awsfcaj.com/) |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Kết quả đạt được
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hiểu được AWS IAM dùng để quản lý người dùng và quyền truy cập vào các dịch vụ AWS.
+- Biết được sự khác nhau giữa Root User và IAM User.
+- Làm quen với các thành phần chính của IAM:
+  - **IAM User:** Tài khoản người dùng.
+  - **IAM Group:** Nhóm người dùng.
+  - **IAM Policy:** Quy định những quyền được phép sử dụng.
+  - **IAM Role:** Cho phép người dùng hoặc dịch vụ nhận quyền truy cập khi cần.
+- Biết các bước tạo User, Group và gán quyền theo hướng dẫn của AWS.
+- Hiểu cách IAM Role được sử dụng để cấp quyền cho các dịch vụ như EC2.
+- Biết thêm về MFA và cách cấp quyền phù hợp để bảo vệ tài khoản AWS.

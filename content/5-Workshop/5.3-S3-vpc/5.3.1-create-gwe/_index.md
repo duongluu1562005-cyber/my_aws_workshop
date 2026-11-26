@@ -21,23 +21,23 @@ After import, use `foundation.yaml` to add IAM roles through change sets as new 
 
 **📸 Capture the import menu.**
 
-[Import existing resources](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01-foundation-import-start.png)
+![Import existing resources](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01-foundation-import-start.png)
 
 3. Read the introduction and click Next.
 
-[Import introduction](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01a-foundation-import-introduction.png)
+![Import introduction](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01a-foundation-import-introduction.png)
 
 4. Select **Upload a template file**, choose the prepared `foundation-import.yaml` from the backup directory.
 
 **📸 Capture the selected filename.**
 
-[Upload import template](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-02-foundation-import-template.png)
+![Upload import template](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-02-foundation-import-template.png)
 
 5. Click Next and verify **Resources to import (9)** under Identify resources.
 
-[Identifiers upper section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03-foundation-identifiers-empty-top.png)
+![Identifiers upper section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03-foundation-identifiers-empty-top.png)
 
-[Identifiers lower section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03a-foundation-identifiers-empty-bottom.png)
+![Identifiers lower section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03a-foundation-identifiers-empty-bottom.png)
 
 ## 3. Fill identifiers from the saved mapping
 
@@ -59,9 +59,9 @@ Copy values from the exported `console-import-identifiers.csv`. Secrets Manager 
 
 All nine identifiers have been filled and checked against the pre-cleanup mapping.
 
-[Filled identifiers upper section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04-foundation-identifiers-filled-top.png)
+![Filled identifiers upper section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04-foundation-identifiers-filled-top.png)
 
-[Filled identifiers lower section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04a-foundation-identifiers-filled-bottom.png)
+![Filled identifiers lower section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04a-foundation-identifiers-filled-bottom.png)
 
 ## 4. Import-stage parameters
 
@@ -71,9 +71,9 @@ Click **Next** to Specify stack details and enter `tindy-foundation`. Use `GitHu
 
 Verified values show stack name `tindy-foundation`, `GitHubOidcProviderMode = Create`, all three role-enable options set to `false`, and the four Runtime/Frontend reference fields empty.
 
-[Foundation stack details](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05-foundation-import-stack-details.png)
+![Foundation stack details](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05-foundation-import-stack-details.png)
 
-[Foundation import parameters](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05a-foundation-import-parameters.png)
+![Foundation import parameters](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05a-foundation-import-parameters.png)
 
 ## 5. Review before importing
 
@@ -81,15 +81,15 @@ Click **Next** to Review. Check the stack name, parameters and all nine resource
 
 The Review page shows the nine resources and the selected stack parameters.
 
-[Review Foundation resources](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06-foundation-import-review-resources.png)
+![Review Foundation resources](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06-foundation-import-review-resources.png)
 
-[Review Foundation parameters](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06a-foundation-import-review-parameters.png)
+![Review Foundation parameters](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06a-foundation-import-review-parameters.png)
 
 ### Resolve Outputs validation during import
 
 The initial import template still contained Outputs. CloudFormation reported `As part of the import operation, you cannot modify or add [Outputs]`. The change set was not created successfully and import completion remains unverified.
 
-[Outputs validation error](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06b-foundation-import-outputs-error.png)
+![Outputs validation error](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06b-foundation-import-outputs-error.png)
 
 The corrected `foundation-import.yaml` omits the entire Outputs section. Return to **Specify template**, upload the corrected file, verify all nine identifiers and retain the documented parameters. After import, restore Outputs through an update using the main `foundation.yaml` template.
 
@@ -97,13 +97,13 @@ The corrected `foundation-import.yaml` omits the entire Outputs section. Return 
 
 Re-upload the template without Outputs, retaining identifiers and parameters. Change set creation succeeded with **Changes (9)** and all nine actions set to `Import`.
 
-[Corrected resource review](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07-foundation-import-review-resources.png)
+![Corrected resource review](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07-foundation-import-review-resources.png)
 
-[Corrected parameter review](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07a-foundation-import-review-parameters.png)
+![Corrected parameter review](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07a-foundation-import-review-parameters.png)
 
 **📸 Capture all nine Import actions before execution.**
 
-[Nine Import actions](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07b-foundation-nine-import-actions.png)
+![Nine Import actions](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07b-foundation-nine-import-actions.png)
 
 ## 6. Execute import
 
@@ -113,7 +113,7 @@ Click **Import resources** and monitor **Events** for `tindy-foundation` until t
 
 Import completed successfully. The Resources screenshot shows stack `tindy-foundation` at `IMPORT_COMPLETE`, **Resources (9)** and `UPDATE_COMPLETE` for displayed resources.
 
-[Foundation imported resources](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09-foundation-imported-resources.png)
+![Foundation imported resources](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09-foundation-imported-resources.png)
 
 Next, update using the main `foundation.yaml` template to restore Outputs and configure IAM roles as deployment prerequisites become available.
 
@@ -129,19 +129,19 @@ Acknowledge IAM capabilities and create the change set. Expected Resource change
 
 Opened **Stack actions → Create a change set**, selected **Standard change set → Replace existing template → Upload a template file**, and uploaded `foundation.yaml`.
 
-[Foundation after import](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09a-foundation-imported-resources.png)
+![Foundation after import](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09a-foundation-imported-resources.png)
 
-[Foundation change set menu](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10a-foundation-create-changeset-menu.png)
+![Foundation change set menu](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10a-foundation-create-changeset-menu.png)
 
-[Main foundation.yaml template selected](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10-foundation-main-template.png)
+![Main foundation.yaml template selected](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10-foundation-main-template.png)
 
 The change set is named `tindy-foundation-restore-template`. Verified parameters are `GitHubOidcProviderMode = Create`, `InfraPlannerEnabled = true`, `BackendDeployEnabled = false` and `LifecycleWorkflowsEnabled = false`. Both Runtime role names and both Frontend fields remain empty for this stage.
 
 **📸 Capture the change set name and all parameters.**
 
-[Main Foundation parameters](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11-foundation-main-parameters.png)
+![Main Foundation parameters](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11-foundation-main-parameters.png)
 
-[Foundation parameters lower section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11a-foundation-main-parameters-bottom.png)
+![Foundation parameters lower section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11a-foundation-main-parameters-bottom.png)
 
 Click Next, keep Express mode disabled and rollback enabled, acknowledge IAM capabilities and create the change set.
 
@@ -149,7 +149,7 @@ Change set `tindy-foundation-restore-template` reached `CREATE_COMPLETE` and `AV
 
 **📸 Capture Resource changes before execution.**
 
-[Main Foundation change set](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12-foundation-main-changeset.png)
+![Main Foundation change set](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12-foundation-main-changeset.png)
 
 Execute the change set, keeping **Use deletion policy** if displayed. Monitor Events until `tindy-foundation — UPDATE_COMPLETE`. Check Outputs for bucket, ECR, secret, OIDC and `InfraPlannerRoleArn` references needed in subsequent steps.
 
@@ -157,15 +157,15 @@ Execute the change set, keeping **Use deletion policy** if displayed. Monitor Ev
 
 The change set was executed with **Use deletion policy**.
 
-[Execute Foundation change set](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12a-foundation-main-execute.png)
+![Execute Foundation change set](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12a-foundation-main-execute.png)
 
 The stack reached **UPDATE_COMPLETE**. The Outputs screenshot shows completed stack status and **Outputs (14)**.
 
-[Foundation update completed](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-13-foundation-main-update-complete.png)
+![Foundation update completed](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-13-foundation-main-update-complete.png)
 
-[Foundation Outputs upper section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14-foundation-main-outputs-top.png)
+![Foundation Outputs upper section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14-foundation-main-outputs-top.png)
 
-[Foundation Outputs lower section](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14a-foundation-main-outputs-bottom.png)
+![Foundation Outputs lower section](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14a-foundation-main-outputs-bottom.png)
 
 Frontend/media bucket, ECR, application secret, OIDC, Data Protection path and `InfraPlannerRoleArn` references are available again. Backend/frontend deployment and lifecycle roles will be configured when new Runtime and Edge inputs become available. Compare GitHub repository role variables with new Outputs before running their workflows.
 

@@ -17,7 +17,7 @@ pre: "<b> 5.3.2 </b>"
 
 
 
-[Upload network.yaml](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-15-network-template.png)
+![Upload network.yaml](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-15-network-template.png)
 
 3. Click Next and name the stack `tindy-network`. This template has no Parameters section.
 
@@ -39,7 +39,7 @@ The stack was named `tindy-network` and the Console confirmed no template parame
 
 
 
-[Network stack name](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16-network-stack-name.png)
+![Network stack name](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16-network-stack-name.png)
 
 
 
@@ -47,7 +47,7 @@ Project, Environment and Owner tags were configured.
 
 
 
-[Network tags](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16a-network-tags.png)
+![Network tags](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16a-network-tags.png)
 
 
 
@@ -55,4 +55,4 @@ The stack reached **CREATE_COMPLETE** with **Outputs (9)**. The screenshot recor
 
 
 
-[Network completed and Outputs](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-18-network-outputs.png)
+![Network completed and Outputs](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-18-network-outputs.png)

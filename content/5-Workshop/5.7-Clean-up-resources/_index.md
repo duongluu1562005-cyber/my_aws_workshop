@@ -1,6 +1,6 @@
 ---
 title: "CLEAN UP RESOURCES"
-date: 2026-11-22
+date: 2026-11-19
 weight: 7
 chapter: false
 pre: "<b> 5.7. </b>"
@@ -19,16 +19,17 @@ This section records cleanup of the existing Tindy environment through CloudForm
 | Network       | Termination protection disabled and deletion verified as `DELETE_COMPLETE`.                                    |
 | Foundation    | Mapping exported and stack deletion verified as `DELETE_COMPLETE`. Retained resources report `DELETE_SKIPPED`. |
 
-## Cleanup steps
 
-| **Guide page** |
-| :--- |
-| [5.7.1 Review infrastructure before cleanup](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.1-inventory/) |
-| [5.7.2 Enable CloudFront maintenance](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.2-maintenance/) |
-| [5.7.3 Prepare and delete Runtime](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.3-runtime/) |
-| [5.7.4 Disable protection and delete Database](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.4-database/) |
-| [5.7.5 Review and delete Integrations](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.5-integrations/) |
-| [5.7.6 Disable protection and delete Edge](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.6-edge/) |
-| [5.7.7 Disable protection and delete Network](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.7-network/) |
-| [5.7.8 Export mappings and delete Foundation](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.8-foundation/) |
-| [5.7.9 Cleanup results and redeployment preparation](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.9-results/) |
+## Practical guides
+
+| **Page** | **Procedure and evidence** |
+| :--- | :--- |
+| [5.7.1 Review Infrastructure Before Cleanup](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.1-review-infrastructure-before-cleanup/) | Review deployed infrastructure and identify resources before cleanup. |
+| [5.7.2 Enable CloudFront Maintenance](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.2-enable-cloudfront-maintenance/) | Enable maintenance mode through CloudFront before deleting resources. |
+| [5.7.3 Prepare and Delete Runtime](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.3-prepare-and-delete-runtime/) | Prepare the Runtime stack for cleanup and verify stack deletion. |
+| [5.7.4 Disable Protection and Delete Database](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.4-disable-protection-and-delete-database/) | Disable database deletion protection and verify database stack removal. |
+| [5.7.5 Review and Delete Integrations](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.5-review-and-delete-integrations/) | Review integration resources and verify stack deletion. |
+| [5.7.6 Disable Protection and Delete Edge](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.6-disable-protection-and-delete-edge/) | Disable protection where required and delete the Edge stack. |
+| [5.7.7 Disable Protection and Delete Network](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.7-disable-protection-and-delete-network/) | Remove network protection settings and verify Network stack deletion. |
+| [5.7.8 Export Mappings and Delete Foundation](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.8-export-mappings-and-delete-foundation/) | Export Foundation configuration and mappings before deleting the stack. |
+| [5.7.9 Cleanup Results and Redeployment Preparation](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.9-cleanup-results-and-redeployment-preparation/) | Review cleanup evidence, retained resources and redeployment preparation. |

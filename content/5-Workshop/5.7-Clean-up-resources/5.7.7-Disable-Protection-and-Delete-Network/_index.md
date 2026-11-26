@@ -1,6 +1,6 @@
 ---
 title: "DISABLE PROTECTION AND DELETE NETWORK"
-date: 2026-11-22
+date: 2026-11-19
 weight: 7
 chapter: false
 pre: "<b> 5.7.7 </b>"
@@ -17,11 +17,11 @@ After Runtime, Database, Integrations and Edge deletion, inspect VPC dependencie
 
 
 
-[Network resources](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-24-network-resources-before.png)
+![Network resources](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-24-network-resources-before.png)
 
 
 
-[Subnets, route tables and VPC](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-24a-network-resources-bottom.png)
+![Subnets, route tables and VPC](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-24a-network-resources-bottom.png)
 
 3. Select **Stack actions → Edit termination protection**, confirm `tindy-network` and choose **Deactivated**.
 
@@ -29,7 +29,7 @@ After Runtime, Database, Integrations and Edge deletion, inspect VPC dependencie
 
 
 
-[Disable Network termination protection](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-25-network-disable-termination-protection.png)
+![Disable Network termination protection](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-25-network-disable-termination-protection.png)
 
 4. Save, reopen **Delete stack**, enter `tindy-network` and leave Express mode unchecked.
 
@@ -37,7 +37,7 @@ After Runtime, Database, Integrations and Edge deletion, inspect VPC dependencie
 
 
 
-[Network deletion confirmation](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-26-network-delete-confirm.png)
+![Network deletion confirmation](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-26-network-delete-confirm.png)
 
 5. Confirm deletion and monitor Events. If the stack disappears, select **Deleted** and locate `tindy-network`.
 6. Verify `tindy-network — DELETE_COMPLETE`. The image also confirms completed deletion of the VPC and Internet Gateway.
@@ -46,7 +46,7 @@ After Runtime, Database, Integrations and Edge deletion, inspect VPC dependencie
 
 
 
-[Network deleted](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-27-network-deleted.png)
+![Network deleted](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.7/cleanup-27-network-deleted.png)
 
 
 

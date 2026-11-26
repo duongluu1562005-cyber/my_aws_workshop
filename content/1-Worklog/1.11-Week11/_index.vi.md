@@ -1,59 +1,40 @@
 ---
-title: "Worklog Tuần 11"
-date: 2024-01-01
-weight: 2
+title: "Tuần 11"
+date: 2026-11-22
+weight: 11
 chapter: false
-pre: " <b> 1.11. </b> "
+pre: "<b>1.11. </b>"
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+# Tìm hiểu tối ưu chi phí AWS và ôn tập kiến thức
 
-### Mục tiêu tuần 11:
+### Mục tiêu trong tuần
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Tìm hiểu AWS Cost Explorer và cách xem chi phí sử dụng AWS.
+- Làm quen với các cách tiết kiệm chi phí và quản lý tài nguyên.
+- Tìm hiểu cách chọn cấu hình EC2 phù hợp để tránh lãng phí.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Công việc thực hiện trong tuần
 
-### Kết quả đạt được tuần 11:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|---|---|---|---|---|
+| 2 | - Tìm hiểu AWS Cost Explorer là gì và dùng để làm gì.<br>- Học cách xem chi phí AWS theo từng dịch vụ và thời gian.<br>- Làm quen với các biểu đồ và báo cáo chi phí. | 23/11/2026 | 23/11/2026 | [AWS Cost Visualization Workshop](https://000034.awsfcaj.com/)<br>[AWS Cost Explorer Documentation](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html) |
+| 3 | - Xem hướng dẫn sử dụng AWS Cost Explorer:<br>&emsp; + Xem chi phí theo ngày và tháng.<br>&emsp; + Lọc chi phí theo dịch vụ.<br>&emsp; + Sử dụng Group by để phân nhóm chi phí.<br>- Tìm hiểu cách xem chi phí thực tế và chi phí dự báo. | 24/11/2026 | 24/11/2026 | [AWS Cost Explorer Documentation](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html) |
+| 4 | - Tìm hiểu một số cách tiết kiệm chi phí khi sử dụng Amazon EC2.<br>- Học cách lựa chọn Instance Type phù hợp với nhu cầu.<br>- Tìm hiểu cách kiểm tra và dừng những tài nguyên không sử dụng. | 25/11/2026 | 25/11/2026 | [EC2 Resource Optimization Workshop](https://000032.awsfcaj.com/)<br>[AWS Cost Optimization](https://aws.amazon.com/aws-cost-management/cost-optimization/) |
+| 5 | - Tìm hiểu cách quản lý chi phí trên AWS.<br>- Tìm hiểu cách theo dõi mức sử dụng tài nguyên để hạn chế chi phí không cần thiết. | 26/11/2026 | 26/11/2026 | [AWS Cost and Usage Management](https://000064.awsfcaj.com/)<br>[AWS Budgets Workshop](https://000007.awsfcaj.com/) |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Kết quả đạt được
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hiểu được AWS Cost Explorer giúp xem và phân tích chi phí sử dụng các dịch vụ AWS.
+- Làm quen với những tính năng cơ bản của Cost Explorer:
+  - **Granularity:** Xem chi phí theo ngày hoặc tháng.
+  - **Filter:** Lọc chi phí theo dịch vụ hoặc các tiêu chí khác.
+  - **Group by:** Phân nhóm chi phí để dễ theo dõi.
+- Biết cách xem chi phí thực tế và chi phí dự báo trên AWS.
+- Hiểu được việc chọn EC2 Instance phù hợp giúp tránh sử dụng tài nguyên quá mức cần thiết.
+- Biết thêm một số cách tiết kiệm chi phí như dừng tài nguyên không sử dụng và kiểm tra các khoản phí phát sinh.
+- Hiểu rõ hơn vai trò của AWS Budgets và Cost Explorer trong việc theo dõi, quản lý chi phí.

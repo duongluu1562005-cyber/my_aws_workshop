@@ -43,13 +43,13 @@ Các luồng demo còn lại được hoãn đến khi quay video theo yêu cầ
 
 Standard change set và Use existing template đã được chọn trên `tindy-foundation`, với tên `tindy-foundation-restore-cicd`.
 
-[CI/CD sử dụng template hiện có](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79a-cicd-existing-template.png)
+![CI/CD sử dụng template hiện có](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79a-cicd-existing-template.png)
 
-[Tên CI/CD change set](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79c-cicd-changeset-name.png)
+![Tên CI/CD change set](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79c-cicd-changeset-name.png)
 
 Ảnh chụp Parameters khớp với hướng dẫn: BackendDeployEnabled true, cả hai API role mới, distribution `E39MIF3N8DR3D6`, frontend OIDC subject đã được kiểm tra đối chiếu với bản sao lưu, và LifecycleWorkflowsEnabled true. GitHubOidcProviderMode vẫn là Create và InfraPlannerEnabled true.
 
-[Tham số CI/CD Foundation](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79b-cicd-parameters.png)
+![Tham số CI/CD Foundation](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-79b-cicd-parameters.png)
 
 Các giá trị này khôi phục quyền GitHub Actions cho các tài nguyên được xây dựng lại. Đây là cấu hình CI/CD OIDC. Các bước cấu hình OAuth đăng nhập người dùng nằm ngoài phạm vi workshop.
 
@@ -65,7 +65,7 @@ Resource changes xác nhận chính xác ba action **Add** với loại `AWS::IA
 | `FrontendDeployRole` | Phát hành frontend lên bucket và thực hiện invalidation cho distribution đã cấu hình. |
 | `LifecycleRole` | Hỗ trợ các workflow xác minh trạng thái và snapshot theo quyền của template. |
 
-[Ba CI/CD role được thêm](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-80-cicd-three-role-adds.png)
+![Ba CI/CD role được thêm](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-80-cicd-three-role-adds.png)
 
 Danh sách khớp với phạm vi khôi phục CI/CD. Ảnh chụp này hiển thị Resource changes mà không có trạng thái Overview. Trong Console, xác nhận **CREATE_COMPLETE / AVAILABLE**, thực thi change set và giữ rollback cùng Use deletion policy nếu được yêu cầu. Chờ Foundation đạt **UPDATE_COMPLETE**.
 
@@ -82,13 +82,13 @@ Danh sách khớp với phạm vi khôi phục CI/CD. Ảnh chụp này hiển t
 | LifecycleRoleArn | `arn:aws:iam::572454213668:role/tindy-foundation-LifecycleRole-VTyUOZ4hpsjt` |
 | InfraPlannerRoleArn | `arn:aws:iam::572454213668:role/tindy-foundation-InfraPlannerRole-xhQ3LjfCL4Xt` |
 
-[Frontend deploy role](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81a-frontend-deploy-role-output.png)
+![Frontend deploy role](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81a-frontend-deploy-role-output.png)
 
-[Backend deploy role](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81b-backend-deploy-role-output.png)
+![Backend deploy role](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81b-backend-deploy-role-output.png)
 
-[Lifecycle role](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81c-lifecycle-role-output.png)
+![Lifecycle role](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81c-lifecycle-role-output.png)
 
-[Infra planner role](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81d-infra-planner-role-output.png)
+![Infra planner role](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-81d-infra-planner-role-output.png)
 
 ## 6. Cập nhật các biến GitHub repository
 
@@ -100,11 +100,11 @@ Trong mỗi repository, mở **Settings → Secrets and variables → Actions �
 
 Frontend có đầy đủ cả bốn biến. Các giá trị bucket, distribution ID và hostname hiển thị khớp với hướng dẫn. Backend có biến deploy role. Infrastructure có các biến planner và lifecycle. Các hàng hiển thị những lần cập nhật gần đây, nhưng giá trị ARN bị cắt ngắn trong ảnh chụp, vì vậy chỉ riêng các ảnh này không xác nhận toàn bộ chuỗi ARN.
 
-[Các biến frontend repository](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82a-frontend-repository-variables.png)
+![Các biến frontend repository](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82a-frontend-repository-variables.png)
 
-[Biến backend repository](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82b-backend-repository-variable.png)
+![Biến backend repository](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82b-backend-repository-variable.png)
 
-[Các biến infrastructure repository](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82c-infra-repository-variables.png)
+![Các biến infrastructure repository](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-82c-infra-repository-variables.png)
 
 ## 8. Xác minh federation bằng các workflow hiện có
 
@@ -118,10 +118,10 @@ Trong frontend repository, mở **Actions → Deploy frontend → Run workflow**
 
 **Verify backend OIDC #2** trên main, commit rút gọn `844ff5a`, đạt trạng thái **Success** trong 26 giây với job verify-oidc thành công. Workflow đã được kiểm tra thực hiện kiểm tra cấu hình, đảm nhận role thông qua OIDC và xác minh STS identity. Ảnh chụp Summary này ghi lại kết quả lần chạy, không có ảnh chụp log danh tính riêng biệt.
 
-[Xác minh backend OIDC thành công](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-83-backend-oidc-success.png)
+![Xác minh backend OIDC thành công](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-83-backend-oidc-success.png)
 
 **Deploy frontend #4** trên main, commit rút gọn `233bbff`, đạt trạng thái **Success** trong 21 giây. Build đã được bỏ qua và publish thành công, phù hợp với chế độ verify-oidc được hướng dẫn. Điều này xác nhận việc xác minh federation và không ghi nhận một bản phát hành frontend mới.
 
-[Xác minh frontend OIDC thành công](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-84-frontend-oidc-success.png)
+![Xác minh frontend OIDC thành công](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.7/deploy-84-frontend-oidc-success.png)
 
 Cả hai lần chạy đều hiển thị thông báo chuyển đổi ubuntu-latest runner nhưng vẫn giữ trạng thái Success. Các kiểm tra federation frontend/backend đã thành công theo kết quả workflow. Việc phát hành backend thực tế, triển khai frontend và các lần chạy planner/lifecycle sau khi triển khai lại chưa được thực hiện. Các luồng demo còn lại được hoãn đến khi quay video theo yêu cầu của người vận hành.

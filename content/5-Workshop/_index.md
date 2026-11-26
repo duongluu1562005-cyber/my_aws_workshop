@@ -21,10 +21,10 @@ The cleanup process, documented in Section 5.7, includes maintenance and deletio
 
 ## Content
 
-1. [Architecture overview](5.1-overview/)
-2. [Deployment prerequisites](5.2-prerequisites/)
-3. [Foundation and Network](5.3-foundation-network/)
-4. [Database and Integrations](5.4-database-integrations/)
-5. [Runtime, seeding and Edge](5.5-runtime-edge/)
-6. Application verification and web demonstration
-7. [Clean up resources](5.7-cleanup/)
+1. [Architecture overview](5.1-Workshop-overview/)
+2. [Deployment prerequisites](5.2-Prerequisite/)
+3. [Foundation and Network](5.3-S3-vpc/)
+4. [Database and Integrations](5.4-S3-onprem/)
+5. [Runtime, seeding and Edge](5.5-Runtime-Seeding-and-Edge/)
+6. [Application verification and web demonstration](5.6-Demovideo/)
+7. [Clean up resources](5.7-Clean-up-resources/)

@@ -22,10 +22,10 @@ Quá trình dọn dẹp được trình bày tại mục 5.7, bao gồm chuyển
 
 ## Nội dung
 
-1. [Tổng quan kiến trúc](5.1-overview/)
-2. [Chuẩn bị trước khi triển khai](5.2-prerequisites/)
-3. [Triển khai Foundation và Network](5.3-foundation-network/)
-4. [Triển khai Database và Integrations](5.4-database-integrations/)
-5. [Triển khai Runtime, thêm dữ liệu demo và Edge](5.5-runtime-edge/)
-6. Kiểm tra ứng dụng và demo trên web
-7. [Dọn dẹp tài nguyên](5.7-cleanup/)
+1. [Tổng quan kiến trúc](5.1-Workshop-overview/)
+2. [Các điều kiện tiên quyết để triển khai](5.2-Prerequisite/)
+3. [Hạ tầng nền tảng và mạng](5.3-S3-vpc/)
+4. [Cơ sở dữ liệu và tích hợp](5.4-S3-onprem/)
+5. [Môi trường chạy, khởi tạo dữ liệu và Edge](5.5-Runtime-Seeding-and-Edge/)
+6. [Xác minh ứng dụng và trình diễn website](5.6-Demovideo/)
+7. [Dọn dẹp tài nguyên](5.7-Clean-up-resources/)

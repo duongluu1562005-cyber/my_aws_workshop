@@ -64,5 +64,5 @@ Template định nghĩa 26 tài nguyên và chín Outputs. Sử dụng các ID m
 
 | **Trang** | **Quy trình và bằng chứng** |
 | :--- | :--- |
-| [5.3.1 Triển khai Foundation](/aws_my_workshop/5-workshop/5.3-foundation-network/5.3.1-foundation/) | Import các tài nguyên được giữ lại, khôi phục template chính, xem xét vai trò và Outputs. |
-| [5.3.2 Triển khai Network](/aws_my_workshop/5-workshop/5.3-foundation-network/5.3.2-network/) | Tạo hệ thống mạng, thêm tags và xác minh các Outputs mới. |
+| [5.3.1 Deploy Foundation](/my_aws_workshop/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/) | Import retained resources, restore the main template, review the role and Outputs. |
+| [5.3.2 Deploy Network](/my_aws_workshop/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/) | Create networking, add tags and verify new Outputs. |

@@ -72,19 +72,19 @@ Các giá trị này đã được kiểm tra đối chiếu với ảnh chụp 
 
 Đã tải lên `runtime.yaml` và đặt tên stack là `tindy-runtime`.
 
-[Template Runtime](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-34-runtime-template.png)
+![Template Runtime](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-34-runtime-template.png)
 
-[Tên stack Runtime](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35-runtime-stack-name.png)
+![Tên stack Runtime](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35-runtime-stack-name.png)
 
 Image digest, Edge hostname và prefix list, các tham chiếu secret/GuardDuty, feature flags và các networking ID mới khớp với các giá trị đã chuẩn bị. `DesiredCount = 0`, `DBProvisionMode = Fresh` và `AiPdfUploadsEnabled = false`. Bốn đầu vào one-off task vẫn để trống cho lần tạo ban đầu.
 
-[Tham số image và Edge](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35a-runtime-parameters-image-edge.png)
+![Tham số image và Edge](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35a-runtime-parameters-image-edge.png)
 
-[Tham số database và số lượng task](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35b-runtime-parameters-database.png)
+![Tham số database và số lượng task](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35b-runtime-parameters-database.png)
 
-[Tham chiếu integration và secret](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35c-runtime-parameters-integrations.png)
+![Tham chiếu integration và secret](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35c-runtime-parameters-integrations.png)
 
-[Tham số subnet và VPC](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35d-runtime-parameters-subnets.png)
+![Tham số subnet và VPC](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35d-runtime-parameters-subnets.png)
 
 ## 5. Tạo stack và thu thập Outputs
 
@@ -96,21 +96,21 @@ Chờ `tindy-runtime — CREATE_COMPLETE`, sau đó ghi lại `AlbDnsName`, `Vpc
 
 Đã xác minh các tag, Express mode ở trạng thái tắt, Roll back all resources, Use deletion policy và việc xác nhận IAM capability.
 
-[Tags của Runtime](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36-runtime-tags.png)
+![Tags của Runtime](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36-runtime-tags.png)
 
-[Tùy chọn Runtime](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36a-runtime-options.png)
+![Tùy chọn Runtime](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36a-runtime-options.png)
 
-[Xác nhận IAM của Runtime](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36b-runtime-iam-capabilities.png)
+![Xác nhận IAM của Runtime](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36b-runtime-iam-capabilities.png)
 
 Trang Review hiển thị nút Submit để bắt đầu tạo stack.
 
-[Review Runtime trước khi Submit](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36c-runtime-review-submit.png)
+![Review Runtime trước khi Submit](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36c-runtime-review-submit.png)
 
 Runtime đạt trạng thái **CREATE_COMPLETE** với **Outputs (6)**.
 
-[Runtime hoàn tất](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-37-runtime-complete.png)
+![Runtime hoàn tất](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-37-runtime-complete.png)
 
-[Sáu Outputs của Runtime](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-38-runtime-outputs.png)
+![Sáu Outputs của Runtime](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-38-runtime-outputs.png)
 
 `AlbDnsName` và `VpcOriginId` cấu hình Edge ở chế độ live. `ApiTargetGroupArn` hỗ trợ xác minh sức khỏe và alarm dimensions. `ApiTaskDefinitionArn`, `ApiServiceName` và `ClusterName` xác định cấu hình API và các tài nguyên ECS.
 

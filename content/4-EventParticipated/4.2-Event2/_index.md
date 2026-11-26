@@ -1,4 +1,3 @@
-
 ---
 title: "Event 2 "
 date: 2026-10-24
@@ -6,154 +5,133 @@ weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
+# Fireside Chat with Dr. Werner: Navigating the Future of Cloud & AI in Vietnam
 
-# First Cloud AI Journey – Weekly Meet Up
-
-- **Date & Time:** 09:00 – 12:00, Saturday, October 24, 2026
-- **Location:** 26th Floor, Bitexco Financial Tower, Ho Chi Minh City, Vietnam
-- **Organizer:** First Cloud AI Journey (FCAJ)
-- **Role:** In-Person Attendee
+- **Date:** Friday, October 2, 2026
+- **Location:** 26th Floor, Bitexco Financial Tower, Ho Chi Minh City, VietNam
+- **Organizer:** AWS Study Group / First Cloud AI Journey (FCAJ)
+- **Speaker:** Dr. Werner Vogels – Chief Technology Officer (CTO) of Amazon
+- **Role:** Attendee
+- **Event Video:** [Watch on YouTube](https://www.youtube.com/watch?v=jWjOIfMA9qc)
 
 ### Event Objectives
 
-First Cloud AI Journey – Weekly Meet Up was a technical sharing and networking event for individuals interested in Amazon Web Services (AWS), Cloud Computing, and Artificial Intelligence (AI).
+Fireside Chat with Dr. Werner: Navigating the Future of Cloud & AI in Vietnam was an online knowledge-sharing session focused on the development of Cloud Computing, Artificial Intelligence (AI), and modern software engineering.
 
-The event focused on practical applications of AI, including building Voice AI systems, managing AWS resources, performing security testing, and using AI Agents to support software development.
+The event provided insights into the history of AWS, the challenges of building large-scale distributed systems, and the changing role of developers in the AI era.
 
-### List of Speakers
+Through the discussion with Dr. Werner Vogels, attendees had the opportunity to learn about cloud architecture, system reliability, AI-assisted software development, and the technical skills required for future engineers.
 
-- **Kiệt Trần** – Revve AI
-- **Long Huỳnh** – Styl Solution
-- **Thịnh Nguyễn** – Styl Solution
-- **Xuân An** – AWS Student Builder Group HCMUTE
-- **Khoa Kiều** – Tech Lead, ACB
-- **Nghi Danh** – AWS Community Builder
+### Key Topics and Knowledge Gained
 
-### Key Topics and Highlights
+#### 1. The Origins of AWS and Cloud Computing Economics
 
-#### 1. Building a Vietnamese Voice AI Call Center
+Dr. Werner Vogels discussed how Amazon's early challenges in managing large-scale infrastructure contributed to the development of AWS.
 
-The speaker introduced how to build an AI system capable of listening, understanding, and responding through speech using three main stages: **Hear – Think – Speak**.
+As Amazon's systems grew, traditional infrastructure solutions became increasingly difficult to scale, creating the need for distributed and flexible computing services.
 
-Two approaches were discussed:
+Several important AWS services and concepts were discussed:
 
-- **Speech-to-Speech:** Processing spoken input and generating spoken responses directly.
-- **ASR–LLM–TTS:** Combining Automatic Speech Recognition (ASR), a Large Language Model (LLM), and Text-to-Speech (TTS) to process conversations.
+- **Amazon S3:** Provides scalable object storage for applications and data.
+- **Amazon EC2:** Offers virtual computing resources that can be provisioned based on application requirements.
+- **Amazon DynamoDB:** Provides a managed NoSQL database service designed for scalable applications.
+- **Pay-as-you-go Pricing:** Allows customers to pay for cloud resources based on usage instead of relying entirely on large upfront infrastructure investments.
 
-The most impressive part for me was the demonstration of an AI system conducting a preliminary interview for a Cloud Engineer position in Vietnamese.
+These developments demonstrated how AWS evolved from solving practical infrastructure challenges into providing cloud services for organizations.
 
-This demonstration showed how Voice AI could support recruitment activities and helped me understand the importance of response speed in maintaining a natural conversation.
+**What I learned:**
 
-#### 2. Managing AWS Resources with AWS Resource Access Manager
+This discussion helped me understand that AWS services were developed to address real-world problems related to scalability, infrastructure management, and operational efficiency.
 
-This session introduced how organizations can manage and share resources across multiple AWS accounts using **AWS Organizations** and **AWS Resource Access Manager (RAM)**.
+I also gained a clearer understanding of how cloud computing allows organizations to manage resources more flexibly and control infrastructure costs.
 
-**Main topics included:**
+#### 2. Engineering at Scale and System Reliability
 
-- **AWS RAM:** Sharing supported AWS resources across multiple accounts.
-- **VPC and Subnet Sharing:** Allowing multiple AWS accounts to use shared networking resources.
-- **IAM Policies:** Managing permissions for users and roles.
-- **Service Control Policies (SCPs):** Establishing permission boundaries in multi-account environments.
+Another important topic was designing reliable distributed systems that can support large numbers of users while maintaining stable performance.
 
-Through this session, I gained a better understanding of how businesses organize their cloud infrastructure so that different teams can share resources while maintaining appropriate access control and management.
+Dr. Werner Vogels emphasized that system failures are unavoidable, so engineers should design architectures that can recover from unexpected problems.
 
-#### 3. Applying AI to Security Testing
+Several key concepts were introduced:
 
-The speaker introduced **AWS Security Agent**, an AI-powered tool designed to support the identification and evaluation of security issues during software development.
+- **Tail Latency:** Measures the response times experienced by users at the slower end of a system's performance distribution.
+- **High Availability:** Ensures that applications and services remain accessible even when individual components fail.
+- **Single Points of Failure:** Components whose failure can interrupt the entire system.
+- **Game Days:** Simulated failure scenarios used to evaluate system resilience and recovery processes.
+- **Automated Failover:** Allows systems to switch to alternative resources when failures occur.
 
-**Key discussion points:**
+These practices help organizations improve the reliability and resilience of large-scale applications.
 
-- Reviewing infrastructure configurations written in Terraform.
-- Analyzing source code to identify potential security vulnerabilities.
-- Supporting Pull Request reviews on GitHub and Merge Request reviews on GitLab.
-- Evaluating application security in SIT/UAT environments before production deployment.
+**What I learned:**
 
-This session helped me understand the importance of integrating security testing directly into the software development process instead of waiting until the application has been completed.
+I learned that building a reliable cloud system requires more than selecting powerful computing resources.
 
-I also learned how AI can assist developers in identifying potential risks earlier and improving the overall security of their systems.
+Engineers must also consider failure scenarios, system monitoring, automated recovery, and architectural decisions that minimize service interruptions.
 
-#### 4. Amazon Bedrock AgentCore
+#### 3. The Renaissance Developer in the AI Era
 
-This session introduced two important components for building and operating AI Agents using Amazon Bedrock AgentCore.
+The session also explored how Artificial Intelligence is changing software development and the skills developers need to remain effective.
 
-- **AgentCore Runtime:** Provides an execution environment for AI Agents and uses MicroVM technology to isolate sessions.
-- **AgentCore Memory:** Manages information and context that AI Agents need to remember.
+Dr. Werner Vogels introduced the concept of the **Renaissance Developer**, referring to engineers who combine strong technical knowledge with broader problem-solving and communication skills.
 
-AgentCore Memory was explained through two main types:
+Several important qualities were highlighted:
 
-- **Short-term Memory:** Stores information within the current interaction session.
-- **Long-term Memory:** Retains useful information that can be accessed in future interactions.
+- **Continuous Learning:** Keeping up with changes in programming languages, cloud technologies, and AI development tools.
+- **Systems Thinking:** Understanding how different components interact within a complete software system.
+- **Communication Skills:** Identifying business requirements and explaining technical solutions clearly.
+- **Problem-Solving Skills:** Evaluating different approaches and selecting appropriate solutions.
+- **Ownership:** Taking responsibility for software quality, security, and system behavior, including when AI-generated code is used.
 
-Through this session, I gained a better understanding of how AI Agents maintain context, remember relevant information, and process tasks in real-world environments.
+These qualities help developers adapt to increasingly complex technical environments.
 
-It also helped me recognize the importance of managing memory and execution environments when developing more advanced AI applications.
+**What I learned:**
 
-#### 5. Kiro Crew – Using AI to Support Software Development
+This discussion helped me understand that AI does not eliminate the importance of software engineering fundamentals.
 
-This was one of the sessions that interested me the most during the event.
+Instead, developers need to strengthen their ability to evaluate solutions, understand system architecture, communicate effectively, and take responsibility for the applications they build.
 
-The speaker introduced **Kiro Crew** and demonstrated how AI could assist with various technical tasks in software development and system management.
+#### 4. AI-Assisted Development and Responsible Code Review
 
-**Main topics included:**
+Another topic discussed was how AI tools can support developers throughout the software development process.
 
-- **Code Review:** Supporting developers in reviewing and evaluating source code changes.
-- **Infrastructure Monitoring:** Assisting with monitoring system status and infrastructure performance.
-- **Artifacts:** Organizing data and presenting results through visual charts.
-- **Context Window:** Managing the amount of information an AI model can process during an interaction.
-- **Auto Compact:** Summarizing conversation history to reduce context usage.
-- **Memory and Guardrails:** Managing stored information and setting boundaries for AI Agent permissions.
+AI can accelerate prototyping, generate code suggestions, and help developers explore different implementation approaches.
 
-I was particularly impressed by the demonstration of transforming recruitment data into visual charts.
+However, AI-generated results still require careful verification before being used in real applications.
 
-The Q&A session about managing context during long AI interactions was also valuable.
+Several important practices were discussed:
 
-It helped me understand that effective use of AI requires not only good prompts but also proper context management, memory handling, and permission control.
+- **Rapid Prototyping:** Using AI tools to create initial application designs and test ideas more quickly.
+- **Code Review:** Examining generated code to identify potential errors and security issues.
+- **Risk Assessment:** Evaluating software changes based on their potential technical and business impact.
+- **Testing and Validation:** Checking whether AI-generated solutions meet functional and reliability requirements.
+- **Engineering Responsibility:** Ensuring developers remain accountable for the software they deliver.
 
-### Knowledge and Skills Gained
+**What I learned:**
 
-After attending the meetup, I gained additional knowledge about technologies currently being used in Cloud Computing and AI systems.
+I realized that AI tools can improve development efficiency, but their outputs should not be accepted without verification.
 
-**The main lessons I learned included:**
+Developers must continue to review, test, and evaluate generated code to ensure that applications remain secure, reliable, and suitable for their intended purposes.
 
-- **Voice AI:** Understanding how AI systems receive, process, and respond to spoken information.
-- **AWS RAM:** Learning how AWS resources can be shared across multiple accounts while maintaining access control.
-- **AWS Security Agent:** Understanding how AI can assist in detecting security issues in source code and infrastructure configurations.
-- **Amazon Bedrock AgentCore:** Recognizing the different roles of Runtime and Memory when operating AI Agents.
-- **Kiro Crew:** Exploring how AI can support code reviews, context management, and technical workflow automation.
+### Learning Outcomes and Key Takeaways
 
-Overall, these sessions helped me connect theoretical knowledge with real-world technology applications.
+The fireside chat provided valuable insights into Cloud Computing, distributed systems, and the future of software engineering in the AI era.
 
-### Practical Applications
+**The main lessons I gained included:**
 
-Based on the knowledge gained from the event, I identified several areas that I would like to explore further and apply to my studies and future projects.
+- Understanding how AWS developed from real-world challenges involving infrastructure scalability and system performance.
+- Learning about the economic benefits of cloud computing and usage-based resource management.
+- Recognizing the importance of high availability, resilience testing, and automated recovery when designing cloud architectures.
+- Understanding the concept of the Renaissance Developer and the importance of continuous learning, communication, and systems thinking.
+- Learning how AI tools can support rapid prototyping and software development while still requiring code review and testing.
+- Recognizing that developers remain responsible for software quality, security, and reliability when using AI-generated solutions.
 
-- Learn more about AWS IAM, AWS Organizations, and AWS RAM to improve my understanding of cloud resource management.
-- Pay greater attention to security throughout the software development process.
-- Use AI tools to assist with reading code, identifying errors, and reviewing changes in development projects.
-- Explore how Context Windows and Memory can be managed to improve the effectiveness of AI Agents.
+Overall, the session helped me develop a broader understanding of cloud architecture and the technical responsibilities of software engineers working with AWS and AI technologies.
 
-I hope to apply these concepts through hands-on practice and small technical projects to strengthen my understanding of Cloud Computing, AI, and software development.
-
-### My Experience at the Event
-
-The meetup provided an opportunity for me to learn directly from engineers, technical professionals, and Tech Leads who shared their practical experiences working with AWS and AI.
-
-The two sessions that impressed me the most were the **Vietnamese Voice AI interview demonstration** and the **Kiro Crew presentation**.
-
-These examples helped me better understand how AI technologies are applied in professional environments rather than only learning about them through documentation.
-
-In addition, the Q&A sessions provided valuable insights, especially regarding AI limitations, context management, and access control when deploying AI Agents.
-
-Overall, attending the First Cloud AI Journey Weekly Meet Up was a valuable learning experience that expanded my technical knowledge and motivated me to continue exploring AWS and AI technologies.
+It also encouraged me to continue improving both my cloud computing knowledge and my ability to evaluate and apply emerging technologies in future software projects.
 
 ### Event Participation Photos
 
-The following photos were taken during **First Cloud AI Journey – Weekly Meet Up** on October 24, 2026, in Ho Chi Minh City.
+The following images document the **Fireside Chat with Dr. Werner: Navigating the Future of Cloud & AI in Vietnam** livestream on October 2, 2026.
 
-![Personal photo at the event](/my_aws_workshop/images/4-EventParticipated/event-2/anhcanhan.jpg)
+![Personal photo at First Cloud AI Journey](/my_aws_workshop/images/4-EventParticipated/event-4/event4.jpg)
 
-*Figure 1. My personal photo at First Cloud AI Journey – Weekly Meet Up on October 24, 2026.*
-
-![Group photo at the event](/my_aws_workshop/images/4-EventParticipated/event-2/anhtapthe.jpg)
-
-*Figure 2. Group photo with the speakers and other attendees at the event.*
+*Figure 1. The offline Fireside Chat with Dr. Werner Vogels discussing the future of Cloud Computing and Artificial Intelligence in Vietnam.*

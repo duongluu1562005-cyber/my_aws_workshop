@@ -1,6 +1,6 @@
 ---
 title: "KIỂM TRA HẠ TẦNG TRƯỚC KHI DỌN DẸP"
-date: 2026-11-22
+date: 2026-11-19
 weight: 1
 chapter: false
 pre: "<b> 5.7.1 </b>"
@@ -15,9 +15,9 @@ pre: "<b> 5.7.1 </b>"
 
 
 
-[Các stack Tindy ban đầu](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.1/cleanup-01-stacks-before.png)
+![Các stack Tindy ban đầu](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.1/cleanup-01-stacks-before.png)
 
 3. Mở **tindy-edge → Outputs**, ghi lại `DistributionId`, `DistributionDomainName` và `EdgeMode`, ban đầu là `live`.
 
-[Outputs Edge ban đầu](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.1/cleanup-02-edge-before.png)
+![Outputs Edge ban đầu](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.1/cleanup-02-edge-before.png)
 

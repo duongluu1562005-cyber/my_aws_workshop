@@ -14,7 +14,7 @@ pre: "<b> 5.5.1 </b>"
 
 
 
-[Template Edge đã tải lên](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-29-edge-template.png)
+![Template Edge đã tải lên](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-29-edge-template.png)
 
 2. Đặt tên stack là `tindy-edge`. Đặt `FrontendBucketName` từ Foundation Outputs, sử dụng `EdgeMode = maintenance` và để trống `VpcOriginId` và `AlbDnsName`.
 
@@ -22,7 +22,7 @@ pre: "<b> 5.5.1 </b>"
 
 
 
-[Tham số Edge maintenance](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30-edge-maintenance-parameters.png)
+![Tham số Edge maintenance](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30-edge-maintenance-parameters.png)
 
 3. Thêm các tag `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. Giữ Express mode ở trạng thái tắt và rollback ở trạng thái bật, xem xét và tạo stack.
 4. Chờ `CREATE_COMPLETE`, sau đó ghi lại `DistributionId`, `DistributionDomainName` và `EdgeMode` từ Outputs.
@@ -47,7 +47,7 @@ Template edge.yaml đã được chọn, với tên stack tindy-edge, frontend b
 
 
 
-[Tags của Edge](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30a-edge-tags.png)
+![Tags của Edge](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30a-edge-tags.png)
 
 
 
@@ -55,7 +55,7 @@ Trang Review hiển thị nút **Submit** và termination protection ở trạng
 
 
 
-[Review Edge trước khi Submit](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30b-edge-review-submit.png)
+![Review Edge trước khi Submit](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30b-edge-review-submit.png)
 
 
 
@@ -63,7 +63,7 @@ Stack đạt trạng thái **CREATE_COMPLETE**. Outputs xác nhận distribution
 
 
 
-[Edge hoàn tất và Outputs mới](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-32-edge-outputs.png)
+![Edge hoàn tất và Outputs mới](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-32-edge-outputs.png)
 
 
 
@@ -77,4 +77,4 @@ curl.exe -i https://d1vcn4g2ifl3k8.cloudfront.net/api/health/ready
 
 
 
-[HTTPS 503 maintenance](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-33-edge-maintenance-check.png)
+![HTTPS 503 maintenance](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-33-edge-maintenance-check.png)

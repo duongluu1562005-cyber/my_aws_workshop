@@ -35,7 +35,7 @@ This script prepares configuration. Database bootstrap, migration and seed run s
 
 
 
-[Runtime secret preparation results](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-39-runtime-secrets-prepared.png)
+![Runtime secret preparation results](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-39-runtime-secrets-prepared.png)
 
 
 
@@ -63,15 +63,15 @@ Selected **Create a change set**, retained the existing template and named it `t
 
 
 
-[DB task change set menu](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40a-runtime-db-tasks-menu.png)
+![DB task change set menu](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40a-runtime-db-tasks-menu.png)
 
 
 
-[Existing Runtime template](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40b-runtime-db-tasks-existing-template.png)
+![Existing Runtime template](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40b-runtime-db-tasks-existing-template.png)
 
 
 
-[DB task change set name](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40c-runtime-db-tasks-changeset-name.png)
+![DB task change set name](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40c-runtime-db-tasks-changeset-name.png)
 
 
 
@@ -79,19 +79,19 @@ The four new values match the script output. `DBProvisionMode = Fresh`, `Desired
 
 
 
-[Image and Edge inputs](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40d-runtime-db-tasks-image-edge.png)
+![Image and Edge inputs](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40d-runtime-db-tasks-image-edge.png)
 
 
 
-[Database inputs and DesiredCount](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40-runtime-db-task-parameters.png)
+![Database inputs and DesiredCount](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40-runtime-db-task-parameters.png)
 
 
 
-[Migration secret and Integrations inputs](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40e-runtime-db-tasks-migration.png)
+![Migration secret and Integrations inputs](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40e-runtime-db-tasks-migration.png)
 
 
 
-[Seed secret and networking](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40f-runtime-db-tasks-seed-network.png)
+![Seed secret and networking](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40f-runtime-db-tasks-seed-network.png)
 
 
 
@@ -103,7 +103,7 @@ IAM capabilities were acknowledged. Change set `tindy-runtime-enable-db-tasks` r
 
 
 
-[DB task IAM acknowledgement](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40g-runtime-db-tasks-iam.png)
+![DB task IAM acknowledgement](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40g-runtime-db-tasks-iam.png)
 
 
 
@@ -111,7 +111,7 @@ The six Add actions create `DbBootstrapExecutionRole`/`DbBootstrapTaskDefinition
 
 
 
-[Six DB task Add actions](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-41-runtime-db-tasks-changeset.png)
+![Six DB task Add actions](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-41-runtime-db-tasks-changeset.png)
 
 
 
@@ -127,7 +127,7 @@ The execution dialog selects Roll back all stack resources and Use deletion poli
 
 
 
-[DB task change set execution confirmation](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-41a-runtime-db-tasks-execute-confirm.png)
+![DB task change set execution confirmation](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-41a-runtime-db-tasks-execute-confirm.png)
 
 ## 5. Runtime update results
 
@@ -135,7 +135,7 @@ The stack reached **UPDATE_COMPLETE** with **Outputs (9)**. New Outputs identify
 
 
 
-[Completed Runtime update and DB task Outputs](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-43-runtime-db-task-outputs.png)
+![Completed Runtime update and DB task Outputs](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-43-runtime-db-task-outputs.png)
 
 
 

@@ -14,11 +14,11 @@ Open CloudFormation → tindy-runtime → Outputs and copy `AlbDnsName` and `Vpc
 
 
 
-[Runtime ALB DNS output](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-59a-runtime-alb-output.png)
+![Runtime ALB DNS output](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-59a-runtime-alb-output.png)
 
 
 
-[Runtime VPC Origin ID output](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-59b-runtime-vpc-origin-output.png)
+![Runtime VPC Origin ID output](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-59b-runtime-vpc-origin-output.png)
 
 ## 2. Create the Edge live change set
 
@@ -43,7 +43,7 @@ After successful execution in the next stage, verify readiness through HTTPS on 
 
 
 
-[Edge live uses existing template](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60a-edge-live-existing-template.png)
+![Edge live uses existing template](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60a-edge-live-existing-template.png)
 
 
 
@@ -51,7 +51,7 @@ The change set name is `tindy-edge-go-live`. The description retains the existin
 
 
 
-[Edge live change set name](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60b-edge-live-changeset-name.png)
+![Edge live change set name](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60b-edge-live-changeset-name.png)
 
 
 
@@ -59,7 +59,7 @@ The Parameters screenshot records `EdgeMode = live`, populated `AlbDnsName` and 
 
 
 
-[Edge live parameters](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60c-edge-live-parameters.png)
+![Edge live parameters](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60c-edge-live-parameters.png)
 
 
 
@@ -77,7 +77,7 @@ Exactly one resource changes in place, matching the origin and routing configura
 
 
 
-[Edge live change set review](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-61-edge-live-changeset.png)
+![Edge live change set review](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-61-edge-live-changeset.png)
 
 ## 5. Execute and verify readiness
 
@@ -99,7 +99,7 @@ Stack `tindy-edge` reached **UPDATE_COMPLETE**. Outputs confirm `EdgeMode = live
 
 
 
-[Edge live update complete](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-62-edge-live-update-complete.png)
+![Edge live update complete](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-62-edge-live-update-complete.png)
 
 
 
@@ -113,7 +113,7 @@ The response records Server Kestrel, Via CloudFront, X-Cache Miss from cloudfron
 
 
 
-[CloudFront API readiness HTTP 200](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-63-cloudfront-readiness-200.png)
+![CloudFront API readiness HTTP 200](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-63-cloudfront-readiness-200.png)
 
 
 
@@ -125,7 +125,7 @@ The browser screenshot records the Tindy login page with its logo, introduction,
 
 
 
-[Tindy frontend login page](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-64-frontend-login-page.png)
+![Tindy frontend login page](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-64-frontend-login-page.png)
 
 ### Verify demo account login
 
@@ -145,7 +145,7 @@ Your overview shows **Loaded 20**. This records the number loaded in the interfa
 
 
 
-[Demo login and Discover Projects](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-65-demo-login-discover-projects.png)
+![Demo login and Discover Projects](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-65-demo-login-discover-projects.png)
 
 
 
@@ -157,7 +157,7 @@ Project Details loads `Student Marketplace [Demo]`, recruiting status, leader `T
 
 
 
-[Project details loaded](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-66-project-details.png)
+![Project details loaded](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-66-project-details.png)
 
 
 
@@ -165,7 +165,7 @@ Find Teammates displays `Campus Room Booking [Demo]`, a Backend Developer positi
 
 
 
-[Find Teammates and position match](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-67-find-teammates.png)
+![Find Teammates and position match](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-67-find-teammates.png)
 
 
 

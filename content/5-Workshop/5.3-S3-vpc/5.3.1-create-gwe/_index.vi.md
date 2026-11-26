@@ -21,23 +21,23 @@ Sau khi import, sử dụng `foundation.yaml` để thêm các IAM role thông q
 
 **📸 Chụp ảnh menu import.**
 
-[Import các tài nguyên hiện có](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01-foundation-import-start.png)
+[Import các tài nguyên hiện có](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01-foundation-import-start.png)
 
 3. Đọc phần giới thiệu và nhấn Next.
 
-[Giới thiệu import](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01a-foundation-import-introduction.png)
+[Giới thiệu import](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-01a-foundation-import-introduction.png)
 
 4. Chọn **Upload a template file**, chọn tệp `foundation-import.yaml` đã chuẩn bị từ thư mục backup.
 
 **📸 Chụp ảnh tên tệp đã chọn.**
 
-[Tải lên template import](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-02-foundation-import-template.png)
+[Tải lên template import](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-02-foundation-import-template.png)
 
 5. Nhấn Next và xác minh **Resources to import (9)** trong phần Identify resources.
 
-[Phần trên của identifiers](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03-foundation-identifiers-empty-top.png)
+[Phần trên của identifiers](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03-foundation-identifiers-empty-top.png)
 
-[Phần dưới của identifiers](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03a-foundation-identifiers-empty-bottom.png)
+[Phần dưới của identifiers](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-03a-foundation-identifiers-empty-bottom.png)
 
 ## 3. Điền identifiers từ bảng ánh xạ đã lưu
 
@@ -59,9 +59,9 @@ Sao chép các giá trị từ tệp `console-import-identifiers.csv` đã xuấ
 
 Tất cả chín identifier đã được điền và kiểm tra đối chiếu với bảng ánh xạ trước khi dọn dẹp.
 
-[Phần trên của identifiers đã điền](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04-foundation-identifiers-filled-top.png)
+[Phần trên của identifiers đã điền](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04-foundation-identifiers-filled-top.png)
 
-[Phần dưới của identifiers đã điền](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04a-foundation-identifiers-filled-bottom.png)
+[Phần dưới của identifiers đã điền](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-04a-foundation-identifiers-filled-bottom.png)
 
 ## 4. Tham số ở giai đoạn import
 
@@ -71,9 +71,9 @@ Nhấn **Next** để đến Specify stack details và nhập `tindy-foundation`
 
 Các giá trị đã xác minh cho thấy tên stack là `tindy-foundation`, `GitHubOidcProviderMode = Create`, cả ba tùy chọn kích hoạt role đều được đặt thành `false`, và bốn trường tham chiếu Runtime/Frontend để trống.
 
-[Chi tiết stack Foundation](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05-foundation-import-stack-details.png)
+[Chi tiết stack Foundation](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05-foundation-import-stack-details.png)
 
-[Tham số import Foundation](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05a-foundation-import-parameters.png)
+[Tham số import Foundation](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-05a-foundation-import-parameters.png)
 
 ## 5. Xem xét trước khi import
 
@@ -81,15 +81,15 @@ Nhấn **Next** để đến Review. Kiểm tra tên stack, các tham số và t
 
 Trang Review hiển thị chín tài nguyên và các tham số stack đã chọn.
 
-[Xem xét tài nguyên Foundation](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06-foundation-import-review-resources.png)
+[Xem xét tài nguyên Foundation](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06-foundation-import-review-resources.png)
 
-[Xem xét tham số Foundation](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06a-foundation-import-review-parameters.png)
+[Xem xét tham số Foundation](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06a-foundation-import-review-parameters.png)
 
 ### Xử lý lỗi xác thực Outputs trong quá trình import
 
 Template import ban đầu vẫn chứa Outputs. CloudFormation báo lỗi `As part of the import operation, you cannot modify or add [Outputs]`. Change set không được tạo thành công và việc hoàn tất import vẫn chưa được xác minh.
 
-[Lỗi xác thực Outputs](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06b-foundation-import-outputs-error.png)
+[Lỗi xác thực Outputs](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-06b-foundation-import-outputs-error.png)
 
 Tệp `foundation-import.yaml` đã được sửa để loại bỏ toàn bộ phần Outputs. Quay lại **Specify template**, tải lên tệp đã sửa, xác minh tất cả chín identifier và giữ nguyên các tham số đã được ghi lại. Sau khi import, khôi phục Outputs thông qua một lần cập nhật bằng template chính `foundation.yaml`.
 
@@ -97,13 +97,13 @@ Tệp `foundation-import.yaml` đã được sửa để loại bỏ toàn bộ 
 
 Tải lại template không có Outputs, giữ nguyên identifiers và parameters. Việc tạo change set thành công với **Changes (9)** và cả chín action được đặt thành `Import`.
 
-[Xem xét tài nguyên đã sửa](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07-foundation-import-review-resources.png)
+[Xem xét tài nguyên đã sửa](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07-foundation-import-review-resources.png)
 
-[Xem xét tham số đã sửa](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07a-foundation-import-review-parameters.png)
+[Xem xét tham số đã sửa](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07a-foundation-import-review-parameters.png)
 
 **📸 Chụp ảnh tất cả chín action Import trước khi thực thi.**
 
-[Chín action Import](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07b-foundation-nine-import-actions.png)
+[Chín action Import](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-07b-foundation-nine-import-actions.png)
 
 ## 6. Thực thi import
 
@@ -113,7 +113,7 @@ Nhấn **Import resources** và theo dõi **Events** của `tindy-foundation` ch
 
 Quá trình import hoàn tất thành công. Ảnh chụp màn hình Resources cho thấy stack `tindy-foundation` ở trạng thái `IMPORT_COMPLETE`, **Resources (9)** và `UPDATE_COMPLETE` đối với các tài nguyên được hiển thị.
 
-[Các tài nguyên Foundation đã import](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09-foundation-imported-resources.png)
+[Các tài nguyên Foundation đã import](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09-foundation-imported-resources.png)
 
 Tiếp theo, cập nhật bằng template chính `foundation.yaml` để khôi phục Outputs và cấu hình các IAM role khi các điều kiện tiên quyết cho việc triển khai có sẵn.
 
@@ -129,19 +129,19 @@ Xác nhận IAM capabilities và tạo change set. Resource changes dự kiến 
 
 Đã mở **Stack actions → Create a change set**, chọn **Standard change set → Replace existing template → Upload a template file**, và tải lên `foundation.yaml`.
 
-[Foundation sau khi import](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09a-foundation-imported-resources.png)
+[Foundation sau khi import](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-09a-foundation-imported-resources.png)
 
-[Menu tạo change set Foundation](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10a-foundation-create-changeset-menu.png)
+[Menu tạo change set Foundation](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10a-foundation-create-changeset-menu.png)
 
-[Template foundation.yaml chính đã chọn](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10-foundation-main-template.png)
+[Template foundation.yaml chính đã chọn](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-10-foundation-main-template.png)
 
 Change set được đặt tên là `tindy-foundation-restore-template`. Các tham số đã xác minh là `GitHubOidcProviderMode = Create`, `InfraPlannerEnabled = true`, `BackendDeployEnabled = false` và `LifecycleWorkflowsEnabled = false`. Cả hai tên Runtime role và cả hai trường Frontend vẫn để trống ở giai đoạn này.
 
 **📸 Chụp ảnh tên change set và tất cả các tham số.**
 
-[Tham số Foundation chính](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11-foundation-main-parameters.png)
+[Tham số Foundation chính](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11-foundation-main-parameters.png)
 
-[Phần dưới của tham số Foundation](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11a-foundation-main-parameters-bottom.png)
+[Phần dưới của tham số Foundation](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-11a-foundation-main-parameters-bottom.png)
 
 Nhấn Next, giữ Express mode ở trạng thái tắt và rollback ở trạng thái bật, xác nhận IAM capabilities và tạo change set.
 
@@ -149,7 +149,7 @@ Change set `tindy-foundation-restore-template` đạt trạng thái `CREATE_COMP
 
 **📸 Chụp ảnh Resource changes trước khi thực thi.**
 
-[Change set Foundation chính](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12-foundation-main-changeset.png)
+[Change set Foundation chính](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12-foundation-main-changeset.png)
 
 Thực thi change set, giữ **Use deletion policy** nếu được hiển thị. Theo dõi Events cho đến khi `tindy-foundation — UPDATE_COMPLETE`. Kiểm tra Outputs để lấy các tham chiếu bucket, ECR, secret, OIDC và `InfraPlannerRoleArn` cần thiết trong các bước tiếp theo.
 
@@ -157,15 +157,15 @@ Thực thi change set, giữ **Use deletion policy** nếu được hiển thị
 
 Change set đã được thực thi với **Use deletion policy**.
 
-[Thực thi change set Foundation](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12a-foundation-main-execute.png)
+[Thực thi change set Foundation](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-12a-foundation-main-execute.png)
 
 Stack đạt trạng thái **UPDATE_COMPLETE**. Ảnh chụp màn hình Outputs hiển thị trạng thái stack đã hoàn tất và **Outputs (14)**.
 
-[Cập nhật Foundation hoàn tất](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-13-foundation-main-update-complete.png)
+[Cập nhật Foundation hoàn tất](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-13-foundation-main-update-complete.png)
 
-[Phần trên của Foundation Outputs](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14-foundation-main-outputs-top.png)
+[Phần trên của Foundation Outputs](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14-foundation-main-outputs-top.png)
 
-[Phần dưới của Foundation Outputs](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14a-foundation-main-outputs-bottom.png)
+[Phần dưới của Foundation Outputs](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.1/deploy-14a-foundation-main-outputs-bottom.png)
 
 Các tham chiếu frontend/media bucket, ECR, application secret, OIDC, Data Protection path và `InfraPlannerRoleArn` đã có sẵn trở lại. Các role triển khai backend/frontend và lifecycle sẽ được cấu hình khi các đầu vào Runtime và Edge mới có sẵn. So sánh các biến role trong GitHub repository với Outputs mới trước khi chạy các workflow của chúng.
 

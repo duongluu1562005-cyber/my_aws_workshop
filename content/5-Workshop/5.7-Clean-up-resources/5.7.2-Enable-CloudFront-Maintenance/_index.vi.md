@@ -1,6 +1,6 @@
 ---
 title: "KÍCH HOẠT CHẾ ĐỘ BẢO TRÌ CLOUDFRONT"
-date: 2026-11-22
+date: 2026-11-19
 weight: 2
 chapter: false
 pre: "<b> 5.7.2 </b>"
@@ -18,11 +18,11 @@ Tham số `EdgeMode` trong `edge.yaml` kiểm soát backend origin và hành vi 
 
 
 
-[Tham số Edge](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-03a-edge-maintenance-parameters.png)
+![Tham số Edge](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-03a-edge-maintenance-parameters.png)
 
 4. Giữ nguyên role hiện có, Express mode ở trạng thái tắt, rollback ở trạng thái bật và deployment validations được bật. Tạo change set.
 
-[Tùy chọn Edge](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-03b-edge-maintenance-options.png)
+![Tùy chọn Edge](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-03b-edge-maintenance-options.png)
 
 5. Chờ `CREATE_COMPLETE` và `AVAILABLE`. Xác nhận chỉ có `EdgeDistribution → Modify → Replacement = False`.
 
@@ -30,19 +30,19 @@ Tham số `EdgeMode` trong `edge.yaml` kiểm soát backend origin và hành vi 
 
 
 
-[Edge change set](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-03-edge-maintenance-changeset.png)
+![Edge change set](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-03-edge-maintenance-changeset.png)
 
 6. Thực thi, giữ **Use deletion policy**.
 
-[Xác nhận thực thi Edge](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-03c-edge-maintenance-execute.png)
+![Xác nhận thực thi Edge](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-03c-edge-maintenance-execute.png)
 
 7. Làm mới Events cho đến khi đạt `UPDATE_COMPLETE`.
 
-[Cập nhật Edge hoàn tất](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-04-edge-maintenance-complete.png)
+![Cập nhật Edge hoàn tất](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-04-edge-maintenance-complete.png)
 
 8. Xác nhận `EdgeMode = maintenance` trong Outputs.
 
-[Outputs chế độ maintenance](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-04a-edge-maintenance-outputs.png)
+![Outputs chế độ maintenance](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-04a-edge-maintenance-outputs.png)
 
 9. Thay `<cloudfront-hostname>` bằng distribution hostname đã ghi lại và chạy trong PowerShell.
 
@@ -58,5 +58,5 @@ Phản hồi đã xác minh bao gồm HTTP `503 Service Unavailable`, `Server: C
 
 
 
-[Phản hồi maintenance](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-05-api-maintenance.png)
+![Phản hồi maintenance](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.2/cleanup-05-api-maintenance.png)
 

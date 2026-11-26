@@ -1,6 +1,6 @@
 ---
 title: "DỌN DẸP TÀI NGUYÊN"
-date: 2026-11-22
+date: 2026-11-19
 weight: 7
 chapter: false
 pre: "<b> 5.7. </b>"
@@ -19,17 +19,17 @@ Phần này ghi lại quá trình dọn dẹp môi trường Tindy hiện có th
 | Network | Termination protection đã tắt và việc xóa được xác minh ở trạng thái `DELETE_COMPLETE`. |
 | Foundation | Bảng ánh xạ đã được xuất và việc xóa stack được xác minh ở trạng thái `DELETE_COMPLETE`. Các tài nguyên được giữ lại báo cáo trạng thái `DELETE_SKIPPED`. |
 
-## Các bước dọn dẹp
 
-| **Trang hướng dẫn** |
-| :--- |
-| [5.7.1 Kiểm tra hạ tầng trước khi dọn dẹp](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.1-inventory/) |
-| [5.7.2 Kích hoạt chế độ bảo trì CloudFront](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.2-maintenance/) |
-| [5.7.3 Chuẩn bị và xóa Runtime](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.3-runtime/) |
-| [5.7.4 Tắt chế độ bảo vệ và xóa Database](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.4-database/) |
-| [5.7.5 Kiểm tra và xóa Integrations](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.5-integrations/) |
-| [5.7.6 Tắt chế độ bảo vệ và xóa Edge](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.6-edge/) |
-| [5.7.7 Tắt chế độ bảo vệ và xóa Network](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.7-network/) |
-| [5.7.8 Xuất bảng ánh xạ và xóa Foundation](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.8-foundation/) |
-| [5.7.9 Kết quả dọn dẹp và chuẩn bị triển khai lại](/aws_my_workshop/5-workshop/5.7-cleanup/5.7.9-results/) |
+## Hướng dẫn thực hành
 
+| **Trang** | **Quy trình và bằng chứng** |
+| :--- | :--- |
+| [5.7.1 Kiểm tra hạ tầng trước khi dọn dẹp](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.1-review-infrastructure-before-cleanup/) | Kiểm tra hạ tầng đã triển khai và xác định các tài nguyên trước khi dọn dẹp. |
+| [5.7.2 Bật chế độ bảo trì CloudFront](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.2-enable-cloudfront-maintenance/) | Bật chế độ bảo trì thông qua CloudFront trước khi xóa tài nguyên. |
+| [5.7.3 Chuẩn bị và xóa Runtime](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.3-prepare-and-delete-runtime/) | Chuẩn bị dọn dẹp stack Runtime và xác minh việc xóa stack. |
+| [5.7.4 Tắt bảo vệ và xóa Database](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.4-disable-protection-and-delete-database/) | Tắt tính năng bảo vệ xóa cơ sở dữ liệu và xác minh việc xóa stack Database. |
+| [5.7.5 Kiểm tra và xóa Integrations](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.5-review-and-delete-integrations/) | Kiểm tra các tài nguyên tích hợp và xác minh việc xóa stack. |
+| [5.7.6 Tắt bảo vệ và xóa Edge](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.6-disable-protection-and-delete-edge/) | Tắt các cơ chế bảo vệ cần thiết và xóa stack Edge. |
+| [5.7.7 Tắt bảo vệ và xóa Network](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.7-disable-protection-and-delete-network/) | Gỡ các thiết lập bảo vệ mạng và xác minh việc xóa stack Network. |
+| [5.7.8 Xuất thông tin ánh xạ và xóa Foundation](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.8-export-mappings-and-delete-foundation/) | Xuất cấu hình và thông tin ánh xạ Foundation trước khi xóa stack. |
+| [5.7.9 Kết quả dọn dẹp và chuẩn bị triển khai lại](/my_aws_workshop/5-workshop/5.7-clean-up-resources/5.7.9-cleanup-results-and-redeployment-preparation/) | Kiểm tra bằng chứng dọn dẹp, tài nguyên được giữ lại và công tác chuẩn bị triển khai lại. |

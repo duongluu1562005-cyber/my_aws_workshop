@@ -15,8 +15,8 @@ pre: "<b> 5.7.1 </b>"
 
 
 
-[Initial Tindy stacks](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.1/cleanup-01-stacks-before.png)
+![Initial Tindy stacks](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.1/cleanup-01-stacks-before.png)
 
 3. Open **tindy-edge → Outputs**, record `DistributionId`, `DistributionDomainName` and `EdgeMode`, initially `live`.
 
-[Initial Edge outputs](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.1/cleanup-02-edge-before.png)
+![Initial Edge outputs](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.1/cleanup-02-edge-before.png)

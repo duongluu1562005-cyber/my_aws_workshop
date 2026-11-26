@@ -1,7 +1,7 @@
 
 ---
 title: "Event 3 "
-date: 2026-11-14
+date: 2026-10-24
 weight: 3
 chapter: false
 pre: " <b> 4.3. </b> "
@@ -9,126 +9,151 @@ pre: " <b> 4.3. </b> "
 
 # First Cloud AI Journey – Weekly Meet Up
 
-- **Date:** Saturday, November 14, 2026
+- **Date & Time:** Saturday, October 24, 2026
 - **Location:** 26th Floor, Bitexco Financial Tower, Ho Chi Minh City, Vietnam
 - **Organizer:** First Cloud AI Journey (FCAJ)
-- **Presenters:** Members of the First Cloud AI Journey (FCAJ) team
 - **Role:** In-Person Attendee
 
 ### Event Objectives
 
-First Cloud AI Journey – Weekly Meet Up was a knowledge-sharing and networking event for individuals interested in Amazon Web Services (AWS), Cloud Computing, and Artificial Intelligence (AI).
+First Cloud AI Journey – Weekly Meet Up was a technical sharing and networking event for individuals interested in Amazon Web Services (AWS), Cloud Computing, and Artificial Intelligence (AI).
 
-The event focused on building and deploying AI systems in enterprise environments, covering topics such as cost optimization, AWS resource management, and the development of AI Agent systems capable of collaborating and handling multiple tasks.
+The event focused on practical applications of AI, including building Voice AI systems, managing AWS resources, performing security testing, and using AI Agents to support software development.
 
-Through presentations and practical insights shared by members of the FCAJ community, attendees had the opportunity to learn more about applying AWS and AI technologies to real-world projects.
+### List of Speakers
 
-### Key Topics and Knowledge Gained
+- **Kiệt Trần** – Revve AI
+- **Long Huỳnh** – Styl Solution
+- **Thịnh Nguyễn** – Styl Solution
+- **Xuân An** – AWS Student Builder Group HCMUTE
+- **Khoa Kiều** – Tech Lead, ACB
+- **Nghi Danh** – AWS Community Builder
 
-#### 1. Differences Between AI in Academic Projects and Enterprise Environments
+### Key Topics and Highlights
 
-In academic environments, AI models are often developed and tested using available datasets with a relatively small number of users.
+#### 1. Building a Vietnamese Voice AI Call Center
 
-However, when deployed in enterprise environments, AI systems must support larger workloads, maintain stable performance, and ensure data security.
+The speaker introduced how to build an AI system capable of listening, understanding, and responding through speech using three main stages: **Hear – Think – Speak**.
 
-Several AWS services were introduced during this session:
+Two approaches were discussed:
 
-- **AWS Lambda:** Runs code without requiring developers to manage servers.
-- **Auto Scaling:** Automatically adjusts computing resources based on workload demands.
-- **Load Balancer:** Distributes incoming requests across multiple servers to prevent overload.
-- **AWS KMS:** Helps manage encryption keys to protect sensitive data.
-- **AWS IAM:** Manages identities and access permissions for AWS resources.
-- **Amazon Bedrock Guardrails:** Helps control AI-generated content and improve safety when using AI applications.
+- **Speech-to-Speech:** Processing spoken input and generating spoken responses directly.
+- **ASR–LLM–TTS:** Combining Automatic Speech Recognition (ASR), a Large Language Model (LLM), and Text-to-Speech (TTS) to process conversations.
 
-These services help AI systems become more scalable, reliable, and suitable for real-world business requirements.
+The most impressive part for me was the demonstration of an AI system conducting a preliminary interview for a Cloud Engineer position in Vietnamese.
 
-**What I learned:**
+This demonstration showed how Voice AI could support recruitment activities and helped me understand the importance of response speed in maintaining a natural conversation.
 
-This session helped me understand that building an AI model for a classroom project is different from deploying an AI system in a production environment.
+#### 2. Managing AWS Resources with AWS Resource Access Manager
 
-Enterprise AI systems require not only accurate results but also scalability, security, reliability, and effective resource management.
+This session introduced how organizations can manage and share resources across multiple AWS accounts using **AWS Organizations** and **AWS Resource Access Manager (RAM)**.
 
-#### 2. Using AI Wisely to Optimize Costs
+**Main topics included:**
 
-One of the most interesting topics was how to choose appropriate AI models for different tasks instead of using a large AI model for every request.
+- **AWS RAM:** Sharing supported AWS resources across multiple accounts.
+- **VPC and Subnet Sharing:** Allowing multiple AWS accounts to use shared networking resources.
+- **IAM Policies:** Managing permissions for users and roles.
+- **Service Control Policies (SCPs):** Establishing permission boundaries in multi-account environments.
 
-The FCAJ team illustrated this concept using a restaurant analogy:
+Through this session, I gained a better understanding of how businesses organize their cloud infrastructure so that different teams can share resources while maintaining appropriate access control and management.
 
-- **Head Chef:** A large AI model acts as the coordinator, assigning tasks to other specialized models.
-- **Main Course, Dessert, and Cashier:** Smaller AI models handle specific tasks at lower costs.
-- **Caching:** Stores the results of frequently repeated requests to avoid unnecessary processing.
+#### 3. Applying AI to Security Testing
 
-By combining larger models with smaller specialized models, AI systems can reduce operational costs while maintaining efficient performance.
+The speaker introduced **AWS Security Agent**, an AI-powered tool designed to support the identification and evaluation of security issues during software development.
 
-**What I learned:**
+**Key discussion points:**
 
-I realized that using the most powerful AI model is not always the best solution.
+- Reviewing infrastructure configurations written in Terraform.
+- Analyzing source code to identify potential security vulnerabilities.
+- Supporting Pull Request reviews on GitHub and Merge Request reviews on GitLab.
+- Evaluating application security in SIT/UAT environments before production deployment.
 
-Selecting models based on task complexity and reusing previously generated results can improve response times, reduce costs, and make better use of computing resources.
+This session helped me understand the importance of integrating security testing directly into the software development process instead of waiting until the application has been completed.
 
-#### 3. Building Multi-Agent Systems with Strands Agents
+I also learned how AI can assist developers in identifying potential risks earlier and improving the overall security of their systems.
 
-This session introduced how to combine **Strands Agents** and **FastAPI** to develop a Multi-Agent system in which each AI Agent is responsible for a specific task.
+#### 4. Amazon Bedrock AgentCore
 
-Several example Agents were presented:
+This session introduced two important components for building and operating AI Agents using Amazon Bedrock AgentCore.
 
-- **qa_agent:** Uses FAISS to retrieve information from documents and answer questions related to policies.
-- **ticket_agent:** Handles service requests and includes a human approval mechanism for important actions.
-- **research_agent:** Uses Tavily to search for and summarize information from the Internet.
+- **AgentCore Runtime:** Provides an execution environment for AI Agents and uses MicroVM technology to isolate sessions.
+- **AgentCore Memory:** Manages information and context that AI Agents need to remember.
 
-Instead of requiring a single AI Agent to perform every task, the system distributes requests among specialized Agents.
+AgentCore Memory was explained through two main types:
 
-This approach makes workflows easier to organize, monitor, and expand when necessary.
+- **Short-term Memory:** Stores information within the current interaction session.
+- **Long-term Memory:** Retains useful information that can be accessed in future interactions.
 
-**What I learned:**
+Through this session, I gained a better understanding of how AI Agents maintain context, remember relevant information, and process tasks in real-world environments.
 
-I gained a better understanding of how Multi-Agent systems work and how different AI Agents can collaborate to complete more complex tasks.
+It also helped me recognize the importance of managing memory and execution environments when developing more advanced AI applications.
 
-I also learned that dividing responsibilities among Agents can improve system organization and make individual tasks easier to manage.
+#### 5. Kiro Crew – Using AI to Support Software Development
 
-#### 4. Managing Security and Memory with Amazon Bedrock AgentCore
+This was one of the sessions that interested me the most during the event.
 
-Another important topic was managing identities, access permissions, and memory when deploying AI Agent systems.
+The speaker introduced **Kiro Crew** and demonstrated how AI could assist with various technical tasks in software development and system management.
 
-The following components were introduced:
+**Main topics included:**
 
-- **AgentCore Identity:** Supports identity authentication and access management when AI Agents interact with external services.
-- **AgentCore Gateway:** Provides a way to connect and manage tools and APIs that AI Agents can use.
-- **OAuth2 and Amazon Cognito:** Support secure authentication and authorization processes.
-- **Workload Access Token:** Used during authentication and authorization for system workloads.
-- **AgentCore Memory:** Helps manage information within interaction sessions and retain useful information for future use.
+- **Code Review:** Supporting developers in reviewing and evaluating source code changes.
+- **Infrastructure Monitoring:** Assisting with monitoring system status and infrastructure performance.
+- **Artifacts:** Organizing data and presenting results through visual charts.
+- **Context Window:** Managing the amount of information an AI model can process during an interaction.
+- **Auto Compact:** Summarizing conversation history to reduce context usage.
+- **Memory and Guardrails:** Managing stored information and setting boundaries for AI Agent permissions.
 
-**What I learned:**
+I was particularly impressed by the demonstration of transforming recruitment data into visual charts.
 
-This session showed me that developing AI Agents involves much more than generating answers to user questions.
+The Q&A session about managing context during long AI interactions was also valuable.
 
-A reliable AI Agent system must also consider security, user authentication, data management, access control, and memory management.
+It helped me understand that effective use of AI requires not only good prompts but also proper context management, memory handling, and permission control.
 
-These aspects are especially important when AI Agents are allowed to interact with external services or perform actions on behalf of users.
+### Knowledge and Skills Gained
 
-### Learning Outcomes and Key Takeaways
+After attending the meetup, I gained additional knowledge about technologies currently being used in Cloud Computing and AI systems.
 
-The meetup provided valuable technical knowledge and practical insights into Cloud Computing and AI development.
+**The main lessons I learned included:**
 
-**The main lessons I gained included:**
+- **Voice AI:** Understanding how AI systems receive, process, and respond to spoken information.
+- **AWS RAM:** Learning how AWS resources can be shared across multiple accounts while maintaining access control.
+- **AWS Security Agent:** Understanding how AI can assist in detecting security issues in source code and infrastructure configurations.
+- **Amazon Bedrock AgentCore:** Recognizing the different roles of Runtime and Memory when operating AI Agents.
+- **Kiro Crew:** Exploring how AI can support code reviews, context management, and technical workflow automation.
 
-- Understanding the differences between experimental AI models developed for academic purposes and production AI systems deployed in enterprise environments.
-- Learning how to optimize AI costs by combining large models, smaller specialized models, and caching mechanisms.
-- Understanding how Multi-Agent systems distribute tasks among specialized Agents and manage their activities.
-- Gaining knowledge about authentication, authorization, security, and memory management in AI Agent systems.
-- Learning how different AWS services can work together to create scalable and reliable AI applications.
-- Having the opportunity to exchange ideas and learn from FCAJ community members and other attendees, while exploring AWS and AI solutions that could be applied to the architecture of my internship project.
+Overall, these sessions helped me connect theoretical knowledge with real-world technology applications.
 
-Overall, the event helped me develop a broader understanding of the technical and operational considerations involved in building AI systems for real-world applications.
+### Practical Applications
+
+Based on the knowledge gained from the event, I identified several areas that I would like to explore further and apply to my studies and future projects.
+
+- Learn more about AWS IAM, AWS Organizations, and AWS RAM to improve my understanding of cloud resource management.
+- Pay greater attention to security throughout the software development process.
+- Use AI tools to assist with reading code, identifying errors, and reviewing changes in development projects.
+- Explore how Context Windows and Memory can be managed to improve the effectiveness of AI Agents.
+
+I hope to apply these concepts through hands-on practice and small technical projects to strengthen my understanding of Cloud Computing, AI, and software development.
+
+### My Experience at the Event
+
+The meetup provided an opportunity for me to learn directly from engineers, technical professionals, and Tech Leads who shared their practical experiences working with AWS and AI.
+
+The two sessions that impressed me the most were the **Vietnamese Voice AI interview demonstration** and the **Kiro Crew presentation**.
+
+These examples helped me better understand how AI technologies are applied in professional environments rather than only learning about them through documentation.
+
+In addition, the Q&A sessions provided valuable insights, especially regarding AI limitations, context management, and access control when deploying AI Agents.
+
+Overall, attending the First Cloud AI Journey Weekly Meet Up was a valuable learning experience that expanded my technical knowledge and motivated me to continue exploring AWS and AI technologies.
 
 ### Event Participation Photos
 
-The following photos were taken during **First Cloud AI Journey – Weekly Meet Up** on November 14, 2026, in Ho Chi Minh City.
+The following photos were taken during **First Cloud AI Journey – Weekly Meet Up** on October 24, 2026, in Ho Chi Minh City.
 
-![Use AI Wisely presentation slide at First Cloud AI Journey](/my_aws_workshop/images/4-EventParticipated/event-3/anhslide.jpg)
+![Personal photo at the event](/my_aws_workshop/images/4-EventParticipated/event-2/imageforevent2.jpg)
 
-*Figure 1. The "Use AI Wisely" presentation slide illustrating how a large AI model can coordinate smaller specialized models, combined with caching repeated requests to optimize costs and processing efficiency.*
+*Figure 1. My personal photo at First Cloud AI Journey – Weekly Meet Up on October 24, 2026.*
 
-![Personal photo at First Cloud AI Journey](/my_aws_workshop/images/4-EventParticipated/event-3/anhcanhan.jpg)
+![Group photo at the event](/my_aws_workshop/images/4-EventParticipated/event-2/anhtapthe.jpg)
 
-*Figure 2. My personal photo at First Cloud AI Journey – Weekly Meet Up on November 14, 2026.*
+*Figure 2. Group photo with the speakers and other attendees at the event.*

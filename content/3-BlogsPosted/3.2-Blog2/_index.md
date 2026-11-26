@@ -5,27 +5,53 @@ weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+# AWS IAM ACCESS ANALYZER – IDENTIFYING UNUSED ACCESS TO STRENGTHEN CLOUD SECURITY
 
-# SESSION POLICIES IN AMAZON EKS POD IDENTITY
+**This article was prepared to be shared with the AWS Study Group community.**
 
-Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+**Published Post:** Not yet published.
 
-Key points to know:
+## Article Content
 
-* A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.
-* Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.
-* Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.
-* Supports both same-account and cross-account (via IAM role chaining).
-* Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.
-* Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.
+Access management is an important part of securing an AWS environment. Over time, IAM users and roles may accumulate permissions that are no longer necessary, increasing potential security risks.
 
-This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).
+**AWS IAM Access Analyzer** helps organizations identify unused access and review permissions granted to IAM identities, as well as access to supported AWS resources. These findings support the **Principle of Least Privilege**, which recommends granting users and services only the permissions necessary to perform their tasks.
 
-...Image...
+### Key Takeaways
 
-...Link...
+- **Unused Access Analysis:** Identifies unused IAM roles, access keys, passwords, and permissions within a configured analysis period.
+- **Least-Privilege Security:** Helps administrators identify permissions that may be broader than necessary.
+- **External Access Findings:** Detects supported resources whose policies allow access from outside a defined zone of trust.
+- **Access Findings:** Provides information for administrators to evaluate whether existing access permissions are appropriate.
+- **Permission Remediation:** Supports reviewing and modifying IAM policies, removing unused credentials, and investigating inactive IAM roles.
+- **Continuous Analysis:** Helps organizations regularly assess access permissions as AWS resources and configurations change.
 
-...Guide...
+However, unused access does not necessarily mean that a permission should be removed immediately. Administrators should verify whether it supports infrequent operations, emergency recovery, or other legitimate requirements.
+
+### Practical Applications
+
+AWS IAM Access Analyzer is useful for organizations managing multiple IAM users, IAM roles, and AWS resources.
+
+For example, a development team may discover an inactive IAM role or permissions that have not been used for several months. After reviewing the findings and verifying application requirements, administrators can adjust access policies to reduce unnecessary privileges.
+
+Regular access reviews help organizations maintain better security control as their cloud environments expand.
+
+Additionally, unused access analysis may incur additional charges. Organizations should review AWS pricing before enabling this feature.
+
+## Architecture Diagram
+
+![AWS IAM Access Analyzer Workflow](/my_aws_workshop/images/3_Blog/anh2.png)
+
+*Figure 2: IAM Access Analyzer workflow for reviewing unused permissions and improving access security.*
+
+The security review process can be summarized as follows:
+
+**IAM Users and IAM Roles → IAM Access Analyzer → Review Findings → Verify Access Requirements → Adjust Permissions**
+
+This process helps administrators evaluate potentially unnecessary permissions before making changes to IAM policies.
+
+## References
+
+- [AWS Documentation – IAM Access Analyzer Findings](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-findings.html)
+- [AWS Documentation – Understanding IAM Access Analyzer Findings](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-concepts.html)
+- [AWS Documentation – Resolving IAM Access Analyzer Findings](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-findings-remediate.html)

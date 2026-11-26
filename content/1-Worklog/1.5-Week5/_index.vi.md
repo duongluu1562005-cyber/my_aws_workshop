@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 5"
-date: 2024-01-01
-weight: 1
+title: "Tuần 5"
+date: 2026-10-12
+weight: 5
 chapter: false
-pre: " <b> 1.5. </b> "
+pre: "<b>1.5. </b>"
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+# Tuần 5: Tìm hiểu lưu trữ dữ liệu với Amazon S3 và Amazon RDS
 
-### Mục tiêu tuần 5:
+### Mục tiêu trong tuần
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Tìm hiểu Amazon S3 và cách lưu trữ tệp trên AWS.
+- Làm quen với các thành phần của S3 như Bucket, Object và Storage Class.
+- Tìm hiểu Amazon RDS và cách quản lý cơ sở dữ liệu trên AWS.
+- Học cách tạo, quản lý và sao lưu dữ liệu theo hướng dẫn.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Công việc thực hiện trong tuần
 
-### Kết quả đạt được tuần 5:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|---|---|---|---|---|
+| 2 | - Tìm hiểu Amazon S3 là gì và dùng để làm gì.<br>- Học về S3 Bucket, Object và cách lưu trữ tệp.<br>- Tìm hiểu một số S3 Storage Class phổ biến. | 12/10/2026 | 12/10/2026 | [Amazon S3 Workshop](https://000057.awsfcaj.com/)<br>[Amazon S3 Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) |
+| 3 | - Xem hướng dẫn sử dụng Amazon S3:<br>&emsp; + Tạo S3 Bucket.<br>&emsp; + Upload và Download tệp.<br>&emsp; + Quản lý Object trong Bucket.<br>- Tìm hiểu quyền truy cập và cách bảo vệ dữ liệu trên S3. | 13/10/2026 | 13/10/2026 | [Amazon S3 Workshop](https://000057.awsfcaj.com/)<br>[Amazon S3 Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) |
+| 4 | - Tìm hiểu Amazon RDS là gì và dùng để làm gì.<br>- Làm quen với các loại cơ sở dữ liệu như MySQL và PostgreSQL.<br>- Tìm hiểu DB Instance và cách chọn cấu hình cơ sở dữ liệu. | 14/10/2026 | 14/10/2026 | [Amazon RDS Workshop](https://000005.awsfcaj.com/)<br>[Amazon RDS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) |
+| 5 | - Xem hướng dẫn tạo cơ sở dữ liệu trên Amazon RDS.<br>- Tìm hiểu cách kết nối RDS với EC2.<br>- Học về Security Group và cách quản lý quyền truy cập cơ sở dữ liệu. | 15/10/2026 | 15/10/2026 | [Amazon RDS Workshop](https://000005.awsfcaj.com/)<br>[Amazon RDS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) |
+| 6 | - Tìm hiểu cách sao lưu và khôi phục dữ liệu trên RDS.<br>- Học về Automated Backup và DB Snapshot.<br>- So sánh cách lưu trữ dữ liệu giữa Amazon S3 và Amazon RDS.<br>- Ghi chép lại những kiến thức đã học trong tuần. | 16/10/2026 | 16/10/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)<br>[AWS Cloud Journey](https://cloudjourney.awsfcaj.com/1-explore/) |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Kết quả đạt được
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hiểu được Amazon S3 dùng để lưu trữ tệp, hình ảnh và các loại dữ liệu khác trên AWS.
+- Làm quen với các thành phần cơ bản của Amazon S3:
+  - **Bucket:** Nơi chứa dữ liệu.
+  - **Object:** Tệp hoặc dữ liệu được lưu trong Bucket.
+  - **Storage Class:** Các loại lưu trữ phù hợp với nhu cầu sử dụng.
+- Biết các bước tạo Bucket, tải tệp lên và quản lý dữ liệu theo hướng dẫn.
+- Hiểu được Amazon RDS dùng để quản lý cơ sở dữ liệu như MySQL và PostgreSQL.
+- Biết cách tạo DB Instance và kết nối với EC2 theo hướng dẫn.
+- Hiểu thêm về cách bảo vệ, sao lưu và khôi phục dữ liệu trên RDS.
+- Phân biệt được Amazon S3 dùng để lưu trữ tệp, còn Amazon RDS dùng để lưu trữ và quản lý dữ liệu theo bảng.

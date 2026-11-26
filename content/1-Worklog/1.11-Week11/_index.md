@@ -1,57 +1,42 @@
 ---
-title: "Week 11 Worklog"
-date: 2024-01-01
-weight: 2
+title: "Worklog Week 11"
+date: 2026-11-22
+weight: 11
 chapter: false
-pre: " <b> 1.11. </b> "
+pre: "<b>1.11. </b>"
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+# AWS Cost Optimization and Knowledge Review
 
-### Week 11 Objectives:
+### Weekly Objectives
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Understand AWS Cost Explorer and how to analyze AWS usage costs.
+- Become familiar with cost-saving methods and resource management.
+- Learn how to select suitable EC2 configurations to avoid unnecessary resource usage.
+- Review the AWS knowledge gained during previous weeks.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Weekly Activities
 
-### Week 11 Achievements:
+| Day | Activities | Start Date | Completion Date | References |
+|---|---|---|---|---|
+| 2 | - Learn what AWS Cost Explorer is and understand its purpose.<br>- Study how to view AWS costs by service and time period.<br>- Become familiar with cost charts and reports. | 23/11/2026 | 23/11/2026 | [AWS Cost Visualization Workshop](https://000034.awsfcaj.com/)<br>[AWS Cost Explorer Documentation](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html) |
+| 3 | - Review AWS Cost Explorer tutorials covering:<br>&emsp;+ Viewing daily and monthly costs.<br>&emsp;+ Filtering costs by AWS service.<br>&emsp;+ Using Group by to categorize costs.<br>- Learn how to view actual and forecasted costs. | 24/11/2026 | 24/11/2026 | [AWS Cost Explorer Documentation](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html) |
+| 4 | - Learn about cost-saving methods for Amazon EC2.<br>- Study how to select suitable Instance Types based on workload requirements.<br>- Learn how to identify and stop unused resources when appropriate. | 25/11/2026 | 25/11/2026 | [EC2 Resource Optimization Workshop](https://000032.awsfcaj.com/)<br>[AWS Cost Optimization](https://aws.amazon.com/aws-cost-management/cost-optimization/) |
+| 5 | - Learn about AWS cost management practices.<br>- Review AWS Budgets and how to configure budget alerts.<br>- Explore how monitoring resource usage can help reduce unnecessary costs. | 26/11/2026 | 26/11/2026 | [AWS Cost and Usage Management](https://000064.awsfcaj.com/)<br>[AWS Budgets Workshop](https://000007.awsfcaj.com/) |
+| 6 | - Review previously studied AWS services:<br>&emsp;+ IAM and EC2.<br>&emsp;+ VPC, S3, and RDS.<br>&emsp;+ CloudWatch and AWS Budgets.<br>&emsp;+ AWS Backup and AWS WAF.<br>- Take notes and identify topics that require further review. | 27/11/2026 | 27/11/2026 | [FCAJ Cloud Journey](https://cloudjourney.awsfcaj.com/)<br>[Explore AWS Services](https://cloudjourney.awsfcaj.com/1-explore/) |
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Successfully created and configured an AWS Free Tier account.
+### Learning Outcomes
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Understand how AWS Cost Explorer helps visualize and analyze the costs of AWS services.
+- Become familiar with the main Cost Explorer features:
+  - **Granularity:** Displays cost data at different time intervals, such as daily or monthly.
+  - **Filter:** Filters costs by AWS service or other available criteria.
+  - **Group by:** Groups cost data into categories for easier analysis.
+- Learn how to view actual and forecasted AWS costs.
+- Understand how choosing suitable EC2 Instance Types can help avoid unnecessary resource usage.
+- Become familiar with cost-saving methods, such as stopping unused resources when appropriate and reviewing AWS charges.
+- Gain a better understanding of how AWS Budgets and AWS Cost Explorer support cost monitoring and management.

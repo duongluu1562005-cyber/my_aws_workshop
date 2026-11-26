@@ -69,10 +69,11 @@ Each stage will receive detailed instructions and screenshots as it is performed
 
 | **Page** | **Procedure and evidence** |
 | :--- | :--- |
-| [5.5.1 Create Edge in maintenance mode](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.1-edge-maintenance/) | Create the distribution, record its hostname and verify HTTP 503. |
-| [5.5.2 Create Runtime with DesiredCount zero](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.2-runtime/) | Explain 28 parameters, create ECS/ALB/VPC Origin and collect Outputs. |
-| [5.5.3 Prepare Fresh database secrets](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.3-secrets/) | Verify zero ECS counts, run the script and collect DB task references. |
-| [5.5.4 Run bootstrap, migrations and seed](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.4-database-tasks/) | Configure Fargate and verify exit codes and logs sequentially. |
-| [5.5.5 Activate API and verify Runtime](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.5-activate-runtime/) | Identify the CloudFront service SG, update ingress and start the API. |
-| [5.5.6 Switch Edge to live](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.6-edge-live/) | Collect Runtime Outputs and review the CloudFront API routing change set. |
-| [5.5.7 Reconnect CI/CD permissions](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.7-cicd/) | Restore deployment roles and reconcile repository variables. |
+| [5.5.1 Create Edge in Maintenance Mode](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.1-create-edge-in-maintenance-mode/) | Deploy the Edge stack in maintenance mode before enabling application traffic. |
+| [5.5.2 Create Runtime with DesiredCount Zero](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.2-create-runtime-with-desiredcount-zero/) | Deploy the Runtime stack with the ECS desired task count set to zero. |
+| [5.5.3 Prepare Fresh Database Secrets](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.3-prepare-fresh-database-secrets/) | Prepare database credentials and secrets for application initialization. |
+| [5.5.4 Run Bootstrap, Migrations and Seed](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.4-run-bootstrap-migrations-and-seed/) | Initialize the database, apply schema migrations and seed demonstration data. |
+| [5.5.5 Activate API and Verify Runtime](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.5-activate-api-and-verify-runtime/) | Activate the API and verify ECS runtime and application connectivity. |
+| [5.5.6 Switch Edge to Live](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.6-switch-edge-to-live/) | Enable live routing through CloudFront and verify application access. |
+| [5.5.7 Reconnect CI/CD Permissions](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.7-reconnect-cicd-permissions/) | Restore CI/CD permissions and verify deployment access. |
+

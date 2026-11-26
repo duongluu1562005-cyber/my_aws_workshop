@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 8"
-date: 2024-01-01
-weight: 1
+title: "Tuần 8"
+date: 2026-11-02
+weight: 8
 chapter: false
-pre: " <b> 1.8. </b> "
+pre: "<b>1.8. </b>"
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+# Tìm hiểu AWS Lambda và công nghệ Container
 
-### Mục tiêu tuần 8:
+### Mục tiêu trong tuần
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Tìm hiểu AWS Lambda và cách chạy chương trình mà không cần tự quản lý máy chủ.
+- Làm quen với Docker và công nghệ Container.
+- Tìm hiểu Amazon ECS và cách triển khai ứng dụng bằng Container.
+- Biết sự khác nhau giữa EC2, Lambda và ECS.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Công việc thực hiện trong tuần
 
-### Kết quả đạt được tuần 8:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|---|---|---|---|---|
+| 2 | - Tìm hiểu AWS Lambda là gì và dùng để làm gì.<br>- Học về Serverless Computing và cách Lambda chạy chương trình khi có sự kiện.<br>- Tìm hiểu Lambda Function và Trigger. | 02/11/2026 | 02/11/2026 | [AWS Lambda Workshop](https://000022.awsfcaj.com/)<br>[AWS Lambda Documentation](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) |
+| 3 | - Xem hướng dẫn sử dụng AWS Lambda:<br>&emsp; + Tạo Lambda Function.<br>&emsp; + Chọn ngôn ngữ lập trình.<br>&emsp; + Thực hành.<br>&emsp; + Chạy thử và xem kết quả.<br>- Tìm hiểu cách xem Logs của Lambda trên CloudWatch. | 03/11/2026 | 03/11/2026 | [AWS Lambda Workshop](https://000022.awsfcaj.com/)<br>[AWS Lambda Documentation](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) |
+| 4 | - Tìm hiểu Docker và công nghệ Container.<br>- Học về Docker Image và Docker Container.<br>- Tìm hiểu sự khác nhau giữa Container và máy ảo.<br>- Xem hướng dẫn sử dụng các lệnh Docker cơ bản. | 04/11/2026 | 04/11/2026 | [Docker Workshop](https://000015.awsfcaj.com/)<br>[Docker Documentation](https://docs.docker.com/get-started/) |
+| 5 | - Tìm hiểu Amazon ECS và cách quản lý Container trên AWS.<br>- Làm quen với các thành phần của ECS:<br>&emsp; + Cluster.<br>&emsp; + Task Definition.<br>&emsp; + Service.<br>- Tìm hiểu AWS Fargate và cách chạy Container mà không cần tự quản lý máy chủ. | 05/11/2026 | 05/11/2026 | [Amazon ECS Workshop](https://000016.awsfcaj.com/)<br>[Amazon ECS Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) |
+| 6 | - Xem hướng dẫn triển khai ứng dụng trên Amazon ECS.<br>- Tìm hiểu cách sử dụng Container Image và Task Definition.<br>- So sánh EC2, Lambda và ECS để hiểu khi nào nên sử dụng từng dịch vụ. | 06/11/2026 | 06/11/2026 | [Amazon ECS Workshop](https://000016.awsfcaj.com/)<br>[AWS Compute Services](https://aws.amazon.com/products/compute/) |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Kết quả đạt được
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hiểu được AWS Lambda dùng để chạy code mà không cần tự quản lý máy chủ.
+- Làm quen với Lambda Function, Trigger và cách kiểm tra kết quả chạy chương trình.
+- Biết Docker dùng để đóng gói ứng dụng và các thành phần cần thiết vào Container.
+- Hiểu được sự khác nhau giữa Docker Image và Docker Container.
+- Làm quen với các thành phần chính của Amazon ECS:
+  - **Cluster:** Nơi quản lý các Task và Service.
+  - **Task Definition:** Chứa cấu hình để chạy Container.
+  - **Service:** Giúp duy trì số lượng Task cần chạy.
+- Biết AWS Fargate giúp chạy Container mà không cần tự quản lý máy chủ EC2.
+- Hiểu được điểm khác nhau cơ bản giữa EC2, Lambda và ECS, cũng như mục đích sử dụng của từng dịch vụ.

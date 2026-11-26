@@ -14,13 +14,13 @@ pre: "<b> 5.4.2 </b>"
 
 **📸 Capture the selected filename.**
 
-[Upload integrations.yaml](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-23-integrations-template.png)
+![Upload integrations.yaml](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-23-integrations-template.png)
 
 2. Name the stack `tindy-integrations`. Set `MediaBucketName` from Foundation Outputs and provide the alarm recipient in `ScanAlarmEmail`. Leave `AlbMetricLoadBalancer` and `AlbMetricTargetGroup` empty until Runtime creates the new ALB and target group, then update both dimensions through a change set.
 
 **📸 Capture the stack name and parameters. Review email visibility before publishing.**
 
-[Integrations parameters](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-24-integrations-parameters.png)
+![Integrations parameters](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-24-integrations-parameters.png)
 
 3. Add tags `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. Keep Express mode disabled and rollback enabled, acknowledge IAM capabilities, review and create the stack.
 4. Wait for `CREATE_COMPLETE` and record `GuardDutyProtectionPlanArn` and `GuardDutyQueueUrl` from Outputs for Runtime.
@@ -35,33 +35,33 @@ The correct template and stack name are selected. The media bucket matches Found
 
 Project, Environment and Owner tags are configured. Express mode is disabled, rollback and Use deletion policy are selected, and IAM capabilities are acknowledged.
 
-[Integrations tags](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-24a-integrations-tags.png)
+![Integrations tags](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-24a-integrations-tags.png)
 
-[Integrations options](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-24b-integrations-options.png)
+![Integrations options](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-24b-integrations-options.png)
 
-[Integrations IAM acknowledgement](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-24c-integrations-iam-capabilities.png)
+![Integrations IAM acknowledgement](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-24c-integrations-iam-capabilities.png)
 
 ## Stack creation and SNS confirmation results
 
 Stack `tindy-integrations` reached **CREATE_COMPLETE** with **Outputs (7)**.
 
-[Integrations completed](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-25-integrations-complete.png)
+![Integrations completed](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-25-integrations-complete.png)
 
-[Seven Integrations Outputs](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-26-integrations-outputs.png)
+![Seven Integrations Outputs](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-26-integrations-outputs.png)
 
 Runtime will use `GuardDutyProtectionPlanArn` and `GuardDutyQueueUrl`. Other Outputs provide the plan ID, queue ARN, DLQ URL, DLQ alarm name and SNS topic ARN.
 
 1. Open **AWS Notification - Subscription Confirmation**, verify topic `tindy-integrations-scan-alerts` and click **Confirm subscription**.
 
-[SNS confirmation email](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-27-integrations-sns-email.png)
+![SNS confirmation email](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-27-integrations-sns-email.png)
 
 2. On the SNS page, click **Confirm Subscription**.
 
-[SNS confirmation page](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-27a-integrations-sns-confirm-page.png)
+![SNS confirmation page](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-27a-integrations-sns-confirm-page.png)
 
 3. Verify **Subscription confirmed!** and the subscription ARN.
 
-[SNS confirmed](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-27b-integrations-sns-confirmed.png)
+![SNS confirmed](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-27b-integrations-sns-confirmed.png)
 
 SNS confirmation evidence is complete. Verify protection plan status **Active**, tagging and both PDF prefixes to finish Integrations validation.
 
@@ -75,15 +75,15 @@ Section 5.4.2 resource configuration has been verified. The GuardDuty detail scr
 
 1. Open **GuardDuty → Malware Protection → S3 → View feature**. One bucket is protected.
 
-[Malware Protection overview](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-28a-guardduty-malware-protection.png)
+![Malware Protection overview](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-28a-guardduty-malware-protection.png)
 
 2. Under **Protected buckets**, verify the Foundation media bucket and new protection plan are **Active**. The list shows **2 prefix**.
 
-[Protected bucket](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-28b-guardduty-protected-bucket.png)
+![Protected bucket](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-28b-guardduty-protected-bucket.png)
 
 3. Open bucket details. Confirm **Status = Active** and **Tag scanned objects = Yes**. CLI separately verified `certificates/pdf/` and `ai-input/pdf/`.
 
-[Active plan and tagging](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-28-integrations-guardduty-active.png)
+![Active plan and tagging](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-28-integrations-guardduty-active.png)
 
 Section 5.4.2 verification is complete, covering stack completion, Outputs, confirmed SNS subscription and Active GuardDuty plan. PDF upload testing follows API and schema readiness.
 
@@ -112,19 +112,19 @@ Expect three alarm Adds and a Modify to `ScanAlarmTopicPolicy` allowing notifica
 
 The pre-update screenshot records `tindy-integrations` at CREATE_COMPLETE with seven Outputs, including queue, DLQ, GuardDuty protection plan and scan alarm. These integration resources exist before adding the ALB alarms.
 
-[Integrations before monitoring update](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-68a-integrations-before-monitoring.png)
+[Integrations before monitoring update](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-68a-integrations-before-monitoring.png)
 
 The wizard selects **Standard change set** and **Use existing template** for `tindy-integrations`. This uses the current template to enable conditional alarms through parameters.
 
-[Monitoring uses existing template](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-68b-monitoring-existing-template.png)
+![Monitoring uses existing template](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-68b-monitoring-existing-template.png)
 
 `AlbMetricLoadBalancer` is set to `app/tindy--Inter-KlwCTvMOHRHo/e543836fc18c01a4`, matching the current InternalAlb ARN suffix. CloudWatch uses this dimension to identify the monitored load balancer.
 
-[ALB metric dimension](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-68c-monitoring-alb-dimension.png)
+![ALB metric dimension](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-68c-monitoring-alb-dimension.png)
 
 `AlbMetricTargetGroup` is set to `targetgroup/tindy-ApiTa-VBQVMEGFV6ZL/9ba7ccbfe0bd71fa`, matching the current ApiTargetGroup ARN suffix. This dimension identifies API targets for HealthyHostCount and target 5xx alarms.
 
-[Target group metric dimension](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-68d-monitoring-target-group-dimension.png)
+![Target group metric dimension](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-68d-monitoring-target-group-dimension.png)
 
 Both inputs match the read-only AWS resource inspection. Continue with Next, retain other inputs and options, acknowledge IAM capability if requested, and create the change set. **📸 Capture Resource changes at CREATE_COMPLETE / AVAILABLE.** Change-set creation and monitoring update execution remain unverified at this milestone.
 
@@ -141,7 +141,7 @@ Change set `tindy-integrations-enable-alb-alarms` reached **CREATE_COMPLETE**, E
 
 Three alarms are added for ALB/API monitoring. The SNS policy updates in place to allow notifications from the new alarms. The scope matches the guide. Execution remains unverified at this milestone.
 
-[Monitoring change set reviewed](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-69-monitoring-changeset.png)
+![Monitoring change set reviewed](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-69-monitoring-changeset.png)
 
 Select **Execute change set**, retain current rollback behavior and Use deletion policy if prompted, then confirm. Wait for stack **UPDATE_COMPLETE**. **📸 Capture the updated stack.** Open **CloudWatch → Alarms → All alarms**, Region N. Virginia, and search for `tindy-integrations`. **📸 Capture all four alarms**, including the three additions and existing ScanDeadLetterAlarm, with their actual states. If new alarms remain INSUFFICIENT_DATA, refresh after a few minutes. For ALARM, inspect State reason and metrics before drawing conclusions.
 
@@ -149,10 +149,10 @@ Select **Execute change set**, retain current rollback behavior and Use deletion
 
 Execution retained rollback and Use deletion policy. After execution, `tindy-integrations` reached **UPDATE_COMPLETE**.
 
-[Monitoring execution confirmation](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-70a-monitoring-execute.png)
+![Monitoring execution confirmation](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-70a-monitoring-execute.png)
 
-[Integrations monitoring update complete](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-70b-monitoring-update-complete.png)
+![Integrations monitoring update complete](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-70b-monitoring-update-complete.png)
 
 CloudWatch shows all four alarms **OK** with **Actions enabled**: ApiTarget5xxAlarm, AlbGenerated5xxAlarm, AlbNoHealthyTargetsAlarm and ScanDeadLetterAlarm. This records their states at capture time. Fault injection to verify alarm notification delivery has not been performed.
 
-[Four alarms OK with actions enabled](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-71-monitoring-four-alarms-ok.png)
+![Four alarms OK with actions enabled](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.2/deploy-71-monitoring-four-alarms-ok.png)

@@ -35,7 +35,7 @@ Script này chuẩn bị cấu hình. Database bootstrap, migration và seed s�
 
 
 
-[Kết quả chuẩn bị secret cho Runtime](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-39-runtime-secrets-prepared.png)
+![Kết quả chuẩn bị secret cho Runtime](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-39-runtime-secrets-prepared.png)
 
 
 
@@ -63,15 +63,15 @@ Các điều kiện trong template kích hoạt ba cặp execution role/task def
 
 
 
-[Menu change set cho DB task](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40a-runtime-db-tasks-menu.png)
+![Menu change set cho DB task](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40a-runtime-db-tasks-menu.png)
 
 
 
-[Runtime template hiện có](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40b-runtime-db-tasks-existing-template.png)
+![Runtime template hiện có](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40b-runtime-db-tasks-existing-template.png)
 
 
 
-[Tên change set cho DB task](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40c-runtime-db-tasks-changeset-name.png)
+![Tên change set cho DB task](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40c-runtime-db-tasks-changeset-name.png)
 
 
 
@@ -79,19 +79,19 @@ Bốn giá trị mới khớp với đầu ra của script. `DBProvisionMode = F
 
 
 
-[Đầu vào Image và Edge](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40d-runtime-db-tasks-image-edge.png)
+![Đầu vào Image và Edge](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40d-runtime-db-tasks-image-edge.png)
 
 
 
-[Đầu vào Database và DesiredCount](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40-runtime-db-task-parameters.png)
+![Đầu vào Database và DesiredCount](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40-runtime-db-task-parameters.png)
 
 
 
-[Migration secret và đầu vào Integrations](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40e-runtime-db-tasks-migration.png)
+![Migration secret và đầu vào Integrations](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40e-runtime-db-tasks-migration.png)
 
 
 
-[Seed secret và networking](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40f-runtime-db-tasks-seed-network.png)
+![Seed secret và networking](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40f-runtime-db-tasks-seed-network.png)
 
 
 
@@ -103,7 +103,7 @@ IAM capabilities đã được xác nhận. Change set `tindy-runtime-enable-db-
 
 
 
-[Xác nhận IAM cho DB task](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40g-runtime-db-tasks-iam.png)
+![Xác nhận IAM cho DB task](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-40g-runtime-db-tasks-iam.png)
 
 
 
@@ -111,7 +111,7 @@ Sáu action Add tạo `DbBootstrapExecutionRole`/`DbBootstrapTaskDefinition`, `M
 
 
 
-[Sáu action Add cho DB task](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-41-runtime-db-tasks-changeset.png)
+![Sáu action Add cho DB task](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-41-runtime-db-tasks-changeset.png)
 
 
 
@@ -127,7 +127,7 @@ Hộp thoại thực thi chọn Roll back all stack resources và Use deletion p
 
 
 
-[Xác nhận thực thi change set cho DB task](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-41a-runtime-db-tasks-execute-confirm.png)
+![Xác nhận thực thi change set cho DB task](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-41a-runtime-db-tasks-execute-confirm.png)
 
 ## 5. Kết quả cập nhật Runtime
 
@@ -135,7 +135,7 @@ Stack đạt trạng thái **UPDATE_COMPLETE** với **Outputs (9)**. Các Outpu
 
 
 
-[Cập nhật Runtime hoàn tất và DB task Outputs](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-43-runtime-db-task-outputs.png)
+![Cập nhật Runtime hoàn tất và DB task Outputs](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.3/deploy-43-runtime-db-task-outputs.png)
 
 
 

@@ -1,57 +1,44 @@
+
 ---
-title: "Week 5 Worklog"
-date: 2024-01-01
-weight: 1
+title: "Worklog Week 5"
+date: 2026-10-12
+weight: 5
 chapter: false
-pre: " <b> 1.5. </b> "
+pre: "<b>1.5. </b>"
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+# Introduction to Data Storage with Amazon S3 and Amazon RDS
 
-### Week 5 Objectives:
+### Weekly Objectives
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Understand Amazon S3 and how files are stored on AWS.
+- Become familiar with the main S3 components, including Buckets, Objects, and Storage Classes.
+- Learn about Amazon RDS and how relational databases are managed on AWS.
+- Explore tutorials on creating, managing, and backing up data using AWS services.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Weekly Activities
 
-### Week 5 Achievements:
+| Day | Activities | Start Date | Completion Date | References |
+|---|---|---|---|---|
+| 2 | - Learn what Amazon S3 is and understand its purpose.<br>- Study S3 Buckets, Objects, and how files are stored.<br>- Explore commonly used S3 Storage Classes. | 12/10/2026 | 12/10/2026 | [Amazon S3 Workshop](https://000057.awsfcaj.com/)<br>[Amazon S3 Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) |
+| 3 | - Review Amazon S3 tutorials covering:<br>&emsp;+ Creating an S3 Bucket.<br>&emsp;+ Uploading and downloading files.<br>&emsp;+ Managing Objects within a Bucket.<br>- Learn about access permissions and data protection in Amazon S3. | 13/10/2026 | 13/10/2026 | [Amazon S3 Workshop](https://000057.awsfcaj.com/)<br>[Amazon S3 Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) |
+| 4 | - Learn what Amazon RDS is and understand its purpose.<br>- Become familiar with relational database engines such as MySQL and PostgreSQL.<br>- Learn about DB Instances and how to select suitable database configurations. | 14/10/2026 | 14/10/2026 | [Amazon RDS Workshop](https://000005.awsfcaj.com/)<br>[Amazon RDS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) |
+| 5 | - Review tutorials on creating databases using Amazon RDS.<br>- Learn how to connect Amazon RDS to EC2 Instances.<br>- Study Security Groups and how they control network access to databases. | 15/10/2026 | 15/10/2026 | [Amazon RDS Workshop](https://000005.awsfcaj.com/)<br>[Amazon RDS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) |
+| 6 | - Learn how to back up and restore data in Amazon RDS.<br>- Study Automated Backups and DB Snapshots.<br>- Compare data storage approaches between Amazon S3 and Amazon RDS.<br>- Take notes and summarize the knowledge gained during the week. | 16/10/2026 | 16/10/2026 | [Amazon RDS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)<br>[AWS Cloud Journey](https://cloudjourney.awsfcaj.com/1-explore/) |
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Successfully created and configured an AWS Free Tier account.
+### Learning Outcomes
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Understood that Amazon S3 is an object storage service used to store files, images, and other types of data on AWS.
+- Became familiar with the main Amazon S3 components:
+  - **Bucket:** A container used to store Objects in Amazon S3.
+  - **Object:** A unit of data stored in an S3 Bucket.
+  - **Storage Class:** A storage option designed for different access patterns and cost requirements.
+- Learned the steps for creating S3 Buckets, uploading files, and managing stored data through AWS tutorials.
+- Understood that Amazon RDS is a managed relational database service supporting database engines such as MySQL and PostgreSQL.
+- Learned the steps for creating DB Instances and connecting them to EC2 Instances through AWS tutorials.
+- Gained a better understanding of data protection, backup, and recovery methods in Amazon RDS.
+- Understood the differences between Amazon S3, which provides object storage, and Amazon RDS, which manages relational databases.

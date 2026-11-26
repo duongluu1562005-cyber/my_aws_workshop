@@ -69,5 +69,5 @@ Application PDF upload testing follows API and schema readiness.
 
 | **Page** | **Procedure and evidence** |
 | :--- | :--- |
-| [5.4.1 Create a Fresh Database](/aws_my_workshop/5-workshop/5.4-database-integrations/5.4.1-database/) | Fresh parameters, networking, Options and RDS Outputs. |
-| [5.4.2 Deploy Integrations](/aws_my_workshop/5-workshop/5.4-database-integrations/5.4.2-integrations/) | PDF scan stack, SNS confirmation and protection plan verification. |
+| [5.4.1 Create a Fresh Database](/my_aws_workshop/5-workshop/5.4-s3-onprem/5.4.1-prepare/) | Fresh parameters, networking, Options and RDS Outputs. |
+| [5.4.2 Deploy Integrations](/my_aws_workshop/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/) | PDF scan stack, SNS confirmation and protection plan verification. |

@@ -16,7 +16,7 @@ pre: "<b> 5.3.2 </b>"
 
 
 
-[Tải lên network.yaml](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-15-network-template.png)
+[Tải lên network.yaml](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-15-network-template.png)
 
 3. Nhấn Next và đặt tên stack là `tindy-network`. Template này không có phần Parameters.
 
@@ -38,7 +38,7 @@ Stack được đặt tên là `tindy-network` và Console xác nhận template 
 
 
 
-[Tên stack Network](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16-network-stack-name.png)
+[Tên stack Network](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16-network-stack-name.png)
 
 
 
@@ -46,7 +46,7 @@ Các tag Project, Environment và Owner đã được cấu hình.
 
 
 
-[Tags của Network](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16a-network-tags.png)
+[Tags của Network](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-16a-network-tags.png)
 
 
 
@@ -54,4 +54,4 @@ Stack đạt trạng thái **CREATE_COMPLETE** với **Outputs (9)**. Ảnh ch�
 
 
 
-[Network hoàn tất và Outputs](/aws_my_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-18-network-outputs.png)
+[Network hoàn tất và Outputs](/my_aws_workshop/images/5-Workshop/5.3-S3-vpc/5.3.2/deploy-18-network-outputs.png)

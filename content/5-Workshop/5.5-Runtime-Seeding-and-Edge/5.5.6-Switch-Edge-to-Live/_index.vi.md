@@ -14,11 +14,11 @@ Mở CloudFormation → tindy-runtime → Outputs và sao chép `AlbDnsName` và
 
 
 
-[Runtime ALB DNS Output](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-59a-runtime-alb-output.png)
+![Runtime ALB DNS Output](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-59a-runtime-alb-output.png)
 
 
 
-[Runtime VPC Origin ID Output](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-59b-runtime-vpc-origin-output.png)
+![Runtime VPC Origin ID Output](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-59b-runtime-vpc-origin-output.png)
 
 ## 2. Tạo Edge live change set
 
@@ -43,7 +43,7 @@ Sau khi thực thi thành công ở giai đoạn tiếp theo, xác minh readines
 
 
 
-[Edge live sử dụng template hiện có](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60a-edge-live-existing-template.png)
+![Edge live sử dụng template hiện có](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60a-edge-live-existing-template.png)
 
 
 
@@ -51,7 +51,7 @@ Tên change set là `tindy-edge-go-live`. Phần mô tả giữ nguyên mô tả
 
 
 
-[Tên Edge live change set](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60b-edge-live-changeset-name.png)
+![Tên Edge live change set](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60b-edge-live-changeset-name.png)
 
 
 
@@ -59,7 +59,7 @@ Tên change set là `tindy-edge-go-live`. Phần mô tả giữ nguyên mô tả
 
 
 
-[Tham số Edge live](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60c-edge-live-parameters.png)
+![Tham số Edge live](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-60c-edge-live-parameters.png)
 
 
 
@@ -77,7 +77,7 @@ Chính xác một tài nguyên được thay đổi tại chỗ, khớp với vi
 
 
 
-[Xem xét Edge live change set](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-61-edge-live-changeset.png)
+![Xem xét Edge live change set](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-61-edge-live-changeset.png)
 
 ## 5. Thực thi và xác minh readiness
 
@@ -99,7 +99,7 @@ Stack `tindy-edge` đạt trạng thái **UPDATE_COMPLETE**. Outputs xác nhận
 
 
 
-[Cập nhật Edge live hoàn tất](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-62-edge-live-update-complete.png)
+![Cập nhật Edge live hoàn tất](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-62-edge-live-update-complete.png)
 
 
 
@@ -113,7 +113,7 @@ Response ghi lại Server Kestrel, Via CloudFront, X-Cache Miss from cloudfront,
 
 
 
-[CloudFront API readiness HTTP 200](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-63-cloudfront-readiness-200.png)
+![CloudFront API readiness HTTP 200](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-63-cloudfront-readiness-200.png)
 
 
 
@@ -125,7 +125,7 @@ Tiếp theo, kiểm tra frontend trên cùng hostname và đối chiếu OAuth c
 
 
 
-[Trang đăng nhập frontend Tindy](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-64-frontend-login-page.png)
+![Trang đăng nhập frontend Tindy](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-64-frontend-login-page.png)
 
 ### Xác minh đăng nhập tài khoản demo
 
@@ -145,7 +145,7 @@ Phần overview của bạn hiển thị **Loaded 20**. Điều này ghi lại s
 
 
 
-[Đăng nhập demo và Discover Projects](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-65-demo-login-discover-projects.png)
+![Đăng nhập demo và Discover Projects](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-65-demo-login-discover-projects.png)
 
 
 
@@ -157,7 +157,7 @@ Project Details tải `Student Marketplace [Demo]`, trạng thái tuyển thành
 
 
 
-[Chi tiết dự án đã tải](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-66-project-details.png)
+![Chi tiết dự án đã tải](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-66-project-details.png)
 
 
 
@@ -165,7 +165,7 @@ Find Teammates hiển thị `Campus Room Booking [Demo]`, một vị trí Backen
 
 
 
-[Find Teammates và mức độ phù hợp vị trí](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-67-find-teammates.png)
+![Find Teammates và mức độ phù hợp vị trí](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.6/deploy-67-find-teammates.png)
 
 
 

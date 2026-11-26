@@ -14,7 +14,7 @@ pre: "<b> 5.5.1 </b>"
 
 
 
-[Uploaded Edge template](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-29-edge-template.png)
+![Uploaded Edge template](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-29-edge-template.png)
 
 2. Name the stack `tindy-edge`. Set `FrontendBucketName` from Foundation Outputs, use `EdgeMode = maintenance`, and leave `VpcOriginId` and `AlbDnsName` empty.
 
@@ -22,7 +22,7 @@ pre: "<b> 5.5.1 </b>"
 
 
 
-[Edge maintenance parameters](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30-edge-maintenance-parameters.png)
+![Edge maintenance parameters](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30-edge-maintenance-parameters.png)
 
 3. Add tags `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. Keep Express mode disabled and rollback enabled, review and create the stack.
 4. Wait for `CREATE_COMPLETE`, then record `DistributionId`, `DistributionDomainName` and `EdgeMode` from Outputs.
@@ -47,7 +47,7 @@ The edge.yaml template is selected, with stack name tindy-edge, the Foundation f
 
 
 
-[Edge tags](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30a-edge-tags.png)
+![Edge tags](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30a-edge-tags.png)
 
 
 
@@ -55,7 +55,7 @@ Review shows the **Submit** button and termination protection **Deactivated**.
 
 
 
-[Edge Review before Submit](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30b-edge-review-submit.png)
+![Edge Review before Submit](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-30b-edge-review-submit.png)
 
 
 
@@ -63,7 +63,7 @@ The stack reached **CREATE_COMPLETE**. Outputs confirm distribution `E39MIF3N8DR
 
 
 
-[Edge completed and new Outputs](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-32-edge-outputs.png)
+![Edge completed and new Outputs](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-32-edge-outputs.png)
 
 
 
@@ -77,4 +77,4 @@ curl.exe -i https://d1vcn4g2ifl3k8.cloudfront.net/api/health/ready
 
 
 
-[HTTPS 503 maintenance](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-33-edge-maintenance-check.png)
+![HTTPS 503 maintenance](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.1/deploy-33-edge-maintenance-check.png)

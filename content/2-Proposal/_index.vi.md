@@ -1,6 +1,6 @@
 ---
 title: "Đề xuất dự án"
-date: 2026-19-11
+date: 2026-11-19
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "

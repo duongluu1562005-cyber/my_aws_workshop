@@ -1,6 +1,6 @@
 ---
 title: "ẾT QUẢ DỌN DẸP VÀ CHUẨN BỊ TRIỂN KHAI LẠI"
-date: 2026-11-22
+date: 2026-11-19
 weight: 9
 chapter: false
 pre: "<b> 5.7.9 </b>"
@@ -24,5 +24,5 @@ Sau khi xóa cả sáu stack, chọn **Active**. Danh sách trống xác nhận 
 
 
 
-[Các stack Active trong CloudFormation](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.9/cleanup-33-no-active-tindy-stacks.png)
+![Các stack Active trong CloudFormation](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.9/cleanup-33-no-active-tindy-stacks.png)
 

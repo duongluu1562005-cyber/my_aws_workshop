@@ -18,7 +18,7 @@ Sơ đồ thể hiện cách bố trí các nhóm dịch vụ và các thành ph
 
 
 
-[Sơ đồ kiến trúc Tindy bổ sung](/aws_my_workshop/images/5-Workshop/5.1-Workshop-overview/tindy-architecture-supplement.png)
+![Sơ đồ kiến trúc Tindy bổ sung](/my_aws_workshop/images/5-Workshop/5.1-Workshop-overview/tindy-architecture-supplement.png)
 
 | **Thành phần** | **Vai trò** |
 | :--- | :--- |

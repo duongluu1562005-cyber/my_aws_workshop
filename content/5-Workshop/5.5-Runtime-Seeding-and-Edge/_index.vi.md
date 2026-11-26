@@ -65,14 +65,16 @@ Mỗi giai đoạn sẽ có hướng dẫn chi tiết và ảnh chụp màn hìn
 | Bootstrap, migrations và seed | Cả ba task đã hoàn tất với exit code 0 và log hoàn tất. API đang chạy. Việc xác minh web vẫn đang chờ thực hiện. |
 | Xác minh API live và web | Runtime Desired 1 / Running 1 / Pending 0, ALB có 1 target Healthy. Edge ở chế độ live, với HTTP 200 Healthy readiness thông qua CloudFront. Đăng nhập demo và hiển thị dữ liệu Discover Projects đã được xác minh. Các luồng khác vẫn đang chờ thực hiện. |
 
+
 ## Hướng dẫn thực hành
 
 | **Trang** | **Quy trình và bằng chứng** |
 | :--- | :--- |
-| [5.5.1 Tạo Edge ở chế độ maintenance](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.1-edge-maintenance/) | Tạo distribution, ghi lại hostname và xác minh HTTP 503. |
-| [5.5.2 Tạo Runtime với DesiredCount bằng 0](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.2-runtime/) | Giải thích 28 tham số, tạo ECS/ALB/VPC Origin và thu thập Outputs. |
-| [5.5.3 Chuẩn bị secrets cho cơ sở dữ liệu Fresh](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.3-secrets/) | Xác minh số lượng ECS bằng 0, chạy script và thu thập các tham chiếu DB task. |
-| [5.5.4 Chạy bootstrap, migrations và seed](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.4-database-tasks/) | Cấu hình Fargate và xác minh exit code cùng log theo thứ tự. |
-| [5.5.5 Kích hoạt API và xác minh Runtime](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.5-activate-runtime/) | Xác định CloudFront service SG, cập nhật ingress và khởi động API. |
-| [5.5.6 Chuyển Edge sang live](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.6-edge-live/) | Thu thập Runtime Outputs và xem xét change set định tuyến API của CloudFront. |
-| [5.5.7 Kết nối lại quyền CI/CD](/aws_my_workshop/5-workshop/5.5-runtime-edge/5.5.7-cicd/) | Khôi phục các deployment role và đối chiếu các biến repository. |
+| [5.5.1 Tạo Edge ở chế độ bảo trì](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.1-create-edge-in-maintenance-mode/) | Triển khai stack Edge ở chế độ bảo trì trước khi cho phép lưu lượng truy cập ứng dụng. |
+| [5.5.2 Tạo Runtime với DesiredCount bằng 0](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.2-create-runtime-with-desiredcount-zero/) | Triển khai stack Runtime với số lượng tác vụ ECS mong muốn bằng 0. |
+| [5.5.3 Chuẩn bị Secrets cho cơ sở dữ liệu mới](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.3-prepare-fresh-database-secrets/) | Chuẩn bị thông tin xác thực và Secrets của cơ sở dữ liệu để khởi tạo ứng dụng. |
+| [5.5.4 Chạy Bootstrap, Migrations và Seed](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.4-run-bootstrap-migrations-and-seed/) | Khởi tạo cơ sở dữ liệu, áp dụng các bản cập nhật lược đồ và thêm dữ liệu mẫu. |
+| [5.5.5 Kích hoạt API và kiểm tra Runtime](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.5-activate-api-and-verify-runtime/) | Kích hoạt API và kiểm tra hoạt động của ECS Runtime cùng kết nối ứng dụng. |
+| [5.5.6 Chuyển Edge sang chế độ hoạt động](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.6-switch-edge-to-live/) | Bật định tuyến trực tiếp qua CloudFront và xác minh khả năng truy cập ứng dụng. |
+| [5.5.7 Kết nối lại quyền CI/CD](/my_aws_workshop/5-workshop/5.5-runtime-seeding-and-edge/5.5.7-reconnect-cicd-permissions/) | Khôi phục quyền CI/CD và kiểm tra quyền truy cập triển khai. |
+

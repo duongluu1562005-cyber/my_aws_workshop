@@ -1,6 +1,6 @@
 ---
 title: "XUẤT BẢNG ÁNH XẠ VÀ XÓA FOUNDATION"
-date: 2026-11-22
+date: 2026-11-19
 weight: 8
 chapter: false
 pre: "<b> 5.7.8 </b>"
@@ -20,11 +20,11 @@ Foundation có 13 tài nguyên và termination protection đang được bật. 
 
 
 
-[Tài nguyên Foundation trước khi xóa](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-28-foundation-resources-before.png)
+![Tài nguyên Foundation trước khi xóa](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-28-foundation-resources-before.png)
 
 
 
-[Phần dưới của tài nguyên Foundation](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-28a-foundation-resources-bottom.png)
+![Phần dưới của tài nguyên Foundation](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-28a-foundation-resources-bottom.png)
 
 2. Mở **Outputs** và ghi lại 17 outputs bao gồm các tham chiếu ECR, S3, secret, OIDC và IAM role cùng Data Protection path. `DataProtectionParameterPath` xác định SSM path được API sử dụng. Các key được API tạo trong thời gian chạy yêu cầu quản lý riêng biệt với các tài nguyên stack.
 
@@ -32,11 +32,11 @@ Foundation có 13 tài nguyên và termination protection đang được bật. 
 
 
 
-[Foundation Outputs trước khi xóa](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-29-foundation-outputs-before.png)
+![Foundation Outputs trước khi xóa](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-29-foundation-outputs-before.png)
 
 
 
-[Phần dưới của Foundation Outputs](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-29a-foundation-outputs-bottom.png)
+![Phần dưới của Foundation Outputs](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-29a-foundation-outputs-bottom.png)
 
 3. Chọn **Stack actions → Edit termination protection**, xác nhận `tindy-foundation`, chọn **Deactivated** và lưu.
 
@@ -44,7 +44,7 @@ Foundation có 13 tài nguyên và termination protection đang được bật. 
 
 
 
-[Tắt termination protection của Foundation](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-30-foundation-disable-termination-protection.png)
+![Tắt termination protection của Foundation](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-30-foundation-disable-termination-protection.png)
 
 4. Chọn **Delete stack**, nhập `tindy-foundation` và không chọn Express mode.
 
@@ -52,7 +52,7 @@ Foundation có 13 tài nguyên và termination protection đang được bật. 
 
 
 
-[Xác nhận xóa Foundation](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-31-foundation-delete-confirm.png)
+![Xác nhận xóa Foundation](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-31-foundation-delete-confirm.png)
 
 5. Xác nhận xóa và theo dõi Events. Nếu stack biến mất khỏi Active, chọn **Deleted** và tìm Foundation.
 6. Xác minh `tindy-foundation — DELETE_COMPLETE`. `DELETE_SKIPPED` cho biết các tài nguyên được giữ lại theo policy của template. Ảnh chụp hiển thị OIDC provider, ECR repository và frontend bucket được giữ lại, trong khi các role được hiển thị đã bị xóa.
@@ -61,7 +61,7 @@ Foundation có 13 tài nguyên và termination protection đang được bật. 
 
 
 
-[Foundation đã xóa với các tài nguyên được giữ lại](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-32-foundation-deleted.png)
+![Foundation đã xóa với các tài nguyên được giữ lại](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-32-foundation-deleted.png)
 
 
 

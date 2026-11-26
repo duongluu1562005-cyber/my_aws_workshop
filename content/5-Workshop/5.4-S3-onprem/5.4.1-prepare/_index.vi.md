@@ -16,7 +16,7 @@ pre: "<b> 5.4.1 </b>"
 
 
 
-[Tải lên database.yaml](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-19-database-template.png)
+![Tải lên database.yaml](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-19-database-template.png)
 
 2. Đặt tên stack là `tindy-database`. Đặt `DBProvisionMode = Fresh`, để trống `DBSnapshotIdentifier` và giữ `EnableDeletionProtection = true`.
 3. Chọn `DatabaseSecurityGroupId` và cả hai `PrivateDbSubnetIds` bằng cách sử dụng Outputs từ Network stack mới được tạo.
@@ -25,7 +25,7 @@ pre: "<b> 5.4.1 </b>"
 
 
 
-[Tham số cơ sở dữ liệu Fresh](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20-database-fresh-parameters.png)
+![Tham số cơ sở dữ liệu Fresh](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20-database-fresh-parameters.png)
 
 4. Thêm các tag `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. Giữ Express mode ở trạng thái tắt và rollback ở trạng thái bật, xem xét và tạo stack.
 5. Chờ đến khi đạt `CREATE_COMPLETE`, sau đó ghi lại Outputs bao gồm endpoint, port, provision mode và master secret ARN nếu được xuất cho Fresh.
@@ -42,15 +42,15 @@ Các tag, Express mode ở trạng thái tắt, rollback và **Use deletion poli
 
 
 
-[Tags của Database](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20a-database-tags.png)
+![Tags của Database](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20a-database-tags.png)
 
 
 
-[Tùy chọn Database](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20b-database-options.png)
+![Tùy chọn Database](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20b-database-options.png)
 
 
 
-[Xem xét Database](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20c-database-review.png)
+![Xem xét Database](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20c-database-review.png)
 
 
 
@@ -62,7 +62,7 @@ Stack `tindy-database` đạt trạng thái **CREATE_COMPLETE** với **Outputs 
 
 
 
-[Cơ sở dữ liệu Fresh hoàn tất và Outputs](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-22-database-outputs.png)
+![Cơ sở dữ liệu Fresh hoàn tất và Outputs](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-22-database-outputs.png)
 
 
 

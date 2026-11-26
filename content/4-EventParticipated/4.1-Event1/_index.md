@@ -276,7 +276,8 @@ Overall, this experience encouraged me to explore Cloud Computing and AI more de
 
 The following photo captures my participation in **AWS Cloud and AI Day Hanoi 2026 – HCMC Watch Party**, organized by the First Cloud AI Journey community in Ho Chi Minh City.
 
-![AWS Cloud and AI Day Hanoi 2026 - HCMC Watch Party](/my_aws_workshop/images/4-EventParticipated/event-1/event1.jpg)
+![AWS Cloud and AI Day Hanoi 2026 - HCMC Watch Party](/my_aws_workshop/images/4-EventParticipated/event-1/imageforevent1.jpg)
+
 
 ## 10. References
 

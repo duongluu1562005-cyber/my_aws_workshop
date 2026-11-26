@@ -5,18 +5,16 @@ weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
+This section introduces three technical blog articles prepared for the AWS Study Group community. The articles focus on storage cost management, access security, and database recovery using AWS services.
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+### [Blog 1 - SQS + LAMBDA: PARTIAL BATCH RESPONSE, DEAD-LETTER QUEUES AND THE SNOWBALL ANTI-PATTERN](/my_aws_workshop/3-blogsposted/3.1-blog1/)
 
-This section will list and introduce the blogs you have posted to [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). For example:
+This blog explains how Amazon SQS and AWS Lambda can improve message processing reliability and reduce unnecessary costs through Partial Batch Response and Dead-Letter Queues (DLQs). It also discusses the snowball anti-pattern, Provisioned Mode, and monitoring with Amazon CloudWatch and Amazon SNS, highlighting best practices for handling failed messages and optimizing serverless application performance.
 
-###  [Blog 1 - SESSION POLICIES IN AMAZON EKS POD IDENTITY](3.1-Blog1/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+### [Blog 2 – AWS IAM ACCESS ANALYZER: IDENTIFYING UNUSED ACCESS TO STRENGTHEN CLOUD SECURITY](/my_aws_workshop/3-blogsposted/3.2-blog2/)
 
-###  [Blog 2 - ...](3.2-Blog2/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+This blog introduces AWS IAM Access Analyzer and its role in identifying unused permissions and reviewing access to AWS resources. It highlights how access findings support the principle of least privilege, helping administrators evaluate IAM policies, reduce unnecessary permissions, and improve security management.
 
-###  [Blog 3 - ...](3.3-Blog3/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+### [Blog 3 – AMAZON RDS POINT-IN-TIME RECOVERY: RESTORING DATABASES AFTER ACCIDENTAL DATA LOSS](/my_aws_workshop/3-blogsposted/3.3-blog3/)
+
+This blog explores Amazon RDS Point-in-Time Recovery (PITR), which enables database restoration to a specific point within the available backup retention period. It explains how automated backups and transaction logs support database recovery and emphasizes the importance of verifying restored data before switching applications to a new DB instance.

@@ -72,19 +72,19 @@ These values have been checked against the parameter screenshots. New Runtime cr
 
 Uploaded `runtime.yaml` and named the stack `tindy-runtime`.
 
-[Runtime template](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-34-runtime-template.png)
+![Runtime template](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-34-runtime-template.png)
 
-[Runtime stack name](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35-runtime-stack-name.png)
+![Runtime stack name](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35-runtime-stack-name.png)
 
 The image digest, Edge hostname and prefix list, secret/GuardDuty references, feature flags and new networking IDs match the prepared values. `DesiredCount = 0`, `DBProvisionMode = Fresh` and `AiPdfUploadsEnabled = false`. The four one-off task inputs remain empty for initial creation.
 
-[Image and Edge parameters](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35a-runtime-parameters-image-edge.png)
+![Image and Edge parameters](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35a-runtime-parameters-image-edge.png)
 
-[Database and task count parameters](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35b-runtime-parameters-database.png)
+![Database and task count parameters](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35b-runtime-parameters-database.png)
 
-[Integration and secret references](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35c-runtime-parameters-integrations.png)
+![Integration and secret references](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35c-runtime-parameters-integrations.png)
 
-[Subnet and VPC parameters](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35d-runtime-parameters-subnets.png)
+![Subnet and VPC parameters](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-35d-runtime-parameters-subnets.png)
 
 ## 5. Create the stack and collect Outputs
 
@@ -96,21 +96,21 @@ Wait for `tindy-runtime — CREATE_COMPLETE`, then record `AlbDnsName`, `VpcOrig
 
 Verified tags, disabled Express mode, Roll back all resources, Use deletion policy and IAM capability acknowledgement.
 
-[Runtime tags](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36-runtime-tags.png)
+![Runtime tags](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36-runtime-tags.png)
 
-[Runtime options](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36a-runtime-options.png)
+![Runtime options](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36a-runtime-options.png)
 
-[Runtime IAM acknowledgement](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36b-runtime-iam-capabilities.png)
+![Runtime IAM acknowledgement](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36b-runtime-iam-capabilities.png)
 
 Review shows the Submit button to start stack creation.
 
-[Runtime Review before Submit](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36c-runtime-review-submit.png)
+![Runtime Review before Submit](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-36c-runtime-review-submit.png)
 
 Runtime reached **CREATE_COMPLETE** with **Outputs (6)**.
 
-[Runtime completed](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-37-runtime-complete.png)
+![Runtime completed](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-37-runtime-complete.png)
 
-[Six Runtime Outputs](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-38-runtime-outputs.png)
+![Six Runtime Outputs](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.2/deploy-38-runtime-outputs.png)
 
 `AlbDnsName` and `VpcOriginId` configure Edge live mode. `ApiTargetGroupArn` supports health verification and alarm dimensions. `ApiTaskDefinitionArn`, `ApiServiceName` and `ClusterName` identify the API configuration and ECS resources.
 

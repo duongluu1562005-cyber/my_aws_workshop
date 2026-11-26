@@ -1,6 +1,6 @@
 ---
 title: "EXPORT MAPPINGS AND DELETE FOUNDATION"
-date: 2026-11-22
+date: 2026-11-19
 weight: 8
 chapter: false
 pre: "<b> 5.7.8 </b>"
@@ -20,11 +20,11 @@ Foundation has 13 resources and termination protection enabled. Its deployed tem
 
 
 
-[Foundation resources before deletion](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-28-foundation-resources-before.png)
+![Foundation resources before deletion](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-28-foundation-resources-before.png)
 
 
 
-[Foundation resources lower section](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-28a-foundation-resources-bottom.png)
+![Foundation resources lower section](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-28a-foundation-resources-bottom.png)
 
 2. Open **Outputs** and record the 17 outputs covering ECR, S3, secret, OIDC and IAM role references plus the Data Protection path. `DataProtectionParameterPath` identifies the SSM path used by the API. Keys created by the API at runtime require management separately from stack resources.
 
@@ -32,11 +32,11 @@ Foundation has 13 resources and termination protection enabled. Its deployed tem
 
 
 
-[Foundation outputs before deletion](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-29-foundation-outputs-before.png)
+![Foundation outputs before deletion](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-29-foundation-outputs-before.png)
 
 
 
-[Foundation outputs lower section](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-29a-foundation-outputs-bottom.png)
+![Foundation outputs lower section](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-29a-foundation-outputs-bottom.png)
 
 3. Select **Stack actions → Edit termination protection**, confirm `tindy-foundation`, choose **Deactivated** and save.
 
@@ -44,7 +44,7 @@ Foundation has 13 resources and termination protection enabled. Its deployed tem
 
 
 
-[Disable Foundation termination protection](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-30-foundation-disable-termination-protection.png)
+![Disable Foundation termination protection](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-30-foundation-disable-termination-protection.png)
 
 4. Select **Delete stack**, enter `tindy-foundation` and leave Express mode unchecked.
 
@@ -52,7 +52,7 @@ Foundation has 13 resources and termination protection enabled. Its deployed tem
 
 
 
-[Foundation deletion confirmation](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-31-foundation-delete-confirm.png)
+![Foundation deletion confirmation](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-31-foundation-delete-confirm.png)
 
 5. Confirm deletion and monitor Events. If the stack disappears from Active, select **Deleted** and locate Foundation.
 6. Verify `tindy-foundation — DELETE_COMPLETE`. `DELETE_SKIPPED` indicates resources retained under the template policy. The screenshot shows the OIDC provider, ECR repository and frontend bucket retained, while the displayed roles were deleted.
@@ -61,7 +61,7 @@ Foundation has 13 resources and termination protection enabled. Its deployed tem
 
 
 
-[Foundation deleted with retained resources](/aws_my_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-32-foundation-deleted.png)
+![Foundation deleted with retained resources](/my_aws_workshop/images/5-Workshop/5.7-Cleanup/5.7.8/cleanup-32-foundation-deleted.png)
 
 
 

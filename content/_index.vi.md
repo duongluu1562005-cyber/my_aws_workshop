@@ -17,7 +17,7 @@ chapter: false
 
 &emsp; **Ngành:** An toàn thông tin
 
-&emsp; **Lớp:** AWS082025
+&emsp; **Lớp:** OJT202
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Viet Nam
 

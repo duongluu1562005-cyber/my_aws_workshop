@@ -1,5 +1,5 @@
 ---
-title: "Bài Thu Hoạch 1"
+title: "Sự Kiện 1"
 date: 2026-09-29
 weight: 1
 chapter: false
@@ -229,7 +229,7 @@ Sự kiện giúp em mở rộng kiến thức, hiểu rõ hơn những kỹ nă
 
 Dưới đây là hình ảnh ghi lại hoạt động tham gia **AWS Cloud and AI Day Hanoi 2026 – HCMC Watch Party**.
 
-![AWS Cloud and AI Day Hanoi 2026 - HCMC Watch Party](/my_aws_workshop/images/4-EventParticipated/event-1/event1.jpg)
+![AWS Cloud and AI Day Hanoi 2026 - HCMC Watch Party](/my_aws_workshop/images/4-EventParticipated/event-1/imageforevent1.jpg)
 
 ## 10. Tài Liệu Tham Khảo
 

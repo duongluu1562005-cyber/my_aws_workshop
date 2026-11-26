@@ -69,5 +69,5 @@ Việc kiểm thử tải lên PDF của ứng dụng được thực hiện sau
 
 | **Trang** | **Quy trình và bằng chứng** |
 | :--- | :--- |
-| [5.4.1 Tạo cơ sở dữ liệu Fresh](/aws_my_workshop/5-workshop/5.4-database-integrations/5.4.1-database/) | Các tham số Fresh, cấu hình mạng, Options và RDS Outputs. |
-| [5.4.2 Triển khai Integrations](/aws_my_workshop/5-workshop/5.4-database-integrations/5.4.2-integrations/) | Stack quét PDF, xác nhận SNS và xác minh protection plan. |
+| [5.4.1 Tạo cơ sở dữ liệu mới](/my_aws_workshop/5-workshop/5.4-s3-onprem/5.4.1-prepare/) | Các tham số khởi tạo mới, cấu hình mạng, tùy chọn và Outputs của RDS. |
+| [5.4.2 Triển khai tích hợp](/my_aws_workshop/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/) | Stack quét PDF, xác nhận SNS và kiểm tra kế hoạch bảo vệ. |

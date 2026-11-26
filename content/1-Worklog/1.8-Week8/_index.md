@@ -1,57 +1,44 @@
+
 ---
-title: "Week 8 Worklog"
-date: 2024-01-01
-weight: 1
+title: "Worklog Week 8"
+date: 2026-11-02
+weight: 8
 chapter: false
-pre: " <b> 1.8. </b> "
+pre: "<b>1.8. </b>"
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+# Introduction to AWS Lambda and Container Technologies
 
-### Week 8 Objectives:
+### Weekly Objectives
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Understand AWS Lambda and how to run code without managing servers.
+- Become familiar with Docker and container technologies.
+- Learn about Amazon ECS and how to deploy applications using containers.
+- Understand the differences between Amazon EC2, AWS Lambda, and Amazon ECS.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Weekly Activities
 
-### Week 8 Achievements:
+| Day | Activities | Start Date | Completion Date | References |
+|---|---|---|---|---|
+| 2 | - Learn what AWS Lambda is and understand its purpose.<br>- Study Serverless Computing and how Lambda executes code in response to events.<br>- Learn about Lambda Functions and Triggers. | 02/11/2026 | 02/11/2026 | [AWS Lambda Workshop](https://000022.awsfcaj.com/)<br>[AWS Lambda Documentation](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) |
+| 3 | - Review AWS Lambda tutorials covering:<br>&emsp;+ Creating a Lambda Function.<br>&emsp;+ Selecting a programming language.<br>&emsp;+ Reviewing hands-on examples.<br>&emsp;+ Testing functions and viewing execution results.<br>- Learn how to view Lambda Logs in Amazon CloudWatch. | 03/11/2026 | 03/11/2026 | [AWS Lambda Workshop](https://000022.awsfcaj.com/)<br>[AWS Lambda Documentation](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) |
+| 4 | - Learn about Docker and container technologies.<br>- Study Docker Images and Docker Containers.<br>- Understand the differences between Containers and Virtual Machines.<br>- Review tutorials on basic Docker commands. | 04/11/2026 | 04/11/2026 | [Docker Workshop](https://000015.awsfcaj.com/)<br>[Docker Documentation](https://docs.docker.com/get-started/) |
+| 5 | - Learn about Amazon ECS and how containers are managed on AWS.<br>- Become familiar with the main ECS components:<br>&emsp;+ Cluster.<br>&emsp;+ Task Definition.<br>&emsp;+ Service.<br>- Learn about AWS Fargate and how it runs containers without managing EC2 servers. | 05/11/2026 | 05/11/2026 | [Amazon ECS Workshop](https://000016.awsfcaj.com/)<br>[Amazon ECS Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) |
+| 6 | - Review tutorials on deploying applications using Amazon ECS.<br>- Learn how Container Images and Task Definitions are used.<br>- Compare Amazon EC2, AWS Lambda, and Amazon ECS to understand their different use cases. | 06/11/2026 | 06/11/2026 | [Amazon ECS Workshop](https://000016.awsfcaj.com/)<br>[AWS Compute Services](https://aws.amazon.com/products/compute/) |
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Successfully created and configured an AWS Free Tier account.
+### Learning Outcomes
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Understood that AWS Lambda is a serverless compute service used to run code without managing servers.
+- Became familiar with Lambda Functions, Triggers, and how to review function execution results.
+- Learned that Docker is used to package applications and their dependencies into containers.
+- Understood the differences between Docker Images and Docker Containers.
+- Became familiar with the main Amazon ECS components:
+  - **Cluster:** A logical grouping of tasks and services.
+  - **Task Definition:** Defines the configuration required to run containers.
+  - **Service:** Maintains the desired number of running tasks.
+- Learned that AWS Fargate allows containers to run without managing the underlying EC2 servers.
+- Understood the basic differences between Amazon EC2, AWS Lambda, and Amazon ECS, including their main purposes and use cases.

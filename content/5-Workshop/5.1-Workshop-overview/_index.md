@@ -5,6 +5,7 @@ weight: 1
 chapter: false
 pre: " <b> 5.1 </b> "
 ---
+
 Tindy helps users find projects and teammates, manage profiles, apply to projects and communicate with other members. This workshop deploys its AWS frontend, backend, database and PDF scanning infrastructure through six CloudFormation templates.
 
 ## Objectives
@@ -15,9 +16,7 @@ Deploy stacks in dependency order, use stack Outputs as subsequent inputs, provi
 
 The diagram shows the arrangement of service groups and application components.
 
-
-
-[Additional Tindy architecture diagram](/aws_my_workshop/images/5-Workshop/5.1-Workshop-overview/tindy-architecture-supplement.png)
+![Additional Tindy architecture diagram](/my_aws_workshop/images/5-Workshop/5.1-Workshop-overview/tindy-architecture-supplement.png)
 
 | **Component**                          | **Role**                                                                           |
 | :------------------------------------- | :--------------------------------------------------------------------------------- |

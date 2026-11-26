@@ -11,7 +11,7 @@ Bootstrap, migrations and seed completed with exit code 0 and completion logs. T
 
 In EC2 → Security Groups, the screenshot confirms `CloudFront-VPCOrigins-Service-SG` has ID **`sg-0ae54c77731609b33`** and belongs to VPC **`vpc-0209344341dce92fb`**. This is the current ID in the rebuilt environment.
 
-[CloudFront service security group](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-53-cloudfront-service-security-group.png)
+![CloudFront service security group](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-53-cloudfront-service-security-group.png)
 
 The screenshot shows zero inbound permission entries and one outbound permission entry. Runtime uses this group as the source for the ALB ingress rule. This step requires no direct edits to the CloudFront-managed group.
 
@@ -32,21 +32,21 @@ Keep all other parameters, including `AiPdfUploadsEnabled = false` and the curre
 
 Runtime is UPDATE_COMPLETE before API activation. This records the previous update and does not yet confirm API launch.
 
-[Runtime before API activation](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54a-runtime-before-activation.png)
+![Runtime before API activation](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54a-runtime-before-activation.png)
 
 Standard change set and Use existing template were selected to retain the template and update parameters.
 
-[Use existing template](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54b-start-api-existing-template.png)
+![Use existing template](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54b-start-api-existing-template.png)
 
 Both changed inputs match the guide: `CloudFrontServiceSecurityGroupId = sg-0ae54c77731609b33` and `DesiredCount = 1`. The group supplies the ALB ingress source, while DesiredCount requests one API task maintained by ECS.
 
-[CloudFront service SG parameter](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54c-start-api-cloudfront-sg.png)
+![CloudFront service SG parameter](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54c-start-api-cloudfront-sg.png)
 
-[DesiredCount one](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54d-start-api-desired-one.png)
+![DesiredCount one](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54d-start-api-desired-one.png)
 
 IAM capability was acknowledged in the wizard. The actual review below lists two changed resources.
 
-[IAM capability acknowledgement](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54e-start-api-iam.png)
+![IAM capability acknowledgement](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-54e-start-api-iam.png)
 
 Change set `tindy-runtime-start-api` reached **CREATE_COMPLETE**, Execution status **AVAILABLE**, with Express mode Disabled and Roll back all stack resources configured.
 
@@ -55,7 +55,7 @@ Change set `tindy-runtime-start-api` reached **CREATE_COMPLETE**, Execution stat
 | `AlbIngressFromCloudFront` | Modify     | True            | Replace the ingress rule resource to use the CloudFront service SG. ReplaceAndDelete applies to the previous rule. |
 | `ApiService`               | Modify     | False           | Update the ECS service in place with the new task count.                                                           |
 
-[API activation change set review](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-55-start-api-changeset.png)
+![API activation change set review](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-55-start-api-changeset.png)
 
 The changes match the two updated parameters. Execution and API health remain unverified at this milestone.
 
@@ -69,21 +69,21 @@ Select **Execute change set**, retain the configured rollback behavior and selec
 
 The Execute dialog retained Roll back all stack resources and Use deletion policy. The change set was executed.
 
-[Execute API activation](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-56a-start-api-execute.png)
+![Execute API activation](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-56a-start-api-execute.png)
 
 Events confirm Runtime **UPDATE_COMPLETE** at 14:19:50 UTC+07 on November 18, 2026. The DELETE_COMPLETE event for `AlbIngressFromCloudFront` during rule replacement matches the reviewed Replacement True change.
 
-[Runtime API update complete](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-56b-runtime-api-update-complete.png)
+![Runtime API update complete](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-56b-runtime-api-update-complete.png)
 
 The cluster reports **1 running / 0 pending**. Service `tindy-api` is Active with **1/1 Tasks running** and Last deployment Completed.
 
-[Cluster API running](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-56c-cluster-api-running.png)
+![Cluster API running](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-56c-cluster-api-running.png)
 
-[API service deployment completed](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-56d-api-service-completed.png)
+![API service deployment completed](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-56d-api-service-completed.png)
 
 Service overview confirms Desired **1**, Running **1**, Pending **0**, task definition `tindy-runtime-api:13`, and Deployment status **Success**. Load balancer target health for container `api:8080` reports **1 Healthy / 0 Unhealthy**. These establish Runtime readiness and passing ALB health checks. Live API requests through CloudFront remain unverified.
 
-[API service and ALB target healthy](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-57-api-target-healthy.png)
+![API service and ALB target healthy](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-57-api-target-healthy.png)
 
 ## Next step
 
@@ -93,7 +93,7 @@ Copy `AlbDnsName` and `VpcOriginId` directly from **CloudFormation → tindy-run
 
 The `tindy-edge` Outputs screenshot confirms CREATE_COMPLETE, distribution `E39MIF3N8DR3D6`, hostname `d1vcn4g2ifl3k8.cloudfront.net`, and `EdgeMode = maintenance`. Healthy Runtime API targets do not establish live Edge routing. To prepare live inputs, select stack `tindy-runtime` and open Outputs to copy `AlbDnsName` and `VpcOriginId`.
 
-[Edge remains in maintenance before live activation](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-58-edge-before-live.png)
+![Edge remains in maintenance before live activation](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-58-edge-before-live.png)
 
 ## Enable AI PDF after schema and monitoring preparation
 
@@ -105,9 +105,9 @@ This parameter maps to the API task definition environment variable `GuardDuty__
 
 The wizard selected Standard change set and Use existing template on `tindy-runtime`. Parameter `AiPdfUploadsEnabled` is set to **true**.
 
-[AI PDF uses existing template](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-72a-ai-pdf-existing-template.png)
+![AI PDF uses existing template](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-72a-ai-pdf-existing-template.png)
 
-[AI PDF enabled parameter](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-72b-ai-pdf-enabled-parameter.png)
+![AI PDF enabled parameter](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-72b-ai-pdf-enabled-parameter.png)
 
 Change set `tindy-runtime-enable-ai-pdf` reached **CREATE_COMPLETE / AVAILABLE** with:
 
@@ -116,7 +116,7 @@ Change set `tindy-runtime-enable-ai-pdf` reached **CREATE_COMPLETE / AVAILABLE**
 | `ApiService`        | Modify     | False           | Update the existing service to deploy the new task definition.                                                                                       |
 | `ApiTaskDefinition` | Modify     | True            | Register a new task definition revision with the AI PDF environment flag enabled. ReplaceAndDelete applies to the previous task definition resource. |
 
-[AI PDF change set review](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-73-ai-pdf-changeset.png)
+![AI PDF change set review](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-73-ai-pdf-changeset.png)
 
 The scope matches the parameter change. Execution and successful PDF upload/scan remain unverified at this milestone.
 
@@ -126,9 +126,9 @@ Execute the change set, retaining rollback and Use deletion policy if prompted. 
 
 Runtime reached **UPDATE_COMPLETE** after the AI PDF change set. ECS service `tindy-api` is Active with Desired 1 / Running 1 / Pending 0, Deployment status **Success**, and task definition **`tindy-runtime-api:14`**.
 
-[AI PDF Runtime update complete](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-74-ai-pdf-runtime-update-complete.png)
+![AI PDF Runtime update complete](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-74-ai-pdf-runtime-update-complete.png)
 
-[AI PDF service revision 14](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-75-ai-pdf-service-revision14.png)
+![AI PDF service revision 14](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-75-ai-pdf-service-revision14.png)
 
 Target health is still loading in the screenshot, so direct Healthy evidence for the new revision remains pending. Recheck CloudFront readiness before testing PDF upload.
 
@@ -140,11 +140,11 @@ After readiness returns HTTP 200 Healthy, open **AI Studio** in the frontend. Un
 
 After deploying revision 14, HTTPS requests through CloudFront to `/api/health/ready` still return **HTTP 200 OK** with `{"status":"Healthy","service":"Tindy API"}`.
 
-[Readiness after AI PDF activation](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-76-ai-pdf-readiness-200.png)
+![Readiness after AI PDF activation](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-76-ai-pdf-readiness-200.png)
 
 AI Studio shows `CV_Backend.pdf` with **Scan complete. Ready to extract.**. Profile text is empty (0/20,000 characters), while Review suggestions contains skills including ASP.NET Core, C#, Docker, Entity Framework Core, PostgreSQL and REST API. Experience and certificates and Extraction notes (3) remain collapsed.
 
-[PDF scan complete and extracted suggestions](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-77-ai-pdf-scan-extract-success.png)
+![PDF scan complete and extracted suggestions](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-77-ai-pdf-scan-extract-success.png)
 
 UI evidence confirms the PDF upload → completed scan → extracted suggestions flow. Individual fields in collapsed panels and saving suggestions to the profile remain unverified. Separate image and certificate PDF uploads have not yet been evidenced.
 
@@ -154,6 +154,6 @@ Next, select one suggested skill absent from the profile, click **Save selected 
 
 Following instructions to select a skill, save and reload the profile, the operator confirmed completion. The profile screenshot shows **Docker** among Technical skills. This captures the resulting profile and does not include the save notification. Completion of the save and reload steps was confirmed by the operator.
 
-[AI suggestion saved in profile](/aws_my_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-78-ai-suggestion-profile-saved.png)
+![AI suggestion saved in profile](/my_aws_workshop/images/5-Workshop/5.5-Policy/5.5.5/deploy-78-ai-suggestion-profile-saved.png)
 
 The recorded PDF acceptance flow now covers upload → completed scan → extracted suggestions → saved skill → skill displayed in the profile. Image and certificate PDF uploads are separate media flows and are not established by these screenshots.

@@ -1,59 +1,45 @@
 ---
-title: "Worklog Tuần 9"
-date: 2024-01-01
-weight: 1
+title: "Tuần 9"
+date: 2026-11-09
+weight: 9
 chapter: false
-pre: " <b> 1.9. </b> "
+pre: "<b>1.9. </b>"
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+# Tìm hiểu triển khai và tự động hóa với AWS CloudFormation
 
-### Mục tiêu tuần 9:
+### Mục tiêu trong tuần
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Tìm hiểu AWS CloudFormation và cách quản lý tài nguyên AWS.
+- Làm quen với Infrastructure as Code (IaC).
+- Học cách sử dụng CloudFormation Template và Stack.
+- Tìm hiểu cách tạo, cập nhật và xóa tài nguyên bằng CloudFormation.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Công việc thực hiện trong tuần
 
-### Kết quả đạt được tuần 9:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|---|---|---|---|---|
+| 2 | - Tìm hiểu AWS CloudFormation là gì và dùng để làm gì.<br>- Học về Infrastructure as Code (IaC).<br>- Tìm hiểu lợi ích của việc tạo và quản lý nhiều tài nguyên AWS bằng một Template. | 09/11/2026 | 09/11/2026 | [AWS CloudFormation Workshop](https://000037.awsfcaj.com/)<br>[AWS CloudFormation Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) |
+| 3 | - Tìm hiểu CloudFormation Template và Stack.<br>- Làm quen với cách viết Template bằng YAML hoặc JSON.<br>- Tìm hiểu các phần cơ bản trong Template:<br>&emsp; + Parameters.<br>&emsp; + Resources.<br>&emsp; + Outputs. | 10/11/2026 | 10/11/2026 | [CloudFormation Template Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/template-anatomy.html)<br>[AWS CloudFormation Workshop](https://000037.awsfcaj.com/) |
+| 4 | - Xem hướng dẫn sử dụng AWS CloudFormation:<br>&emsp; + Chuẩn bị Template.<br>&emsp; + Tạo Stack.<br>&emsp; + Kiểm tra trạng thái Stack.<br>&emsp; + Xem các tài nguyên được tạo.<br>- Tìm hiểu cách CloudFormation sử dụng Template để tạo tài nguyên AWS. | 11/11/2026 | 11/11/2026 | [AWS CloudFormation Workshop](https://000037.awsfcaj.com/)<br>[CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) |
+| 5 | - Tìm hiểu cách cập nhật CloudFormation Stack khi thay đổi Template.<br>- Làm quen với Change Sets và cách xem các thay đổi trước khi cập nhật.<br>- Tìm hiểu cách kiểm tra trạng thái khi triển khai Stack. | 12/11/2026 | 12/11/2026 | [AWS CloudFormation Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) |
+| 6 | - Tìm hiểu cách xóa CloudFormation Stack khi không còn sử dụng.<br>- Xem cách CloudFormation quản lý và xóa các tài nguyên trong Stack. | 13/11/2026 | 13/11/2026 | [AWS CloudFormation Workshop](https://000037.awsfcaj.com/)<br>[AWS CloudFormation Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Kết quả đạt được
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hiểu được AWS CloudFormation giúp tạo và quản lý tài nguyên AWS bằng các file cấu hình.
+- Biết Infrastructure as Code (IaC) là cách quản lý hạ tầng thông qua mã cấu hình thay vì phải tạo từng tài nguyên bằng tay.
+- Làm quen với các thành phần cơ bản của CloudFormation:
+  - **Template:** File chứa cấu hình tài nguyên AWS.
+  - **Stack:** Nhóm tài nguyên được CloudFormation quản lý.
+  - **Parameters:** Các giá trị có thể nhập khi tạo Stack.
+  - **Resources:** Những tài nguyên AWS cần tạo.
+  - **Outputs:** Thông tin được xuất ra sau khi triển khai.
+- Biết các bước chuẩn bị Template, tạo Stack và kiểm tra trạng thái theo hướng dẫn.
+- Hiểu cách cập nhật Stack khi thay đổi Template và cách sử dụng Change Sets.
+- Biết cách xóa Stack và kiểm tra tài nguyên sau khi không còn sử dụng.
+- Hiểu được CloudFormation giúp việc triển khai và quản lý tài nguyên AWS dễ dàng, đồng nhất hơn.

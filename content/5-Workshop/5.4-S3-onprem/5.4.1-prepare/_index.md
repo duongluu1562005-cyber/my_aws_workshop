@@ -16,7 +16,7 @@ pre: "<b> 5.4.1 </b>"
 
 
 
-[Upload database.yaml](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-19-database-template.png)
+![Upload database.yaml](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-19-database-template.png)
 
 2. Name the stack `tindy-database`. Set `DBProvisionMode = Fresh`, leave `DBSnapshotIdentifier` empty and keep `EnableDeletionProtection = true`.
 3. Select `DatabaseSecurityGroupId` and both `PrivateDbSubnetIds` using Outputs from the newly created Network stack.
@@ -25,7 +25,7 @@ pre: "<b> 5.4.1 </b>"
 
 
 
-[Fresh Database parameters](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20-database-fresh-parameters.png)
+![Fresh Database parameters](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20-database-fresh-parameters.png)
 
 4. Add tags `Project=Tindy`, `Environment=tindy`, `Owner=TindyTeam`. Keep Express mode disabled and rollback enabled, review and create the stack.
 5. Wait for `CREATE_COMPLETE`, then record Outputs including the endpoint, port, provision mode and master secret ARN where exported for Fresh.
@@ -42,15 +42,15 @@ Tags, disabled Express mode, rollback and **Use deletion policy** were configure
 
 
 
-[Database tags](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20a-database-tags.png)
+![Database tags](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20a-database-tags.png)
 
 
 
-[Database options](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20b-database-options.png)
+![Database options](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20b-database-options.png)
 
 
 
-[Database review](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20c-database-review.png)
+![Database review](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-20c-database-review.png)
 
 
 
@@ -62,7 +62,7 @@ Stack `tindy-database` reached **CREATE_COMPLETE** with **Outputs (5)**, provisi
 
 
 
-[Fresh Database completed and Outputs](/aws_my_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-22-database-outputs.png)
+![Fresh Database completed and Outputs](/my_aws_workshop/images/5-Workshop/5.4-S3-onprem/5.4.1/deploy-22-database-outputs.png)
 
 
 

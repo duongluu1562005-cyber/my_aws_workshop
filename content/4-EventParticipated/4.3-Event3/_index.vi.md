@@ -1,99 +1,136 @@
 ---
-title: "Bài Thu Hoạch 3"
-date: 2026-11-14
+title: "Sự Kiện 3"
+date: 2026-10-24
 weight: 3
 chapter: false
 pre: " <b> 4.3. </b> "
 ---
 # First Cloud AI Journey – Weekly Meet Up
 
-- **Thời gian:** Thứ Bảy, ngày 14/11/2026
+- **Thời gian:** Thứ Bảy, ngày 24/10/2026
 - **Địa điểm:** Tầng 26, Bitexco Financial Tower, TP. Hồ Chí Minh
 - **Đơn vị tổ chức:** First Cloud AI Journey (FCAJ)
-- **Người chia sẻ:** Các anh chị trong đội ngũ First Cloud AI Journey (FCAJ)
 - **Vai trò:** Người tham dự trực tiếp
 
 ### Mục Đích Của Sự Kiện
 
 First Cloud AI Journey – Weekly Meet Up là buổi gặp gỡ và chia sẻ kiến thức dành cho những người quan tâm đến AWS, Cloud Computing và trí tuệ nhân tạo (AI).
 
-Chương trình tập trung vào cách xây dựng và triển khai các hệ thống AI trong môi trường doanh nghiệp, từ việc tối ưu chi phí, quản lý tài nguyên AWS đến xây dựng hệ thống AI Agent có khả năng phối hợp và xử lý nhiều nhiệm vụ.
+Chương trình tập trung vào cách ứng dụng AI trong thực tế, từ xây dựng hệ thống Voice AI, quản lý tài nguyên AWS đến kiểm thử bảo mật và sử dụng AI Agent để hỗ trợ công việc lập trình.
 
-Thông qua những chia sẻ từ các anh chị trong cộng đồng FCAJ, người tham dự có cơ hội tiếp cận các kiến thức và kinh nghiệm thực tế về việc ứng dụng AI và AWS vào các dự án công nghệ.
+### Danh Sách Diễn Giả
 
-### Nội Dung Kiến Thức Đã Học
+- **Kiệt Trần** – Revve AI
+- **Long Huỳnh** – Styl Solution
+- **Thịnh Nguyễn** – Styl Solution
+- **Xuân An** – AWS Student Builder Group HCMUTE
+- **Khoa Kiều** – Tech Lead, ACB
+- **Nghi Danh** – AWS Community Builder
 
-**1. Sự khác biệt giữa AI trong học tập và AI trong doanh nghiệp**
+### Nội Dung Nổi Bật
 
-Trong môi trường học tập, các mô hình AI thường được xây dựng và thử nghiệm với dữ liệu có sẵn, số lượng người dùng nhỏ. Tuy nhiên, khi triển khai trong doanh nghiệp, hệ thống cần đáp ứng lượng truy cập lớn, hoạt động ổn định và đảm bảo an toàn dữ liệu.
+#### 1. Xây Dựng Tổng Đài Voice AI Tiếng Việt
 
-Một số dịch vụ AWS được giới thiệu gồm:
+Diễn giả giới thiệu cách xây dựng hệ thống AI có thể nghe, hiểu và phản hồi bằng giọng nói thông qua ba bước **Hear – Think – Speak**.
 
-- **AWS Lambda:** Chạy chương trình mà không cần tự quản lý máy chủ.
-- **Auto Scaling:** Tự động điều chỉnh tài nguyên theo lượng truy cập.
-- **Load Balancer:** Phân phối yêu cầu đến nhiều máy chủ để hạn chế quá tải.
-- **AWS KMS:** Hỗ trợ quản lý khóa mã hóa để bảo vệ dữ liệu.
-- **AWS IAM:** Quản lý người dùng và phân quyền truy cập tài nguyên AWS.
-- **Amazon Bedrock Guardrails:** Hỗ trợ kiểm soát nội dung và tăng tính an toàn khi sử dụng AI.
+Hai mô hình được đề cập gồm:
 
-Những dịch vụ này giúp hệ thống AI có khả năng mở rộng, vận hành ổn định và đáp ứng tốt hơn nhu cầu thực tế của doanh nghiệp.
+- **Speech-to-Speech:** Xử lý trực tiếp giọng nói đầu vào và đầu ra.
+- **ASR–LLM–TTS:** Kết hợp nhận dạng giọng nói, mô hình ngôn ngữ lớn và chuyển văn bản thành giọng nói.
 
-**2. Sử dụng AI hợp lý để tối ưu chi phí**
+Phần em ấn tượng nhất là demo AI thực hiện cuộc gọi phỏng vấn sơ tuyển vị trí Cloud Engineer bằng tiếng Việt. Qua đó, em thấy được cách AI có thể hỗ trợ công việc tuyển dụng và hiểu thêm về tầm quan trọng của tốc độ phản hồi trong một cuộc hội thoại.
 
-Một nội dung đáng chú ý của chương trình là cách lựa chọn mô hình AI phù hợp với từng công việc, thay vì sử dụng mô hình lớn cho tất cả yêu cầu.
+#### 2. Quản Lý Tài Nguyên Với AWS Resource Access Manager
 
-Các anh chị đã minh họa cách tổ chức hệ thống AI thông qua mô hình nhà hàng:
+Phiên chia sẻ giới thiệu cách quản lý và chia sẻ tài nguyên giữa nhiều tài khoản AWS thông qua **AWS Organizations** và **AWS Resource Access Manager (RAM)**.
 
-- **Head Chef:** Mô hình AI lớn đóng vai trò điều phối, phân chia công việc cho các mô hình khác.
-- **Main Course, Dessert, Cashier:** Các mô hình AI nhỏ đảm nhiệm những nhiệm vụ chuyên biệt với chi phí thấp hơn.
-- **Caching:** Lưu lại kết quả của những câu hỏi thường gặp để tránh xử lý lặp lại nhiều lần.
+Một số nội dung chính:
 
-Cách tổ chức này giúp giảm chi phí sử dụng AI, cải thiện tốc độ phản hồi và tận dụng tài nguyên hiệu quả hơn.
+- **AWS RAM:** Chia sẻ tài nguyên giữa các tài khoản AWS.
+- **VPC và Subnet Sharing:** Cho phép nhiều tài khoản sử dụng chung tài nguyên mạng.
+- **IAM Policies:** Quản lý quyền truy cập của người dùng và các vai trò.
+- **Service Control Policies (SCP):** Giới hạn quyền trong môi trường nhiều tài khoản.
 
-**3. Xây dựng hệ thống Multi-Agent với Strands Agents**
+Qua phần này, em hiểu thêm cách doanh nghiệp tổ chức hệ thống Cloud để các nhóm có thể sử dụng chung tài nguyên mà vẫn đảm bảo việc phân quyền và quản lý.
 
-Chương trình giới thiệu cách kết hợp Strands Agents và FastAPI để xây dựng hệ thống gồm nhiều AI Agent, trong đó mỗi Agent được giao một nhiệm vụ cụ thể.
+#### 3. Ứng Dụng AI Trong Kiểm Thử Bảo Mật
 
-Một số Agent được đề cập gồm:
+Diễn giả giới thiệu **AWS Security Agent**, công cụ ứng dụng AI để hỗ trợ phát hiện và đánh giá các vấn đề bảo mật trong quá trình phát triển phần mềm.
 
-- **qa_agent:** Sử dụng FAISS để tìm kiếm thông tin trong tài liệu và hỗ trợ trả lời các câu hỏi về chính sách.
-- **ticket_agent:** Hỗ trợ xử lý yêu cầu, đồng thời có cơ chế phê duyệt của con người đối với những thao tác quan trọng.
-- **research_agent:** Sử dụng Tavily để tìm kiếm và tổng hợp thông tin từ Internet.
+Các nội dung đáng chú ý:
 
-Thay vì để một AI Agent thực hiện tất cả công việc, hệ thống có thể phân chia yêu cầu cho các Agent chuyên biệt. Điều này giúp quy trình xử lý rõ ràng hơn, đồng thời dễ kiểm soát và mở rộng khi cần thiết.
+- Kiểm tra cấu hình hạ tầng được viết bằng Terraform.
+- Phân tích mã nguồn để phát hiện những vấn đề bảo mật.
+- Hỗ trợ review Pull Request trên GitHub và Merge Request trên GitLab.
+- Đánh giá bảo mật tại môi trường SIT/UAT trước khi triển khai chính thức.
 
-**4. Quản lý bảo mật và bộ nhớ AI Agent bằng Amazon Bedrock AgentCore**
+Phiên chia sẻ giúp em hiểu rõ hơn về việc tích hợp kiểm tra bảo mật ngay trong quá trình phát triển thay vì chỉ thực hiện khi sản phẩm đã hoàn thành.
 
-Một nội dung khác được chia sẻ là cách quản lý danh tính, quyền truy cập và bộ nhớ khi triển khai hệ thống AI Agent.
+#### 4. Amazon Bedrock AgentCore
 
-Các thành phần được giới thiệu gồm:
+Phiên này giới thiệu hai thành phần quan trọng trong việc xây dựng và vận hành AI Agent:
 
-- **AgentCore Identity:** Hỗ trợ xác thực danh tính và quản lý quyền truy cập khi Agent làm việc với các dịch vụ bên ngoài.
-- **AgentCore Gateway:** Cung cấp cách kết nối và quản lý các công cụ, API mà AI Agent có thể sử dụng.
-- **OAuth2 và Amazon Cognito:** Hỗ trợ quá trình xác thực và cấp quyền truy cập an toàn.
-- **Workload Access Token:** Được sử dụng trong quá trình xác thực và cấp quyền cho các tác vụ của hệ thống.
-- **AgentCore Memory:** Hỗ trợ quản lý thông tin trong phiên làm việc và lưu trữ những thông tin cần thiết để sử dụng lâu dài.
+- **AgentCore Runtime:** Cung cấp môi trường thực thi cho AI Agent, sử dụng MicroVM để cô lập các phiên làm việc.
+- **AgentCore Memory:** Quản lý thông tin và ngữ cảnh mà AI Agent cần ghi nhớ.
 
-Nội dung này cho thấy việc xây dựng AI Agent không chỉ tập trung vào khả năng trả lời câu hỏi mà còn cần quan tâm đến bảo mật, xác thực người dùng, quản lý dữ liệu và kiểm soát các hành động của Agent.
+Trong đó, Memory được chia thành hai loại:
 
-### Kết Quả Và Kiến Thức Thu Nhận Được
+- **Short-term Memory:** Lưu trữ thông tin trong phiên tương tác hiện tại.
+- **Long-term Memory:** Lưu giữ thông tin hữu ích để sử dụng trong những phiên tương tác sau.
 
-Buổi chia sẻ mang lại nhiều kiến thức và kinh nghiệm thực tế, bao gồm:
+Qua nội dung này, em hiểu thêm cách AI Agent duy trì ngữ cảnh, ghi nhớ thông tin và xử lý các tác vụ trong môi trường thực tế.
 
-- Hiểu rõ hơn sự khác biệt giữa mô hình AI thử nghiệm trong môi trường học tập và hệ thống AI triển khai thực tế trong doanh nghiệp.
-- Biết thêm cách tối ưu chi phí bằng việc kết hợp mô hình AI lớn, mô hình nhỏ và lưu trữ kết quả của những yêu cầu lặp lại.
-- Nắm được cách tổ chức hệ thống Multi-Agent, phân chia nhiệm vụ và kiểm soát quá trình hoạt động của từng Agent.
-- Có thêm kiến thức về xác thực, phân quyền, bảo mật và quản lý bộ nhớ trong hệ thống AI Agent.
-- Hiểu thêm cách kết hợp các dịch vụ AWS để xây dựng hệ thống AI có khả năng mở rộng và hoạt động ổn định.
-- Có cơ hội giao lưu, học hỏi kinh nghiệm từ các anh chị trong cộng đồng FCAJ và những người tham dự, đồng thời tiếp cận thêm các giải pháp AWS và AI có thể ứng dụng vào kiến trúc dự án thực tập.
+#### 5. Kiro Crew – AI Hỗ Trợ Công Việc Lập Trình
+
+Đây là một trong những phiên em quan tâm nhất tại sự kiện. Diễn giả giới thiệu **Kiro Crew** và cách sử dụng AI để hỗ trợ một số công việc kỹ thuật.
+
+Các nội dung chính:
+
+- **Code Review:** Hỗ trợ kiểm tra và nhận xét những thay đổi trong mã nguồn.
+- **Infrastructure Monitoring:** Hỗ trợ theo dõi tình trạng hệ thống.
+- **Artifacts:** Tổng hợp dữ liệu và trình bày kết quả dưới dạng biểu đồ.
+- **Context Window:** Quản lý lượng thông tin AI sử dụng trong một phiên làm việc.
+- **Auto Compact:** Rút gọn lịch sử hội thoại để tiết kiệm ngữ cảnh.
+- **Memory và Guardrails:** Quản lý thông tin được lưu trữ và giới hạn quyền của AI Agent.
+
+Em ấn tượng với phần demo tổng hợp dữ liệu tuyển dụng thành biểu đồ và phần hỏi đáp về cách quản lý ngữ cảnh khi sử dụng AI trong thời gian dài.
+
+### Những Gì Học Được
+
+Sau buổi meetup, em có thêm kiến thức về những công nghệ đang được sử dụng trong các hệ thống Cloud và AI.
+
+- **Voice AI:** Hiểu cách hệ thống tiếp nhận, xử lý và phản hồi thông tin bằng giọng nói.
+- **AWS RAM:** Biết thêm cách chia sẻ tài nguyên giữa nhiều tài khoản AWS và kiểm soát quyền truy cập.
+- **AWS Security Agent:** Hiểu cách AI hỗ trợ phát hiện những vấn đề bảo mật trong mã nguồn và hạ tầng.
+- **Amazon Bedrock AgentCore:** Phân biệt vai trò của Runtime và Memory khi vận hành AI Agent.
+- **Kiro Crew:** Tìm hiểu cách sử dụng AI để hỗ trợ review code, quản lý ngữ cảnh và tự động hóa công việc.
+
+### Ứng Dụng Vào Công Việc
+
+Từ những kiến thức tiếp thu được, em có thêm một số hướng để tìm hiểu và áp dụng vào quá trình học tập cũng như thực hiện dự án:
+
+- Tìm hiểu sâu hơn về AWS IAM, Organizations và RAM để quản lý tài nguyên Cloud.
+- Chú ý đến vấn đề bảo mật ngay từ giai đoạn phát triển phần mềm.
+- Sử dụng các công cụ AI để hỗ trợ đọc code, tìm lỗi và kiểm tra những thay đổi trong dự án.
+- Tìm hiểu cách quản lý Context Window và Memory để làm việc với AI Agent hiệu quả hơn.
+
+### Trải Nghiệm Tại Sự Kiện
+
+Buổi meetup là cơ hội để em được nghe các kỹ sư và Tech Lead chia sẻ kinh nghiệm thực tế khi làm việc với AWS và AI.
+
+Hai phần khiến em ấn tượng nhất là demo cuộc gọi phỏng vấn bằng Voice AI và phần giới thiệu Kiro Crew. Những ví dụ này giúp em hình dung rõ hơn cách AI được sử dụng trong công việc thay vì chỉ tìm hiểu qua tài liệu.
+
+Bên cạnh đó, phần hỏi đáp cũng mang lại nhiều thông tin hữu ích, đặc biệt là những vấn đề liên quan đến giới hạn của AI, quản lý ngữ cảnh và kiểm soát quyền truy cập khi triển khai AI Agent.
 
 
-### Một Số Hình Ảnh Tham Gia Sự Kiện
+### Hình Ảnh Khi Tham Gia Sự Kiện
 
-![Slide Use AI Wisely tại AWS First Cloud AI Journey](/my_aws_workshop/images/4-EventParticipated/event-3/anhslide.jpg)
+![Ảnh cá nhân tham dự sự kiện](/my_aws_workshop/images/4-EventParticipated/event-2/imageforevent2.jpg)
 
-*Hình 1. Slide "Use AI Wisely" giới thiệu cách sử dụng mô hình AI lớn để điều phối các mô hình nhỏ theo từng nhiệm vụ, kết hợp lưu trữ kết quả câu hỏi lặp lại nhằm tối ưu chi phí và hiệu quả xử lý.*
+*Hình 1. Hình ảnh cá nhân tại First Cloud AI Journey – Weekly Meet Up ngày 24/10/2026.*
 
-![Ảnh cá nhân tại AWS First Cloud AI Journey](/my_aws_workshop/images/4-EventParticipated/event-3/anhcanhan.jpg)
+![Ảnh tập thể tại sự kiện](/my_aws_workshop/images/4-EventParticipated/event-2/anhtapthe.jpg)
 
-*Hình 2. Hình ảnh cá nhân tại sự kiện First Cloud AI Journey – Weekly Meet Up ngày 14/11/2026.*
+*Hình 2. Ảnh lưu niệm cùng các diễn giả và người tham dự sự kiện.*
+
+
